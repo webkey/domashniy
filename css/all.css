@@ -1,3 +1,4 @@
+@import 'https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=cyrillic';
 @import url(fonts.css);
 @import url(normalize.css);
 @import url(buttons.css);
@@ -14,14 +15,15 @@
 
 /*------ TYPOGRAPHIC STYLES ------*/
 body{
-	font: 14px/30px Arial, Helvetica, sans-serif;
+	font: 14px/30px 'lozen-cond-regular', sans-serif;
 	height: 100%;
 	color: #333;
 	background: #fff;
 	min-width: 320px;
 }
 h1, h2, h3, h4, h5, h6{
-	font-weight: 700;
+	font-family: 'lozen-cond-bold', sans-serif;
+	font-weight: normal;
 	margin: 0;
 	color: #000;
 }
@@ -49,13 +51,11 @@ h4{
 h5{
 	font-size: 14px;
 	line-height: 16px;
-	font-weight: 100;
 	padding: 0 0 5px;
 }
 h6{
 	font-size: 12px;
 	line-height: 14px;
-	font-weight: 100;
 	padding: 0 0 5px;
 }
 p{
@@ -93,32 +93,26 @@ mark {
 	font-style: inherit;
 	font-weight: inherit;
 }
-/*
-************************************************************
-***  If custom font is used globally through css style  ***
-***  use this template for tags "b, strong, i, em"       ***
-************************************************************
 b, strong, th{
-	font-family:'fontNameBold';
-	font-weight:normal;
+	font-family: 'lozen-cond-bold', sans-serif;
+	font-weight: normal;
 }
 i, em{
-	font-family:'fontNameItalic';
-	font-style:normal;
+	font-family: 'lozen-cond-italic', sans-serif;
+	font-style: normal;
 }
 i b,
-i strong
+i strong,
 em b,
 em strong,
 b i,
 b em,
 strong i,
 strong em{
-	font-family: 'fontNameBoldItalic';
-	font-weight:normal;
-	font-style:normal;
+	font-family: 'lozen-cond-bold-italic', sans-serif;
+	font-weight: normal;
+	font-style: normal;
 }
-*/
 /*------ TYPOGRAPHIC STYLES end ------*/
 
 /*sp*/
