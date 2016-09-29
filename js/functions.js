@@ -1,4 +1,6 @@
-/*resize only width*/
+/**!
+ * resize only width
+ * */
 var resizeByWidth = true;
 
 var prevWidth = -1;
@@ -12,7 +14,9 @@ $(window).resize(function () {
 });
 /*resize only width end*/
 
-/*device detected*/
+/**!
+ * device detected
+ * */
 var DESKTOP = device.desktop();
 //console.log('DESKTOP: ', DESKTOP);
 var MOBILE = device.mobile();
@@ -21,13 +25,17 @@ var TABLET = device.tablet();
 //console.log('MOBILE: ', MOBILE);
 /*device detected end*/
 
-/*placeholder */
+/**!
+ *  placeholder
+ *  */
 function placeholderInit(){
 	$('[placeholder]').placeholder();
 }
 /*placeholder end*/
 
-/*print*/
+/**!
+ * print
+ * */
 function printShow() {
 	$('.view-print').on('click', function (e) {
 		e.preventDefault();
@@ -36,9 +44,32 @@ function printShow() {
 }
 /*print end*/
 
+/**!
+ * footer at bottom
+ * */
+function footerBottom(){
+	var $footer = $('.footer');
+	if($footer.length){
+		var $tplSpacer = $('<div class="spacer" />');
+		$tplSpacer.insertAfter($('.main'));
+		$(window).on('load resizeByWidth', function () {
+			var footerOuterHeight = $footer.outerHeight();
+			$footer.css({
+				'margin-top': -footerOuterHeight
+			});
+			$tplSpacer.css({
+				'height': footerOuterHeight
+			});
+		})
+	}
+}
+/*footer at bottom end*/
+
 /** ready/load/resize document **/
 
 $(document).ready(function(){
 	placeholderInit();
 	printShow();
+
+	footerBottom();
 });

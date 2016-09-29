@@ -1,5 +1,3 @@
-@media only screen and (max-width: 979px){}
-
 /*------ TYPOGRAPHIC STYLES ------*/
 /*------ TYPOGRAPHIC STYLES end ------*/
 
@@ -58,13 +56,16 @@
 /*ASIDE end*/
 
 .main,
-.sidebar{
+.sidebar,
+.aside{
 	padding-top: 74px;
 }
 /*MAIN end*/
 
 /*FOOTER*/
 /*footer holder*/
-.copyright{ padding: 0 15px; }
+
+/*developer*/
+/*developer end*/
 /*footer holder end*/
 /*FOOTER end*/
