@@ -48,7 +48,7 @@ function printShow() {
  * sliders
  * */
 function slidersInit() {
-	//visual slider
+	//banners slider
 	var $bannerSliders = $('.banners-slider');
 
 	if($bannerSliders.length) {
@@ -61,6 +61,23 @@ function slidersInit() {
 				// infinite: true,
 				dots: true,
 				arrows: false
+			});
+		});
+	}
+
+	//banners slider
+	var $promoSliders = $('.promo-slider');
+
+	if($promoSliders.length) {
+		$promoSliders.each(function() {
+			var $currentSlider = $(this);
+
+			$currentSlider.slick({
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				// infinite: true,
+				dots: true,
+				arrows: true
 			});
 		});
 	}

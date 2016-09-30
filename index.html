@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
 	<meta charset="UTF-8">
-	<title>Домашний - Главная</title>
+	<title>Домашний</title>
 	<!--Mobile optimized-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -21,51 +21,195 @@
 	<script src="js/vendor/modernizr-3.3.1.custom.min.js"></script>
 </head>
 <body class="home-page">
-<!--[if lt IE 8]>
+<!--[if lt IE 9]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 <!--WRAPPER-->
-<div class="wrapper">
-	<!--HEADER-->
-	<header class="header">
-		<div class="max-wrap">
-			<div class="header-holder">
-				<!--logo-->
-				<strong class="logo"><a href="#">Домашний</a><img style="display: none;" src="img/logo.png" alt="Домашний"></strong>
-				<!--logo end-->
-				<p>HEADER <br /><br /> Lorem ipsum dolor sit amet, <a href="#">link text</a> consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-			</div>
-		</div>
-	</header>
-	<!--HEADER end-->
+<div class="wrapper equal-element-js">
+	<div class="max-wrap">
+		<div class="layout">
+			<!--HEADER-->
+			<header class="header">
+				<div class="header-holder max-wrap">
+					<!--logo-->
+					<strong class="logo"><a href="index.html">Домашний</a><img style="display: none;" src="img/logo.png" alt="Домашний"></strong> <!--logo end-->
+					<!--user panel-->
+					<div class="user-panel">
+						<div class="login">
+							<div class="login__item"><a href="#"><i class="depict-user"></i><span>Вход</span></a></div>
+							<div class="login__item"><a href="#"><span>Регистрация</span></a></div>
+						</div>
+					</div>
+					<!--user panel end-->
+					<!--main navigation-->
+					<nav class="nav">
+						<ul class="nav-list">
+							<li><a href="about.html"><span>О компании</span></a></li>
+							<li><a href="customers.html"><span>Покупателям</span></a></li>
+							<li><a href="shops.html"><span>Магазины</span></a></li>
+							<li><a href="career.html"><span>Карьера</span></a></li>
+							<li><a href="partners.html"><span>Сотрудничество</span></a></li>
+							<li><a href="contacts.html"><span>Контакты</span></a></li>
+						</ul>
+					</nav>
+					<!--main navigation end-->
+				</div>
+			</header>
+			<!--HEADER end-->
 
-	<!--MAIN-->
-	<div class="main">
-		<div class="max-wrap">
-			<div class="main-holder">
+			<!--MAIN-->
+			<div class="main">
 				<!--CONTENT-->
 				<div class="content-wrap">
 					<div class="content">
-						ContentTextContent
+						<!--promo section-->
+						<div class="promo-section">
+							<!--promo slider-->
+							<div class="promo-slider-wrap">
+								<div class="promo-slider">
+									<div class="promo-slider__item">
+										<div class="promo-slider__bg" style="background-image: url(img/img-main-slider-01.jpg);"></div>
+									</div>
+									<div class="promo-slider__item">
+										<div class="promo-slider__bg" style="background-image: url(img/img-main-slider-01.jpg);"></div>
+									</div>
+									<div class="promo-slider__item">
+										<div class="promo-slider__bg" style="background-image: url(img/img-main-slider-01.jpg);"></div>
+									</div>
+								</div>
+							</div>
+							<!--promo slider end-->
+						</div>
+						<!--promo section end-->
 					</div>
 				</div>
 				<!--CONTENT end-->
 			</div>
+			<!--MAIN end-->
 		</div>
 	</div>
-	<!--MAIN end-->
 </div>
-<!--WRAPPER end-->
+<!--wrapper end-->
 
-<!--FOOTER-->
+<!--SIDEBAR-->
+<aside class="sidebar equal-element-js">
+	<div class="sidebar-holder">
+		<div class="adverts-box">
+			<!--ads-->
+			<div class="advert">
+				<div class="advert__figure">
+					<div class="advert__img">
+						<img src="img/img-new-offer-01.jpg" alt="image description" />
+					</div>
+				</div>
+				<div class="advert__content">
+					<strong class="advert__title">Новые предложения</strong>
+					<div class="advert__text">с 21 по 30 августа</div>
+					<div class="advert__footer">
+						<a href="#" class="btn-download">Скачать</a>
+					</div>
+				</div>
+			</div>
+			<!--ads end-->
+
+			<!--subscribe-->
+			<a href="#" class="subscribe">
+				<div class="subscribe__icon">
+					<i class="depict-subscribe"></i>
+				</div>
+				<div class="subscribe__text">
+					<strong>Подписаться на рассылку</strong>
+				</div>
+			</a>
+			<!--subscribe end-->
+
+			<!--banners-->
+			<div class="banners">
+				<div class="banners-slider">
+					<div class="banners-slider__slide">
+						<div class="banners-slider__item">
+							<strong class="banners-slider__title">Акция на свежие фрукты Апельсин. 31.10-06.11 Спишите!</strong>
+							<div class="banners-slider__figure">
+								<div class="banners-slider__img">
+									<img src="img/img-banners-01.jpg" alt="image description" />
+								</div>
+							</div>
+						</div>
+						<div class="banners-slider__item">
+							<strong class="banners-slider__title">Акция на свежие фрукты Апельсин!</strong>
+							<div class="banners-slider__figure">
+								<div class="banners-slider__img">
+									<img src="img/img-banners-02.jpg" alt="image description" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="banners-slider__slide">
+						<div class="banners-slider__item">
+							<strong class="banners-slider__title">Акция на свежие</strong>
+							<div class="banners-slider__figure">
+								<div class="banners-slider__img">
+									<img src="img/img-banners-03.jpg" alt="image description" />
+								</div>
+							</div>
+						</div>
+						<div class="banners-slider__item">
+							<strong class="banners-slider__title">Новинка! Квас вятский в бочонках</strong>
+							<div class="banners-slider__figure">
+								<div class="banners-slider__img">
+									<img src="img/img-banners-04.jpg" alt="image description" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="banners-slider__slide">
+						<div class="banners-slider__item">
+							<strong class="banners-slider__title">Акция на свежие фрукты</strong>
+							<div class="banners-slider__figure">
+								<div class="banners-slider__img">
+									<img src="img/img-banners-05.jpg" alt="image description" />
+								</div>
+							</div>
+						</div>
+						<div class="banners-slider__item">
+							<strong class="banners-slider__title">Новинка! Квас вятский в бочонках</strong>
+							<div class="banners-slider__figure">
+								<div class="banners-slider__img">
+									<img src="img/img-banners-06.jpg" alt="image description" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--banners end-->
+		</div>
+	</div>
+</aside>
+<!--SIDEBAR-->
+
+<!--footer-->
 <footer class="footer">
 	<div class="max-wrap">
-		<div class="footer-holder">
-			<p>FOOTER <br /> Lorem ipsum <a href="#">link text</a> dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		<!--footer holder-->
+		<div class="layout">
+			<div class="footer-holder max-wrap">
+				<div class="footer-col">
+					<div class="copyright">&copy; <span class="nobr">2016</span> «Domashniy». Все права защищены.</div>
+				</div>
+				<div class="footer-col">
+					<!--developer-->
+					<div class="developer">
+						<a href="http://astronim.by/"> <span class="text-inner">Разработка сайта</span> &mdash; <span class="developer_logo">Astronim*Support</span> </a>
+					</div>
+					<!--developer end-->
+				</div>
+			</div>
 		</div>
+		<!--footer holder end-->
 	</div>
 </footer>
-<!--FOOTER end-->
+<!--footer end-->
 
 <!--JQuery library-->
 <!--jQuery with fallback to the 1.* for old IE-->
