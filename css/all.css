@@ -95,7 +95,7 @@ img{
 }
 mark {
 	background: none;
-	color: #cf2f09;
+	color: #9c0;
 	font-style: inherit;
 	font-weight: inherit;
 }
@@ -257,82 +257,80 @@ button:hover{
 .user-content ul,
 .user-content ol{
 	margin: 0;
-	padding: 0 0 20px 20px;
+	padding: 0 0 22px;
 	list-style: none;
-	line-height: 18px;
 }
-.user-content ol{
-	counter-reset: section;
-}
+.user-content ol{ counter-reset: section; }
 .user-content ul li,
 .user-content ol li{
-	padding: 12px 0 0 20px;
+	padding: 14px 0 0 20px;
 	position: relative;
 }
 .user-content ol > li{
 	counter-increment: section;
 	height: 1%;
 	overflow: hidden;
-	padding-left: 0;
+	padding-left: 20px;
 }
 .user-content ul li:first-child,
 .user-content ol > li:first-child{
 	padding-top: 0;
 }
-.user-content ul > li:before{
+.user-content ul > li:before,
+.user-content ol ul > li:first-child:before{
 	content: '';
 	position: absolute;
 	left: 0;
-	top: 19px;
+	top: 21px;
 	height: 0;
 	width: 0;
-	border: 3px solid #cf2f09;
-	border-radius: 50%;
+	border: 5px solid #9c0;
 	box-sizing: border-box;
 }
-.user-content ul > li:first-child:before{
-	top: 7px;
-}
+.user-content ul > li:first-child:before{ top: 7px; }
 .user-content ol > li:before{
+	position: relative;
 	display: inline-block;
 	text-align: left;
-	color: #cf2f09;
-	min-width: 18px;
-	content: counter(section) ".";
-	padding: 0 5px 0 0;
+	font-family: 'proximanova-bold', Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #9c0;
+	content: counter(section) ;
+	padding: 0 4px 0 0;
+	min-width: 20px;
+	margin-left: -20px;
+	box-sizing: border-box;
 }
 .user-content ul ul,
-.user-content ul ol{
+.user-content ul ol,
+.user-content ol > li > ul{
 	padding-bottom: 0;
 	padding-left: 20px;
 }
-.user-content ol > li > ul{
-	padding-left: 40px;
-}
 .user-content ul ul > li:before,
 .user-content ul ul > li:first-child:before,
-.user-content ol ul > li:before,
-.user-content ol ul > li:first-child:before{
+.user-content ol ul ul > li:before,
+.user-content ol ul ul > li:first-child:before{
 	height: 0;
-	width: 8px;
-	border-width: 1px 0;
+	width: 10px;
+	border-width: 2px 0;
 	border-radius: 0;
-	top: 21px;
+	top: 23px;
 }
 .user-content ul ul li:first-child,
 .user-content ul ol li:first-child,
 .user-content ol ol li:first-child,
 .user-content ol ul li:first-child{
-	padding-top: 12px;
+	padding-top: 14px;
 }
 .user-content ul ul ul > li:before,
 .user-content ul ul ul > li:first-child:before,
 .user-content ul ol ul > li:before,
 .user-content ul ol ul > li:first-child:before{
-	height: 6px;
-	width: 6px;
-	top: 19px;
-	border-width: 2px;
+	height: 8px;
+	width: 8px;
+	top: 21px;
+	border-width: 4px;
 	border-radius: 50%;
 }
 /*list end*/
@@ -406,7 +404,7 @@ table th{
 	display: block;
 	margin: 0;
 	background-color: #f5f5f5;
-	border-left: 4px solid #cf2f09;
+	border-left: 4px solid #9c0;
 	padding: 18px 32px 28px 42px;
 }
 .user-content blockquote q{
@@ -607,7 +605,7 @@ input[type="checkbox"] + label:before{
 	height: 24px;
 	width: 24px;
 	border-radius: 3px;
-	background: #cf2f09;
+	background: #9c0;
 }
 input[type="checkbox"] + label:after{
 	content: '';
@@ -649,13 +647,13 @@ input[type="checkbox"] + label>span:after{
 input[type="checkbox"] + label>span:before{
 	transform: rotate(45deg);
 	transform-origin: 0 0.6em;
-	left: -2px;
+	left: 0;
 	top: 8px;
 }
 input[type="checkbox"] + label>span:after{
 	transform: rotate(-50deg);
 	transform-origin: 0 1.0em;
-	left: 21px;
+	left: 20px;
 	top: 12px;
 }
 input[type="checkbox"]:checked + label>span:before{
@@ -697,7 +695,7 @@ input[type="radio"] + label:before{
 	height: 24px;
 	width: 24px;
 	border-radius: 50px;
-	background: #cf2f09;
+	background: #9c0;
 }
 input[type="radio"] + label:after{
 	content: '';
@@ -723,7 +721,7 @@ input[type="radio"] + label>span:after {
 	left: 6px;
 	border-radius: 50%;
 	overflow: hidden;
-	background: #cf2f09;
+	background: #9c0;
 
 	-webkit-animation:bounceout 0.3s;
 	-webkit-animation-iteration-count:1;
@@ -804,7 +802,7 @@ label{
 .form-mark{
 	display: inline-block;
 	vertical-align: top;
-	color: #cf2f09;
+	color: #9c0;
 }
 /*select*/
 .select{
@@ -927,6 +925,44 @@ label{
 }
 /*files item end*/
 /*download files items end*/
+
+/*view print*/
+.view-print{
+	float: right;
+	padding: 6px 12px;
+	background: #f9f9f9;
+	line-height: 1;
+	color: #000;
+	text-decoration: none;
+	margin-left: 30px;
+	-webkit-transition-property: background;
+	transition-property: background;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+.desktop .view-print:hover{
+	background-color: #eaeaea;
+}
+.view-print svg{
+	vertical-align: middle;
+	width: 16px;
+	margin-right: 5px;
+}
+.view-print span{
+	display: inline-block;
+	vertical-align: middle;
+}
+@media only screen and (max-width: 979px){
+	.view-print{ font-size: 14px; }
+}
+@media only screen and (max-width: 639px){
+	.view-print svg{
+		vertical-align: top;
+		margin-right: 0;
+	}
+	.view-print span{ display: none; }
+}
+/*view print end*/
 /*USER CONTENT end*/
 
 /*HEADER*/
@@ -1231,7 +1267,7 @@ label{
 
 /*banners*/
 .banners{
-	padding: 30px 30px 0;
+	padding: 30px 0 0;
 }
 .banners-slider.slick-dotted{
 	padding-bottom: 30px;
@@ -1270,7 +1306,7 @@ label{
 	opacity: 1;
 }
 .banners-slider__item{
-	padding: 0 0 17px;
+	padding: 0 30px 17px;
 	text-align: center;
 }
 .banners-slider__title{
@@ -1526,6 +1562,11 @@ label{
 	color: #000;
 	padding: 0.2em 0;
 }
+.lt-ie9 body{ background: #fff !important; }
+.lt-ie9 .header,
+.lt-ie9 .wrapper,
+.lt-ie9 .footer,
+.lt-ie9 .sidebar{ display: none !important; }
 
 /* ==========================================================================
    Media Queries
@@ -1564,12 +1605,31 @@ label{
 	h2, h3{ page-break-after: avoid; }
 	.sidebar,
 	.aside,
-	.print-hidden{ display: none !important; }
+	.print-hidden,
+	.user-panel,
+	.nav,
+	.view-print{ display: none !important; }
+	.layout, .content{
+		margin: 0 !important;
+	}
+	.header{
+		position: relative !important;
+		height: 40px !important;
+		min-height: 0 !important;
+		max-height: none !important;
+		padding: 0 !important;
+	}
+	.logo{
+		float: none !important;
+		position: relative !important;
+		overflow: hidden !important;
+	}
+	.main{ padding-top: 0 !important; }
 	.content{
 		margin-left: 0 !important;
 		margin-right: 0 !important;
 	}
 	.logo{ background: none !important; }
 	.logo>*{ display: none; }
-	.logo>img{ display: inline-block !important; }
+	.logo>img{ display: block !important; }
 }
