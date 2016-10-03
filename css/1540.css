@@ -1,9 +1,12 @@
-@media only screen and (max-width: 979px){}
+@media only screen and (max-width: 1539px){}
 
 /*------ TYPOGRAPHIC STYLES ------*/
 /*------ TYPOGRAPHIC STYLES end ------*/
 
 /*MAIN BLOCKS*/
+.max-wrap-home {
+	max-width: 1030px;
+}
 /*MAIN BLOCKS end*/
 
 /*btn*/
@@ -49,6 +52,43 @@
 
 /*datetime*/
 /*datetime */
+
+/*adverts box*/
+.home-page .sidebar .adverts-box{
+	display: block;
+}
+/*adverts box end*/
+
+/*adverts box (on content)*/
+.promo-section .adverts-box{
+	display: none;
+}
+/*adverts box (on content) end*/
+
+/*promo section*/
+.promo-section-holder{
+	float: none;
+	width: auto;
+}
+/*promo slider*/
+.promo-section-holder .promo-slider,
+.promo-section-holder .slick-dotted.slick-slider{
+	margin-right: 0;
+}
+/*promo slider end*/
+/*promo section end*/
+
+/*shares slider*/
+/*shares slider end*/
+
+/*desks*/
+/*desks end*/
+
+/*desks list*/
+.desks-list__item{
+	width: 33.28%;
+}
+/*desks list end*/
 /*CONTENT*/
 
 /*SIDEBAR*/
@@ -61,6 +101,6 @@
 
 /*FOOTER*/
 /*footer holder*/
-.copyright{ padding: 0 15px; }
+
 /*footer holder end*/
 /*FOOTER end*/

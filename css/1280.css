@@ -7,6 +7,9 @@
 .wrapper > .max-wrap:after{
 	right: 0;
 }
+.max-wrap-home {
+	max-width: 720px;
+}
 .footer .layout, .content {
 	margin-right: 0;
 }
@@ -45,6 +48,73 @@
 /*HEADER*/
 /*logo*/
 /*logo end*/
+/*user panel*/
+.user-panel{
+	padding: 46px 160px 46px 20px;
+}
+/*user panel end*/
+/*main navigation*/
+.nav {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	padding-left: 0;
+	text-align: center;
+	background: #655446 url(../img/bg-page.jpg) 50% 0;
+	z-index: 99;
+	display: none;
+	overflow: auto;
+
+	font-size: 0;
+	letter-spacing: -4px;
+}
+.nav:after{
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+.nav-list{
+	float: none;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0;
+	margin: 0;
+	text-transform: uppercase;
+	text-align: center;
+	min-height: 0;
+	max-width: 98%;
+	position: relative;
+	overflow: visible;
+	z-index: 1;
+
+	font-size: 16px;
+	letter-spacing: normal;
+}
+.nav-list li{
+	float: none;
+	display: block;
+	position: relative;
+	font-size: 24px;
+	line-height: 36px;
+}
+.nav-list a{
+	display: block;
+	color: #fff;
+	padding: 12px;
+}
+.nav-list .active > a,
+.desktop .nav-list a:hover{
+	color: #feed00;
+}
+/*main navigation end*/
+/*btn menu*/
+.btn-menu{
+	display: block;
+}
+/*btn menu end*/
 /*HEADER end*/
 
 /*MAIN*/
@@ -55,6 +125,15 @@
 
 /*datetime*/
 /*datetime */
+
+/*desks*/
+/*desks end*/
+
+/*desks list*/
+.desks-list__item{
+	width: 49.98%;
+}
+/*desks list end*/
 /*CONTENT*/
 
 /*SIDEBAR*/
