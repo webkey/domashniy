@@ -58,14 +58,14 @@ function slidersInit() {
 			$currentSlider.slick({
 				slidesToShow: 1,
 				slidesToScroll: 1,
-				// infinite: true,
+				infinite: true,
 				dots: true,
 				arrows: false
 			});
 		});
 	}
 
-	//banners slider
+	//promo slider
 	var $promoSliders = $('.promo-slider');
 
 	if($promoSliders.length) {
@@ -75,8 +75,25 @@ function slidersInit() {
 			$currentSlider.slick({
 				slidesToShow: 1,
 				slidesToScroll: 1,
-				// infinite: true,
+				infinite: true,
 				dots: true,
+				arrows: true
+			});
+		});
+	}
+
+	//shares slider
+	var $sharesSliders = $('.shares-slider');
+
+	if($sharesSliders.length) {
+		$sharesSliders.each(function() {
+			var $currentSlider = $(this);
+
+			$currentSlider.slick({
+				slidesToShow: 3,
+				slidesToScroll: 3,
+				infinite: true,
+				dots: false,
 				arrows: true
 			});
 		});

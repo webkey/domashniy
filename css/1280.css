@@ -1,1 +1,75 @@
 @media only screen and (max-width: 1279px){}
+
+/*------ TYPOGRAPHIC STYLES ------*/
+/*------ TYPOGRAPHIC STYLES end ------*/
+
+/*MAIN BLOCKS*/
+.wrapper > .max-wrap:after{
+	right: 0;
+}
+.footer .layout, .content {
+	margin-right: 0;
+}
+/*MAIN BLOCKS end*/
+
+/*btn*/
+/*btn end*/
+
+/*USER CONTENT*/
+
+/*list*/
+/*list end*/
+
+/*default table*/
+/*default table end*/
+
+/*table styling*/
+/*table styling end*/
+
+/*blockquote*/
+/*blockquote end*/
+
+/*content img*/
+/*content img end*/
+
+/*aligned content*/
+/*aligned content end*/
+
+/*elements form style*/
+/*elements form style end*/
+
+/*download files items*/
+/*download files items end*/
+/*USER CONTENT end*/
+
+/*HEADER*/
+/*logo*/
+/*logo end*/
+/*HEADER end*/
+
+/*MAIN*/
+/*CONTENT*/
+
+/*breadcrumbs*/
+/*breadcrumbs end*/
+
+/*datetime*/
+/*datetime */
+/*CONTENT*/
+
+/*SIDEBAR*/
+/*SIDEBAR end*/
+
+/*ASIDE*/
+.aside{
+	display: none;
+}
+/*ASIDE end*/
+
+/*MAIN end*/
+
+/*FOOTER*/
+/*footer holder*/
+
+/*footer holder end*/
+/*FOOTER end*/
