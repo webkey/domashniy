@@ -1266,6 +1266,16 @@ label{
 	clear: right;
 	padding: 24px 70px 0 30px;
 }
+@media only screen and (min-width: 1280px){
+	.nav{
+		-webkit-transform: translate(0, 0) !important;
+		-ms-transform: translate(0, 0) !important;
+		transform: translate(0, 0) !important;
+		-webkit-transform: matrix(1, 0, 0, 1, 0, 0) !important;
+		-ms-transform: matrix(1, 0, 0, 1, 0, 0) !important;
+		transform: matrix(1, 0, 0, 1, 0, 0) !important;
+	}
+}
 .nav-list{
 	float: right;
 	list-style: none;
@@ -1319,7 +1329,7 @@ label{
 }
 .btn-menu.active{
 	position: fixed;
-	right: 20px;
+	right: 30px;
 	z-index: 100;
 }
 .btn-menu:active{
@@ -1349,6 +1359,7 @@ label{
 }
 .btn-menu .btn-menu-frame > span + span{
 	display: none;
+	letter-spacing: normal;
 }
 .btn-menu.active .btn-menu-frame > span + span{
 	display: block;
@@ -2024,6 +2035,7 @@ label{
 .sidebar-holder{
 	position: relative;
 	overflow: hidden;
+	min-height: 100%;
 }
 .sidebar-holder:after{
 	content: '';

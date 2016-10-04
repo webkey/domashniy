@@ -305,6 +305,8 @@ function slidersInit() {
 						}
 					}
 				]
+			}).on('afterChange', function(){
+				$(window).trigger('sidebarChange');
 			});
 		});
 	}
@@ -372,11 +374,20 @@ function slidersInit() {
  * equal height main blocks
  * */
 function equalHeightMainBlocks() {
-	$(window).on('load resize', function () {
-		var $equalElement = $(".equal-element-js");
+	var $equalElement = $(".equal-element-js");
 
-		if ( !$equalElement.length ) return false;
+	if ( !$equalElement.length ) return false;
 
+	$(window).on('sidebarChange', function () {
+		$.each($equalElement, function (i) {
+			// if (i < 1) return;
+			// if (i > 1) return false;
+			console.log("$(this): ", $(this));
+			$(this).css("height", "!");
+		})
+	});
+
+	$(window).on('load resize sidebarChange', function () {
 		imagesLoaded($equalElement, function () {
 			if ($('.sidebar').outerHeight(true) > $('.wrapper').outerHeight(true)) {
 				var amount = Math.max.apply(Math, $equalElement.map(function () {
@@ -384,9 +395,12 @@ function equalHeightMainBlocks() {
 				}).get());
 
 				$equalElement.css("cssText", "height: " + amount + "px !important;");
+			} else {
+				// $equalElement.attr("style", "");
+				$equalElement.css("height", "!");
 			}
 		});
-	})
+	});
 }
 /*equal height main blocks end*/
 
