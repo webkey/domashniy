@@ -294,12 +294,14 @@ function slidersInit() {
 				infinite: true,
 				dots: true,
 				arrows: false,
+				adaptiveHeight: true,
 				responsive: [
 					{
 						breakpoint: 980,
 						settings: {
 							slidesToShow: 4,
-							slidesToScroll: 4
+							slidesToScroll: 4,
+							adaptiveHeight: true
 						}
 					}
 				]

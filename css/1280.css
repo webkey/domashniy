@@ -48,11 +48,11 @@
 /*HEADER*/
 /*logo*/
 /*logo end*/
-/*user panel*/
-.user-panel{
-	padding: 46px 160px 46px 20px;
+.login{
+	right: 150px;
 }
-/*user panel end*/
+/*login*/
+/*login end*/
 /*main navigation*/
 .nav {
 	position: fixed;
@@ -60,7 +60,7 @@
 	top: 0;
 	width: 100%;
 	height: 100%;
-	padding-left: 0;
+	padding: 0;
 	text-align: center;
 	background: #655446 url(../img/bg-page.jpg) 50% 0;
 	z-index: 99;

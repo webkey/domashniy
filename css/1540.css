@@ -41,6 +41,11 @@
 
 /*HEADER*/
 /*logo*/
+.logo{
+	width: 413px;
+	height: 46px;
+	margin-top: -23px;
+}
 /*logo end*/
 /*HEADER end*/
 
