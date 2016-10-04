@@ -296,8 +296,11 @@ function slidersInit() {
 				arrows: false,
 				responsive: [
 					{
-						breakpoint: 3000,
-						// settings: "unslick"
+						breakpoint: 980,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					}
 				]
 			});

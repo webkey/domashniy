@@ -4,6 +4,27 @@
 /*------ TYPOGRAPHIC STYLES end ------*/
 
 /*MAIN BLOCKS*/
+.wrapper{
+	float: none;
+	width: auto;
+}
+.wrapper > .max-wrap:before{
+	content: none;
+}
+.wrapper > .max-wrap:after {
+
+}
+.home-page .wrapper > .max-wrap:after {
+	content: none;
+}
+.layout {
+	margin: 0;
+}
+.max-wrap-home {
+	max-width: none;
+	padding-left: 20px !important;
+	padding-right: 20px !important;
+}
 /*MAIN BLOCKS end*/
 
 /*btn*/
@@ -49,10 +70,120 @@
 
 /*datetime*/
 /*datetime */
+
+/*adverts box*/
+.home-page .sidebar .adverts-box,
+.home-page .sidebar-content .adverts-box{
+	display: none;
+}
+/*adverts box end*/
+
+/*subscribe*/
+.promo-section .subscribe {
+	min-height: 0;
+	padding: 11px 30px;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+.subscribe {
+	text-align: center;
+}
+.subscribe__icon{
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+	padding-bottom: 0;
+}
+.subscribe__text{
+	display: inline-block;
+	vertical-align: middle;
+	text-align: left;
+}
+/*subscribe end*/
+
+/*adverts box (on content)*/
+.promo-section .adverts-box{
+	display: block;
+	float: none;
+	width: auto;
+	margin: 0;
+	background: none;
+	padding: 0 0 50px;
+	box-shadow: none;
+}
+.promo-section .advert{
+	display: none;
+}
+.promo-section .subscribe {
+	padding: 11px 30px 16px;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+/*adverts box (on content) end*/
+
+/*promo section*/
+.promo-section{
+	padding: 0;
+}
+.promo-section-holder{
+	float: none;
+	width: auto;
+	margin: 0 -20px;
+	padding: 0 0 60px;
+}
+/*promo slider*/
+/*promo slider end*/
+/*promo section end*/
+
+/*shares slider*/
+.shares-slider,
+.shares-slider.slick-dotted{
+	margin-left: -10px;
+	padding-right: -10px;
+}
+/*shares slider end*/
+
+/*desks*/
+.desks-list{
+	margin-left: -10px;
+	padding-right: -10px;
+}
+/*desks end*/
+
+/*desks list*/
+.desks-list__item{
+	width: 33.28%;
+}
+/*desks list end*/
+
+/*banners*/
+.banners-slider__inner{
+	display: table;
+	width: 100%;
+}
+.banners-slider__title{
+	display: table-footer-group;
+	padding: 0;
+}
+.banners-slider__figure{
+	display: table-row-group;
+	padding: 0;
+}
+.banners-slider__img{
+	margin-bottom: 10px;
+}
+/*banners*/
 /*CONTENT*/
 
 /*SIDEBAR*/
+.sidebar{
+	display: none;
+}
 /*SIDEBAR end*/
+
+/*sidebar content (for devices)*/
+.sidebar-content{
+	display: block;
+}
+/*sidebar content (for devices) end*/
 
 /*ASIDE*/
 /*ASIDE end*/
