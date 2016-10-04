@@ -224,6 +224,13 @@ strong em{
 .footer > .max-wrap{
 	padding: 0 !important;
 }
+
+.header{ height: 75px; }
+.main,
+.sidebar{
+	box-sizing: border-box;
+	padding-top: 75px;
+}
 /*MAIN BLOCKS end*/
 
 /*slider*/
@@ -1157,21 +1164,27 @@ label{
 	background: #fff;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 	z-index: 5;
-
-	height: 112px;
+}
+.header-holder{
+	height: 100%;
+	position: relative;
 }
 .header-holder:before,
 .header-holder:after { content: ""; display: table; }
 .header-holder:after { clear: both; }
 /*logo*/
 .logo{
-	float: left;
+	position: absolute;
+	left: 30px;
+	top: 50%;
 	background: url(../img/logo.png) no-repeat;
-	width: 476px;
-	height: 53px;
+	-webkit-background-size: contain;
+	background-size: contain;
+	width: 441px;
+	height: 50px;
 	text-indent: -9999px;
 	overflow: hidden;
-	margin: 27px 0 32px;
+	margin-top: -27px;
 }
 .logo a{
 	display: block;
@@ -1181,7 +1194,7 @@ label{
 
 /*user panel*/
 .user-panel{
-	padding: 8px 0 22px 20px;
+	padding: 8px 0 6px 20px;
 	float: right;
 }
 .login,
@@ -1223,6 +1236,8 @@ label{
 	display: inline-block;
 	vertical-align: top;
 	background: url(../img/depict-user.png) no-repeat;
+	-webkit-background-size: contain;
+	background-size: contain;
 	width: 16px;
 	height: 15px;
 	margin: 3px 7px 0 0;
@@ -2057,12 +2072,6 @@ label{
 	color: #feed00;
 }
 /*ASIDE end*/
-
-.main,
-.sidebar{
-	box-sizing: border-box;
-	padding-top: 112px;
-}
 /*MAIN end*/
 
 /*FOOTER*/
