@@ -59,27 +59,45 @@
 /*datetime */
 
 /*adverts box*/
-.home-page .sidebar .adverts-box{
-	display: block;
-}
 /*adverts box end*/
 
 /*adverts box (on content)*/
-.promo-section .adverts-box{
-	display: none;
+.promo-section .advert {
+	min-height: 291px;
+}
+.promo-section .advert__figure {
+	min-height: 147px;
+}
+.promo-section .advert__img{
+	max-width: 100px;
 }
 /*adverts box (on content) end*/
 
+/*subscribe*/
+.promo-section .subscribe {
+	min-height: 69px;
+	padding: 11px 20px 16px;
+}
+.promo-section .subscribe__icon {
+	padding: 0 10px 0 0;
+	display: inline-block;
+	vertical-align: middle;
+}
+.subscribe__text,
+.subscribe__text > strong {
+	font-size: 14px;
+	line-height: 18px;
+}
+.subscribe__text {
+	display: inline-block;
+	padding: 0;
+	max-width: 110px;
+	vertical-align: middle;
+}
+/*subscribe end*/
+
 /*promo section*/
-.promo-section-holder{
-	float: none;
-	width: auto;
-}
 /*promo slider*/
-.promo-section-holder .promo-slider,
-.promo-section-holder .slick-dotted.slick-slider{
-	margin-right: 0;
-}
 /*promo slider end*/
 /*promo section end*/
 

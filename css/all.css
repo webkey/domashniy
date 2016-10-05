@@ -1236,6 +1236,13 @@ label{
 	height: 38px;
 	background: #fff;
 	box-sizing: border-box;
+	-webkit-transition-property: background;
+	transition-property: background;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+}
+.desktop .login__item a:hover{
+	background: #9c0;
 }
 .login__item span{
 	display: inline-block;
@@ -1264,7 +1271,7 @@ label{
 .nav{
 	float: right;
 	clear: right;
-	padding: 24px 70px 0 30px;
+	padding: 18px 70px 0 30px;
 }
 @media only screen and (min-width: 1280px){
 	.nav{
@@ -1285,7 +1292,7 @@ label{
 }
 .nav-list li{
 	float: left;
-	padding-left: 28px;
+	padding: 0 3px;
 }
 .nav-list a{
 	font-family: 'PT Sans Narrow', Arial, Helvetica, sans-serif;
@@ -1293,11 +1300,27 @@ label{
 	line-height: 28px;
 	color: #000;
 	text-decoration: none;
+	display: block;
+	border-radius: 4px;
+	padding: 6px 12px;
+	box-shadow: inset 0 2px 3px transparent;
+	-webkit-transition-property: background, color, box-shadow;
+	transition-property: background, color, box-shadow;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
 }
 .nav-list .active > a,
 .desktop .nav-list a:hover{
 	text-decoration: none;
-	color: #c00;
+	color: #fff;
+	box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+.desktop .nav-list a:hover{
+	background: #ccc;
+}
+.nav-list .active > a,
+.desktop .nav-list .active > a{
+	background: #9c0;
 }
 /*main navigation end*/
 
@@ -2106,6 +2129,7 @@ label{
 .footer{
 	float: left;
 	width: 100%;
+	/*height: 0;*/
 	position: relative;
 	font-family: 'PT Sans Narrow', Arial, Helvetica, sans-serif;
 	color: #666;

@@ -127,6 +127,34 @@
 /*datetime*/
 /*datetime */
 
+/*adverts box*/
+.promo-section .adverts-box{
+	display: none;
+}
+.home-page .sidebar .adverts-box {
+	display: block;
+}
+/*adverts box end*/
+
+/*adverts box (on content)*/
+/*adverts box (on content) end*/
+
+/*subscribe*/
+/*subscribe end*/
+
+/*promo section*/
+.promo-section-holder{
+	float: none;
+	width: auto;
+}
+/*promo slider*/
+.promo-section-holder .promo-slider,
+.promo-section-holder .slick-dotted.slick-slider{
+	margin-right: 0;
+}
+/*promo slider end*/
+/*promo section end*/
+
 /*desks*/
 /*desks end*/
 
