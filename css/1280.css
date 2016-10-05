@@ -10,7 +10,7 @@
 .max-wrap-home {
 	max-width: 720px;
 }
-.footer .layout, .content {
+.layout{
 	margin-right: 0;
 }
 /*MAIN BLOCKS end*/

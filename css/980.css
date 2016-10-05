@@ -11,20 +11,32 @@
 .wrapper > .max-wrap:before{
 	content: none;
 }
-.wrapper > .max-wrap:after {
-
-}
 .home-page .wrapper > .max-wrap:after {
 	content: none;
+}
+.content-wrap{
+	float: none;
+	width: auto;
+}
+.home-page .content {
+	padding-top: 0;
 }
 .layout {
 	margin: 0;
 }
 .max-wrap-home {
+	max-width: 700px;
+	padding-left: 20px !important;
+	padding-right: 20px !important;
+}
+.promo-section .max-wrap-home {
 	max-width: none;
 	padding-left: 20px !important;
 	padding-right: 20px !important;
 }
+
+.content + .spacer{ display: none; }
+.main + .spacer{ display: block; }
 /*MAIN BLOCKS end*/
 
 /*btn*/
@@ -137,24 +149,30 @@
 .shares-slider,
 .shares-slider.slick-dotted{
 	margin-left: -10px;
-	padding-right: -10px;
+	margin-right: -10px;
 }
 /*shares slider end*/
 
 /*desks*/
 .desks-list{
 	margin-left: -10px;
-	padding-right: -10px;
+	margin-right: -10px;
 }
 /*desks end*/
 
 /*desks list*/
-.desks-list__item{
-	width: 33.28%;
-}
 /*desks list end*/
 
 /*banners*/
+.banners-slider .slick-list,
+.banners-slider.slick-dotted .slick-list{
+	padding-left: 8px;
+	padding-right: 8px;
+}
+.banners-slider__item {
+	padding-left: 12px;
+	padding-right: 12px;
+}
 .banners-slider__inner{
 	display: table;
 	width: 100%;

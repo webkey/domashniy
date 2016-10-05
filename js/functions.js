@@ -294,19 +294,24 @@ function slidersInit() {
 				infinite: true,
 				dots: true,
 				arrows: false,
-				adaptiveHeight: true,
+				adaptiveHeight: false,
 				responsive: [
 					{
 						breakpoint: 980,
 						settings: {
 							slidesToShow: 4,
 							slidesToScroll: 4,
-							adaptiveHeight: true
+							adaptiveHeight: false
+						}
+					}, {
+						breakpoint: 900,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 3,
+							adaptiveHeight: false
 						}
 					}
 				]
-			}).on('afterChange', function(){
-				$(window).trigger('sidebarChange');
 			});
 		});
 	}
@@ -350,7 +355,7 @@ function slidersInit() {
 						}
 					},
 					{
-						breakpoint: 600,
+						breakpoint: 980,
 						settings: {
 							slidesToShow: 2,
 							slidesToScroll: 2
@@ -371,51 +376,18 @@ function slidersInit() {
 /*sliders end*/
 
 /**!
- * equal height main blocks
- * */
-function equalHeightMainBlocks() {
-	var $equalElement = $(".equal-element-js");
-
-	if ( !$equalElement.length ) return false;
-
-	$(window).on('sidebarChange', function () {
-		$.each($equalElement, function (i) {
-			// if (i < 1) return;
-			// if (i > 1) return false;
-			console.log("$(this): ", $(this));
-			$(this).css("height", "!");
-		})
-	});
-
-	$(window).on('load resize sidebarChange', function () {
-		imagesLoaded($equalElement, function () {
-			if ($('.sidebar').outerHeight(true) > $('.wrapper').outerHeight(true)) {
-				var amount = Math.max.apply(Math, $equalElement.map(function () {
-					return $(this).outerHeight(true);
-				}).get());
-
-				$equalElement.css("cssText", "height: " + amount + "px !important;");
-			} else {
-				// $equalElement.attr("style", "");
-				$equalElement.css("height", "!");
-			}
-		});
-	});
-}
-/*equal height main blocks end*/
-
-/**!
  * footer at bottom
  * */
 function footerBottom(){
 	var $footer = $('.footer');
 	if($footer.length){
 		var $tplSpacer = $('<div class="spacer" />');
+		$tplSpacer.insertAfter($('.content'));
 		$tplSpacer.insertAfter($('.main'));
 		$(window).on('load resizeByWidth', function () {
-			var footerOuterHeight = $footer.outerHeight();
+			var footerOuterHeight = $footer.find('.footer-holder').outerHeight();
 			$footer.css({
-				'margin-top': -footerOuterHeight
+				// 'margin-top': -footerOuterHeight
 			});
 			$tplSpacer.css({
 				'height': footerOuterHeight
@@ -433,6 +405,5 @@ $(document).ready(function(){
 	mainNavigationInit();
 	slidersInit();
 
-	equalHeightMainBlocks();
 	footerBottom();
 });
