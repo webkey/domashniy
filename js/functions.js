@@ -277,6 +277,47 @@ function mainNavigationInit(){
 }
 /*main navigation end*/
 
+/**
+ * add class on scroll to top
+ * */
+function headerShow(){
+	// external js:
+	// 1) resizeByWidth (resize only width);
+
+	var $page = $('html'),
+		minScrollTop = $('.header').outerHeight();
+
+	var previousScrollTop = $(window).scrollTop();
+	$(window).on('load scroll resizeByWidth', function () {
+		var currentScrollTop = $(window).scrollTop();
+		var showHeaderPanel = currentScrollTop < minScrollTop || currentScrollTop < previousScrollTop;
+
+		$page.toggleClass('header-show', showHeaderPanel);
+
+		previousScrollTop = currentScrollTop;
+	});
+}
+/*add class on scroll to top end*/
+
+/**
+ * add class on scroll to top
+ * */
+function pageIsScrolled(){
+	// external js:
+	// 1) resizeByWidth (resize only width);
+
+	var $page = $('html'),
+		minScrollTop = $('.header').outerHeight();
+
+	$(window).on('load scroll resizeByWidth', function () {
+		var currentScrollTop = $(window).scrollTop();
+		var showHeaderPanel = (currentScrollTop >= minScrollTop);
+
+		$page.toggleClass('page-is-scrolled', showHeaderPanel);
+	});
+}
+/*add class on scroll to top end*/
+
 /**!
  * sliders
  * */
@@ -307,8 +348,19 @@ function slidersInit() {
 						breakpoint: 900,
 						settings: {
 							slidesToShow: 3,
-							slidesToScroll: 3,
-							adaptiveHeight: false
+							slidesToScroll: 3
+						}
+					}, {
+						breakpoint: 640,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					}, {
+						breakpoint: 480,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
 						}
 					}
 				]
@@ -355,17 +407,14 @@ function slidersInit() {
 						}
 					},
 					{
-						breakpoint: 980,
+						breakpoint: 640,
 						settings: {
-							slidesToShow: 2,
-							slidesToScroll: 2
-						}
-					},
-					{
-						breakpoint: 480,
-						settings: {
-							slidesToShow: 1,
-							slidesToScroll: 1
+							autoplay: false,
+							arrows: false,
+							dots: false,
+							draggable: false,
+							swipe: false,
+							touchMove: false
 						}
 					}
 				]
@@ -375,21 +424,84 @@ function slidersInit() {
 }
 /*sliders end*/
 
+/**
+ * popup initial
+ * */
+function popupInitial(){
+	$('.popup-gmaps').magnificPopup({
+		disableOn: 700,
+		type: 'iframe',
+		mainClass: 'mfp-fade',
+		removalDelay: 160,
+		preloader: false,
+		tClose: 'Закрыть (Esc)',
+		tLoading: 'Загрузка...',
+
+		fixedContentPos: true,
+		callbacks:{
+			beforeClose: function() {
+				$('.mfp-opened').removeClass('mfp-opened');
+			}
+		}
+	});
+
+	$('.popup-with-form').magnificPopup({
+		type: 'inline',
+		preloader: false,
+		focus: '#name',
+		mainClass: 'mfp-fade',
+		fixedContentPos: true,
+
+		// When elemened is focused, some mobile browsers in some cases zoom in
+		// It looks not nice, so we disable it:
+		callbacks: {
+			beforeOpen: function() {
+				if($(window).width() < 700) {
+					this.st.focus = false;
+				} else {
+					this.st.focus = '#name';
+				}
+			}
+		}
+	});
+
+	$('.image-popup-vertical-fit').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		closeBtnInside: true,
+		fixedContentPos: true,
+		mainClass: 'mfp-with-zoom', // class to remove default margin from left and right side
+		image: {
+			verticalFit: true
+		},
+		zoom: {
+			enabled: true,
+			duration: 300 // don't foget to change the duration also in CSS
+		}
+	});
+}
+/*popup initial end*/
+
 /**!
  * footer at bottom
  * */
 function footerBottom(){
 	var $footer = $('.footer');
 	if($footer.length){
-		var $tplSpacer = $('<div class="spacer" />');
-		$tplSpacer.insertAfter($('.content'));
-		$tplSpacer.insertAfter($('.main'));
+		var $tplSpacer = $('<div />', {
+			class: 'spacer'
+		});
+
+		$('.content').after($tplSpacer.clone());
+		$('.main').after($tplSpacer.clone());
+
 		$(window).on('load resizeByWidth', function () {
 			var footerOuterHeight = $footer.find('.footer-holder').outerHeight();
 			$footer.css({
 				// 'margin-top': -footerOuterHeight
 			});
-			$tplSpacer.css({
+
+			$('.spacer').css({
 				'height': footerOuterHeight
 			});
 		})
@@ -397,13 +509,28 @@ function footerBottom(){
 }
 /*footer at bottom end*/
 
+/**!
+ * preloader
+ * */
+function preloadPage(){
+	$('html').addClass('page-loaded');
+}
+/*preloader end*/
+
 /** ready/load/resize document **/
+
+$(window).load(function () {
+	preloadPage();
+});
 
 $(document).ready(function(){
 	placeholderInit();
 	printShow();
 	mainNavigationInit();
+	headerShow();
+	pageIsScrolled();
 	slidersInit();
+	popupInitial();
 
 	footerBottom();
 });

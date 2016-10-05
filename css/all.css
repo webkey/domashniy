@@ -406,6 +406,7 @@ input[type="reset"]{
 	box-sizing: border-box;
 	text-decoration: none;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+	border: none;
 	background: #529f1f;
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzUyOWYxZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjE1JSIgc3RvcC1jb2xvcj0iIzRhOWEyMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijc5JSIgc3RvcC1jb2xvcj0iIzEwNzYzYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMjZjNDIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
 	background: -moz-linear-gradient(top, #529f1f 0%, #4a9a23 15%, #10763c 79%, #026c42 100%);
@@ -416,12 +417,20 @@ input[type="reset"]{
 .desktop input[type="submit"]:hover,
 .desktop input[type="button"]:hover,
 .desktop input[type="reset"]:hover{
-	top: -1px;
+	-webkit-transform: translate(0, -1px);
+	-ms-transform: translate(0, -1px);
+	transform: translate(0, -1px);
 	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
 }
 .btn-default:active{
-	top: 0;
+	-webkit-transform: translate(0, 0);
+	-ms-transform: translate(0, 0);
+	transform: translate(0, 0);
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.btn-default > span{
+	display: inline-block;
+	vertical-align: top;
 }
 /*btn-default end*/
 /*btn end*/
@@ -1352,7 +1361,6 @@ label{
 }
 .btn-menu.active{
 	position: fixed;
-	right: 30px;
 	z-index: 100;
 }
 .btn-menu:active{
@@ -1528,10 +1536,44 @@ label{
 }
 /*datetime */
 
+/*callback form*/
+.callback-form{
+	border: 1px solid #e6e6e6;
+	background: #f3f3f3;
+	padding: 48px 0;
+	margin: 0 -1px 60px;
+}
+.inline-popup{
+	background: #fff;
+	padding: 20px 30px;
+	text-align: left;
+	max-width: 650px;
+	margin: 40px auto;
+	position: relative;
+}
+.callback-form-popup{
+	padding: 0;
+}
+.callback-form-popup .callback-form{
+	margin: 0;
+}
+.callback-form form{
+	display: block;
+}
+.callback-form h3{ padding-bottom: 21px; }
+.callback-form textarea{
+	height: 99px;
+	max-height: 99px;
+	min-height: 99px;
+	resize: none;
+}
+/*callback form end*/
+
 /*adverts box*/
 .home-page .sidebar .adverts-box{
 	display: none;
 }
+
 /*advert*/
 .advert{
 	text-align: center;
@@ -1565,6 +1607,52 @@ label{
 	text-align: center;
 }
 /*advert end*/
+
+/*advert copy*/
+.advert-copy{
+	position: absolute;
+	right: 230px;
+	top: 0;
+	height: 75px;
+	width: 260px;
+	overflow: hidden;
+	-webkit-transition-property: opacity, -webkit-transform;
+	transition-property: opacity, transform;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+
+	display: none;
+}
+.depict-download{
+	display: inline-block;
+	vertical-align: top;
+	background: url(../img/depict-download-2x.png) no-repeat;
+	-webkit-background-size: contain;
+	background-size: contain;
+	width: 13px;
+	height: 15px;
+	margin: 2px 12px 0 0;
+}
+.advert-copy__img {
+	position: absolute;
+	left: 20px;
+	top: 11px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.57);
+	width: 120px;
+	-webkit-transform: rotate(-9deg);
+	-ms-transform: rotate(-9deg);
+	transform: rotate(-9deg);
+}
+.advert-copy__img img{
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.advert-copy [class*="btn-"]{
+	position: absolute;
+	right: 12px;
+	top: 22px;
+}
+/*advert copy end*/
 
 /*subscribe*/
 .subscribe{
@@ -1743,7 +1831,7 @@ label{
 /*promo slider end*/
 /*promo section end*/
 
-/*shares slider*/
+/*shares*/
 .shares{
 	padding: 0 0 50px;
 }
@@ -1854,7 +1942,7 @@ label{
 .shares-slider .slick-prev{ left: 0; }
 .shares-slider .slick-next{ right: 0; }
 /*shares slider*/
-/*shares slider end*/
+/*shares end*/
 
 /*desks*/
 .desks{
@@ -2080,7 +2168,7 @@ label{
 	bottom: 29px;
 }
 /*banners end*/
-/*CONTENT*/
+/*CONTENT end*/
 
 /*SIDEBAR*/
 .sidebar{
@@ -2168,15 +2256,17 @@ label{
 	font-family: 'PT Sans Narrow', Arial, Helvetica, sans-serif;
 	color: #666;
 	clear: both;
+	z-index: 5;
 }
 /*footer holder*/
 .footer-holder{
 	position: relative;
-	padding: 24px 0;
+	padding: 24px 30px;
 	text-align: justify;
 	overflow: hidden;
 	cursor: default;
 	background: #f3f3f3;
+	box-sizing: border-box;
 
 	font-size: 1px;
 	line-height: 0;

@@ -3,5 +3,6 @@
 @import url(980.css) only screen and (max-width:979px);
 @import url(768.css) only screen and (max-width:767px);
 @import url(640.css) only screen and (max-width:639px);
-@import url(480.css) only screen and (max-width:479px);
+@import url(600.css) only screen and (max-width:599px);
+@import url(380.css) only screen and (max-width:379px);
 @import url(320.css) only screen and (max-width:319px);

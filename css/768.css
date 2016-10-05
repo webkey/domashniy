@@ -38,6 +38,11 @@
 
 /*HEADER*/
 /*logo*/
+.logo {
+	width: 187px;
+	height: 38px;
+	margin-top: -19px;
+}
 /*logo end*/
 /*HEADER end*/
 
@@ -49,7 +54,21 @@
 
 /*datetime*/
 /*datetime */
-/*CONTENT*/
+
+/*adverts box*/
+/*advert copy*/
+.advert-copy {
+	right: 190px;
+	width: 230px;
+}
+.advert-copy__img {
+	left: 17px;
+	top: 10px;
+	width: 90px;
+}
+/*advert copy end*/
+/*adverts box end*/
+/*CONTENT end*/
 
 /*SIDEBAR*/
 /*SIDEBAR end*/

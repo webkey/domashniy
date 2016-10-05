@@ -1,13 +1,17 @@
-@media only screen and (max-width: 1539px){}
+@media only screen and (max-width: 639px){}
 
 /*------ TYPOGRAPHIC STYLES ------*/
 /*------ TYPOGRAPHIC STYLES end ------*/
 
 /*MAIN BLOCKS*/
 .max-wrap-home {
-	max-width: 1030px;
+	max-width: 280px;
 }
+
 /*MAIN BLOCKS end*/
+
+/*slider*/
+/*slider end*/
 
 /*btn*/
 /*btn end*/
@@ -40,13 +44,6 @@
 /*USER CONTENT end*/
 
 /*HEADER*/
-/*logo*/
-.logo{
-	width: 413px;
-	height: 46px;
-	margin-top: -23px;
-}
-/*logo end*/
 /*HEADER end*/
 
 /*MAIN*/
@@ -59,59 +56,55 @@
 /*datetime */
 
 /*adverts box*/
-
-/*subscribe*/
-.promo-section .subscribe {
-	min-height: 69px;
-	padding: 11px 20px 16px;
-}
-.promo-section .subscribe__icon {
-	padding: 0 10px 0 0;
-	display: inline-block;
-	vertical-align: middle;
-}
-.subscribe__text,
-.subscribe__text > strong {
-	font-size: 14px;
-	line-height: 18px;
-}
-.subscribe__text {
-	display: inline-block;
-	padding: 0;
-	max-width: 110px;
-	vertical-align: middle;
-}
-/*subscribe end*/
+/*advert copy*/
+/*advert copy end*/
 /*adverts box end*/
 
-/*adverts box (on content)*/
-.promo-section .advert {
-	min-height: 291px;
-}
-.promo-section .advert__figure {
-	min-height: 147px;
-}
-.promo-section .advert__img{
-	max-width: 100px;
-}
-/*adverts box (on content) end*/
-
 /*promo section*/
-/*promo slider*/
 /*promo slider end*/
 /*promo section end*/
 
 /*shares*/
-/*shares end*/
 
-/*desks*/
-/*desks end*/
+/*shares slider*/
+
+.shares-slider .slick-list,
+.shares-slider .slick-track{
+	width: auto !important;
+	-webkit-transform: translate3d(0,0,0) !important;
+	-ms-transform: translate3d(0,0,0) !important;
+	transform: translate3d(0,0,0) !important;
+}
+.shares-slider__item{
+	float: none !important;
+	display: block;
+	width: auto !important;
+	max-width: 280px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.shares-slider .slick-arrow{
+	display: none !important;
+}
+/*shares slider*/
+/*shares end*/
 
 /*desks list*/
 .desks-list__item{
-	width: 33.28%;
+	display: block;
+	position: relative;
+	width: auto;
+	max-width: 280px;
 }
 /*desks list end*/
+
+/*rate*/
+.rate__align{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+/*rate end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/
@@ -119,11 +112,17 @@
 
 /*ASIDE*/
 /*ASIDE end*/
-
 /*MAIN end*/
 
 /*FOOTER*/
 /*footer holder*/
-
+.copyright{ padding: 0 15px; }
 /*footer holder end*/
 /*FOOTER end*/
+
+/*page is scrolled*/
+.page-is-scrolled .header{
+	top: 0;
+}
+
+/*page is scrolled end*/

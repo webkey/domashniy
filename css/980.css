@@ -11,6 +11,11 @@
 .wrapper > .max-wrap:before{
 	content: none;
 }
+.wrapper > .max-wrap:after{
+	left: 0;
+	right: 0;
+	box-shadow: none;
+}
 .home-page .wrapper > .max-wrap:after {
 	content: none;
 }
@@ -37,6 +42,21 @@
 
 .content + .spacer{ display: none; }
 .main + .spacer{ display: block; }
+
+.header-holder,
+.footer-holder{
+	padding-left: 20px !important;
+	padding-right: 20px !important;
+}
+.logo{
+	left: 20px;
+}
+.btn-menu{
+	right: 20px;
+}
+.login {
+	right: 140px;
+}
 /*MAIN BLOCKS end*/
 
 /*btn*/
@@ -71,6 +91,12 @@
 
 /*HEADER*/
 /*logo*/
+.logo{
+	background-image: url(../img/logo-short.png);
+	width: 217px;
+	height: 44px;
+	margin-top: -22px;
+}
 /*logo end*/
 /*HEADER end*/
 
@@ -88,7 +114,23 @@
 .home-page .sidebar-content .adverts-box{
 	display: none;
 }
-/*adverts box end*/
+
+/*advert*/
+.advert {
+	display: none;
+}
+/*advert end*/
+
+/*advert copy*/
+.advert-copy{
+	display: block;
+	opacity: 0;
+}
+.page-loaded .advert-copy,
+.no-js .advert-copy{
+	opacity: 1;
+}
+/*advert copy end*/
 
 /*subscribe*/
 .promo-section .subscribe {
@@ -111,6 +153,7 @@
 	text-align: left;
 }
 /*subscribe end*/
+/*adverts box end*/
 
 /*adverts box (on content)*/
 .promo-section .adverts-box{
@@ -145,13 +188,13 @@
 /*promo slider end*/
 /*promo section end*/
 
-/*shares slider*/
+/*shares*/
 .shares-slider,
 .shares-slider.slick-dotted{
 	margin-left: -10px;
 	margin-right: -10px;
 }
-/*shares slider end*/
+/*shares end*/
 
 /*desks*/
 .desks-list{
@@ -189,7 +232,7 @@
 	margin-bottom: 10px;
 }
 /*banners*/
-/*CONTENT*/
+/*CONTENT end*/
 
 /*SIDEBAR*/
 .sidebar{
@@ -214,6 +257,27 @@
 	padding-top: 18px;
 	padding-bottom: 18px;
 }
-.copyright{ padding: 0 15px; }
+.footer-col {
+	display: block;
+	text-align: center;
+	padding: 6px 0;
+}
 /*footer holder end*/
 /*FOOTER end*/
+
+/*page is scrolled*/
+.page-is-scrolled .header{
+	height: 60px;
+}
+.page-is-scrolled .btn-menu{
+	top: 11px;
+}
+.page-is-scrolled .login {
+	display: none;
+}
+
+.page-is-scrolled .advert-copy{
+	display: none;
+}
+
+/*page is scrolled end*/
