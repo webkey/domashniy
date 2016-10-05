@@ -210,6 +210,10 @@
 
 /*FOOTER*/
 /*footer holder*/
+.footer-holder {
+	padding-top: 18px;
+	padding-bottom: 18px;
+}
 .copyright{ padding: 0 15px; }
 /*footer holder end*/
 /*FOOTER end*/

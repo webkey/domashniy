@@ -65,6 +65,15 @@
 
 /*FOOTER*/
 /*footer holder*/
+.footer .max-wrap {
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+}
+.footer-col {
+	display: block;
+	text-align: center;
+	padding: 6px 0;
+}
 .copyright{ padding: 0 15px; }
 /*footer holder end*/
 /*FOOTER end*/
