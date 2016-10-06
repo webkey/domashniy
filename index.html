@@ -25,7 +25,7 @@
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 <!--WRAPPER-->
-<div class="wrapper equal-element-js">
+<div class="wrapper">
 	<div class="max-wrap">
 		<!--HEADER-->
 		<header class="header">
@@ -46,7 +46,7 @@
 				<!--main navigation end-->
 				<!--login-->
 				<div class="login">
-					<div class="login__item"><a href="#"><i class="depict-user"></i><span>Вход</span></a></div>
+					<div class="login__item"><a href="#login-form" class="popup-with-form"><i class="depict-user"></i><span>Вход</span></a></div>
 				</div>
 				<!--login end-->
 				<!--btn menu-->
@@ -260,7 +260,7 @@
 			<!--CONTENT end-->
 
 			<!--SIDEBAR-->
-			<aside class="sidebar equal-element-js">
+			<aside class="sidebar">
 				<div class="sidebar-holder">
 					<!--adverts box-->
 					<div class="adverts-box">
@@ -512,6 +512,101 @@
 	</div>
 </footer>
 <!--footer end-->
+
+<!--login-->
+<div id="login-form" class="mfp-hide inline-popup inline-popup_narrow">
+	<div class="popup-form">
+		<div class="max-wrap-md">
+			<form action="#" method="get">
+				<div class="inline-popup__title align-center">Вход для пользователей</div>
+				<div class="input-wrap">
+					<div class="label-holder">
+						<label for="login-form-email">Email или номер мобильного телефона</label>
+					</div>
+					<input type="text" id="login-form-email" />
+				</div>
+				<div class="input-wrap">
+					<div class="label-holder">
+						<label for="login-form-pass">Пароль</label>
+					</div>
+					<input type="text" id="login-form-pass" />
+				</div>
+				<div class="form-buttons align-center">
+					<input type="submit" value="Войти">
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="inline-form__footer align-center">
+		<div class="max-wrap-md">
+			<div class="inline-form__text-item"><a href="#"><small>Забыли пароль?</small></a></div>
+			<div class="inline-form__text-item"><a href="#register-form" class="popup-with-form">Регистрация</a></div>
+		</div>
+	</div>
+</div>
+<!--registration-->
+<div id="register-form" class="mfp-hide inline-popup">
+	<div class="popup-form">
+		<div class="max-wrap-md">
+			<form action="#" method="get">
+				<div class="inline-popup__title align-center">Регистрация пользователя</div>
+				<div class="form-row">
+					<div class="input-wrap">
+						<div class="label-holder">
+							<label for="register-form-name">Ваша фамилия<span class="form-mark">*</span></label>
+						</div>
+						<input type="text" id="register-form-name" />
+					</div>
+					<div class="input-wrap">
+						<div class="label-holder">
+							<label for="register-form-company">Ваше имя<span class="form-mark">*</span></label>
+						</div>
+						<input type="text" id="register-form-company" />
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="input-wrap">
+						<div class="label-holder">
+							<label for="register-form-phone">Мобильный телефон<span class="form-mark">*</span></label>
+						</div>
+						<input type="text" id="register-form-phone" placeholder="+375 (__) ___-__-__" />
+					</div>
+					<div class="input-wrap">
+						<div class="label-holder">
+							<label for="register-form-phone-add">Дополнительный телефон</label>
+						</div>
+						<input type="text" id="register-form-phone-add" placeholder="+375 (__) ___-__-__" />
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="input-wrap">
+						<div class="label-holder">
+							<label for="register-form-email">Email<span class="form-mark">*</span></label>
+						</div>
+						<input type="email" id="register-form-email" />
+					</div>
+					<div class="input-wrap">
+						<div class="label-holder">
+							<label for="register-form-pass">Пароль<span class="form-mark">*</span></label>
+						</div>
+						<input type="text" id="register-form-pass" />
+					</div>
+				</div>
+				<div class="form-note align-center">
+					<div class="form-note__item form-mark">* Поля обязательные для заполнения</div>
+				</div>
+				<div class="form-buttons align-center">
+					<input type="submit" value="Регистрация">
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="inline-form__footer align-center">
+		<div class="max-wrap-md">
+			<div class="inline-form__text-item"><a href="#login-form" class="popup-with-form">Войти в свою учётную записть</a></div>
+		</div>
+	</div>
+</div>
 
 <!--JQuery library-->
 <!--jQuery with fallback to the 1.* for old IE-->

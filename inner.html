@@ -90,10 +90,11 @@
 			<!--CONTENT end-->
 
 			<!--SIDEBAR-->
-			<aside class="sidebar equal-element-js">
+			<aside class="sidebar">
 				<div class="sidebar-holder">
+					<!--adverts box-->
 					<div class="adverts-box">
-						<!--ads-->
+						<!--advert-->
 						<div class="advert">
 							<div class="advert__figure">
 								<div class="advert__img">
@@ -108,7 +109,7 @@
 								</div>
 							</div>
 						</div>
-						<!--ads end-->
+						<!--advert end-->
 
 						<!--subscribe-->
 						<a href="#" class="subscribe">
@@ -120,68 +121,79 @@
 							</div>
 						</a>
 						<!--subscribe end-->
+					</div>
+					<!--adverts box end-->
 
-						<!--banners-->
-						<div class="banners">
-							<div class="banners-slider">
-								<div class="banners-slider__slide">
-									<div class="banners-slider__item">
+					<!--banners-->
+					<div class="banners">
+						<div class="banners-slider">
+							<div class="banners-slider__slide">
+								<div class="banners-slider__item">
+									<a href="#" class="banners-slider__inner">
 										<strong class="banners-slider__title">Акция на свежие фрукты Апельсин. 31.10-06.11 Спишите!</strong>
 										<div class="banners-slider__figure">
 											<div class="banners-slider__img">
 												<img src="img/img-banners-01.jpg" alt="image description" />
 											</div>
 										</div>
-									</div>
-									<div class="banners-slider__item">
+									</a>
+								</div>
+								<div class="banners-slider__item">
+									<a href="#" class="banners-slider__inner">
 										<strong class="banners-slider__title">Акция на свежие фрукты Апельсин!</strong>
 										<div class="banners-slider__figure">
 											<div class="banners-slider__img">
 												<img src="img/img-banners-02.jpg" alt="image description" />
 											</div>
 										</div>
-									</div>
+									</a>
 								</div>
-								<div class="banners-slider__slide">
-									<div class="banners-slider__item">
+								<div class="banners-slider__item">
+									<a href="#" class="banners-slider__inner">
 										<strong class="banners-slider__title">Акция на свежие</strong>
 										<div class="banners-slider__figure">
 											<div class="banners-slider__img">
 												<img src="img/img-banners-03.jpg" alt="image description" />
 											</div>
 										</div>
-									</div>
-									<div class="banners-slider__item">
+									</a>
+								</div>
+								<div class="banners-slider__item">
+									<a href="#" class="banners-slider__inner">
 										<strong class="banners-slider__title">Новинка! Квас вятский в бочонках</strong>
 										<div class="banners-slider__figure">
 											<div class="banners-slider__img">
 												<img src="img/img-banners-04.jpg" alt="image description" />
 											</div>
 										</div>
-									</div>
+									</a>
 								</div>
-								<div class="banners-slider__slide">
-									<div class="banners-slider__item">
+							</div>
+							<div class="banners-slider__slide">
+								<div class="banners-slider__item">
+									<a href="#" class="banners-slider__inner">
 										<strong class="banners-slider__title">Акция на свежие фрукты</strong>
 										<div class="banners-slider__figure">
 											<div class="banners-slider__img">
 												<img src="img/img-banners-05.jpg" alt="image description" />
 											</div>
 										</div>
-									</div>
-									<div class="banners-slider__item">
+									</a>
+								</div>
+								<div class="banners-slider__item">
+									<a href="#" class="banners-slider__inner">
 										<strong class="banners-slider__title">Новинка! Квас вятский в бочонках</strong>
 										<div class="banners-slider__figure">
 											<div class="banners-slider__img">
 												<img src="img/img-banners-06.jpg" alt="image description" />
 											</div>
 										</div>
-									</div>
+									</a>
 								</div>
 							</div>
 						</div>
-						<!--banners end-->
 					</div>
+					<!--banners end-->
 				</div>
 			</aside>
 			<!--SIDEBAR-->
@@ -351,44 +363,96 @@
 <!--footer end-->
 
 <!--login-->
-<div id="login-form" class="mfp-hide inline-popup callback-form-popup">
-	<div class="callback-form">
+<div id="login-form" class="mfp-hide inline-popup inline-popup_narrow">
+	<div class="popup-form">
 		<div class="max-wrap-md">
 			<form action="#" method="get">
-				<h3 class="align-center">Форма регистации</h3>
-				<div class="form-row">
-					<div class="input-wrap">
-						<div class="label-holder">
-							<label for="callback-form-name">Имя<span class="form-mark">*</span></label>
-						</div>
-						<input type="text" id="callback-form-name" />
+				<div class="inline-popup__title align-center">Вход для пользователей</div>
+				<div class="input-wrap">
+					<div class="label-holder">
+						<label for="login-form-email">Email или номер мобильного телефона</label>
 					</div>
-					<div class="input-wrap">
-						<div class="label-holder">
-							<label for="callback-form-company">Логин<span class="form-mark">*</span></label>
-						</div>
-						<input type="text" id="callback-form-company" />
-					</div>
+					<input type="text" id="login-form-email" />
 				</div>
-				<div class="form-row">
-					<div class="input-wrap">
-						<div class="label-holder">
-							<label for="callback-form-email">Email<span class="form-mark">*</span></label>
-						</div>
-						<input type="email" id="callback-form-email" />
+				<div class="input-wrap">
+					<div class="label-holder">
+						<label for="login-form-pass">Пароль</label>
 					</div>
-					<div class="input-wrap">
-						<div class="label-holder">
-							<label for="callback-form-pass">Пароль<span class="form-mark">*</span></label>
-						</div>
-						<input type="text" id="callback-form-pass" />
-					</div>
+					<input type="text" id="login-form-pass" />
 				</div>
-				<div class="form-note align-center">* Поля обязательные для заполнения</div>
 				<div class="form-buttons align-center">
-					<input type="submit" value="Отправить">
+					<input type="submit" value="Войти">
 				</div>
 			</form>
+		</div>
+	</div>
+	<div class="inline-form__footer align-center">
+		<div class="max-wrap-md">
+			<div class="inline-form__text-item"><a href="#"><small>Забыли пароль?</small></a></div>
+			<div class="inline-form__text-item"><a href="#register-form" class="popup-with-form">Регистрация</a></div>
+		</div>
+	</div>
+</div>
+<!--registration-->
+<div id="register-form" class="mfp-hide inline-popup">
+	<div class="popup-form">
+		<div class="max-wrap-md">
+			<form action="#" method="get">
+				<div class="inline-popup__title align-center">Регистрация пользователя</div>
+				<div class="form-row">
+					<div class="input-wrap">
+						<div class="label-holder">
+							<label for="register-form-name">Ваша фамилия<span class="form-mark">*</span></label>
+						</div>
+						<input type="text" id="register-form-name" />
+					</div>
+					<div class="input-wrap">
+						<div class="label-holder">
+							<label for="register-form-company">Ваше имя<span class="form-mark">*</span></label>
+						</div>
+						<input type="text" id="register-form-company" />
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="input-wrap">
+						<div class="label-holder">
+							<label for="register-form-phone">Мобильный телефон<span class="form-mark">*</span></label>
+						</div>
+						<input type="text" id="register-form-phone" placeholder="+375 (__) ___-__-__" />
+					</div>
+					<div class="input-wrap">
+						<div class="label-holder">
+							<label for="register-form-phone-add">Дополнительный телефон</label>
+						</div>
+						<input type="text" id="register-form-phone-add" placeholder="+375 (__) ___-__-__" />
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="input-wrap">
+						<div class="label-holder">
+							<label for="register-form-email">Email<span class="form-mark">*</span></label>
+						</div>
+						<input type="email" id="register-form-email" />
+					</div>
+					<div class="input-wrap">
+						<div class="label-holder">
+							<label for="register-form-pass">Пароль<span class="form-mark">*</span></label>
+						</div>
+						<input type="text" id="register-form-pass" />
+					</div>
+				</div>
+				<div class="form-note align-center">
+					<div class="form-note__item form-mark">* Поля обязательные для заполнения</div>
+				</div>
+				<div class="form-buttons align-center">
+					<input type="submit" value="Регистрация">
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="inline-form__footer align-center">
+		<div class="max-wrap-md">
+			<div class="inline-form__text-item"><a href="#login-form" class="popup-with-form">Войти в свою учётную записть</a></div>
 		</div>
 	</div>
 </div>
