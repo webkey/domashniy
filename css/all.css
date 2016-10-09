@@ -429,6 +429,7 @@ input[type="reset"]{
 	-webkit-transform: scale(1.2, 1.2);
 	-ms-transform: scale(1.2, 1.2);
 	transform: scale(1.2, 1.2);
+	z-index: 1;
 }
 .btn-default:active{
 	-webkit-transform: scale(1, 1);
