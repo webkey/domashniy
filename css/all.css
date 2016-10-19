@@ -111,7 +111,7 @@ img{
 }
 mark {
 	background: none;
-	color: #9c0;
+	color: #006f43;
 	font-style: inherit;
 	font-weight: inherit;
 }
@@ -493,7 +493,7 @@ input[type="reset"]{
 	top: 23px;
 	height: 7px;
 	width: 10px;
-	background: url(../img/list-marker.png) no-repeat;
+	background: url(../img/list-marker-2x.png) no-repeat;
 	-webkit-background-size: 10px 7px;
 	background-size: 10px 7px;
 	box-sizing: border-box;
@@ -513,7 +513,8 @@ input[type="reset"]{
 	text-align: center;
 	padding: 0 1px;
 	margin-left: -20px;
-	background: #124989;
+	border-radius: 3px;
+	background: #006f43;
 	box-sizing: border-box;
 }
 .user-content ul ul,
@@ -604,17 +605,18 @@ td ul li:first-child:before,
 }
 .user-content .tbl td,
 .user-content .tbl th{
-	font-size: 14px;
+	font-size: 16px;
 	line-height: 19px;
 	color: #666;
 	background-color: #fff;
-	border: 1px solid #ccc;
+	border: 1px solid #000;
 	padding: 9px 20px 10px;
 }
 .user-content .tbl th,
 .user-content .tbl thead td,
 .user-content .tbl tfoot td,
 .user-content .tbl td:first-child{
+	font-family: 'lozen-cond-bold', Arial, Helvetica, sans-serif;
 	text-align: center;
 	color: #000;
 	background: #f3f3f3;
@@ -635,11 +637,14 @@ td ul li:first-child:before,
 	padding: 0;
 }
 .user-content blockquote q{
+	font-family: 'lozen-cond-bold-italic', Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	line-height: 36px;
 	display: block;
 	position: relative;
 	margin: 0;
 	padding: 0 0 0 45px;
-	color: #124989;
+	color: #000;
 }
 .user-content blockquote q:before,
 .user-content blockquote q:after{
@@ -652,7 +657,7 @@ td ul li:first-child:before,
 	top: 5px;
 	bottom: 5px;
 	width: 0;
-	border-right: 3px solid #124989;
+	border-right: 3px solid #006f43;
 }
 .user-content blockquote cite{
 	text-align: right;
@@ -1269,11 +1274,11 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	padding: 0 0 10px;
 	font-size: 18px;
 	line-height: 24px;
-	color: #124989;
+	color: #006f43;
 }
 .file__title a{
 	text-decoration: none;
-	color: #124989;
+	color: #006f43;
 	margin: 0 0 0 -70px;
 	display: inline-block;
 	padding: 0 0 0 70px;
