@@ -25,7 +25,7 @@
 	background: #000;
 }
 body{
-	font: 16px/26px 'lozen-cond-regular', sans-serif;
+	font: 18px/26px 'lozen-cond-regular', sans-serif;
 	height: 100%;
 	color: #000;
 	min-width: 320px;
@@ -45,32 +45,34 @@ h1{
 	overflow: hidden;
 }
 h2{
-	font-family: 'PT Sans Narrow', Arial, Helvetica, sans-serif;
 	font-weight: bold;
-	font-size: 18px;
-	line-height: 22px;
+	font-size: 26px;
+	line-height: 39px;
 	padding: 0 0 20px;
 }
 h3{
-	font-family: 'PT Sans Narrow', Arial, Helvetica, sans-serif;
 	font-weight: bold;
-	font-size: 16px;
-	line-height: 18px;
+	font-size: 22px;
+	line-height: 33px;
 	padding: 0 0 15px;
 }
 h4{
-	font-size: 14px;
-	line-height: 16px;
-	padding: 0 0 10px;
+	font-size: 18px;
+	line-height: 29px;
+	padding: 0 0 17px;
 }
 h5{
+	font-family: 'lozen-cond-regular', Arial, Helvetica, sans-serif;
 	font-size: 14px;
-	line-height: 16px;
+	color: #666;
+	line-height: 20px;
 	padding: 0 0 5px;
 }
 h6{
+	font-family: 'lozen-cond-regular', Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	line-height: 14px;
+	color: #666;
 	padding: 0 0 5px;
 }
 p{
@@ -477,7 +479,7 @@ input[type="reset"]{
 	counter-increment: section;
 	height: 1%;
 	overflow: hidden;
-	padding-left: 20px;
+	padding-left: 40px;
 }
 .user-content ul li:first-child,
 .user-content ol > li:first-child{
@@ -488,24 +490,30 @@ input[type="reset"]{
 	content: '';
 	position: absolute;
 	left: 0;
-	top: 21px;
-	height: 0;
-	width: 0;
-	border: 5px solid #9c0;
+	top: 23px;
+	height: 7px;
+	width: 10px;
+	background: url(../img/list-marker.png) no-repeat;
+	-webkit-background-size: 10px 7px;
+	background-size: 10px 7px;
 	box-sizing: border-box;
 }
 .user-content ul > li:first-child:before{ top: 7px; }
 .user-content ol > li:before{
+	content: counter(section);
 	position: relative;
+	left: -20px;
+	top: -1px;
 	display: inline-block;
-	text-align: left;
-	font-family: 'proximanova-bold', Arial, Helvetica, sans-serif;
-	font-size: 14px;
-	color: #9c0;
-	content: counter(section) ;
-	padding: 0 4px 0 0;
 	min-width: 20px;
+	height: 20px;
+	font-size: 14px;
+	line-height: 20px;
+	color: #fff;
+	text-align: center;
+	padding: 0 1px;
 	margin-left: -20px;
+	background: #124989;
 	box-sizing: border-box;
 }
 .user-content ul ul,
@@ -518,10 +526,6 @@ input[type="reset"]{
 .user-content ul ul > li:first-child:before,
 .user-content ol ul ul > li:before,
 .user-content ol ul ul > li:first-child:before{
-	height: 0;
-	width: 10px;
-	border-width: 2px 0;
-	border-radius: 0;
 	top: 23px;
 }
 .user-content ul ul li:first-child,
@@ -534,11 +538,7 @@ input[type="reset"]{
 .user-content ul ul ul > li:first-child:before,
 .user-content ul ol ul > li:before,
 .user-content ul ol ul > li:first-child:before{
-	height: 8px;
-	width: 8px;
 	top: 21px;
-	border-width: 4px;
-	border-radius: 50%;
 }
 /*list end*/
 
@@ -550,10 +550,40 @@ table{
 }
 table td,
 table th{
-	padding: 15px 20px;
-	border: 1px solid #c6c6c6;
 	font-size: 14px;
-	line-height: 20px;
+	line-height: 19px;
+	color: #666;
+	border: 1px solid #ccc;
+	padding: 15px 20px 16px;
+	box-sizing: border-box;
+}
+table th{
+	color: #000;
+}
+td p:last-child,
+td ul:last-child,
+td ol:last-child{
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+td ul{
+	display: inline-block;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+td ul li,
+td ul li:first-child,
+.user-content td ul li,
+.user-content td ul li:first-child{
+	padding: 0;
+	display: inline-block;
+}
+td ul li:before,
+td ul li:first-child:before,
+.user-content td ul li:before,
+.user-content td ul li:first-child:before{
+	content: none;
 }
 /*default table end*/
 
@@ -562,12 +592,12 @@ table th{
 	overflow: auto;
 	max-width: 100%;
 	-webkit-overflow-scrolling: touch;
-	margin: 0 0 60px;
+	margin: 0 0 40px;
 }
 .user-content .tbl{
 	table-layout: fixed;
-	border: 1px solid #c6c6c6;
-	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	margin-bottom: 40px;
 }
 .table_auto .tbl{
 	margin: 0;
@@ -575,21 +605,23 @@ table th{
 .user-content .tbl td,
 .user-content .tbl th{
 	font-size: 14px;
-	line-height: 20px;
-	background-color: rgba(255, 255, 255, 0.75);
-	border: 1px solid #c6c6c6;
-	padding: 15px 21px;
+	line-height: 19px;
+	color: #666;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	padding: 9px 20px 10px;
 }
 .user-content .tbl th,
 .user-content .tbl thead td,
 .user-content .tbl tfoot td,
 .user-content .tbl td:first-child{
-	font-family: 'lozen-cond-bold', Arial, Helvetica, sans-serif;
-	text-align: left;
-}
-.user-content .tbl th,
-.user-content .tbl thead td{
 	text-align: center;
+	color: #000;
+	background: #f3f3f3;
+}
+.user-content .tbl td:first-child,
+.user-content .tbl tfoot td{
+	text-align: left;
 }
 /*table styling end*/
 
@@ -600,42 +632,34 @@ table th{
 .user-content blockquote{
 	display: block;
 	margin: 0;
-	background-color: #f5f5f5;
-	border-left: 4px solid #9c0;
-	padding: 18px 32px 28px 42px;
+	padding: 0;
 }
 .user-content blockquote q{
 	display: block;
+	position: relative;
 	margin: 0;
-	padding: 0 0 10px;
-	font: italic 18px/24px 'Times New Roman', Times, serif;
-	letter-spacing:0.05em;
-	color: #808080;
+	padding: 0 0 0 45px;
+	color: #124989;
 }
 .user-content blockquote q:before,
 .user-content blockquote q:after{
-	content: '';
-	display: block;
-	font-size: 24px;
-	line-height: 28px;
+	content: none;
 }
 .user-content blockquote q:before{
-	content: '«';
-	padding-left: 17%;
-	padding-bottom: 10px;
-}
-.user-content blockquote q:after{
-	content: '»';
-	text-align: right;
-	padding-right: 18.5%;
-	padding-top: 8px;
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 5px;
+	bottom: 5px;
+	width: 0;
+	border-right: 3px solid #124989;
 }
 .user-content blockquote cite{
 	text-align: right;
 	display: block;
 	margin-left: auto;
-	font: italic 20px/24px 'Times New Roman', Times, serif;
 	color: #333;
+	padding-top: 24px;
 }
 /*blockquote end*/
 
@@ -1210,20 +1234,6 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 /*elements form style end*/
 
 /*download files items*/
-/*depict files*/
-[class|="depict-files"],
-[class*=" depict-files-"]{
-	background:url(../img/sprite-files.png) 0 0 no-repeat;
-	display: inline-block;
-	vertical-align: top;
-}
-.depict-files-pdf{ background-position: 0 0; width: 39px; height: 46px; }
-.depict-files-xls{ background-position: 0 -66px; width: 39px; height: 46px; }
-.depict-files-doc{ background-position: 0 -132px; width: 39px; height: 46px; }
-.depict-files-zip{ background-position: 0 -198px; width: 39px; height: 46px; }
-.depict-files-jpg{ background-position: 0 -264px; width: 39px; height: 46px; }
-/*depict files end*/
-
 /*files item*/
 .files{
 	padding: 0 0 20px;
@@ -1232,8 +1242,6 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	letter-spacing: -4px;
 }
 .files-item{
-	font-size: 14px;
-	line-height: 18px;
 	letter-spacing: normal;
 }
 .files .files-item{
@@ -1243,27 +1251,38 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	padding: 0 0 48px 30px;
 }
 .file{
-	font-size: 14px;
-	line-height: 18px;
-	padding: 0 0 0 53px;
+	padding: 0 0 0 70px;
 	position: relative;
-	min-height: 46px;
+	min-height: 48px;
+}
+.file [class^="depict-files-"],
+.file [class*="depict-files-"]{
+	display: inline-block;
+	vertical-align: top;
+	width: 48px;
+	height: 48px;
+	background: no-repeat;
+	-webkit-background-size: 48px 48px;
+	background-size: 48px 48px;
 }
 .file__title{
-	padding: 5px 0 7px;
+	padding: 0 0 10px;
+	font-size: 18px;
+	line-height: 24px;
+	color: #124989;
 }
 .file__title a{
 	text-decoration: none;
-	margin: 0 0 0 -53px;
+	color: #124989;
+	margin: 0 0 0 -70px;
 	display: inline-block;
-	padding: 0 0 0 53px;
+	padding: 0 0 0 70px;
 }
 .file__title a span{
-	padding-top: 5px;
-	text-decoration: underline;
-}
-.file__title a:hover span{
 	text-decoration: none;
+}
+.desktop .file__title a:hover span{
+	text-decoration: underline;
 }
 .file [class*="depict-files-"]{
 	position: absolute;
@@ -1272,6 +1291,15 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 .file__info{
 	color: #666;
+}
+.file__info a{
+	font-size: 14px;
+	line-height: 16px;
+	text-decoration: none;
+	color: #666;
+}
+.depict .file__info a{
+	text-decoration: underline;
 }
 /*files item end*/
 /*download files items end*/
