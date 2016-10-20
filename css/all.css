@@ -1627,7 +1627,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	border-bottom-color: #000;
 }
 .accordion-panel{
-	padding-bottom: 20px;
+	padding: 0 52px 20px 52px;
 	box-sizing: border-box;
 	display: none;
 }
