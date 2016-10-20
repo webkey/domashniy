@@ -586,6 +586,164 @@ function popupInitial(){
 /*popup initial end*/
 
 /**!
+ * accordion
+ * */
+(function ($) {
+	var JsAccordion = function (settings) {
+		var options = $.extend({
+			accordionContainer: null,
+			accordionItem: null,
+			accordionContent: null,
+			accordionHeader: 'h3',
+			indexInit: 0,
+			animateSpeed: 300,
+			scrollToTop: false, // if true, scroll to current accordion;
+			clickOutside: false // if true, close current accordion's content on click outside accordion;
+		}, settings || {});
+
+		this.options = options;
+		var container = $(options.accordionContainer);
+		this.$accordionContainer = container;
+		this.$accordionItem = $(options.accordionItem, container);
+		this.$accordionHeader = $(options.accordionHeader, container);
+		this.$accordionContent = options.accordionContent ?
+			$(options.accordionContent, container) :
+			this.$accordionHeader.next();
+
+		this.scrollToTop = options.scrollToTop;
+		this.clickOutside = options.clickOutside;
+		this._indexInit = options.indexInit;
+		this._animateSpeed = options.animateSpeed;
+
+		this.modifiers = {
+			activeAccordion: 'js-accordion_active',
+			activeHeader: 'js-accordion__header_active',
+			activeContent: 'js-accordion__content_active'
+		};
+
+		this.bindEvents();
+		this.showAccordionContent();
+	};
+
+	// it takes values current index of accordion's content
+	JsAccordion.prototype.indexActive = 0;
+
+	// it takes values false or current index of accordion's content
+	JsAccordion.prototype.activeState = false;
+
+	JsAccordion.prototype.bindEvents = function () {
+		var self = this,
+			$accordionContent = self.$accordionContent,
+			animateSpeed = self._animateSpeed;
+
+		self.$accordionHeader.on('click', function (e) {
+			e.preventDefault();
+
+			var $currentItem = $(this).closest(self.$accordionItem),
+				$currentItemContent = $currentItem.find($accordionContent),
+				currentIndex = $currentItem.index();
+
+			if($accordionContent.is(':animated')) return false;
+
+			self.indexActive = currentIndex;
+
+			if(self.activeState === currentIndex){
+				self.closeAccordionContent();
+				return;
+			}
+
+			self.closeAccordionContent();
+
+			$currentItemContent.slideToggle(animateSpeed, function () {
+				self.scrollPosition();
+			});
+		});
+
+		$(document).click(function () {
+			if (self.clickOutside) {
+				self.closeAccordionContent();
+			}
+		});
+
+		$accordionContent.on('click', function(e){
+			e.stopPropagation();
+		});
+	};
+
+	// show current accordion's content
+	JsAccordion.prototype.showAccordionContent = function () {
+		var self = this;
+		var indexInit = self._indexInit;
+		self.$accordionItem.eq(indexInit).find(self.$accordionContent).fadeIn('slow');
+
+		self.indexActive = indexInit;
+		self.toggleActiveClass();
+	};
+
+	// close accordion's content
+	JsAccordion.prototype.closeAccordionContent = function () {
+		var self = this;
+		self.$accordionContent.slideUp(self._animateSpeed);
+		self.toggleActiveClass();
+	};
+
+	// change active class
+	JsAccordion.prototype.toggleActiveClass = function () {
+		var self = this,
+			activeAccordion = self.modifiers.activeAccordion,
+			activeHeader = self.modifiers.activeHeader,
+			activeContent = self.modifiers.activeContent,
+			$accordionItem = self.$accordionItem,
+			$accordionHeader = self.$accordionHeader,
+			$accordionContent = self.$accordionContent,
+			indexActive = self.indexActive,
+			activeState = self.activeState;
+
+		$accordionItem.removeClass(activeAccordion);
+		$accordionHeader.removeClass(activeHeader);
+		$accordionContent.removeClass(activeContent);
+
+		if (indexActive !== activeState) {
+			$accordionItem.eq(indexActive).addClass(activeAccordion);
+			$accordionHeader.eq(indexActive).addClass(activeHeader);
+			$accordionContent.eq(indexActive).addClass(activeContent);
+			self.activeState = indexActive;
+
+			// console.log("indexActive1: ", self.indexActive);
+			// console.log("activeState1: ", self.activeState);
+			return false;
+		}
+
+		self.activeState = false;
+
+		// console.log("indexActive2: ", self.indexActive);
+		// console.log("activeState2: ", self.activeState);
+	};
+
+	JsAccordion.prototype.scrollPosition = function () {
+		var self = this;
+		if (self.scrollToTop) {
+			$('html, body').animate({ scrollTop: self.$accordionItem.eq(self.indexActive).offset().top }, self._animateSpeed);
+		}
+	};
+
+	window.JsAccordion = JsAccordion;
+}(jQuery));
+/*accordion end*/
+
+function jsAccordion() {
+	if($('.accordion-container').length){
+		new JsAccordion({
+			accordionContainer: '.accordion-container',
+			accordionItem: '.accordion-content',
+			accordionHeader: '.accordion-header',
+			accordionContent: '.accordion-panel',
+			animateSpeed: 300
+		});
+	}
+}
+
+/**!
  * footer at bottom
  * */
 function footerBottom(){
@@ -637,6 +795,7 @@ $(document).ready(function(){
 	pageIsScrolled();
 	slidersInit();
 	popupInitial();
+	jsAccordion();
 
 	footerBottom();
 });
