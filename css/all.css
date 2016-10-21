@@ -511,15 +511,16 @@ strong em{
 	content: counter(section);
 	position: relative;
 	left: -20px;
-	top: -1px;
+	top: 2px;
 	display: inline-block;
+	vertical-align: top;
 	min-width: 20px;
 	height: 20px;
 	font-size: 14px;
-	line-height: 20px;
+	line-height: 14px;
 	color: #fff;
 	text-align: center;
-	padding: 0 1px;
+	padding: 3px 1px;
 	margin-left: -20px;
 	border-radius: 3px;
 	background: #006f43;
@@ -924,7 +925,7 @@ input[type="checkbox"] + label:after{
 	width: 20px;
 	border-radius: 0;
 	background: #fff;
-	box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.15);
+	box-shadow: inset 1px 1px 6px rgba(0, 0, 0, 0.15);
 	-webkit-transition-property: opacity;
 	transition-property: opacity;
 	-webkit-transition-duration: 0.2s;
@@ -955,13 +956,13 @@ input[type="checkbox"] + label>span:after{
 input[type="checkbox"] + label>span:before{
 	transform: rotate(45deg);
 	transform-origin: 0 0.6em;
-	left: 0;
+	left: -1px;
 	top: 8px;
 }
 input[type="checkbox"] + label>span:after{
 	transform: rotate(-50deg);
 	transform-origin: 0 1.0em;
-	left: 20px;
+	left: 22px;
 	top: 11px;
 }
 input[type="checkbox"]:checked + label>span:before{
