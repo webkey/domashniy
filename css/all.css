@@ -2865,6 +2865,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 
 /*job*/
 .switch-job{
+	white-space: nowrap;
 	font-size: 0;
 	line-height: 0;
 	letter-spacing: -4px;
@@ -2872,42 +2873,22 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .switch-job__hand{
 	position: relative;
 	display: inline-block;
-	width: 49.98%;
+	width: 245px;
+	max-width: 45%;
+	margin-right: 10px;
+	white-space: normal;
 	cursor: pointer;
 }
 .switch-job__hand.active{
 	z-index: 2;
-}
-.switch-job__hand:before,
-.switch-job__hand:after{
-	content: '';
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	width: 100px;
-}
-.switch-job__hand:before{
-	transform: skewX(-35deg);
-	left: 0;
-	border-radius: 4px 0 0 0;
-}
-.switch-job__hand:after{
-	transform: skewX(35deg);
-	right: 0;
-	border-radius: 0 4px 0 0;
-}
-.switch-job__hand:first-child:before,
-.switch-job__hand:last-child:after{
-	content: none;
 }
 .switch-job__hand a{
 	display: block;
 	position: relative;
 	text-decoration: none;
 	color: #000;
-	margin: 0 30px;
 	padding: 0 20px;
-	height: 80px;
+	height: 60px;
 	border-radius: 4px 4px 0 0;
 	text-align: center;
 	z-index: 1;
@@ -2920,13 +2901,8 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .switch-job__hand.active:before,
 .switch-job__hand.active:after,
 .switch-job__hand.active a{
-	background: #9c0;
-}
-.switch-job__hand:first-child a{
-	margin-left: 0;
-}
-.switch-job__hand:last-child a{
-	margin-right: 0;
+	background: #016c42;
+	color: #fff;
 }
 
 .switch-job__hand a:before{
@@ -2935,40 +2911,15 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	height: 100%;
 	vertical-align: middle;
 }
-.depict-in-office,
-.depict-in-shop{
-	display: inline-block;
-	vertical-align: top;
-	background: no-repeat;
-	-webkit-background-size: contain;
-	background-size: contain;
-}
-.depict-in-office{
-	background-image: url(../img/depict-in-office.png);
-	width: 20px;
-	height: 20px;
-}
-.depict-in-shop{
-	background-image: url(../img/depict-in-shop.png);
-	width: 20px;
-	height: 18px;
-}
-.switch-job__hand a i{
-	vertical-align: middle;
-	position: relative;
-	margin-right: -60px;
-	left: -40px;
-}
 .switch-job__hand a span{
 	display: inline-block;
 	vertical-align: middle;
 	font-family: 'lozen-cond-bold', Arial, Helvetica, sans-serif;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 24px;
 	text-transform: uppercase;
 	letter-spacing: 0.01em;
 	max-width: 98%;
-	padding: 0 0 0 30px;
 }
 
 .job-content{
@@ -2981,17 +2932,17 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 
 .job-selects{
-	background: #9c0;
-	padding: 28px 30px 10px;
+	background: #016c42;
+	padding: 28px 40px 10px;
 	margin-bottom: 40px;
 	border-radius: 0 0 4px 4px;
 	box-sizing: border-box;
 }
 .job-selects .label-holder,
 .job-selects label {
-	font-size: 20px;
-	line-height: 26px;
-	color: #000;
+	font-size: 18px;
+	line-height: 24px;
+	color: #fff;
 }
 .job-selects .label-holder{
 	padding-bottom: 12px;
