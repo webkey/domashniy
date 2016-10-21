@@ -55,6 +55,22 @@
 /*datetime*/
 /*datetime */
 
+/*inline popup*/
+.inline-popup,
+.inline-popup_narrow{
+	max-width: none;
+	width: auto;
+}
+/*inline popup end*/
+
+/*user form*/
+.user-form .form-buttons {
+	float: none;
+	margin: 0;
+	padding: 0 0 30px;
+}
+/*user form end*/
+
 /*adverts box*/
 /*advert copy*/
 .advert-copy {

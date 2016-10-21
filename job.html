@@ -83,135 +83,570 @@
 								<h1>Вакансии</h1>
 								<div class="hot-job"><i class="depict-star"></i>2 горящие вакансии</div>
 							</div>
-							<!--job-->
-							<div class="job">
-								<div class="switch-job">
-									<div class="switch-job__hand"><a href="#"><i class="depict-in-office"></i><span>Вакансии в офисе</span></a></div>
-									<div class="switch-job__hand active"><a href="#"><i class="depict-in-shop"></i><span>вакансии в магазине</span></a></div>
-								</div>
-								<div class="job-selects">
-									<div class="form-row">
-										<div class="input-wrap">
-											<div class="label-holder">
-												<label for="job-selects-vacantion">Город</label>
-											</div>
-											<div class="select">
-												<select class="cselect" name="filter-type" id="job-selects-vacantion">
-													<option value="0">Все города</option>
-													<option value="1">Овощи и фрукты</option>
-													<option value="2">Мясо, рыба, птица, колбасные изделия</option>
-													<option value="3">Бакалея</option>
-													<option value="4">Вода, напитки, соки, кофе, чай</option>
-													<option value="3">Детское питание</option>
-													<option value="3">Продукция собственного производства</option>
-													<option value="3">Молочные продукты, яйца</option>
-													<option value="3">Замороженные продукты</option>
-													<option value="3">Шоколад, конфеты и другие сладости</option>
-													<option value="3">Парфюмерия и косметика</option>
-													<option value="3">Товары для животных</option>
-													<option value="3">Товары для дома</option>
-													<option value="3">Канцелярские товары</option>
-												</select>
-											</div>
-										</div>
-										<div class="input-wrap">
-											<div class="label-holder">
-												<label for="job-selects-vacancy">Выбор вакансии</label>
-											</div>
-											<div class="select">
-												<select class="cselect" name="filter-type" id="job-selects-vacancy">
-													<option value="0">Все вакансии</option>
-													<option value="1">Овощи и фрукты</option>
-													<option value="2">Мясо, рыба, птица, колбасные изделия</option>
-													<option value="3">Бакалея</option>
-													<option value="4">Вода, напитки, соки, кофе, чай</option>
-													<option value="3">Детское питание</option>
-													<option value="3">Продукция собственного производства</option>
-													<option value="3">Молочные продукты, яйца</option>
-													<option value="3">Замороженные продукты</option>
-													<option value="3">Шоколад, конфеты и другие сладости</option>
-													<option value="3">Парфюмерия и косметика</option>
-													<option value="3">Товары для животных</option>
-													<option value="3">Товары для дома</option>
-													<option value="3">Канцелярские товары</option>
-												</select>
-											</div>
-										</div>
-									</div>
-								</div>
+						</div>
 
-								<!--accordion-->
-								<div class="accordion-container">
-									<div class="accordion-content">
-										<div class="accordion-header"><i class="accordion-angle"></i><span class="accordion-info">от 830 р.</span><div class="accordion-title">Ведущий специалист отдела развития</div></div>
-										<div class="accordion-panel">
-											<div class="accordion-frame">
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur fugit harum maiores minima rem. Consequatur dolore exercitationem ipsam labore quia.</p>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et nulla obcaecati officiis placeat possimus, qui quod sed sit velit vero? Doloribus, hic, obcaecati? Aspernatur beatae, dolor dolorem ea eos modi necessitatibus nemo nesciunt optio quasi qui repellat sequi sunt suscipit tempore, tenetur, veritatis.</p>
+						<!--job-->
+						<div class="job">
+							<div class="max-wrap-md">
+								<div class="switch-job">
+									<div class="switch-job__hand js-tab-anchor" data-for="js-job-office">
+										<a href="#"><i class="depict-in-office"></i><span>Вакансии в офисе</span></a>
+									</div>
+									<div class="switch-job__hand js-tab-anchor" data-for="js-job-vacancy">
+										<a href="#"><i class="depict-in-shop"></i><span>вакансии в магазине</span></a>
+									</div>
+								</div>
+							</div>
+
+							<div class="job-container js-tab-container">
+								<div class="job-content js-tab-content" data-id="js-job-office">
+									<div class="max-wrap-md">
+										<div class="job-selects">
+											<div class="form-row">
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="office-selects__city">Город</label>
+													</div>
+													<div class="select">
+														<select class="cselect" name="filter-type" id="office-selects__city">
+															<option value="0">Все города</option>
+															<option value="1">Овощи и фрукты</option>
+															<option value="2">Мясо, рыба, птица, колбасные изделия</option>
+															<option value="3">Бакалея</option>
+															<option value="4">Вода, напитки, соки, кофе, чай</option>
+															<option value="3">Детское питание</option>
+															<option value="3">Продукция собственного производства</option>
+															<option value="3">Молочные продукты, яйца</option>
+															<option value="3">Замороженные продукты</option>
+															<option value="3">Шоколад, конфеты и другие сладости</option>
+															<option value="3">Парфюмерия и косметика</option>
+															<option value="3">Товары для животных</option>
+															<option value="3">Товары для дома</option>
+															<option value="3">Канцелярские товары</option>
+														</select>
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="office-selects__vacancy">Выбор вакансии</label>
+													</div>
+													<div class="select">
+														<select class="cselect" name="filter-type" id="office-selects__vacancy">
+															<option value="0">Все вакансии</option>
+															<option value="1">Овощи и фрукты</option>
+															<option value="2">Мясо, рыба, птица, колбасные изделия</option>
+															<option value="3">Бакалея</option>
+															<option value="4">Вода, напитки, соки, кофе, чай</option>
+															<option value="3">Детское питание</option>
+															<option value="3">Продукция собственного производства</option>
+															<option value="3">Молочные продукты, яйца</option>
+															<option value="3">Замороженные продукты</option>
+															<option value="3">Шоколад, конфеты и другие сладости</option>
+															<option value="3">Парфюмерия и косметика</option>
+															<option value="3">Товары для животных</option>
+															<option value="3">Товары для дома</option>
+															<option value="3">Канцелярские товары</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="accordion-container">
+											<div class="accordion-content">
+												<div class="accordion-header"><i class="accordion-angle"></i><span class="accordion-info">от 830 р.</span>
+													<div class="accordion-title">Ведущий специалист отдела развития</div>
+												</div>
+												<div class="accordion-panel">
+													<div class="accordion-frame">
+														<h4>Обязанности</h4>
+														<ul>
+															<li>пополнение прикассовой зоны.</li>
+															<li>соблюдение кассовой дисциплины;</li>
+															<li>наличный и безналичный расчет покупателей наличный и безналичный расчет покупателей наличный и безналичный расчет покупателей;</li>
+															<li>соблюдение стандартов обслуживания;</li>
+														</ul>
+														<h4>Требования</h4>
+														<ul>
+															<li>наличие санитарной справки или возможность ее сделать;</li>
+															<li>хорошие рекомендации;</li>
+															<li>отсутствие вредных привычек.</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="accordion-content">
+												<div class="accordion-header"><i class="accordion-angle"></i><span class="accordion-info">от 5000 р.</span>
+													<div class="accordion-title">Заведующий секцией</div>
+												</div>
+												<div class="accordion-panel">
+													<div class="accordion-frame">
+														<h4>Обязанности</h4>
+														<ul>
+															<li>соблюдение стандартов обслуживания;</li>
+															<li>наличный и безналичный расчет покупателей;</li>
+															<li>соблюдение кассовой дисциплины;</li>
+															<li>наличие или возможность ее сделать;</li>
+															<li>пополнение прикассовой зоны.</li>
+														</ul>
+														<h4>Требования</h4>
+														<ul>
+															<li>опыт работы от 1 года (с продовольственной группой товаров) и/или профильное образование;</li>
+															<li>отсутствие вредных привычек.</li>
+															<li>наличие санитарной справки или возможность ее сделать;</li>
+															<li>хорошие рекомендации;</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="accordion-content">
+												<div class="accordion-header"><i class="accordion-angle"></i><span class="accordion-info">от От 17300 до 21100 руб р.</span>
+													<div class="accordion-title">Инженер-программист 1С</div>
+												</div>
+												<div class="accordion-panel">
+													<div class="accordion-frame">
+														<h4>Обязанности</h4>
+														<ul>
+															<li>наличный и безналичный расчет покупателей наличный и безналичный расчет покупателей наличный и безналичный расчет покупателей;</li>
+															<li>соблюдение кассовой дисциплины;</li>
+															<li>соблюдение стандартов обслуживания;</li>
+															<li>пополнение прикассовой зоны.</li>
+														</ul>
+														<h4>Требования</h4>
+														<ul>
+															<li>опыт работы от 1 года (с продовольственной группой товаров) и/или профильное образование;</li>
+															<li>наличие санитарной справки или возможность ее сделать;</li>
+															<li>хорошие рекомендации;</li>
+															<li>отсутствие вредных привычек.</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="accordion-content">
+												<div class="accordion-header"><i class="accordion-angle"></i><span class="accordion-info">от 830 р.</span>
+													<div class="accordion-title">Инженер-программист 1С</div>
+												</div>
+												<div class="accordion-panel">
+													<div class="accordion-frame">
+														<h4>Обязанности</h4>
+														<ul>
+															<li>соблюдение стандартов обслуживания, хорошие рекомендации;</li>
+															<li>соблюдение кассовой дисциплины;</li>
+															<li>пополнение прикассовой зоны.</li>
+															<li>наличный и безналичный расчет покупателей наличный и безналичный расчет покупателей наличный и безналичный расчет покупателей;</li>
+														</ul>
+														<h4>Требования</h4>
+														<ul>
+															<li>хорошие рекомендации;</li>
+															<li>опыт работы от 5 года (с продовольственной группой товаров);</li>
+														</ul>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
-									<div class="accordion-content">
-										<div class="accordion-header"><i class="accordion-angle"></i><span class="accordion-info">от 5000 р.</span><div class="accordion-title">Заведующий секцией</div></div>
-										<div class="accordion-panel">
-											<div class="accordion-frame">
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab deserunt esse quia saepe temporibus. Nisi quae quis repellendus.</p>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus amet aspernatur at autem commodi delectus dignissimos dolorum ducimus eligendi ex facilis harum laboriosam nobis omnis quas quibusdam recusandae reiciendis, ullam veniam. Adipisci amet cumque ea ipsum magnam officiis vel voluptatibus! At error odio reprehenderit rerum tenetur!</p>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam debitis deleniti dicta eligendi exercitationem harum pariatur quis, sunt unde voluptatum? A ad consectetur doloremque inventore, magni quia?</p>
-											</div>
-										</div>
-									</div>
-									<div class="accordion-content">
-										<div class="accordion-header"><i class="accordion-angle"></i><span class="accordion-info">от От 17300 до 21100 руб р.</span><div class="accordion-title">Инженер-программист 1С</div></div>
-										<div class="accordion-panel">
-											<div class="accordion-frame">
-												<h4>Обязанности</h4>
-												<ul>
-													<li>наличный и безналичный расчет покупателей наличный и безналичный расчет покупателей наличный и безналичный расчет покупателей;</li>
-													<li>соблюдение кассовой дисциплины;</li>
-													<li>соблюдение стандартов обслуживания;</li>
-													<li>пополнение прикассовой зоны.</li>
-												</ul>
-												<h4>Требования</h4>
-												<ul>
-													<li>опыт работы от 1 года (с продовольственной группой товаров) и/или профильное образование;</li>
-													<li>наличие санитарной справки или возможность ее сделать;</li>
-													<li>хорошие рекомендации;</li>
-													<li>отсутствие вредных привычек.</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="accordion-content">
-										<div class="accordion-header"><i class="accordion-angle"></i><span class="accordion-info">от 830 р.</span><div class="accordion-title">Инженер-программист 1С</div></div>
-										<div class="accordion-panel">
-											<div class="accordion-frame">
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure?</p>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores deserunt ipsa nemo quibusdam saepe sint tempora.</p>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi dolorem id illo labore maiores modi officiis praesentium quidem soluta? Magnam?</p>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur eaque eum obcaecati praesentium tempore.</p>
-											</div>
+
+									<div class="user-form">
+										<div class="max-wrap-sm">
+											<form action="#" method="get">
+												<strong class="form-title">Анкета соискателя</strong>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="office-form__vacancy-field">Вакансия*</label>
+													</div>
+													<div class="input-holder">
+														<div class="select">
+															<select class="cselect" name="filter-type" id="office-form__vacancy-field">
+																<option value="0">Все вакансии</option>
+																<option value="1">Овощи и фрукты</option>
+																<option value="2">Мясо, рыба, птица, колбасные изделия</option>
+																<option value="3">Бакалея</option>
+																<option value="4">Вода, напитки, соки, кофе, чай</option>
+																<option value="3">Детское питание</option>
+																<option value="3">Продукция собственного производства</option>
+																<option value="3">Молочные продукты, яйца</option>
+																<option value="3">Замороженные продукты</option>
+																<option value="3">Шоколад, конфеты и другие сладости</option>
+																<option value="3">Парфюмерия и косметика</option>
+																<option value="3">Товары для животных</option>
+																<option value="3">Товары для дома</option>
+																<option value="3">Канцелярские товары</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<hr>
+
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="office-form__name-field">ФИО*</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="office-form__name-field">
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="office-form__birth-field">Дата рождения</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="office-form__birth-field">
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="office-form__adr-field">Адрес проживания</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="office-form__adr-field">
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="office-form__phone-field">Контактный телефон*</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="office-form__phone-field">
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="office-form__email-field">Эл. почта</label>
+													</div>
+													<div class="input-holder">
+														<input type="email" id="office-form__email-field">
+													</div>
+												</div>
+												<hr>
+
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="office-form__education-field">Образование*</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="office-form__education-field">
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="office-form__experience-field">Опыт работы*</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="office-form__experience-field">
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="office-form__sanitary-field">Наличие санитарной книжки*</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="office-form__sanitary-field">
+													</div>
+												</div>
+												<hr>
+
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="office-form__comment-field">Дополнительная информация</label>
+													</div>
+													<div class="input-holder">
+														<textarea id="office-form__comment-field"></textarea>
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="input-holder upload-file__container">
+														<label class="upload-file__label" for="office-form__file-field"><i class="depict-clip"></i><span>Прикрепить файл</span></label>
+														<input class="upload-file" name="files[]" type="file" id="office-form__file-field" multiple="multiple">
+													</div>
+												</div>
+												<div class="form-footer">
+													<div class="form-buttons">
+														<input class="btn-default" type="submit" value="Отправить">
+													</div>
+													<div class="form-note">
+														<div class="form-note__item">* Поля обязательные для заполнения</div>
+													</div>
+												</div>
+											</form>
 										</div>
 									</div>
 								</div>
-								<!--accordion end-->
+								<div class="job-content js-tab-content" data-id="js-job-vacancy">
+									<div class="max-wrap-md">
+										<div class="job-selects">
+											<div class="form-row">
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="vacancy-selects__city">Город</label>
+													</div>
+													<div class="select">
+														<select class="cselect" name="filter-type" id="vacancy-selects__city">
+															<option value="0">Все города</option>
+															<option value="1">Овощи и фрукты</option>
+															<option value="2">Мясо, рыба, птица, колбасные изделия</option>
+															<option value="3">Бакалея</option>
+															<option value="4">Вода, напитки, соки, кофе, чай</option>
+															<option value="3">Детское питание</option>
+															<option value="3">Продукция собственного производства</option>
+															<option value="3">Молочные продукты, яйца</option>
+															<option value="3">Замороженные продукты</option>
+															<option value="3">Шоколад, конфеты и другие сладости</option>
+															<option value="3">Парфюмерия и косметика</option>
+															<option value="3">Товары для животных</option>
+															<option value="3">Товары для дома</option>
+															<option value="3">Канцелярские товары</option>
+														</select>
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="vacancy-selects__vacancy">Выбор вакансии</label>
+													</div>
+													<div class="select">
+														<select class="cselect" name="filter-type" id="vacancy-selects__vacancy">
+															<option value="0">Все вакансии</option>
+															<option value="1">Овощи и фрукты</option>
+															<option value="2">Мясо, рыба, птица, колбасные изделия</option>
+															<option value="3">Бакалея</option>
+															<option value="4">Вода, напитки, соки, кофе, чай</option>
+															<option value="3">Детское питание</option>
+															<option value="3">Продукция собственного производства</option>
+															<option value="3">Молочные продукты, яйца</option>
+															<option value="3">Замороженные продукты</option>
+															<option value="3">Шоколад, конфеты и другие сладости</option>
+															<option value="3">Парфюмерия и косметика</option>
+															<option value="3">Товары для животных</option>
+															<option value="3">Товары для дома</option>
+															<option value="3">Канцелярские товары</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="accordion-container">
+											<div class="accordion-content">
+												<div class="accordion-header"><i class="accordion-angle"></i><span class="accordion-info">от 830 р.</span>
+													<div class="accordion-title">Ведущий специалист отдела развития</div>
+												</div>
+												<div class="accordion-panel">
+													<div class="accordion-frame">
+														<h4>Обязанности</h4>
+														<ul>
+															<li>пополнение прикассовой зоны.</li>
+															<li>соблюдение кассовой дисциплины;</li>
+															<li>наличный и безналичный расчет покупателей наличный и безналичный расчет покупателей наличный и безналичный расчет покупателей;</li>
+															<li>соблюдение стандартов обслуживания;</li>
+														</ul>
+														<h4>Требования</h4>
+														<ul>
+															<li>наличие санитарной справки или возможность ее сделать;</li>
+															<li>хорошие рекомендации;</li>
+															<li>отсутствие вредных привычек.</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="accordion-content">
+												<div class="accordion-header"><i class="accordion-angle"></i><span class="accordion-info">от 5000 р.</span>
+													<div class="accordion-title">Заведующий секцией</div>
+												</div>
+												<div class="accordion-panel">
+													<div class="accordion-frame">
+														<h4>Обязанности</h4>
+														<ul>
+															<li>соблюдение стандартов обслуживания;</li>
+															<li>наличный и безналичный расчет покупателей;</li>
+															<li>соблюдение кассовой дисциплины;</li>
+															<li>наличие или возможность ее сделать;</li>
+															<li>пополнение прикассовой зоны.</li>
+														</ul>
+														<h4>Требования</h4>
+														<ul>
+															<li>опыт работы от 1 года (с продовольственной группой товаров) и/или профильное образование;</li>
+															<li>отсутствие вредных привычек.</li>
+															<li>наличие санитарной справки или возможность ее сделать;</li>
+															<li>хорошие рекомендации;</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="accordion-content">
+												<div class="accordion-header"><i class="accordion-angle"></i><span class="accordion-info">от От 17300 до 21100 руб р.</span>
+													<div class="accordion-title">Инженер-программист 1С</div>
+												</div>
+												<div class="accordion-panel">
+													<div class="accordion-frame">
+														<h4>Обязанности</h4>
+														<ul>
+															<li>наличный и безналичный расчет покупателей наличный и безналичный расчет покупателей наличный и безналичный расчет покупателей;</li>
+															<li>соблюдение кассовой дисциплины;</li>
+															<li>соблюдение стандартов обслуживания;</li>
+															<li>пополнение прикассовой зоны.</li>
+														</ul>
+														<h4>Требования</h4>
+														<ul>
+															<li>опыт работы от 1 года (с продовольственной группой товаров) и/или профильное образование;</li>
+															<li>наличие санитарной справки или возможность ее сделать;</li>
+															<li>хорошие рекомендации;</li>
+															<li>отсутствие вредных привычек.</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="accordion-content">
+												<div class="accordion-header"><i class="accordion-angle"></i><span class="accordion-info">от 830 р.</span>
+													<div class="accordion-title">Инженер-программист 1С</div>
+												</div>
+												<div class="accordion-panel">
+													<div class="accordion-frame">
+														<h4>Обязанности</h4>
+														<ul>
+															<li>соблюдение стандартов обслуживания, хорошие рекомендации;</li>
+															<li>соблюдение кассовой дисциплины;</li>
+															<li>пополнение прикассовой зоны.</li>
+															<li>наличный и безналичный расчет покупателей наличный и безналичный расчет покупателей наличный и безналичный расчет покупателей;</li>
+														</ul>
+														<h4>Требования</h4>
+														<ul>
+															<li>хорошие рекомендации;</li>
+															<li>опыт работы от 5 года (с продовольственной группой товаров);</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="user-form">
+										<div class="max-wrap-sm">
+											<form action="#" method="get">
+												<strong class="form-title">Анкета соискателя</strong>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="vacancy-form__vacancy-field">Вакансия*</label>
+													</div>
+													<div class="input-holder">
+														<div class="select">
+															<select class="cselect" name="filter-type" id="vacancy-form__vacancy-field">
+																<option value="0">Все вакансии</option>
+																<option value="1">Овощи и фрукты</option>
+																<option value="2">Мясо, рыба, птица, колбасные изделия</option>
+																<option value="3">Бакалея</option>
+																<option value="4">Вода, напитки, соки, кофе, чай</option>
+																<option value="3">Детское питание</option>
+																<option value="3">Продукция собственного производства</option>
+																<option value="3">Молочные продукты, яйца</option>
+																<option value="3">Замороженные продукты</option>
+																<option value="3">Шоколад, конфеты и другие сладости</option>
+																<option value="3">Парфюмерия и косметика</option>
+																<option value="3">Товары для животных</option>
+																<option value="3">Товары для дома</option>
+																<option value="3">Канцелярские товары</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<hr>
+
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="vacancy-form__name-field">ФИО*</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="vacancy-form__name-field">
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="vacancy-form__birth-field">Дата рождения</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="vacancy-form__birth-field">
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="vacancy-form__adr-field">Адрес проживания</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="vacancy-form__adr-field">
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="vacancy-form__phone-field">Контактный телефон*</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="vacancy-form__phone-field">
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="vacancy-form__email-field">Эл. почта</label>
+													</div>
+													<div class="input-holder">
+														<input type="email" id="vacancy-form__email-field">
+													</div>
+												</div>
+												<hr>
+
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="vacancy-form__education-field">Образование*</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="vacancy-form__education-field">
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="vacancy-form__experience-field">Опыт работы*</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="vacancy-form__experience-field">
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="vacancy-form__sanitary-field">Наличие санитарной книжки*</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="vacancy-form__sanitary-field">
+													</div>
+												</div>
+												<hr>
+
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="vacancy-form__comment-field">Дополнительная информация</label>
+													</div>
+													<div class="input-holder">
+														<textarea id="vacancy-form__comment-field"></textarea>
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<span class="label-form">&nbsp;</span>
+													</div>
+													<div class="input-holder upload-file__container">
+														<label class="upload-file__label" for="vacancy-form__file-field"><i class="depict-clip"></i><span>Прикрепить файл</span></label>
+														<input class="upload-file" name="files[]" type="file" id="vacancy-form__file-field" multiple="multiple">
+													</div>
+												</div>
+												<div class="form-footer">
+													<div class="form-buttons">
+														<input class="btn-default" type="submit" value="Отправить">
+													</div>
+													<div class="form-note">
+														<div class="form-note__item">* Поля обязательные для заполнения</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
 							</div>
-							<!--job end-->
-							<p>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев более менее осмысленного текста рыбы на русском языке, а начинающему оратору отточить навык публичных выступлений в домашних условиях. При создании генератора мы использовали небезызвестный универсальный код речей. Текст генерируется абзацами случайным образом от двух до десяти предложений в абзаце, что позволяет сделать текст более привлекательным и живым для визуально-слухового восприятия.</p>
-							<p>По своей сути рыбатекст является альтернативой традиционному lorem ipsum, который вызывает у некторых клиентов недоумение при попытках прочитать рыбу текст. В отличии от lorem ipsum, текст рыба на русском языке наполнит любой макет непонятным смыслом и придаст неповторимый колорит советских времен.</p>
-							<p>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев более менее осмысленного текста рыбы на русском языке, а начинающему оратору отточить навык публичных выступлений в домашних условиях. При создании генератора мы использовали небезызвестный универсальный код речей. Текст генерируется абзацами случайным образом от двух до десяти предложений в абзаце, что позволяет сделать текст более привлекательным и живым для визуально-слухового восприятия.</p>
-							<p>По своей сути рыбатекст является альтернативой традиционному lorem ipsum, который вызывает у некторых клиентов недоумение при попытках прочитать рыбу текст.</p>
-							<p>В отличии от lorem ipsum, текст рыба на русском языке наполнит любой макет непонятным смыслом и придаст неповторимый колорит советских времен.</p>
 						</div>
-						<div class="max-wrap-lg">
-							<div class="imgc">
-								<img src="img/img-expl-lg.jpg" alt="image description" />
-							</div>
-						</div>
-						<div class="max-wrap-md">
-							<p>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев более менее осмысленного текста рыбы на русском языке, а начинающему оратору отточить навык публичных выступлений в домашних условиях. При создании генератора мы использовали небезызвестный универсальный код речей. Текст генерируется абзацами случайным образом от двух до десяти предложений в абзаце, что позволяет сделать текст более привлекательным и живым для визуально-слухового восприятия.</p>
-							<p>По своей сути рыбатекст является альтернативой традиционному lorem ipsum, который вызывает у некторых клиентов недоумение при попытках прочитать рыбу текст. В отличии от lorem ipsum, текст рыба на русском языке наполнит любой макет непонятным смыслом и придаст неповторимый колорит советских времен.</p>
-						</div>
+						<!--job end-->
 					</div>
 				</div>
 			</div>
@@ -442,25 +877,6 @@
 				</div>
 			</aside>
 			<!--sidebar content (for devices) end-->
-
-			<!--ASIDE-->
-			<aside class="sub-nav">
-				<div class="aside-holder">
-					<div class="menu">
-						<ul class="menu">
-							<li><a href="#"><span>Акции и специальные предложения</span></a></li>
-							<li class="active"><a href="#"><span>Журналы</span></a></li>
-							<li><a href="#"><span>Товары собственной торговой марки собственной</span></a></li>
-							<li><a href="#"><span>Адреса</span></a></li>
-							<li><a href="#"><span>Оптовая программа</span></a></li>
-							<li><a href="#"><span>Опросы</span></a></li>
-							<li><a href="#"><span>Горячая линия</span></a></li>
-							<li><a href="#"><span>Знак качества</span></a></li>
-						</ul>
-					</div>
-				</div>
-			</aside>
-			<!--ASIDE end-->
 		</div>
 		<!--MAIN end-->
 	</div>

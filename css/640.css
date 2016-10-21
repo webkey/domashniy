@@ -101,6 +101,26 @@ h1 {
 /*datetime*/
 /*datetime */
 
+/*user form*/
+.user-form {
+	padding: 30px 20px;
+	margin-bottom: 40px;
+}
+.user-form .label-holder {
+	float: none;
+	width: auto;
+	min-width: 0;
+	padding-right: 0;
+	padding-top: 0;
+}
+.user-form .input-holder {
+	margin-left: 0;
+}
+.user-form .form-footer {
+	padding-left: 0;
+}
+/*user form end*/
+
 /*adverts box*/
 /*advert copy*/
 .advert-copy {

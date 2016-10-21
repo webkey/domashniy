@@ -631,63 +631,90 @@
 							<!--accordion end-->
 						</div>
 
-						<div class="max-wrap-lg">
-							<div class="form-wrap callback-form">
+						<div class="user-form">
+							<div class="max-wrap-sm">
 								<form action="#" method="get">
 									<strong class="form-title">Форма обратной связи</strong>
 									<div class="input-wrap">
 										<div class="label-holder">
-											<label for="callback-form__name-field">Имя*</label>
+											<label for="user-form__vacancy-field">Вакансия*</label>
 										</div>
 										<div class="input-holder">
-											<input type="text" id="callback-form__name-field">
-										</div>
-									</div>
-									<div class="input-wrap">
-										<div class="label-holder">
-											<label for="callback-form__phone-field">Контактный телефон*</label>
-										</div>
-										<div class="input-holder">
-											<input type="text" id="callback-form__phone-field">
-										</div>
-									</div>
-									<div class="input-wrap">
-										<div class="label-holder">
-											<label for="callback-form__phone-field_error">Контактный телефон* (невалидное поле)</label>
-										</div>
-										<div class="input-holder">
-											<input class="error" type="text" id="callback-form__phone-field_error">
-											<span class="error-note">Поле обязательное для заполнения</span>
-										</div>
-									</div>
-									<div class="input-wrap">
-										<div class="label-holder">
-											<label for="callback-form__firm-field">Организация*</label>
-										</div>
-										<div class="input-holder">
-											<input type="text" id="callback-form__firm-field">
+											<div class="select">
+												<select class="cselect" name="filter-type" id="user-form__vacancy-field">
+													<option value="0">Все города</option>
+													<option value="1">Овощи и фрукты</option>
+													<option value="2">Мясо, рыба, птица, колбасные изделия</option>
+													<option value="3">Бакалея</option>
+													<option value="4">Вода, напитки, соки, кофе, чай</option>
+													<option value="3">Детское питание</option>
+													<option value="3">Продукция собственного производства</option>
+													<option value="3">Молочные продукты, яйца</option>
+													<option value="3">Замороженные продукты</option>
+													<option value="3">Шоколад, конфеты и другие сладости</option>
+													<option value="3">Парфюмерия и косметика</option>
+													<option value="3">Товары для животных</option>
+													<option value="3">Товары для дома</option>
+													<option value="3">Канцелярские товары</option>
+												</select>
+											</div>
 										</div>
 									</div>
 									<hr>
 									<div class="input-wrap">
 										<div class="label-holder">
-											<label for="callback-form__comment-field">Дополнительная информация</label>
+											<label for="user-form__name-field">ФИО*</label>
 										</div>
 										<div class="input-holder">
-											<textarea id="callback-form__comment-field"></textarea>
+											<input type="text" id="user-form__name-field">
 										</div>
 									</div>
 									<div class="input-wrap">
 										<div class="label-holder">
-											<span class="label-form">&nbsp;</span>
+											<label for="user-form__birth-field">Дата рождения</label>
 										</div>
+										<div class="input-holder">
+											<input type="text" id="user-form__birth-field">
+										</div>
+									</div>
+									<div class="input-wrap">
+										<div class="label-holder">
+											<label for="user-form__phone-field">Контактный телефон*</label>
+										</div>
+										<div class="input-holder">
+											<input type="text" id="user-form__phone-field">
+										</div>
+									</div>
+									<div class="input-wrap">
+										<div class="label-holder">
+											<label for="user-form__phone-field_error">Контактный телефон* (невалидное поле)</label>
+										</div>
+										<div class="input-holder">
+											<input class="error" type="text" id="user-form__phone-field_error">
+											<span class="error-note">Поле обязательное для заполнения</span>
+										</div>
+									</div>
+									<div class="input-wrap">
+										<div class="label-holder">
+											<label for="user-form__firm-field">Организация*</label>
+										</div>
+										<div class="input-holder">
+											<input type="text" id="user-form__firm-field">
+										</div>
+									</div>
+									<hr>
+									<div class="input-wrap">
+										<div class="label-holder">
+											<label for="user-form__comment-field">Дополнительная информация</label>
+										</div>
+										<div class="input-holder">
+											<textarea id="user-form__comment-field"></textarea>
+										</div>
+									</div>
+									<div class="input-wrap">
 										<div class="input-holder upload-file__container">
-											<label class="upload-file__label" for="callback-form__file-field"><i class="depict-clip"></i><span>Прикрепить файл</span></label>
-											<input class="upload-file" type="file" id="callback-form__file-field" multiple="">
-											<ul class="upload-files-list">
-												<li><a href="#"><span>Анкета 123.pdf</span> <em>15.4 KB</em><i class="upload-files-remove"></i></a></li>
-												<li><a href="#"><span>Анкета book.pdf</span> <em>280.4 KB</em><i class="upload-files-remove"></i></a></li>
-											</ul>
+											<label class="upload-file__label" for="user-form__file-field"><i class="depict-clip"></i><span>Прикрепить файл</span></label>
+											<input class="upload-file" name="files[]" type="file" id="user-form__file-field" multiple="multiple">
 										</div>
 									</div>
 									<div class="form-footer">

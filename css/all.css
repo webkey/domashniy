@@ -1,5 +1,6 @@
 @import 'https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=cyrillic';
 @import url(fonts.css);
+@import url(jquery-filer.css);
 @import url(normalize.css);
 @import url(buttons.css);
 @import url(sp.css);
@@ -195,6 +196,7 @@ strong em{
 .main:after { clear: both; }
 .max-wrap,
 .max-wrap-md,
+.max-wrap-sm,
 .max-wrap-home{
 	margin-left: auto;
 	margin-right: auto;
@@ -204,6 +206,9 @@ strong em{
 }
 .max-wrap-md{
 	max-width: 860px;
+}
+.max-wrap-sm{
+	max-width: 640px;
 }
 .max-wrap-home{
 	max-width: 1260px;
@@ -224,7 +229,7 @@ strong em{
 }
 
 .sheet{
-	max-width: 1000px;
+	max-width: 1024px;
 	min-height: 1130px;
 	box-sizing: border-box;
 	margin: 0 auto;
@@ -474,7 +479,7 @@ strong em{
 .user-content ul,
 .user-content ol{
 	margin: 0;
-	padding: 0 0 22px;
+	padding: 0 0 20px 30px;
 	list-style: none;
 }
 .user-content ol{ counter-reset: section; }
@@ -498,7 +503,7 @@ strong em{
 	content: '';
 	position: absolute;
 	left: 0;
-	top: 23px;
+	top: 26px;
 	height: 7px;
 	width: 10px;
 	background: url(../img/list-marker-2x.png) no-repeat;
@@ -506,14 +511,13 @@ strong em{
 	background-size: 10px 7px;
 	box-sizing: border-box;
 }
-.user-content ul > li:first-child:before{ top: 7px; }
+.user-content ul > li:first-child:before{ top: 10px; }
 .user-content ol > li:before{
 	content: counter(section);
+	float: left;
 	position: relative;
 	left: -20px;
 	top: 2px;
-	display: inline-block;
-	vertical-align: top;
 	min-width: 20px;
 	height: 20px;
 	font-size: 14px;
@@ -783,12 +787,25 @@ textarea{
 	font-size: 16px;
 	letter-spacing: normal;
 }
+@media only screen and (max-width: 639px){
+	.form-row .input-wrap{
+		display: block;
+		width: auto;
+		margin-bottom: 20px;
+	}
+}
 .label-holder{ padding: 0 0 3px; }
 .label-holder,
 label{
-	font-size: 18px;
 	line-height: 26px;
 	color: #666;
+
+	font-size: 0;
+	letter-spacing: -4px;
+}
+label{
+	font-size: 18px;
+	letter-spacing: normal;
 }
 .form-mark{
 	display: inline-block;
@@ -1138,60 +1155,94 @@ input[type="radio"]:disabled + label>span:after{
 	display: inline-block;
 	vertical-align: middle;
 }
-.upload-files-list,
-.user-content .upload-files-list{
+
+
+/*js filer*/
+.upload-file__container .jFiler-input{
+	display: none;
+}
+.jFiler-items{
+	padding-top: 20px;
+}
+.jFiler-items-list,
+.user-content .jFiler-items-list,
+.jFiler-items-list ul,
+.user-content .jFiler-items-list ul{
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
-.upload-files-list li,
-.user-content .upload-files-list li,
-.user-content .upload-files-list li:first-child{
+.jFiler-item,
+.user-content .jFiler-item,
+.user-content .jFiler-item:first-child,
+.jFiler-items-list ul li,
+.user-content .jFiler-items-list ul li,
+.user-content .jFiler-items-list ul li:first-child{
 	padding: 0 0 6px;
 }
-.upload-files-list li{
-	overflow: hidden;
-}
-.user-content .upload-files-list li:before,
-.user-content .upload-files-list li:first-child:before{
+.jFiler-item:before,
+.user-content .jFiler-item:before,
+.user-content .jFiler-item:first-child:before,
+.jFiler-items-list ul li:before,
+.user-content .jFiler-items-list ul li:before{
 	content: none;
 }
-.upload-files-list,
-.upload-files-list a{
-	display: inline-block;
-	vertical-align: top;
+
+.jFiler-item-inner:before,
+.jFiler-item-inner:after { content: ""; display: table; }
+.jFiler-item-inner:after { clear: both; }
+
+.jFiler-item-icon.pull-left{
+	float: left;
+	margin-right: 5px;
+}
+.icon-jfi-file-o:before{
+	font-size: 30px;
+	line-height: 1;
+}
+.jFiler-item-info{
+	padding: 5px 35px 0 0;
+	overflow: hidden;
 	position: relative;
-	padding-right: 32px;
-	text-decoration: none;
-	color: #666;
 }
-.desktop .upload-files-list a:hover{
-	text-decoration: none;
+.jFiler-item-title{
+	overflow: hidden;
+	position: relative;
+	-ms-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
-.upload-files-list a span{
-	padding-right: 4px;
-}
-.upload-files-list a em{
-	font-family: 'lozen-cond-regular', sans-serif;
+.jFiler-item-others{
 	font-style: normal;
 	font-size: 16px;
 	color: #999;
 }
-.upload-files-remove{
+.jFiler-item-others > span{
+	margin-right: 5px;
+}
+.jFiler-item .list-inline li{
+	padding: 0 !important;
+}
+
+.jFiler-item-assets{
 	position: absolute;
-	top: 50%;
 	right: 0;
+	top: 7px;
+}
+.jFiler-item-trash-action{
+	display: block;
+	position: relative;
 	width: 20px;
 	height: 20px;
-	margin-top: -10px;
 	background: #666;
 	border-radius: 50%;
+	cursor: pointer;
 	-webkit-transition-property: -webkit-transform, background;
 	transition-property: transform, background;
 	-webkit-transition-duration: 0s, 1.5s;
 	transition-duration: 0s, 1.5s;
 }
-.upload-files-list a:hover .upload-files-remove{
+.jFiler-items-list .jFiler-item-trash-action:hover{
 	background: #016c42;
 	-webkit-transform: rotate(360deg);
 	-ms-transform: rotate(360deg);
@@ -1199,8 +1250,8 @@ input[type="radio"]:disabled + label>span:after{
 	-webkit-transition-duration: 0.6s;
 	transition-duration: 0.6s;
 }
-.upload-files-remove:before,
-.upload-files-remove:after{
+.jFiler-item-trash-action:before,
+.jFiler-item-trash-action:after{
 	content: '';
 	position: absolute;
 	left: 50%;
@@ -1211,16 +1262,17 @@ input[type="radio"]:disabled + label>span:after{
 	background: #fff;
 	border-radius: 2px;
 }
-.upload-files-remove:before{
+.jFiler-item-trash-action:before{
 	-webkit-transform: rotate(45deg);
 	-ms-transform: rotate(45deg);
 	transform: rotate(45deg);
 }
-.upload-files-remove:after{
+.jFiler-item-trash-action:after{
 	-webkit-transform: rotate(-45deg);
 	-ms-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 }
+/*js filer end*/
 /*input file end*/
 
 /*select*/
@@ -1268,6 +1320,7 @@ input[type="radio"]:disabled + label>span:after{
 .select select{
 	font-size: 16px;
 	line-height: 18px;
+	height: 50px;
 	padding: 15px 40px 15px 18px;
 }
 .select button.cselect{ z-index: 2; }
@@ -1575,7 +1628,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	font-size: 16px;
 	line-height: 26px;
 	color: #666;
-	max-width: 30%;
+	max-width: 50%;
 	box-sizing: border-box;
 }
 .accordion-angle{
@@ -1937,7 +1990,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 /*MAIN*/
 /*CONTENT*/
 .content{ padding-top: 65px; }
-.user-content{ padding-bottom: 65px; }
+.user-content{ padding: 65px 20px; }
 .home-page .content{ padding: 40px 0 0; }
 
 /*breadcrumbs*/
@@ -2071,6 +2124,12 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .inline-form__text-item a{
 	color: #056e41;
 }
+.inline-popup .max-wrap-md {
+	max-width: 580px;
+}
+.inline-popup_narrow .max-wrap-md {
+	max-width: 360px;
+}
 /*inline popup end*/
 
 /*login form*/
@@ -2101,13 +2160,13 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 /*login form end*/
 
-/*callback form*/
-.callback-form{
-	padding: 50px 40px 60px;
+/*user form*/
+.user-form{
+	padding: 50px 0 60px;
 	margin-bottom: 40px;
 	background: #f3f3f3;
 }
-.callback-form .form-title{
+.user-form .form-title{
 	display: block;
 	font-family: 'days-regular', sans-serif;
 	font-weight: normal;
@@ -2117,54 +2176,62 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	text-align: center;
 	padding: 0 0 50px;
 }
-.callback-form form{
-	display: block;
-	margin: 0 auto;
-	max-width: 580px;
-}
-.callback-form .input-wrap:before,
-.callback-form .input-wrap:after { content: ""; display: table; }
-.callback-form .input-wrap:after { clear: both; }
-.callback-form .label-holder{
+.user-form form{ display: block; }
+.user-form .input-wrap:before,
+.user-form .input-wrap:after { content: ""; display: table; }
+.user-form .input-wrap:after { clear: both; }
+.user-form .label-holder{
 	float: left;
 	width: 208px;
 	min-width: 25%;
 	box-sizing: border-box;
 	padding-right: 12px;
 }
-.callback-form .input-holder{
+.user-form .label-holder:before{
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+	min-height: 50px;
+}
+.user-form .label-holder label{
+	display: inline-block;
+	vertical-align: middle;
+	max-width: 98%;
+}
+.user-form .input-holder{
 	margin-left: 220px;
 	cursor: default;
 }
-.callback-form hr {
+.user-form hr {
 	border-bottom: 1px solid #ccc;
 	margin-bottom: 40px;
 	margin-top: 0;
 	padding: 20px 0 0 0;
 }
-.callback-form textarea{
+.user-form textarea{
 	height: 140px;
 	max-height: 140px;
 }
-.callback-form .upload-file__container{
+.user-form .upload-file__container{
 	padding-top: 20px;
-	padding-bottom: 20px;
+	max-width: 300px;
 }
-.callback-form .form-footer{
+.user-form .form-footer{
 	padding-left: 220px;
 }
-.callback-form .form-buttons{
+.user-form .form-buttons{
 	float: left;
 	margin-right: 20px;
 }
-.callback-form .form-note{ overflow: hidden; }
-.callback-form .form-note__item{ padding: 0; }
-.callback-form .upload-file__label,
-.callback-form input[type="submit"]{
+.user-form .form-note{ overflow: hidden; }
+.user-form .form-note__item{ padding: 0; }
+.user-form .upload-file__label,
+.user-form input[type="submit"]{
 	min-width: 208px;
 	box-sizing: border-box;
 }
-/*callback form end*/
+/*user form end*/
 
 /*adverts box*/
 .home-page .sidebar .adverts-box{
@@ -2806,6 +2873,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	position: relative;
 	display: inline-block;
 	width: 49.98%;
+	cursor: pointer;
 }
 .switch-job__hand.active{
 	z-index: 2;
@@ -2838,6 +2906,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	text-decoration: none;
 	color: #000;
 	margin: 0 30px;
+	padding: 0 20px;
 	height: 80px;
 	border-radius: 4px 4px 0 0;
 	text-align: center;
@@ -2887,7 +2956,8 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .switch-job__hand a i{
 	vertical-align: middle;
 	position: relative;
-	margin-right: -20px;
+	margin-right: -60px;
+	left: -40px;
 }
 .switch-job__hand a span{
 	display: inline-block;
@@ -2899,6 +2969,15 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	letter-spacing: 0.01em;
 	max-width: 98%;
 	padding: 0 0 0 30px;
+}
+
+.job-content{
+	opacity: 0;
+	visibility: hidden;
+}
+.no-js .job-content{
+	opacity: 1;
+	visibility: visible;
 }
 
 .job-selects{
