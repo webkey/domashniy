@@ -45,13 +45,11 @@ h1{
 	overflow: hidden;
 }
 h2{
-	font-weight: bold;
 	font-size: 26px;
 	line-height: 39px;
 	padding: 0 0 20px;
 }
 h3{
-	font-weight: bold;
 	font-size: 22px;
 	line-height: 33px;
 	padding: 0 0 15px;
@@ -503,7 +501,7 @@ strong em{
 	content: '';
 	position: absolute;
 	left: 0;
-	top: 26px;
+	top: 24px;
 	height: 7px;
 	width: 10px;
 	background: url(../img/list-marker-2x.png) no-repeat;
