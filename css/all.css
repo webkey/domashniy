@@ -1988,14 +1988,14 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 /*MAIN*/
 /*CONTENT*/
 .content{ padding-top: 65px; }
-.user-content{ padding: 65px 20px; }
+.user-content{ padding: 40px 20px; }
 .home-page .content{ padding: 40px 0 0; }
 
 /*breadcrumbs*/
 .breadcrumbs{
-	font-size: 12px;
-	line-height: 14px;
-	color: #000;
+	font-size: 18px;
+	line-height: 24px;
+	color: #fff;
 	padding: 0 0 20px;
 }
 .breadcrumbs-list,
@@ -3011,7 +3011,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .menu li{
 	display: inline-block;
 	vertical-align: top;
-	font-size: 22px;
+	font-size: 20px;
 	letter-spacing: normal;
 }
 .menu li:before,
@@ -3023,11 +3023,11 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .menu a{
 	display: inline-block;
 	vertical-align: top;
-	padding: 12px 28px;
+	padding: 8px 22px;
 	text-decoration: none;
 	color: #000;
 	border-radius: 4px;
-	background: #9c0;
+	background: #fff;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
 	-webkit-transition-property: background, box-shadow, -webkit-transform;
 	transition-property: background, box-shadow, transform;
