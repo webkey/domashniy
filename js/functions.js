@@ -793,8 +793,6 @@ function tabSwitcher() {
 				initialDataAtr = $thisAnchor.eq(0).data('for'),
 				activeDataAtr = false;
 
-				console.log("initialDataAtr: ", initialDataAtr);
-
 			// prepare traffic content
 			function prepareTrafficContent() {
 				$thisContainer.css({
@@ -906,6 +904,101 @@ function tabSwitcher() {
 }
 /* tab switcher end */
 
+/**
+ * filter job
+ * */
+function filterJob() {
+	$('.job-selects').on('change', 'select', function () {
+
+		var $this = $(this),
+			name = $this.attr('name'),
+			classNoItem = 'filter-no-item';
+
+		var tags = {};
+
+		$this.closest('[data-id]').find('select').each(function () {
+			tags [$(this).attr('name')] = $(this).val();
+		});
+
+		tags [name] = $this.val();
+
+		var $filterItem = $this.closest('.js-tab-content').find('.accordion-content');
+
+		var $noItemTemplate = $('<div />', {
+			class: classNoItem,
+			text: 'Извините, подходящих вакансий не найдено'
+		});
+
+		var dataFilters = concatObject(tags);
+
+		console.log("dataFilters: ", dataFilters);
+
+		$filterItem.parent().find('.'+ classNoItem).remove();
+		$filterItem.show(0);
+
+		if (dataFilters) {
+
+			$filterItem.hide(0);
+			$filterItem.filter(dataFilters).show(0);
+
+			if (!$filterItem.is(':visible')) {
+				$filterItem.parent().append($noItemTemplate.clone());
+			}
+		}
+	});
+
+	function concatObject(obj) {
+		var arr = [];
+
+		for ( var prop in obj ) {
+			var thisKey = prop,
+				thisProp = obj[ thisKey ];
+
+			if (thisProp == 0) continue;
+
+			arr.push('[data-property-' + thisKey + '="' + thisProp + '"]');
+		}
+
+		return arr.join('');
+	}
+}
+/*filter job end*/
+
+/**
+ * sticky layout
+ * */
+function stickyLayout(){
+	var topValue = $('.header').outerHeight();
+
+	/*sidebar sticky*/
+	var $sidebar = $(".sidebar");
+	$sidebar.css('position','static');
+	if ($sidebar.length) {
+		var resizeTimerMenu;
+
+		$(window).on('load resize', function () {
+			if($(window).width() < 1280){
+				// $sidebar.trigger("sticky_kit:detach").attr('style','');
+				$sidebar.trigger("sticky_kit:detach").css('position','fixed');
+				return;
+			}
+
+			clearTimeout(resizeTimerMenu);
+			resizeTimerMenu = setTimeout(function () {
+				$sidebar.stick_in_parent({
+					parent: '.main',
+					offset_top: topValue
+				});
+			}, 100);
+		});
+	}
+
+	$('.menu__list').on('accordionChange', function () {
+		$sidebar.trigger("sticky_kit:recalc");
+	});
+}
+/*sticky layout end*/
+
 
 /**!
  * footer at bottom
@@ -962,6 +1055,8 @@ $(document).ready(function(){
 	jsAccordion();
 	fileInput();
 	tabSwitcher();
+	filterJob();
+	// stickyLayout();
 
 	footerBottom();
 });
