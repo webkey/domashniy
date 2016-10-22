@@ -762,6 +762,7 @@ function fileInput() {
 		});
 	});
 }
+/*file input end end*/
 
 /**
  * tab switcher
@@ -789,8 +790,10 @@ function tabSwitcher() {
 				$thisAnchor = $this.find($anchor),
 				$thisContainer = $this.find($container),
 				$thisContent = $this.find($content),
-				initialDataAtr = 'js-job-office',
+				initialDataAtr = $thisAnchor.eq(0).data('for'),
 				activeDataAtr = false;
+
+				console.log("initialDataAtr: ", initialDataAtr);
 
 			// prepare traffic content
 			function prepareTrafficContent() {
