@@ -203,7 +203,8 @@ label {
 /*breadcrumbs*/
 .breadcrumbs {
 	font-size: 14px;
-	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 /*breadcrumbs end*/
 
@@ -341,6 +342,11 @@ label {
 /*SIDEBAR end*/
 
 /*SUB NAV*/
+.sub-nav {
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+}
 .menu, .user-content .menu {
 	line-height: 22px;
 }

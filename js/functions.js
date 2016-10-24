@@ -964,6 +964,24 @@ function filterJob() {
 }
 /*filter job end*/
 
+/**!
+ * equal height
+ * */
+function equalHeightInit() {
+	$(window).load(function () {
+		// news list
+		var $newsList = $('.news-list');
+		if ($newsList.length) {
+			$('.news-item__text', $newsList).equalHeight({
+				useParent: true,
+				parent: $newsList,
+				resize: true
+			});
+		}
+	})
+}
+/*equal height end*/
+
 /**
  * sticky layout
  * */
@@ -1056,6 +1074,7 @@ $(document).ready(function(){
 	fileInput();
 	tabSwitcher();
 	filterJob();
+	equalHeightInit();
 	// stickyLayout();
 
 	footerBottom();

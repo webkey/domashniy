@@ -4,7 +4,10 @@
 /*------ TYPOGRAPHIC STYLES end ------*/
 
 /*MAIN BLOCKS*/
-.sheet {
+.sheet{
+	padding: 0;
+}
+.sheet-holder {
 	padding: 40px 0 10px;
 }
 /*MAIN BLOCKS end*/
@@ -55,7 +58,7 @@
 /*breadcrumbs*/
 .breadcrumbs {
 	font-size: 16px;
-	padding-bottom: 20px;
+	padding: 0 30px 20px;
 }
 /*breadcrumbs end*/
 
@@ -78,6 +81,22 @@
 }
 /*user form end*/
 
+/*promo slider*/
+/*promo section*/
+.promo-slider .slick-dots {
+	bottom: 0;
+}
+.promo-slider .slick-dots li button {
+	width: 8px;
+	height: 8px;
+}
+.promo-slider .slick-dots li button:before{
+	width: 6px;
+	height: 6px;
+}
+/*promo slider end*/
+/*promo section end*/
+
 /*adverts box*/
 /*advert copy*/
 .advert-copy {
@@ -98,7 +117,8 @@
 
 /*SUB NAV*/
 .sub-nav {
-	padding: 0 0 20px;
+	padding-left: 30px;
+	padding-right: 30px;
 }
 .menu li{
 	font-size: 18px;
