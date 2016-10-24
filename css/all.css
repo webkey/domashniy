@@ -3,7 +3,6 @@
 @import url(jquery-filer.css);
 @import url(normalize.css);
 @import url(buttons.css);
-@import url(sp.css);
 @import url(widgets.css);
 
 /*fonts*/
@@ -397,9 +396,13 @@ strong em{
 }
 /*slider end*/
 
-/*sp*/
-/*@import url(sp.css);*/
-/*sp end*/
+/*icons*/
+[class|="depict"],
+[class*=" depict-"]{
+	display: inline-block;
+	vertical-align: top;
+}
+/*icons end*/
 
 /*btn*/
 /*@import url(buttons.css);*/
@@ -414,7 +417,7 @@ strong em{
 	font-size: 16px;
 	line-height: 24px;
 	letter-spacing: 0.1em;
-	padding: 12px 25px;
+	padding: 13px 25px;
 	min-width: 190px;
 	border-radius: 4px;
 	text-transform: uppercase;
@@ -462,6 +465,15 @@ strong em{
 	min-width: 140px;
 }
 /*btn-default-alt end*/
+
+.depict-location{
+	background: url(../img/depict-local.png) no-repeat;
+	-webkit-background-size: contain;
+	background-size: contain;
+	width: 24px;
+	height: 24px;
+	margin-right: 10px;
+}
 /*btn end*/
 
 /*USER CONTENT*/
@@ -2200,17 +2212,64 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 /*datetime */
 
+/*years list*/
+.years-list{
+	font-family: 'lozen-cond-bold', sans-serif;
+	font-size: 20px;
+	line-height: 24px;
+}
+.years-list:before,
+.years-list:after { content: ""; display: table; }
+.years-list:after { clear: both; }
+.years-list > div{
+	float: left;
+	padding-left: 40px;
+}
+.years-list a{
+	text-decoration: underline;
+	color: #fff;
+}
+.desktop .years-list a:hover{
+	color: #ff3;
+}
+.years-list a.active{
+	color: #ff3;
+	text-decoration: none;
+}
+.topic .years-list{
+	float: right;
+	padding: 19px 0 0;
+}
+/*years list end*/
+
+/*control*/
+.control:before,
+.control:after { content: ""; display: table; }
+.control:after { clear: both; }
+.control-item{
+	float: left;
+	margin-left: 40px;
+	margin-bottom: 20px;
+	min-width: 252px;
+}
+.topic .control{
+	float: right;
+}
+/*control end*/
+
 /*topic*/
 .topic{
 	display: block;
 	padding: 0 0 25px;
 }
+.topic:before,
+.topic:after { content: ""; display: table; }
+.topic:after { clear: both; }
 .topic h1,
 .topic h2{
-	display: inline-block;
-	vertical-align: top;
-	padding: 0 35px 0 0;
+	float: left;
 	margin: 0;
+	padding: 0;
 	color: #fff;
 }
 .hot-job{
@@ -2247,6 +2306,10 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .sheet .topic h1,
 .sheet .topic h2{
 	color: #000;
+	float: none;
+	display: inline-block;
+	vertical-align: top;
+	padding: 0 35px 0 0;
 }
 /*topic end*/
 

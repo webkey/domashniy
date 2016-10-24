@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
 	<meta charset="UTF-8">
-	<title>Домашний - Новости</title>
+	<title>Домашний - Магазины</title>
 	<!--Mobile optimized-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -37,7 +37,7 @@
 					<ul class="nav-list">
 						<li><a href="about.html"><span>О компании</span></a></li>
 						<li><a href="customers.html"><span>Покупателям</span></a></li>
-						<li><a href="shops.html"><span>Магазины</span></a></li>
+						<li class="active"><a href="shops.html"><span>Магазины</span></a></li>
 						<li><a href="career.html"><span>Карьера</span></a></li>
 						<li><a href="partners.html"><span>Сотрудничество</span></a></li>
 						<li><a href="contacts.html"><span>Контакты</span></a></li>
@@ -81,7 +81,7 @@
 					<div class="breadcrumbs">
 						<ul class="breadcrumbs-list">
 							<li><a href="#">Главная</a></li>
-							<li>Новости</li>
+							<li>Магазины</li>
 						</ul>
 					</div>
 					<!--breadcrumbs end-->
@@ -89,10 +89,10 @@
 					<!--SUB NAV-->
 					<aside class="sub-nav">
 						<ul class="menu">
-							<li><a href="#"><span>Акции и специальные предложения</span></a></li>
+							<li><a href="#"><span>Акции</span></a></li>
 							<li><a href="#"><span>Новости</span></a></li>
-							<li class="active"><a href="#"><span>Акции</span></a></li>
-							<li><a href="#"><span>Специальные предложения</span></a></li>
+							<li class="active"><a href="#"><span>Товары</span></a></li>
+							<li><a href="#"><span>Клиентам</span></a></li>
 						</ul>
 					</aside>
 					<!--SUB NAV end-->
@@ -100,128 +100,29 @@
 					<div class="max-wrap-md-alt">
 						<div class="topic">
 							<h1>Новости</h1>
-							<!--years list-->
-							<div class="years-list">
-								<div><a href="#" class="active">2016</a></div>
-								<div><a href="#">2015</a></div>
-								<div><a href="#">2014</a></div>
+							<!--control-->
+							<div class="control">
+								<div class="control-item">
+									<div class="select">
+										<select class="cselect" name="filter-type" id="expl-label-06">
+											<option value="0">Выберите город</option>
+											<option value="1">Минск</option>
+											<option value="2">Витебск</option>
+											<option value="3">Гомель</option>
+											<option value="4">Гродно</option>
+											<option value="3">Брест</option>
+										</select>
+									</div>
+								</div>
+								<div class="control-item">
+									<a href="#" class="btn-default"><i class="depict-location"></i><span>Моё местоположение</span></a>
+								</div>
 							</div>
-							<!--years list end-->
+							<!--control end-->
 						</div>
 					</div>
 
-					<div class="max-wrap-md-alt">
-						<!--news list-->
-						<div class="news-list-wrap">
-							<div class="news-list">
-								<div class="news-item">
-									<a href="#" class="news-item__inner">
-										<div class="news-item__figure">
-											<div class="news-item__img">
-												<img src="img/img-news-01.jpg" alt="image description">
-											</div>
-										</div>
-										<div class="news-item__content">
-											<div class="news-item__text">Обладатель Hyundai Creta: раньше управлял военным самолетом и поэтому всегда мечтал водить мощный внедорожник. Спасибо "домашнему"!</div>
-											<time class="news-item__date" datetime="2016-02-14">14.02.2016</time>
-										</div>
-									</a>
-								</div>
-								<div class="news-item">
-									<a href="#" class="news-item__inner">
-										<div class="news-item__figure">
-											<div class="news-item__img">
-												<img src="img/img-news-02.jpg" alt="image description">
-											</div>
-										</div>
-										<div class="news-item__content">
-											<div class="news-item__text">Осеннее предложение для всех посетителей магазинов и гипермаркетов</div>
-											<time class="news-item__date" datetime="2016-02-14">14.02.2016</time>
-										</div>
-									</a>
-								</div>
-								<div class="news-item">
-									<a href="#" class="news-item__inner">
-										<div class="news-item__figure">
-											<div class="news-item__img">
-												<img src="img/img-news-03.jpg" alt="image description">
-											</div>
-										</div>
-										<div class="news-item__content">
-											<div class="news-item__text">Леонид Акульчев: я очень азартный человек! Участвую в игреи надеюсь выиграть автомобиль!</div>
-											<time class="news-item__date" datetime="2016-02-13">13.02.2016</time>
-										</div>
-									</a>
-								</div>
-								<div class="news-item">
-									<a href="#" class="news-item__inner">
-										<div class="news-item__figure">
-											<div class="news-item__img">
-												<img src="img/img-news-04.jpg" alt="image description">
-											</div>
-										</div>
-										<div class="news-item__content">
-											<div class="news-item__text">Осеннее предложение для всех посетителей магазинов и гипермаркетов «домашний»!</div>
-											<time class="news-item__date" datetime="2016-02-13">13.02.2016</time>
-										</div>
-									</a>
-								</div>
-								<div class="news-item">
-									<a href="#" class="news-item__inner">
-										<div class="news-item__figure">
-											<div class="news-item__img">
-												<img src="img/img-news-05.jpg" alt="image description">
-											</div>
-										</div>
-										<div class="news-item__content">
-											<div class="news-item__text">Обладатель Hyundai Creta: раньше управлял военным самолетом и поэтому всегда мечтал водить мощный внедорожник. Спасибо "домашнему"!</div>
-											<time class="news-item__date" datetime="2016-02-13">13.02.2016</time>
-										</div>
-									</a>
-								</div>
-								<div class="news-item">
-									<a href="#" class="news-item__inner">
-										<div class="news-item__figure">
-											<div class="news-item__img">
-												<img src="img/img-news-06.jpg" alt="image description">
-											</div>
-										</div>
-										<div class="news-item__content">
-											<div class="news-item__text">Осеннее предложение для всех посетителей магазинов и гипермаркетов</div>
-											<time class="news-item__date" datetime="2016-02-12">12.02.2016</time>
-										</div>
-									</a>
-								</div>
-								<div class="news-item">
-									<a href="#" class="news-item__inner">
-										<div class="news-item__figure">
-											<div class="news-item__img">
-												<img src="img/img-news-08.jpg" alt="image description">
-											</div>
-										</div>
-										<div class="news-item__content">
-											<div class="news-item__text">Леонид Акульчев: я очень азартный человек! Участвую в игреи надеюсь выиграть автомобиль!</div>
-											<time class="news-item__date" datetime="2016-02-09">09.02.2016</time>
-										</div>
-									</a>
-								</div>
-								<div class="news-item">
-									<a href="#" class="news-item__inner">
-										<div class="news-item__figure">
-											<div class="news-item__img">
-												<img src="img/img-expl-lg.jpg" alt="image description">
-											</div>
-										</div>
-										<div class="news-item__content">
-											<div class="news-item__text">Осеннее предложение для всех посетителей магазинов и гипермаркетов «домашний»!</div>
-											<time class="news-item__date" datetime="2016-02-09">09.02.2016</time>
-										</div>
-									</a>
-								</div>
-							</div>
-						</div>
-						<!--news list end-->
-					</div>
+					<div class="max-wrap-md-alt"></div>
 				</div>
 			</div>
 			<!--CONTENT end-->
