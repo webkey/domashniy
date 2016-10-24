@@ -982,6 +982,84 @@ function equalHeightInit() {
 }
 /*equal height end*/
 
+/*init js drop*/
+function initJsDrops(){
+	var jsDropWrappers = '.phs__item, .phones-clone';
+	var $jsDropWrapper = $(jsDropWrappers);
+
+	$jsDropWrapper.on('click', '.phs__item_opener', function () {
+		var $currentJsDropWrapper = $(this).closest(jsDropWrappers);
+		var currentWasOpened = $currentJsDropWrapper.hasClass('show-drop');
+
+		$jsDropWrapper.removeClass('show-drop');
+		if (!currentWasOpened) {
+			$currentJsDropWrapper.addClass('show-drop');
+
+			if($currentJsDropWrapper.closest('.header').length){
+				$('html').removeClass('position');
+			}
+		}
+		return false;
+	});
+
+	$jsDropWrapper.on('click', '.phones-drop', function (e) {
+		e.stopPropagation();
+		// return false;
+	});
+
+	$(document).click(function () {
+		$jsDropWrapper.removeClass('show-drop');
+	});
+}
+/*init js drop end*/
+
+/*hide extra items*/
+function compactor() {
+	var $cloneContainer = $('.phones-clone');
+	var minWidthItem = 200;
+
+	$('.phs__list').clone().appendTo('#phones-list-clone');
+
+	var $phonesList = $('.phs__container');
+	var $phonesItem = $phonesList.children('.phs__list').children('.phs__item');
+
+	var phonesListWidth = $phonesList.outerWidth();
+	var lengthPhonesItems = $phonesItem.length;
+
+	// Количество ячеек, которые нужно "переместить" в дроп "все номера"
+	var cloneLength = Math.abs(Math.ceil((lengthPhonesItems * minWidthItem - phonesListWidth)/minWidthItem));
+
+	console.log("cloneLength: ", cloneLength);
+
+	// Изменяем ширину ячеек в зависимости от их количества
+	var newWidthItem = (1/(lengthPhonesItems - cloneLength)*100)+'%';
+	$phonesItem.css('width', newWidthItem);
+	$cloneContainer.css('width', newWidthItem);
+
+	// Изменяем текст кнопки "все номера" в зависимости от того, она одна в хедере, или нет.
+	var $phsInnerMain = $cloneContainer.find('.phs-clone__inner-main');
+	var $phsInnerAlt = $cloneContainer.find('.phs-clone__inner-alt');
+	if(lengthPhonesItems == cloneLength + 1){
+		$phsInnerAlt.attr('style','display: inline-block;');
+		$phsInnerMain.attr('style','display: none;');
+	} else {
+		$phsInnerAlt.attr('style','display: none;');
+		$phsInnerMain.attr('style','display: inline-block;');
+	}
+
+	$cloneContainer.toggleClass('show-clone', lengthPhonesItems * minWidthItem > phonesListWidth);
+
+	$('.phs__item').removeClass('ph-cloned');
+	var $phonesCloneItems = $('.phones-clone-drop', $cloneContainer).children('.phs__list').children('.phs__item');
+
+	for(var i = 0; i <= cloneLength; i++){
+		var indexCloned = lengthPhonesItems - i - 1;
+		$($phonesItem[indexCloned]).addClass('ph-cloned');
+		$($phonesCloneItems[indexCloned]).addClass('ph-cloned');
+	}
+}
+/*clone and collapse phones*/
+
 /**
  * sticky layout
  * */
@@ -1059,6 +1137,10 @@ $(window).load(function () {
 	preloadPage();
 });
 
+$(window).on('load resizeByWidth', function () {
+	compactor();
+});
+
 $(document).ready(function(){
 	placeholderInit();
 	if(DESKTOP){
@@ -1075,6 +1157,7 @@ $(document).ready(function(){
 	tabSwitcher();
 	filterJob();
 	equalHeightInit();
+	initJsDrops();
 	// stickyLayout();
 
 	footerBottom();
