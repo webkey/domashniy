@@ -2,15 +2,42 @@
 
 /*------ TYPOGRAPHIC STYLES ------*/
 h1 {
-	font-size: 32px;
-	line-height: 42px;
-	padding: 0 0 32px;
+	font-size: 26px;
+	line-height: 32px;
+	padding: 0 0 20px;
+}
+h2 {
+	font-size: 24px;
+	line-height: 30px;
+	padding: 0 0 20px;
+}
+h3 {
+	font-size: 22px;
+	line-height: 30px;
+	padding: 0 0 15px;
+}
+h4 {
+	font-size: 18px;
+	line-height: 26px;
+	padding: 0 0 20px;
 }
 /*------ TYPOGRAPHIC STYLES end ------*/
 
 /*MAIN BLOCKS*/
 .main{
 	padding-top: 100px;
+}
+
+.max-wrap,
+.max-wrap-md,
+.max-wrap-sm,
+.max-wrap-home{
+	padding-left: 20px !important;
+	padding-right: 20px !important;
+}
+.wrapper > .max-wrap,
+.footer > .max-wrap{
+	padding: 0 !important;
 }
 
 .max-wrap-home {
@@ -43,6 +70,41 @@ h1 {
 /*btn*/
 /*btn end*/
 
+/*social networks*/
+.social-networks li, .user-content .social-networks li, .user-content .social-networks li:first-child{ padding: 8px; }
+.social-networks a{
+	width: 40px;
+	height: 40px;
+}
+.social-facebook svg { height: 18px; }
+.social-vk svg { width: 20px; }
+.social-tw svg { width: 17px; }
+/*social networks end*/
+
+/*accordion*/
+.accordion-header {
+	padding: 18px 0 18px 42px;
+}
+.accordion-title{
+	font-size: 16px;
+	line-height: 20px;
+}
+.accordion-panel {
+	padding: 0;
+	font-size: 16px;
+	line-height: 24px;
+}
+.accordion-header .accordion-info{
+	display: none;
+}
+.accordion-panel .accordion-info {
+	display: block;
+	float: none;
+	max-width: none;
+	padding: 0 0 10px;
+	font-size: 18px;
+}
+/*accordion end*/
 /*USER CONTENT*/
 
 /*list*/
@@ -55,6 +117,26 @@ h1 {
 /*table styling end*/
 
 /*blockquote*/
+.user-content blockquote q {
+	font-family: 'lozen-cond-bold-italic', sans-serif;
+	font-size: 18px;
+	line-height: 26px;
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 26px 0;
+	color: #000;
+	text-align: center;
+	border: solid #000;
+	border-width: 1px 0;
+}
+.user-content blockquote q:before {
+	top: -12px;
+	height: 21px;
+	width: 50px;
+	-webkit-background-size: 30px;
+	background-size: 30px;
+}
 /*blockquote end*/
 
 /*content img*/
@@ -64,9 +146,35 @@ h1 {
 /*aligned content end*/
 
 /*elements form style*/
+input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea{
+	font-size: 14px;
+	padding: 10px 18px 11px;
+	height: 46px;
+}
+input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea, .form-row, .input-wrap {
+	margin-bottom: 15px;
+}
+label {
+	font-size: 16px;
+	letter-spacing: normal;
+}
+.error-note{
+	font-size: 10px;
+}
 /*elements form style end*/
 
 /*download files items*/
+.files {
+	padding: 0 0 20px;
+	margin-left: 0;
+	margin-righn: 0;
+}
+.files .files-item {
+	display: block;
+	vertical-align: top;
+	width: auto;
+	padding: 0 0 30px;
+}
 /*download files items end*/
 /*USER CONTENT end*/
 
@@ -83,9 +191,6 @@ h1 {
 .btn-menu{
 	top: 11px;
 }
-.btn-menu.active {
-	top: 51px;
-}
 .page-is-scrolled .btn-menu.active,
 .nav-opened .btn-menu.active {
 	top: 11px;
@@ -96,15 +201,25 @@ h1 {
 /*CONTENT*/
 
 /*breadcrumbs*/
+.breadcrumbs {
+	font-size: 14px;
+	padding-bottom: 20px;
+}
 /*breadcrumbs end*/
 
 /*datetime*/
 /*datetime */
 
+/*topic*/
+.topic h1, .topic h2 {
+	padding: 0 10px 0 0;
+}
+/*topic end*/
+
 /*user form*/
 .user-form {
-	padding: 30px 20px;
-	margin-bottom: 40px;
+	padding: 30px 0;
+	margin-bottom: 10px;
 }
 .user-form .label-holder {
 	float: none;
@@ -118,6 +233,14 @@ h1 {
 }
 .user-form .form-footer {
 	padding-left: 0;
+}
+.user-form .form-title {
+	font-size: 22px;
+	line-height: 30px;
+	padding: 0 0 30px;
+}
+.user-form .label-holder:before{
+	content: none;
 }
 /*user form end*/
 
@@ -185,13 +308,49 @@ h1 {
 }
 /*shares slider*/
 /*shares end*/
+
+/*article options*/
+.article-options {
+	display: block;
+	margin-bottom: 10px;
+}
+.article-options__box {
+	display: block;
+	vertical-align: top;
+	text-align: left;
+	padding: 0 0 10px;
+}
+.back-link a {
+	font-size: 14px;
+	line-height: 20px;
+	padding: 9px 16px 9px 35px;
+}
+.back-link a:before, .back-link a:after {
+	left: 9px;
+	height: 3px;
+	width: 12px;
+	border-radius: 2px;
+}
+.back-link a:before {
+	margin: -5px 0 0 0;
+}
+/*article options end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/
 /*SIDEBAR end*/
 
-/*ASIDE*/
-/*ASIDE end*/
+/*SUB NAV*/
+.menu, .user-content .menu {
+	line-height: 22px;
+}
+.menu li {
+	font-size: 16px;
+}
+.menu a {
+	padding: 5px 14px;
+}
+/*SUB NAV end*/
 /*MAIN end*/
 
 /*FOOTER*/

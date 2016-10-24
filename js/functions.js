@@ -337,7 +337,7 @@ function printShow() {
 			$staggerItems = self.$staggerItems,
 			$btnMenu = self.$btnMenu;
 
-		if ($btnMenu.is(':visible')) {
+		if ($(window).outerWidth() < 1280) {
 			TweenMax.set($navContainer, {yPercent: 120, onComplete: function () {
 				$navContainer.show(0);
 			}});

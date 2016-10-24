@@ -4,6 +4,9 @@
 /*------ TYPOGRAPHIC STYLES end ------*/
 
 /*MAIN BLOCKS*/
+.sheet {
+	padding: 40px 0 10px;
+}
 /*MAIN BLOCKS end*/
 
 /*btn*/
@@ -50,6 +53,10 @@
 /*CONTENT*/
 
 /*breadcrumbs*/
+.breadcrumbs {
+	font-size: 16px;
+	padding-bottom: 20px;
+}
 /*breadcrumbs end*/
 
 /*datetime*/
@@ -89,8 +96,17 @@
 /*SIDEBAR*/
 /*SIDEBAR end*/
 
-/*ASIDE*/
-/*ASIDE end*/
+/*SUB NAV*/
+.sub-nav {
+	padding: 0 0 20px;
+}
+.menu li{
+	font-size: 18px;
+}
+.menu a{
+	padding: 6px 18px;
+}
+/*SUB NAV end*/
 
 .main,
 .sidebar{

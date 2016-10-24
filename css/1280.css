@@ -126,6 +126,10 @@
 /*CONTENT*/
 
 /*breadcrumbs*/
+.breadcrumbs{
+	padding-left: 0;
+	padding-right: 0;
+}
 /*breadcrumbs end*/
 
 /*datetime*/
@@ -172,8 +176,8 @@
 /*SIDEBAR*/
 /*SIDEBAR end*/
 
-/*ASIDE*/
-/*ASIDE end*/
+/*SUB NAV*/
+/*SUB NAV end*/
 
 /*MAIN end*/
 
