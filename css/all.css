@@ -2649,7 +2649,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 /*promo section*/
 .promo-section{
 	position: relative;
-	padding: 0 0 35px;
+	padding: 0 0 45px;
 }
 .promo-section:before,
 .promo-section:after { content: ""; display: table; }
@@ -2754,6 +2754,68 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 /*promo slider end*/
 /*promo section end*/
+
+.sect-title{
+	padding: 0 0 5px;
+	overflow: hidden;
+}
+.sect-title h2,
+.sect-title h3{
+	float: left;
+	font-family: 'days-regular', sans-serif;
+	font-size: 26px;
+	line-height: 32px;
+	color: #fff;
+	margin: 0 20px 0 0;
+	padding: 0 0 15px;
+}
+.link-more{
+	position: relative;
+	display: inline-block;
+	color: #fff;
+	font-family: 'lozen-cond-bold', sans-serif;
+	font-size: 20px;
+	line-height: 32px;
+	padding-right: 18px;
+	text-decoration: none;
+}
+.sect-title .link-more{
+	float: right;
+	margin-bottom: 15px;
+}
+.link-more:before,
+.link-more:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	height: 3px;
+	width: 9px;
+	background: #fff;
+	border-radius: 2px;
+}
+.link-more:before{
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	margin: -2px 0 0 0;
+}
+.link-more:after{
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	margin: 3px 0 0 0;
+}
+.link-more span{
+	border-bottom: 1px solid #fff;
+	-webkit-transition-property: border-color;
+	transition-property: border-color;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+}
+.desktop .link-more:hover span{
+	border-bottom-color: transparent;
+}
 
 /*shares*/
 .shares{
