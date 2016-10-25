@@ -124,102 +124,84 @@
 
 					<div class="max-wrap-md-alt">
 						<!--location filter-->
-						<div class="location-filter">
-							<div class="phs__container">
-								<div class="phs__list">
-									<div class="phs__item">
-										<div class="phs__btn">
-											<div class="phs__inner">
+						<div class="location-filter-wrap">
+							<div class="location-filter">
+								<div class="location-filter-holder">
+									<div class="location-filter-list">
+										<div class="location-filter-item">
+											<div class="location-filter-inner">
 												<label class="check-label">
 													<input type="checkbox" />
 													<span><i></i>Банкоматы</span>
 												</label>
 											</div>
 										</div>
-									</div>
-									<div class="phs__item">
-										<div class="phs__btn">
-											<div class="phs__inner">
+										<div class="location-filter-item">
+											<div class="location-filter-inner">
 												<label class="check-label">
 													<input type="checkbox" />
 													<span><i></i>Аптека</span>
 												</label>
 											</div>
 										</div>
-									</div>
-									<div class="phs__item">
-										<div class="phs__btn">
-											<div class="phs__inner">
+										<div class="location-filter-item">
+											<div class="location-filter-inner">
 												<label class="check-label">
 													<input type="checkbox" />
 													<span><i></i>Паркинг</span>
 												</label>
 											</div>
 										</div>
-									</div>
-									<div class="phs__item">
-										<div class="phs__btn">
-											<div class="phs__inner">
+										<div class="location-filter-item">
+											<div class="location-filter-inner">
 												<label class="check-label">
 													<input type="checkbox" />
 													<span><i></i>Пицерия</span>
 												</label>
 											</div>
 										</div>
-									</div>
-									<div class="phs__item">
-										<div class="phs__btn">
-											<div class="phs__inner">
+										<div class="location-filter-item">
+											<div class="location-filter-inner">
 												<label class="check-label">
 													<input type="checkbox" />
 													<span><i></i>Кулинария</span>
 												</label>
 											</div>
 										</div>
-									</div>
-									<div class="phs__item">
-										<div class="phs__btn">
-											<div class="phs__inner">
+										<div class="location-filter-item">
+											<div class="location-filter-inner">
 												<label class="check-label">
 													<input type="checkbox" />
 													<span><i></i>Пицерия</span>
 												</label>
 											</div>
 										</div>
-									</div>
-									<div class="phs__item">
-										<div class="phs__btn">
-											<div class="phs__inner">
+										<div class="location-filter-item">
+											<div class="location-filter-inner">
 												<label class="check-label">
 													<input type="checkbox" />
 													<span><i></i>Кулинария</span>
 												</label>
 											</div>
 										</div>
-									</div>
-									<div class="phs__item">
-										<div class="phs__btn">
-											<div class="phs__inner">
+										<div class="location-filter-item">
+											<div class="location-filter-inner">
 												<label class="check-label">
 													<input type="checkbox" />
 													<span><i></i>Выдача дисконтных карт</span>
 												</label>
 											</div>
 										</div>
-									</div>
-									<div class="phs__item">
-										<div class="phs__btn">
-											<div class="phs__inner">
+										<div class="location-filter-item">
+											<div class="location-filter-inner">
 												<label class="check-label">
 													<input type="checkbox" />
 													<span><i></i>Кондитерская продукция</span>
 												</label>
 											</div>
 										</div>
-									</div>
-									<div class="phs__item">
-										<div class="phs__btn">
-											<div class="phs__inner">
+										<div class="location-filter-item">
+											<div class="location-filter-inner">
 												<label class="check-label">
 													<input type="checkbox" />
 													<span><i></i>Выпечка</span>
@@ -227,26 +209,26 @@
 											</div>
 										</div>
 									</div>
-								</div>
 
-								<div class="phones-clone">
-									<div class="phs-clone__btn phs__item_opener">
-										<div class="phs__inner phs-clone__inner-main">
-											<div class="phs__label"><span class="txt-inner"></span></div>
-											<div class="phs__number"><span class="txt-inner"><em class="phs__code">Смотреть все номера</em></span></div>
+									<div class="location-filter-clone js-compactor-clone">
+										<a href="#" class="location-filter-btn js-compactor-btn">
+											<div class="location-filter-inner js-compactor-btn-main"><i></i>Ещё</div>
+											<div class="location-filter-inner js-compactor-btn-alt">Фильтры</div>
+										</a>
+										<div class="location-filter-drop" id="location-filter-clone">
+											<!--add the cloned phs__list here-->
 										</div>
-										<div class="phs__inner phs-clone__inner-alt">
-											<div class="phs__label"><span class="txt-inner">Приёмная:</span></div>
-											<div class="phs__number"><span class="txt-inner"><em class="phs__code">+375 17</em> 327 13 23</span></div>
-										</div>
-									</div>
-									<div class="phones-drop phones-clone-drop" id="phones-list-clone">
-										<!--add the cloned phs__list here-->
 									</div>
 								</div>
 							</div>
+							<a href="#" class="btn-clear-form"><i></i><span>Сбросить</span></a>
 						</div>
 						<!--location filter end-->
+						<!--shops map-->
+						<div class="shops-map-wrap">
+							<div id="shops-map" class="shops-map"></div>
+						</div>
+						<!--shops map end-->
 					</div>
 				</div>
 			</div>
@@ -617,5 +599,69 @@
 <script src="js/widgets.js"></script>
 <!--Main functions-->
 <script src="js/functions.js"></script>
+<!--Map-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnFqiG7GVEuZZeE5XCILGj1Tqz1KOMye8&sensor=false&extension=.js&language=ru"></script>
+<script>
+	var pinMap = 'img/depict-map.png';
+
+	var localObjects = [
+		[
+			{lat: 53.8970355, lng: 27.5413969}, //coordinates of marker
+			{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
+			pinMap,
+			13,
+			{
+				title: 'ул. Дунина-Марцинкевича, 11',
+				address: '<b>Адрес:</b> <div>Республика Беларусь, 220050<br> г. Минск, ул. Мясникова, 40</div>',
+				phone: '<b>Тел.:</b> <div><a href="tel:+375172035878">+375 17 203-58-78</a></div>',
+				works: '<b>E-mail:</b> <div><a href="mailto:office@belingo.by">office@belingo.by</a></div>'
+			}
+		],[
+			{lat: 52.0888713, lng: 23.7029225}, //coordinates of marker
+			{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
+			pinMap,
+			13,
+			{
+				title: 'Брест - Центр страховых услуг ЗСАО "Ингосстрах"',
+				address: '<b>Адрес:</b> <div>224013 г. Брест,<br> бульвар Космонавтов, 120</div>',
+				phone: '<b>Тел.:</b> <div><a href="tel:+375162220222">+375 16 222-02-22</a></div>',
+				works: '<b>E-mail:</b> <div><a href="mailto:brest@belingo.by">brest@belingo.by</a></div>'
+			}
+		],[
+			{lat: 55.1798387, lng: 30.2022314}, //coordinates of marker
+			{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
+			pinMap,
+			13,
+			{
+				title: 'Витебск - Центр страховых услуг ЗСАО "Ингосстрах"',
+				address: '<b>Адрес:</b> <div>210015 г. Витебск,<br> пр. Черняховского, 8а,<br> комната 103</div>',
+				phone: '<b>Тел.:</b> <div><a href="tel:+375447877164">+375 44 787-71-64</a></div>',
+				works: '<b>E-mail:</b> <div><a href="mailto:vitebsk@belingo.by">vitebsk@belingo.by</a></div>'
+			}
+		],[
+			{lat: 53.6819085, lng: 23.8290566}, //coordinates of marker
+			{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
+			pinMap,
+			13,
+			{
+				title: 'Гродно - Центр страховых услуг ЗСАО "Ингосстрах"',
+				address: '<b>Адрес:</b> <div>230023 г. Гродно,<br> ул. Малая Троицкая, 21</div>',
+				phone: '<b>Тел.:</b> <div><a href="tel:+375152771909">+375 15 277-19-09</a></div>',
+				works: '<b>E-mail:</b> <div><a href="mailto:grodno@belingo.by">grodno@belingo.by</a></div>'
+			}
+		],[
+			{lat: 53.8952585, lng: 30.3333077}, //coordinates of marker
+			{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
+			pinMap,
+			13,
+			{
+				title: 'Могилев - Центр страховых услуг ЗСАО "Ингосстрах"',
+				address: '<b>Адрес:</b> <div>212030 г. Могилев,<br> ул. Ленинская, 9</div>',
+				phone: '<b>Тел.:</b> <div><a href="tel:+375222222200">+375 22 222-22-00</a></div>',
+				works: '<b>E-mail:</b> <div><a href="mailto:mogilev@belingo.by">mogilev@belingo.by</a></div>'
+			}
+		]
+	];
+</script>
 </body>
 </html>

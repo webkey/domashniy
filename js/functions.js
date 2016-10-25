@@ -931,8 +931,6 @@ function filterJob() {
 
 		var dataFilters = concatObject(tags);
 
-		console.log("dataFilters: ", dataFilters);
-
 		$filterItem.parent().find('.'+ classNoItem).remove();
 		$filterItem.show(0);
 
@@ -984,10 +982,12 @@ function equalHeightInit() {
 
 /*init js drop*/
 function initJsDrops(){
-	var jsDropWrappers = '.phs__item, .phones-clone';
+	var jsDropWrappers = '.js-compactor-clone';
 	var $jsDropWrapper = $(jsDropWrappers);
 
-	$jsDropWrapper.on('click', '.phs__item_opener', function () {
+	$jsDropWrapper.on('click', '.js-compactor-btn', function (e) {
+		e.preventDefault();
+
 		var $currentJsDropWrapper = $(this).closest(jsDropWrappers);
 		var currentWasOpened = $currentJsDropWrapper.hasClass('show-drop');
 
@@ -1002,7 +1002,7 @@ function initJsDrops(){
 		return false;
 	});
 
-	$jsDropWrapper.on('click', '.phones-drop', function (e) {
+	$jsDropWrapper.on('click', '.location-filter-drop', function (e) {
 		e.stopPropagation();
 		// return false;
 	});
@@ -1015,13 +1015,13 @@ function initJsDrops(){
 
 /*hide extra items*/
 function compactor() {
-	var $cloneContainer = $('.phones-clone');
+	var $cloneContainer = $('.js-compactor-clone');
 	var minWidthItem = 200;
 
-	$('.phs__list').clone().appendTo('#phones-list-clone');
+	$('.location-filter-list').clone().appendTo('#location-filter-clone');
 
-	var $phonesList = $('.phs__container');
-	var $phonesItem = $phonesList.children('.phs__list').children('.phs__item');
+	var $phonesList = $('.location-filter-holder');
+	var $phonesItem = $phonesList.children('.location-filter-list').children('.location-filter-item');
 
 	var phonesListWidth = $phonesList.outerWidth();
 	var lengthPhonesItems = $phonesItem.length;
@@ -1029,16 +1029,14 @@ function compactor() {
 	// Количество ячеек, которые нужно "переместить" в дроп "все номера"
 	var cloneLength = Math.abs(Math.ceil((lengthPhonesItems * minWidthItem - phonesListWidth)/minWidthItem));
 
-	console.log("cloneLength: ", cloneLength);
-
 	// Изменяем ширину ячеек в зависимости от их количества
 	var newWidthItem = (1/(lengthPhonesItems - cloneLength)*100)+'%';
 	$phonesItem.css('width', newWidthItem);
 	$cloneContainer.css('width', newWidthItem);
 
 	// Изменяем текст кнопки "все номера" в зависимости от того, она одна в хедере, или нет.
-	var $phsInnerMain = $cloneContainer.find('.phs-clone__inner-main');
-	var $phsInnerAlt = $cloneContainer.find('.phs-clone__inner-alt');
+	var $phsInnerMain = $cloneContainer.find('.js-compactor-btn-main');
+	var $phsInnerAlt = $cloneContainer.find('.js-compactor-btn-alt');
 	if(lengthPhonesItems == cloneLength + 1){
 		$phsInnerAlt.attr('style','display: inline-block;');
 		$phsInnerMain.attr('style','display: none;');
@@ -1049,16 +1047,152 @@ function compactor() {
 
 	$cloneContainer.toggleClass('show-clone', lengthPhonesItems * minWidthItem > phonesListWidth);
 
-	$('.phs__item').removeClass('ph-cloned');
-	var $phonesCloneItems = $('.phones-clone-drop', $cloneContainer).children('.phs__list').children('.phs__item');
+	$('.location-filter-item').removeClass('compactor-cloned');
+	var $phonesCloneItems = $('.location-filter-drop', $cloneContainer).children('.location-filter-list').children('.location-filter-item');
 
 	for(var i = 0; i <= cloneLength; i++){
 		var indexCloned = lengthPhonesItems - i - 1;
-		$($phonesItem[indexCloned]).addClass('ph-cloned');
-		$($phonesCloneItems[indexCloned]).addClass('ph-cloned');
+		$($phonesItem[indexCloned]).addClass('compactor-cloned');
+		$($phonesCloneItems[indexCloned]).addClass('compactor-cloned');
 	}
 }
 /*clone and collapse phones*/
+
+/*clear filter*/
+function clearFilter() {
+	$('.btn-clear-form').on('click', function (e) {
+		e.preventDefault();
+
+		var $wrap = $('.location-filter-wrap');
+
+		$(this).closest($wrap).find(':checked').prop( "checked", false );
+
+	});
+}
+/*clear filter end*/
+
+/**!
+ * map init
+ * */
+// inline script
+// var pinMap;
+// var localObjects;
+
+function shopsMap(){
+	var mapId = 'shops-map';
+
+	if (!$('#shops-map').length) return false;
+
+	function mapCenter(index){
+		var localObject = localObjects[index];
+
+		return{
+			lat: localObject[0].lat + localObject[1].latBias,
+			lng: localObject[0].lng + localObject[1].lngBias
+		};
+	}
+
+	var markers = [],
+		elementById = [
+			document.getElementById('shops-map')
+		];
+
+	var mapOptions = {
+		zoom: 12,
+		// zoom: localObjects[0][3],
+		center: {lat: 53.8970355, lng: 27.5413969},
+		// center: mapCenter(0),
+		// styles: styleMap,
+		mapTypeControl: false,
+		scaleControl: false,
+		scrollwheel: false
+	};
+
+	var map0 = new google.maps.Map(elementById[0], mapOptions);
+
+	addMarker(0, map0);
+
+	if($(elementById[0]).length){
+		var map = new google.maps.Map(elementById[0], mapOptions);
+		addMarker(0, map);
+		addMarker(1, map);
+		addMarker(2, map);
+		addMarker(3, map);
+		addMarker(4, map);
+	}
+
+	/*aligned after resize*/
+	var resizeTimer0;
+	$(window).on('resize', function () {
+		clearTimeout(resizeTimer0);
+		resizeTimer0 = setTimeout(function () {
+			moveToLocation(0, map0);
+		}, 500);
+	});
+
+	/*move to location*/
+	function moveToLocation(index, map){
+		var object = localObjects[index];
+		var center = new google.maps.LatLng(mapCenter(index));
+		map.panTo(center);
+		map.setZoom(object[3]);
+	}
+
+	var infoWindow = new google.maps.InfoWindow({
+		maxWidth: 220
+	});
+
+	function addMarker(index,map) {
+		var object = localObjects[index];
+
+		var marker = new google.maps.Marker({
+			position: object[0],
+			map: map,
+			icon: object[2],
+			title: object[4].title
+			// animation: google.maps.Animation.DROP
+		});
+
+		markers.push(marker);
+
+		function onMarkerClick() {
+			var marker = this;
+
+			infoWindow.setContent(
+				'<div class="map-popup">' +
+				'<h4>'+object[4].title+'</h4>' +
+				'<div class="map-popup__list">' +
+				'<div class="map-popup__row">'+object[4].address+'</div>' +
+				'<div class="map-popup__row">'+object[4].phone+'</div>' +
+				'<div class="map-popup__row">'+object[4].works+'</div>' +
+				'</div>' +
+				'</div>'
+			);
+
+			infoWindow.close();
+
+			infoWindow.open(map, marker);
+		}
+
+		map.addListener('click', function () {
+			infoWindow.close();
+		});
+
+		marker.addListener('click', onMarkerClick);
+	}
+
+	function setMapOnAll(map) {
+		for (var i = 0; i < markers.length; i++) {
+			markers[i].setMap(map);
+		}
+	}
+
+	function deleteMarkers() {
+		setMapOnAll(null);
+		//markers = [];
+	}
+}
+/*map init end*/
 
 /**
  * sticky layout
@@ -1158,6 +1292,8 @@ $(document).ready(function(){
 	filterJob();
 	equalHeightInit();
 	initJsDrops();
+	clearFilter();
+	shopsMap();
 	// stickyLayout();
 
 	footerBottom();
