@@ -595,7 +595,8 @@ function popupInitial(){
 			accordionItem: null,
 			accordionContent: null,
 			accordionHeader: 'h3',
-			indexInit: 0,
+			accordionWrap: null,
+			indexInit: 0, // if "false", all accordion are closed
 			animateSpeed: 300,
 			scrollToTop: false, // if true, scroll to current accordion;
 			clickOutside: false // if true, close current accordion's content on click outside accordion;
@@ -622,11 +623,15 @@ function popupInitial(){
 		};
 
 		this.bindEvents();
-		this.showAccordionContent();
+		this.activeAccordion();
 	};
 
 	// it takes values current index of accordion's content
 	JsAccordion.prototype.indexActive = 0;
+
+	// it takes values false or current index of accordion's container
+	JsAccordion.prototype.indexCurrentGroup = false;
+	JsAccordion.prototype.newIndexCurrentGroup = false;
 
 	// it takes values false or current index of accordion's content
 	JsAccordion.prototype.activeState = false;
@@ -641,9 +646,17 @@ function popupInitial(){
 
 			var $currentItem = $(this).closest(self.$accordionItem),
 				$currentItemContent = $currentItem.find($accordionContent),
-				currentIndex = $currentItem.index();
+				currentIndex = $currentItem.index(),
+				indexCurrentGroup = $(this).closest(self.$accordionContainer).index();
 
 			if($accordionContent.is(':animated')) return false;
+
+			self.indexCurrentGroup = self.newIndexCurrentGroup;
+
+			console.log("self.newIndexCurrentGroup 1: ", self.newIndexCurrentGroup);
+			self.newIndexCurrentGroup = indexCurrentGroup;
+
+			console.log("self.newIndexCurrentGroup 2: ", self.newIndexCurrentGroup);
 
 			self.indexActive = currentIndex;
 
@@ -657,6 +670,8 @@ function popupInitial(){
 			$currentItemContent.slideToggle(animateSpeed, function () {
 				self.scrollPosition();
 			});
+
+			e.stopPropagation();
 		});
 
 		$(document).click(function () {
@@ -671,9 +686,12 @@ function popupInitial(){
 	};
 
 	// show current accordion's content
-	JsAccordion.prototype.showAccordionContent = function () {
+	JsAccordion.prototype.activeAccordion = function () {
 		var self = this;
 		var indexInit = self._indexInit;
+
+		console.log("indexInit: ", indexInit);
+
 		self.$accordionItem.eq(indexInit).find(self.$accordionContent).fadeIn('slow');
 
 		self.indexActive = indexInit;
@@ -697,7 +715,8 @@ function popupInitial(){
 			$accordionHeader = self.$accordionHeader,
 			$accordionContent = self.$accordionContent,
 			indexActive = self.indexActive,
-			activeState = self.activeState;
+			activeState = self.activeState,
+			indexCurrentGroup = self.indexCurrentGroup;
 
 		$accordionItem.removeClass(activeAccordion);
 		$accordionHeader.removeClass(activeHeader);
@@ -735,6 +754,7 @@ function popupInitial(){
  * default accordion
  * */
 function jsAccordion() {
+	// accordion default
 	var $accordion = $('.accordion-container');
 	if($accordion.length){
 		$accordion.each(function () {
@@ -743,6 +763,22 @@ function jsAccordion() {
 				accordionItem: '.accordion-content',
 				accordionHeader: '.accordion-header',
 				accordionContent: '.accordion-panel',
+				animateSpeed: 300
+			});
+		})
+	}
+
+	// accordion shops
+	var $shops = $('.shops-list');
+	if($shops.length){
+		$shops.each(function () {
+			new JsAccordion({
+				accordionWrap: '.shops-aside',
+				accordionContainer: $(this),
+				accordionItem: '.shops-item',
+				accordionHeader: '.shops-item__title',
+				accordionContent: '.shops-item__extend',
+				// indexInit: false,
 				animateSpeed: 300
 			});
 		})
@@ -1100,7 +1136,7 @@ function shopsMap(){
 	var mapOptions = {
 		zoom: 12,
 		// zoom: localObjects[0][3],
-		center: {lat: 53.8970355, lng: 27.5413969},
+		center: {lat: 53.8963501, lng: 27.551555},
 		// center: mapCenter(0),
 		// styles: styleMap,
 		mapTypeControl: false,
@@ -1119,6 +1155,8 @@ function shopsMap(){
 		addMarker(2, map);
 		addMarker(3, map);
 		addMarker(4, map);
+		addMarker(5, map);
+		addMarker(6, map);
 	}
 
 	/*aligned after resize*/
@@ -1162,9 +1200,10 @@ function shopsMap(){
 				'<div class="map-popup">' +
 				'<h4>'+object[4].title+'</h4>' +
 				'<div class="map-popup__list">' +
-				'<div class="map-popup__row">'+object[4].address+'</div>' +
-				'<div class="map-popup__row">'+object[4].phone+'</div>' +
-				'<div class="map-popup__row">'+object[4].works+'</div>' +
+				'<div class="map-popup__row"><i class="work-time">Адрес:</i>'+object[4].time+'</div>' +
+				'<div class="map-popup__row"><i class="phone">Тел.:</i>'+object[4].phone+'</div>' +
+				'<div class="map-popup__row">'+object[4].tags+'</div>' +
+				'<div class="map-popup__row">'+object[4].more+'</div>' +
 				'</div>' +
 				'</div>'
 			);

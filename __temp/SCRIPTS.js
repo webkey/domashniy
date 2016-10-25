@@ -242,7 +242,7 @@ function googleMap(){
 			});
 			var infowindow = new google.maps.InfoWindow();
 			infowindow.setContent('<div class="infobox"><h2>Name</h2>'
-				+ '<span>address</span>'
+				+ '<span>time</span>'
 				+ '</div>');
 			google.maps.event.addListener(marker, 'click', function() {
 				infowindow.open(map, marker);

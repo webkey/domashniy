@@ -3741,11 +3741,29 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 /*location filters end*/
 
+/*shops network*/
+.shops{
+	overflow: hidden;
+}
+.shops-holder{
+	height: 785px;
+}
+.shops-aside{
+	float: right;
+	width: 390px;
+	background: #fff;
+	height: 100%;
+}
+.shops-item__extend{
+	display: none;
+}
+/*shops network end*/
+
 /*shops map*/
 .shops-map-wrap{
 	position: relative;
 	overflow: hidden;
-	height: 785px;
+	height: 100%;
 }
 .shops-map{
 	position: absolute;
