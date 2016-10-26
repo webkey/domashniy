@@ -629,10 +629,6 @@ function popupInitial(){
 	// it takes values current index of accordion's content
 	JsAccordion.prototype.indexActive = 0;
 
-	// it takes values false or current index of accordion's container
-	JsAccordion.prototype.indexCurrentGroup = false;
-	JsAccordion.prototype.newIndexCurrentGroup = false;
-
 	// it takes values false or current index of accordion's content
 	JsAccordion.prototype.activeState = false;
 
@@ -646,17 +642,9 @@ function popupInitial(){
 
 			var $currentItem = $(this).closest(self.$accordionItem),
 				$currentItemContent = $currentItem.find($accordionContent),
-				currentIndex = $currentItem.index(),
-				indexCurrentGroup = $(this).closest(self.$accordionContainer).index();
+				currentIndex = $currentItem.index();
 
 			if($accordionContent.is(':animated')) return false;
-
-			self.indexCurrentGroup = self.newIndexCurrentGroup;
-
-			console.log("self.newIndexCurrentGroup 1: ", self.newIndexCurrentGroup);
-			self.newIndexCurrentGroup = indexCurrentGroup;
-
-			console.log("self.newIndexCurrentGroup 2: ", self.newIndexCurrentGroup);
 
 			self.indexActive = currentIndex;
 
@@ -690,7 +678,7 @@ function popupInitial(){
 		var self = this;
 		var indexInit = self._indexInit;
 
-		console.log("indexInit: ", indexInit);
+		if ( indexInit === false ) return false;
 
 		self.$accordionItem.eq(indexInit).find(self.$accordionContent).fadeIn('slow');
 
@@ -715,8 +703,7 @@ function popupInitial(){
 			$accordionHeader = self.$accordionHeader,
 			$accordionContent = self.$accordionContent,
 			indexActive = self.indexActive,
-			activeState = self.activeState,
-			indexCurrentGroup = self.indexCurrentGroup;
+			activeState = self.activeState;
 
 		$accordionItem.removeClass(activeAccordion);
 		$accordionHeader.removeClass(activeHeader);
@@ -767,24 +754,37 @@ function jsAccordion() {
 			});
 		})
 	}
+}
+/*default accordion end*/
 
-	// accordion shops
-	var $shops = $('.shops-list');
-	if($shops.length){
-		$shops.each(function () {
-			new JsAccordion({
-				accordionWrap: '.shops-aside',
-				accordionContainer: $(this),
-				accordionItem: '.shops-item',
-				accordionHeader: '.shops-item__title',
-				accordionContent: '.shops-item__extend',
-				// indexInit: false,
-				animateSpeed: 300
-			});
+/**
+ * shops accordion
+ * */
+function shopsAccordion() {
+	var $container = $('.shops-item');
+
+	if ($container.length) {
+
+		var $hand = $('.shops-item__title a'),
+			$content = $('.shops-item__extend');
+
+		$hand.on('click', function (e) {
+			e.preventDefault();
+			$content.slideUp('fast');
+
+			if ( $(this).hasClass('active') ) {
+
+				$hand.removeClass('active');
+
+				return false;
+
+			}
+
+			$(this).addClass('active').closest($container).find($content).stop().slideDown('fast');
 		})
 	}
 }
-/*default accordion end*/
+/*shops accordion*/
 
 /**
  * file input
@@ -1114,27 +1114,29 @@ function clearFilter() {
 // var pinMap;
 // var localObjects;
 
-function shopsMap(){
-	var mapId = 'shops-map';
+function shopsMap1(){
+	// var mapId = 'shops-map';
 
 	if (!$('#shops-map').length) return false;
 
-	function mapCenter(index){
-		var localObject = localObjects[index];
-
-		return{
-			lat: localObject[0].lat + localObject[1].latBias,
-			lng: localObject[0].lng + localObject[1].lngBias
-		};
-	}
+	// function mapCenter(index){
+	// 	var localObject = localObjects[index];
+	//
+	// 	return{
+	// 		lat: localObject[0].lat + localObject[1].latBias,
+	// 		lng: localObject[0].lng + localObject[1].lngBias
+	// 	};
+	// }
 
 	var markers = [],
 		elementById = [
 			document.getElementById('shops-map')
 		];
 
+	var zoom = 11;
+
 	var mapOptions = {
-		zoom: 12,
+		zoom: zoom,
 		// zoom: localObjects[0][3],
 		center: {lat: 53.8963501, lng: 27.551555},
 		// center: mapCenter(0),
@@ -1144,101 +1146,170 @@ function shopsMap(){
 		scrollwheel: false
 	};
 
-	var map0 = new google.maps.Map(elementById[0], mapOptions);
+	// var map0 = new google.maps.Map(elementById[0], mapOptions);
 
-	addMarker(0, map0);
+	// addMarker(0, map0);
 
 	if($(elementById[0]).length){
 		var map = new google.maps.Map(elementById[0], mapOptions);
-		addMarker(0, map);
-		addMarker(1, map);
-		addMarker(2, map);
-		addMarker(3, map);
-		addMarker(4, map);
-		addMarker(5, map);
-		addMarker(6, map);
+		// addMarker(0, map);
+		// addMarker(1, map);
+		// addMarker(2, map);
+		// addMarker(3, map);
+		// addMarker(4, map);
+		// addMarker(5, map);
+		// addMarker(6, map);
 	}
 
 	/*aligned after resize*/
-	var resizeTimer0;
-	$(window).on('resize', function () {
-		clearTimeout(resizeTimer0);
-		resizeTimer0 = setTimeout(function () {
-			moveToLocation(0, map0);
-		}, 500);
-	});
+	// var resizeTimer0;
+	// $(window).on('debouncedresize', function () {
+	// 	clearTimeout(resizeTimer0);
+	// 	resizeTimer0 = setTimeout(function () {
+	// 		moveToLocation(map);
+	// 	}, 500);
+	// });
 
 	/*move to location*/
-	function moveToLocation(index, map){
-		var object = localObjects[index];
-		var center = new google.maps.LatLng(mapCenter(index));
-		map.panTo(center);
-		map.setZoom(object[3]);
-	}
+	// function moveToLocation(map){
+	// 	map.panTo({lat: 53.8963501, lng: 27.551555});
+	// 	map.setZoom(zoom);
+	// }
 
+	var marker, i;
 	var infoWindow = new google.maps.InfoWindow({
-		maxWidth: 220
+		maxWidth: 400
 	});
 
-	function addMarker(index,map) {
-		var object = localObjects[index];
+	for (i = 0; i < localObjects.length; i++) {
+		console.log("localObjects.length: ", localObjects.length);
+		var object = localObjects[i];
 
-		var marker = new google.maps.Marker({
+		marker = new google.maps.Marker({
 			position: object[0],
 			map: map,
 			icon: object[2],
-			title: object[4].title
-			// animation: google.maps.Animation.DROP
+			title: object[1].title
 		});
+
+		// marker = new google.maps.Marker({
+		// 	position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+		// 	map: map,
+		// 	icon: locations[i][3]
+		// });
+
+		google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			return function() {
+				// infowindow.setContent(locations[i][0]);
+
+				infoWindow.setContent(
+					'<div class="map-popup">' +
+					'<div class="map-popup__title">'+object[1].title+'</div>' +
+					'<div class="map-popup__list">' +
+					'<div class="map-popup__row work-time"><i class="depict-time"></i>'+object[1].time+'</div>' +
+					'<div class="map-popup__row"><i class="depict-phone"></i>'+object[1].phone+'</div>' +
+					'<div class="map-popup__row">'+object[1].tags+'</div>' +
+					'<div class="map-popup__row">'+object[1].more+'</div>' +
+					'</div>' +
+					'</div>'
+				);
+
+				// infoWindow.close();
+
+				infoWindow.open(map, marker);
+			}
+		})(marker, i));
 
 		markers.push(marker);
-
-		function onMarkerClick() {
-			var marker = this;
-
-			infoWindow.setContent(
-				'<div class="map-popup">' +
-				'<div class="map-popup__title">'+object[4].title+'</div>' +
-				'<div class="map-popup__list">' +
-				'<div class="map-popup__row work-time"><i class="depict-time"></i>'+object[4].time+'</div>' +
-				'<div class="map-popup__row"><i class="depict-phone"></i>'+object[4].phone+'</div>' +
-				'<div class="map-popup__row">'+object[4].tags+'</div>' +
-				'<div class="map-popup__row">'+object[4].more+'</div>' +
-				'</div>' +
-				'</div>'
-			);
-
-			infoWindow.close();
-
-			infoWindow.open(map, marker);
-		}
-
-		map.addListener('click', function () {
-			infoWindow.close();
-		});
-
-		marker.addListener('click', onMarkerClick);
 	}
 
-	function setMapOnAll(map) {
-		for (var i = 0; i < markers.length; i++) {
-			markers[i].setMap(map);
-		}
+	function myClick(){
+		google.maps.event.trigger(markers[0], 'click');
 	}
 
-	function deleteMarkers() {
-		setMapOnAll(null);
-		//markers = [];
-	}
+	$('h1').on('click', function () {
+		myClick();
+	});
 }
 /*map init end*/
+
+function shopsMap() {
+	if (!$('#shops-map').length) return false;
+
+	var markers = [];
+	var zoom = 11;
+	var pinMap = 'img/depict-map.png';
+
+	function initialize() {
+
+		var mapOptions = {
+			zoom: zoom,
+			center: {lat: 53.8963501, lng: 27.551555},
+			mapTypeControl: false,
+			scaleControl: false,
+			scrollwheel: false
+		};
+
+		var map = new google.maps.Map(document.getElementById("shops-map"), mapOptions);
+
+		var marker, i;
+		var infowindow = new google.maps.InfoWindow();
+
+
+		google.maps.event.addListener(map, 'click', function() {
+			infowindow.close();
+		});
+
+
+		for (i = 0; i < localObjects.length; i++) {
+
+			marker = new google.maps.Marker({
+				position: localObjects[i][0],
+				map: map,
+				icon: pinMap,
+				title: localObjects[i][1].title
+			});
+
+			google.maps.event.addListener(marker, 'click', (function(marker, i) {
+
+				return function() {
+					infowindow.setContent('<div class="map-popup">' +
+						'<div class="map-popup__title">'+localObjects[i][1].title+'</div>' +
+						'<div class="map-popup__list">' +
+						'<div class="map-popup__row work-time"><i class="depict-time"></i>'+localObjects[i][1].time+'</div>' +
+						'<div class="map-popup__row"><i class="depict-phone"></i>'+localObjects[i][1].phone+'</div>' +
+						'<div class="map-popup__row">'+localObjects[i][1].tags+'</div>' +
+						'<div class="map-popup__row">'+localObjects[i][1].more+'</div>' +
+						'</div>' +
+						'</div>');
+					infowindow.open(map, marker);
+				}
+			})(marker, i));
+
+			markers.push(marker);
+		}
+
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+
+	function myClick(id){
+		google.maps.event.trigger(markers[id], 'click');
+	}
+
+	$('.shops-item__title a').on('click', function (e) {
+		e.preventDefault();
+
+		var index = $(this).data('lacation-index');
+
+		myClick(index);
+	});
+}
 
 /*add shadow tape*/
 function addShadowTape() {
 	var shadowTop = $('.js-shadow-tape-top');
 
 	$('.shops-aside-holder').scroll(function () {
-		console.log("$(this).position().top: ", $(this).scrollTop());
 		if ( $(this).scrollTop() > 0 ) {
 			shadowTop.stop().fadeIn();
 		} else {
@@ -1247,6 +1318,55 @@ function addShadowTape() {
 	});
 }
 /*add shadow tape end*/
+
+/**
+ * toggle view shops
+ * */
+function toggleViewShops() {
+	var $switcherHand = $('.shops-view-switcher a');
+	var $container = $('.shops');
+	var activeHand = 'active';
+	var activeContainer = 'view-shops-active';
+
+	if ( !$switcherHand.length ) return false;
+
+	$switcherHand.on('click', function (e) {
+		e.preventDefault();
+
+		var $this = $(this);
+
+		if ( $this.hasClass(activeHand) ) return false;
+
+		$switcherHand.removeClass(activeHand);
+		$container.removeClass(activeContainer);
+
+		$this.addClass(activeHand);
+
+		if ($this.index() === 0) {
+			$container.addClass(activeContainer);
+		}
+	});
+
+	$('.shops-aside-swiper').swipe({
+		swipeLeft: function () {
+			if ( $switcherHand.eq(1).hasClass(activeHand) ) return false;
+
+			$switcherHand.eq(0).removeClass(activeHand);
+			$switcherHand.eq(1).addClass(activeHand);
+
+			$container.removeClass(activeContainer);
+		},
+		swipeRight: function () {
+			if ( $switcherHand.eq(0).hasClass(activeHand) ) return false;
+
+			$switcherHand.eq(1).removeClass(activeHand);
+			$switcherHand.eq(0).addClass(activeHand);
+
+			$container.addClass(activeContainer);
+		}
+	});
+}
+/*toggle view shops end*/
 
 /**
  * sticky layout
@@ -1340,6 +1460,7 @@ $(document).ready(function(){
 	slidersInit();
 	popupInitial();
 	jsAccordion();
+	shopsAccordion();
 	fileInput();
 	tabSwitcher();
 	filterJob();
@@ -1348,6 +1469,7 @@ $(document).ready(function(){
 	clearFilter();
 	shopsMap();
 	addShadowTape();
+	toggleViewShops();
 	// stickyLayout();
 
 	footerBottom();

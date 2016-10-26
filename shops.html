@@ -90,7 +90,7 @@
 					<aside class="sub-nav">
 						<ul class="menu">
 							<li><a href="#"><span>Акции</span></a></li>
-							<li><a href="#"><span>Новости</span></a></li>
+							<li><a href="#"><span>Магазины</span></a></li>
 							<li class="active"><a href="#"><span>Товары</span></a></li>
 							<li><a href="#"><span>Клиентам</span></a></li>
 						</ul>
@@ -99,7 +99,7 @@
 
 					<div class="max-wrap-md-alt">
 						<div class="topic">
-							<h1>Новости</h1>
+							<h1>Магазины</h1>
 							<!--control-->
 							<div class="control">
 								<div class="control-item">
@@ -222,25 +222,42 @@
 								</div>
 							</div>
 							<a href="#" class="btn-clear-form"><i></i><span>Сбросить</span></a>
+							<!--shops result-->
+							<div class="shops-result">
+								<div class="shops-count">Найдено <span class="shops-count__value">0</span> магазинов</div>
+								<!--shops view switcher-->
+								<div class="shops-view-switcher">
+									<a href="#" class="js-shops-view-map">Карта</a>
+									<a href="#" class="js-shops-view-list active">Список</a>
+								</div>
+								<!--shops view switcher end-->
+							</div>
+							<!--shops result end-->
 						</div>
 						<!--location filter end-->
+
 						<!--shops network-->
 						<div class="shops">
 							<div class="shops-holder">
 								<div class="shops-aside">
-									<div class="shops-count">Найдено <span class="shops-count__value">0</span> магазинов</div>
+									<div class="shops-aside-swiper"></div>
 									<div class="shops-aside-frame">
 										<div class="shadow-tape-top js-shadow-tape-top"></div>
 										<div class="shops-aside-holder">
 											<div class="shops-group-tittle">Минск</div>
 											<div class="shops-list">
 												<div class="shops-item">
-													<div class="shops-item__title"><a href="#">ул. Громова, 35</a></div>
+													<div class="shops-item__title"><a href="#" data-lacation-index="0">ул. Громова, 35</a></div>
 													<div class="shops-item__list">
-														<div class="shops-item__work"><i class="depict-time"></i><span>08.00-23.00</span></div>
+														<div class="shops-item__work">
+															<i class="depict-time"></i>
+															<div><span>08.00-23.00</span></div>
+														</div>
 														<div class="shops-item__tags">
-															<span style="background-image: url(img/depict-tag-01.png);"></span> <span style="background-image: url(img/depict-tag-02.png);"></span>
-															<span style="background-image: url(img/depict-tag-03.png);"></span> <span style="background-image: url(img/depict-tag-04.png);"></span>
+															<span style="background-image: url(img/depict-tag-01.png);"></span>
+															<span style="background-image: url(img/depict-tag-02.png);"></span>
+															<span style="background-image: url(img/depict-tag-03.png);"></span>
+															<span style="background-image: url(img/depict-tag-04.png);"></span>
 															<span style="background-image: url(img/depict-tag-05.png);"></span>
 														</div>
 													</div>
@@ -270,81 +287,18 @@
 													</div>
 												</div>
 												<div class="shops-item shop-offline">
-													<div class="shops-item__title"><a href="#">ул. Громова, 35</a></div>
+													<div class="shops-item__title"><a href="#" data-lacation-index="1">ул. Громова, 35</a></div>
 													<div class="shops-item__list">
-														<div class="shops-item__work"><i class="depict-time"></i><span>08.00-23.00</span></div>
-														<div class="shops-item__tags">
-															<span style="background-image: url(img/depict-tag-01.png);"></span> <span style="background-image: url(img/depict-tag-02.png);"></span>
-															<span style="background-image: url(img/depict-tag-03.png);"></span> <span style="background-image: url(img/depict-tag-04.png);"></span>
+														<div class="shops-item__work">
+															<i class="depict-time"></i>
+															<div><span>08.00-23.00</span></div>
 														</div>
-													</div>
-													<div class="shops-item__extend">
-														<h4>Контактная информация</h4>
-														<ul>
-															<li>
-																<div class="dt">Адрес:</div>
-																<div class="dd">ул. Дунина-Мартинкевича, 11</div>
-															</li>
-															<li>
-																<div class="dt">Как добраться:</div>
-																<div class="dd">Автобус 163 (остановка Заславская)</div>
-															</li>
-															<li class="no-space">
-																<div class="dt">Телефон:</div>
-																<div class="dd">393-39-68, 393-39-67</div>
-															</li>
-															<li>
-																<div class="dt">Инфоцентр:</div>
-																<div class="dd">8 (017) 393-39-65</div>
-															</li>
-														</ul>
-														<div class="shops-item__img">
-															<img src="img/img-shops-01.jpg" alt="image description" />
-														</div>
-													</div>
-												</div>
-												<div class="shops-item">
-													<div class="shops-item__title"><a href="#">ул. Громова, 35</a></div>
-													<div class="shops-item__list">
-														<div class="shops-item__work"><i class="depict-time"></i><span>08.00-23.00</span></div>
 														<div class="shops-item__tags">
-															<span style="background-image: url(img/depict-tag-01.png);"></span> <span style="background-image: url(img/depict-tag-02.png);"></span>
-															<span style="background-image: url(img/depict-tag-03.png);"></span> <span style="background-image: url(img/depict-tag-04.png);"></span>
+															<span style="background-image: url(img/depict-tag-01.png);"></span>
+															<span style="background-image: url(img/depict-tag-02.png);"></span>
+															<span style="background-image: url(img/depict-tag-03.png);"></span>
+															<span style="background-image: url(img/depict-tag-04.png);"></span>
 															<span style="background-image: url(img/depict-tag-05.png);"></span>
-														</div>
-													</div>
-													<div class="shops-item__extend">
-														<h4>Контактная информация</h4>
-														<ul>
-															<li>
-																<div class="dt">Адрес:</div>
-																<div class="dd">ул. Дунина-Мартинкевича, 11</div>
-															</li>
-															<li>
-																<div class="dt">Как добраться:</div>
-																<div class="dd">Автобус 163 (остановка Заславская)</div>
-															</li>
-															<li class="no-space">
-																<div class="dt">Телефон:</div>
-																<div class="dd">393-39-68, 393-39-67</div>
-															</li>
-															<li>
-																<div class="dt">Инфоцентр:</div>
-																<div class="dd">8 (017) 393-39-65</div>
-															</li>
-														</ul>
-														<div class="shops-item__img">
-															<img src="img/img-shops-01.jpg" alt="image description" />
-														</div>
-													</div>
-												</div>
-												<div class="shops-item shop-offline">
-													<div class="shops-item__title"><a href="#">ул. Громова, 35</a></div>
-													<div class="shops-item__list">
-														<div class="shops-item__work"><i class="depict-time"></i><span>08.00-23.00</span></div>
-														<div class="shops-item__tags">
-															<span style="background-image: url(img/depict-tag-01.png);"></span> <span style="background-image: url(img/depict-tag-02.png);"></span>
-															<span style="background-image: url(img/depict-tag-03.png);"></span> <span style="background-image: url(img/depict-tag-04.png);"></span>
 														</div>
 													</div>
 													<div class="shops-item__extend">
@@ -376,47 +330,18 @@
 											<div class="shops-group-tittle">Витебск</div>
 											<div class="shops-list">
 												<div class="shops-item">
-													<div class="shops-item__title"><a href="#">ул. Громова, 35</a></div>
+													<div class="shops-item__title"><a href="#" data-lacation-index="2">ул. Громова, 35</a></div>
 													<div class="shops-item__list">
-														<div class="shops-item__work"><i class="depict-time"></i><span>08.00-23.00</span></div>
+														<div class="shops-item__work">
+															<i class="depict-time"></i>
+															<div><span>08.00-23.00</span></div>
+														</div>
 														<div class="shops-item__tags">
-															<span style="background-image: url(img/depict-tag-01.png);"></span> <span style="background-image: url(img/depict-tag-02.png);"></span>
-															<span style="background-image: url(img/depict-tag-03.png);"></span> <span style="background-image: url(img/depict-tag-04.png);"></span>
+															<span style="background-image: url(img/depict-tag-01.png);"></span>
+															<span style="background-image: url(img/depict-tag-02.png);"></span>
+															<span style="background-image: url(img/depict-tag-03.png);"></span>
+															<span style="background-image: url(img/depict-tag-04.png);"></span>
 															<span style="background-image: url(img/depict-tag-05.png);"></span>
-														</div>
-													</div>
-													<div class="shops-item__extend">
-														<h4>Контактная информация</h4>
-														<ul>
-															<li>
-																<div class="dt">Адрес:</div>
-																<div class="dd">ул. Дунина-Мартинкевича, 11</div>
-															</li>
-															<li>
-																<div class="dt">Как добраться:</div>
-																<div class="dd">Автобус 163 (остановка Заславская)</div>
-															</li>
-															<li class="no-space">
-																<div class="dt">Телефон:</div>
-																<div class="dd">393-39-68, 393-39-67</div>
-															</li>
-															<li>
-																<div class="dt">Инфоцентр:</div>
-																<div class="dd">8 (017) 393-39-65</div>
-															</li>
-														</ul>
-														<div class="shops-item__img">
-															<img src="img/img-shops-01.jpg" alt="image description" />
-														</div>
-													</div>
-												</div>
-												<div class="shops-item shop-offline">
-													<div class="shops-item__title"><a href="#">ул. Громова, 35</a></div>
-													<div class="shops-item__list">
-														<div class="shops-item__work"><i class="depict-time"></i><span>08.00-23.00</span></div>
-														<div class="shops-item__tags">
-															<span style="background-image: url(img/depict-tag-01.png);"></span> <span style="background-image: url(img/depict-tag-02.png);"></span>
-															<span style="background-image: url(img/depict-tag-03.png);"></span> <span style="background-image: url(img/depict-tag-04.png);"></span>
 														</div>
 													</div>
 													<div class="shops-item__extend">
@@ -445,47 +370,18 @@
 													</div>
 												</div>
 												<div class="shops-item">
-													<div class="shops-item__title"><a href="#">ул. Громова, 35</a></div>
+													<div class="shops-item__title"><a href="#" data-lacation-index="3">ул. Громова, 35</a></div>
 													<div class="shops-item__list">
-														<div class="shops-item__work"><i class="depict-time"></i><span>08.00-23.00</span></div>
+														<div class="shops-item__work">
+															<i class="depict-time"></i>
+															<div><span>08.00-23.00</span></div>
+														</div>
 														<div class="shops-item__tags">
-															<span style="background-image: url(img/depict-tag-01.png);"></span> <span style="background-image: url(img/depict-tag-02.png);"></span>
-															<span style="background-image: url(img/depict-tag-03.png);"></span> <span style="background-image: url(img/depict-tag-04.png);"></span>
+															<span style="background-image: url(img/depict-tag-01.png);"></span>
+															<span style="background-image: url(img/depict-tag-02.png);"></span>
+															<span style="background-image: url(img/depict-tag-03.png);"></span>
+															<span style="background-image: url(img/depict-tag-04.png);"></span>
 															<span style="background-image: url(img/depict-tag-05.png);"></span>
-														</div>
-													</div>
-													<div class="shops-item__extend">
-														<h4>Контактная информация</h4>
-														<ul>
-															<li>
-																<div class="dt">Адрес:</div>
-																<div class="dd">ул. Дунина-Мартинкевича, 11</div>
-															</li>
-															<li>
-																<div class="dt">Как добраться:</div>
-																<div class="dd">Автобус 163 (остановка Заславская)</div>
-															</li>
-															<li class="no-space">
-																<div class="dt">Телефон:</div>
-																<div class="dd">393-39-68, 393-39-67</div>
-															</li>
-															<li>
-																<div class="dt">Инфоцентр:</div>
-																<div class="dd">8 (017) 393-39-65</div>
-															</li>
-														</ul>
-														<div class="shops-item__img">
-															<img src="img/img-shops-01.jpg" alt="image description" />
-														</div>
-													</div>
-												</div>
-												<div class="shops-item shop-offline">
-													<div class="shops-item__title"><a href="#">ул. Громова, 35</a></div>
-													<div class="shops-item__list">
-														<div class="shops-item__work"><i class="depict-time"></i><span>08.00-23.00</span></div>
-														<div class="shops-item__tags">
-															<span style="background-image: url(img/depict-tag-01.png);"></span> <span style="background-image: url(img/depict-tag-02.png);"></span>
-															<span style="background-image: url(img/depict-tag-03.png);"></span> <span style="background-image: url(img/depict-tag-04.png);"></span>
 														</div>
 													</div>
 													<div class="shops-item__extend">
@@ -901,16 +797,11 @@
 <!--Map-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnFqiG7GVEuZZeE5XCILGj1Tqz1KOMye8&sensor=false&extension=.js&language=ru"></script>
 <script>
-	var pinMap = 'img/depict-map.png';
-
 	var localObjects = [
 		[
-			{lat: 53.9071097, lng: 27.4923474}, //coordinates of marker
-			{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
-			pinMap,
-			13,
+			{lat: 53.9071097, lng: 27.4923474},
 			{
-				title: 'ул. Дунина-Марцинкевича, 11',
+				title: 'ул. Дунина-Марцинкевича (0), 11',
 				time: '<div><span>08.00-23.00</span><span>08.00-23.00</span></div>',
 				phone: '<div><span>8 (017) 228-17-35</span><span>8 (017) 228-17-35</span></div>',
 				tags: '<div class="mam-popup__shops-tags">' +
@@ -923,14 +814,11 @@
 				more: '<a href="#" class="more">Подробнее</a>'
 			}
 		],[
-			{lat: 53.8584379, lng: 27.68927}, //coordinates of marker
-			{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
-			pinMap,
-			13,
+			{lat: 53.8584379, lng: 27.68927},
 			{
-				title: 'ул. Молодёжная, 1',
-				time: '<div><span>08.00-23.00</span><span>08.00-23.00</span></div>',
-				phone: '<div><span>8 (017) 228-17-35</span><span>8 (017) 228-17-35</span></div>',
+				title: 'ул. Молодёжная, 1 (1)',
+				time: '<div><span>08.00-23.00</span></div>',
+				phone: '<div><span>8 (017) 228-17-35</span></div>',
 				tags: '<div class="mam-popup__shops-tags">' +
 				'<span style="background-image: url(img/depict-tag-01.png);"></span>' +
 				'<span style="background-image: url(img/depict-tag-02.png);"></span>' +
@@ -940,14 +828,11 @@
 				more: '<a href="#" class="more">Подробнее</a>'
 			}
 		],[
-			{lat: 53.8519967, lng: 27.4429817}, //coordinates of marker
-			{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
-			pinMap,
-			13,
+			{lat: 53.8519967, lng: 27.4429817},
 			{
-				title: 'ул. Громова, 35',
-				time: '<div><span>08.00-23.00</span><span>08.00-23.00</span></div>',
-				phone: '<div><span>8 (017) 228-17-35</span><span>8 (017) 228-17-35</span></div>',
+				title: 'ул. Громова, 35 (2)',
+				time: '<div><span>08.00-23.00</span></div>',
+				phone: '<div><span>8 (017) 228-17-35</span></div>',
 				tags: '<div class="mam-popup__shops-tags">' +
 				'<span style="background-image: url(img/depict-tag-01.png);"></span>' +
 				'<span style="background-image: url(img/depict-tag-02.png);"></span>' +
@@ -956,14 +841,11 @@
 				more: '<a href="#" class="more">Подробнее</a>'
 			}
 		],[
-			{lat: 53.8557999, lng: 27.5103745}, //coordinates of marker
-			{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
-			pinMap,
-			13,
+			{lat: 53.8557999, lng: 27.5103745},
 			{
-				title: 'ул. Дунина-Марцинкевича, 11',
-				time: '<div><span>08.00-23.00</span><span>08.00-23.00</span></div>',
-				phone: '<div><span>8 (017) 228-17-35</span><span>8 (017) 228-17-35</span></div>',
+				title: 'ул. Дунина-Марцинкевича, 11 (3)',
+				time: '<div><span>08.00-23.00</span></div>',
+				phone: '<div><span>8 (017) 228-17-35</span></div>',
 				tags: '<div class="mam-popup__shops-tags">' +
 				'<span style="background-image: url(img/depict-tag-02.png);"></span>' +
 				'<span style="background-image: url(img/depict-tag-03.png);"></span>' +
@@ -973,14 +855,11 @@
 				more: '<a href="#" class="more">Подробнее</a>'
 			}
 		],[
-			{lat: 53.90413589, lng: 27.51337051}, //coordinates of marker
-			{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
-			pinMap,
-			13,
+			{lat: 53.90413589, lng: 27.51337051},
 			{
-				title: 'ул. Дунина-Марцинкевича, 11',
-				time: '<div><span>08.00-23.00</span><span>08.00-23.00</span></div>',
-				phone: '<div><span>8 (017) 228-17-35</span><span>8 (017) 228-17-35</span></div>',
+				title: 'ул. Дунина-Марцинкевича, 11 (4)',
+				time: '<div><span>08.00-23.00</span></div>',
+				phone: '<div><span>8 (017) 228-17-35</span></div>',
 				tags: '<div class="mam-popup__shops-tags">' +
 				'<span style="background-image: url(img/depict-tag-01.png);"></span>' +
 				'<span style="background-image: url(img/depict-tag-02.png);"></span>' +
@@ -991,32 +870,16 @@
 				more: '<a href="#" class="more">Подробнее</a>'
 			}
 		],[
-			{lat: 53.89523531, lng: 27.49414444}, //coordinates of marker
-			{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
-			pinMap,
-			13,
+			{lat: 53.9294113, lng: 27.62992859},
 			{
-				title: 'ул. Дунина-Марцинкевича, 11',
-				time: '<div><span>08.00-23.00</span><span>08.00-23.00</span></div>',
-				phone: '<div><span>8 (017) 228-17-35</span><span>8 (017) 228-17-35</span></div>',
+				title: 'ул. Орловская, 42 (5)',
+				time: '<div><span>08.00-23.00</span></div>',
+				phone: '<div><span>8 (017) 228-17-35</span></div>',
 				tags: '<div class="mam-popup__shops-tags">' +
+				'<span style="background-image: url(img/depict-tag-01.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-02.png);"></span>' +
 				'<span style="background-image: url(img/depict-tag-03.png);"></span>' +
 				'<span style="background-image: url(img/depict-tag-04.png);"></span>' +
-				'<span style="background-image: url(img/depict-tag-05.png);"></span>' +
-				'</div>',
-				more: '<a href="#" class="more">Подробнее</a>'
-			}
-		],[
-			{lat: 53.88977264, lng: 27.53620148}, //coordinates of marker
-			{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
-			pinMap,
-			13,
-			{
-				title: 'ул. Дунина-Марцинкевича, 11',
-				time: '<div><span>08.00-23.00</span><span>08.00-23.00</span></div>',
-				phone: '<div><span>8 (017) 228-17-35</span><span>8 (017) 228-17-35</span></div>',
-				tags: '<div class="mam-popup__shops-tags">' +
-				'<span style="background-image: url(img/depict-tag-03.png);"></span>' +
 				'<span style="background-image: url(img/depict-tag-05.png);"></span>' +
 				'</div>',
 				more: '<a href="#" class="more">Подробнее</a>'
