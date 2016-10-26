@@ -1198,10 +1198,10 @@ function shopsMap(){
 
 			infoWindow.setContent(
 				'<div class="map-popup">' +
-				'<h4>'+object[4].title+'</h4>' +
+				'<div class="map-popup__title">'+object[4].title+'</div>' +
 				'<div class="map-popup__list">' +
-				'<div class="map-popup__row"><i class="work-time">Адрес:</i>'+object[4].time+'</div>' +
-				'<div class="map-popup__row"><i class="phone">Тел.:</i>'+object[4].phone+'</div>' +
+				'<div class="map-popup__row work-time"><i class="depict-time"></i>'+object[4].time+'</div>' +
+				'<div class="map-popup__row"><i class="depict-phone"></i>'+object[4].phone+'</div>' +
 				'<div class="map-popup__row">'+object[4].tags+'</div>' +
 				'<div class="map-popup__row">'+object[4].more+'</div>' +
 				'</div>' +
@@ -1232,6 +1232,21 @@ function shopsMap(){
 	}
 }
 /*map init end*/
+
+/*add shadow tape*/
+function addShadowTape() {
+	var shadowTop = $('.js-shadow-tape-top');
+
+	$('.shops-aside-holder').scroll(function () {
+		console.log("$(this).position().top: ", $(this).scrollTop());
+		if ( $(this).scrollTop() > 0 ) {
+			shadowTop.stop().fadeIn();
+		} else {
+			shadowTop.stop().fadeOut();
+		}
+	});
+}
+/*add shadow tape end*/
 
 /**
  * sticky layout
@@ -1267,7 +1282,6 @@ function stickyLayout(){
 	});
 }
 /*sticky layout end*/
-
 
 /**!
  * footer at bottom
@@ -1333,6 +1347,7 @@ $(document).ready(function(){
 	initJsDrops();
 	clearFilter();
 	shopsMap();
+	addShadowTape();
 	// stickyLayout();
 
 	footerBottom();
