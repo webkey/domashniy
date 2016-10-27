@@ -65,6 +65,26 @@
 /*datetime*/
 /*datetime */
 
+/*topic*/
+.topic h1, .topic h2 {
+	float: none;
+	padding: 0;
+}
+.topic .control{
+	float: none;
+	margin: 0 -10px;
+}
+.control-item {
+	min-width: 0;
+	width: 50%;
+	margin: 0;
+	padding: 0 10px;
+}
+.control-item [class*="btn-"]{
+	display: block;
+}
+/*topic end*/
+
 /*inline popup*/
 .inline-popup,
 .inline-popup_narrow{

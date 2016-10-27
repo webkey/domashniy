@@ -4,7 +4,7 @@
 var resizeByWidth = true;
 
 var prevWidth = -1;
-$(window).resize(function () {
+$(window).on('debouncedresize', function () {
 	var currentWidth = $('body').outerWidth();
 	resizeByWidth = prevWidth != currentWidth;
 	if(resizeByWidth){
@@ -1050,47 +1050,62 @@ function initJsDrops(){
 /*init js drop end*/
 
 /*hide extra items*/
+
 function compactor() {
+	var $main = $('.location-filter');
+	if (!$main.length) return false;
+
+	var $itemsWrap = $('.location-filter-holder');
+	var $itemsContainer = $('.location-filter-list');
+
+	$(window).load(function () {
+		$itemsContainer.contents().clone().appendTo('#location-filter-clone');
+	});
+
+	var $items = $itemsContainer.find('.location-filter-item');
+
+	var itemsContainerWidth, lengthAllItems, actualTotalWidth, hideItemsLength;
+
+	var minWidthItem = 180;
+
 	var $cloneContainer = $('.js-compactor-clone');
-	var minWidthItem = 200;
+	var $moreBtnTextMain = $cloneContainer.find('.js-compactor-btn-main');
+	var $moreBtnTextAlt = $cloneContainer.find('.js-compactor-btn-alt');
 
-	$('.location-filter-list').clone().appendTo('#location-filter-clone');
+	$(window).on('load resizeByWidth', function () {
 
-	var $phonesList = $('.location-filter-holder');
-	var $phonesItem = $phonesList.children('.location-filter-list').children('.location-filter-item');
+		itemsContainerWidth = ($cloneContainer.is(':visible')) ? $itemsContainer.width() : $itemsContainer.width() - $cloneContainer.outerWidth();
+		lengthAllItems = $items.length;
 
-	var phonesListWidth = $phonesList.outerWidth();
-	var lengthPhonesItems = $phonesItem.length;
+		actualTotalWidth = lengthAllItems * minWidthItem;
+		hideItemsLength = ( itemsContainerWidth > actualTotalWidth ) ? 0 : Math.abs(Math.ceil((actualTotalWidth - itemsContainerWidth)/minWidthItem));
 
-	// Количество ячеек, которые нужно "переместить" в дроп "все номера"
-	var cloneLength = Math.abs(Math.ceil((lengthPhonesItems * minWidthItem - phonesListWidth)/minWidthItem));
+		// set the width of the visible items (in percent)
+		$items.css('width', (1/(lengthAllItems - hideItemsLength)*100)+'%');
+		// $cloneContainer.css('width', newWidthItem);
 
-	// Изменяем ширину ячеек в зависимости от их количества
-	var newWidthItem = (1/(lengthPhonesItems - cloneLength)*100)+'%';
-	$phonesItem.css('width', newWidthItem);
-	$cloneContainer.css('width', newWidthItem);
+		// if(lengthAllItems == hideItemsLength + 1){
+		if(lengthAllItems == hideItemsLength){
+			$moreBtnTextAlt.attr('style','display: inline-block;');
+			$moreBtnTextMain.attr('style','display: none;');
+		} else {
+			$moreBtnTextAlt.attr('style','display: none;');
+			$moreBtnTextMain.attr('style','display: inline-block;');
+		}
 
-	// Изменяем текст кнопки "все номера" в зависимости от того, она одна в хедере, или нет.
-	var $phsInnerMain = $cloneContainer.find('.js-compactor-btn-main');
-	var $phsInnerAlt = $cloneContainer.find('.js-compactor-btn-alt');
-	if(lengthPhonesItems == cloneLength + 1){
-		$phsInnerAlt.attr('style','display: inline-block;');
-		$phsInnerMain.attr('style','display: none;');
-	} else {
-		$phsInnerAlt.attr('style','display: none;');
-		$phsInnerMain.attr('style','display: inline-block;');
-	}
+		// $main.toggleClass('show-clone', lengthAllItems * minWidthItem > itemsContainerWidth);
+		$main.toggleClass('show-btn-more', hideItemsLength > 0);
+		$main.toggleClass('hide-all-items', hideItemsLength === lengthAllItems);
 
-	$cloneContainer.toggleClass('show-clone', lengthPhonesItems * minWidthItem > phonesListWidth);
+		$('.location-filter-item').removeClass('compactor-cloned');
 
-	$('.location-filter-item').removeClass('compactor-cloned');
-	var $phonesCloneItems = $('.location-filter-drop', $cloneContainer).children('.location-filter-list').children('.location-filter-item');
-
-	for(var i = 0; i <= cloneLength; i++){
-		var indexCloned = lengthPhonesItems - i - 1;
-		$($phonesItem[indexCloned]).addClass('compactor-cloned');
-		$($phonesCloneItems[indexCloned]).addClass('compactor-cloned');
-	}
+		for ( var i = 0; i <= hideItemsLength; i++ ) {
+			// var indexCloned = lengthAllItems - i - 1;
+			var indexCloned = lengthAllItems - i;
+			$($items[indexCloned]).addClass('compactor-cloned');
+			$($cloneContainer.find('.location-filter-item')[indexCloned]).addClass('compactor-cloned');
+		}
+	});
 }
 /*clone and collapse phones*/
 
@@ -1239,25 +1254,27 @@ function shopsMap() {
 	var markers = [];
 	var zoom = 11;
 	var pinMap = 'img/depict-map.png';
+	var map;
+	var center = {lat: 53.8963501, lng: 27.551555};
 
 	function initialize() {
 
 		var mapOptions = {
 			zoom: zoom,
-			center: {lat: 53.8963501, lng: 27.551555},
+			center: center,
 			mapTypeControl: false,
 			scaleControl: false,
 			scrollwheel: false
 		};
 
-		var map = new google.maps.Map(document.getElementById("shops-map"), mapOptions);
+		map = new google.maps.Map(document.getElementById("shops-map"), mapOptions);
 
 		var marker, i;
-		var infowindow = new google.maps.InfoWindow();
+		var infoWindow = new google.maps.InfoWindow();
 
 
 		google.maps.event.addListener(map, 'click', function() {
-			infowindow.close();
+			infoWindow.close();
 		});
 
 
@@ -1273,7 +1290,7 @@ function shopsMap() {
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {
 
 				return function() {
-					infowindow.setContent('<div class="map-popup">' +
+					infoWindow.setContent('<div class="map-popup">' +
 						'<div class="map-popup__title">'+localObjects[i][1].title+'</div>' +
 						'<div class="map-popup__list">' +
 						'<div class="map-popup__row work-time"><i class="depict-time"></i>'+localObjects[i][1].time+'</div>' +
@@ -1282,26 +1299,100 @@ function shopsMap() {
 						'<div class="map-popup__row">'+localObjects[i][1].more+'</div>' +
 						'</div>' +
 						'</div>');
-					infowindow.open(map, marker);
+					infoWindow.open(map, marker);
 				}
 			})(marker, i));
 
 			markers.push(marker);
 		}
 
+		// Try HTML5 geolocation.
+		// if (navigator.geolocation) {
+		// 	navigator.geolocation.getCurrentPosition(function(position) {
+		// 		var pos = {
+		// 			lat: position.coords.latitude,
+		// 			lng: position.coords.longitude
+		// 		};
+		//
+		// 		infoWindow.setPosition(pos);
+		// 		infoWindow.setContent('Location found.');
+		// 		map.setCenter(pos);
+		// 	}, function() {
+		// 		handleLocationError(true, infoWindow, map.getCenter());
+		// 	});
+		// } else {
+		// 	handleLocationError(false, infoWindow, map.getCenter());
+		// }
 	}
+
 	google.maps.event.addDomListener(window, 'load', initialize);
 
-	function myClick(id){
+	// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+	// 	infoWindow.setPosition(pos);
+	// 	infoWindow.setContent(browserHasGeolocation ?
+	// 		'Error: The Geolocation service failed.' :
+	// 		'Error: Your browser doesn\'t support geolocation.');
+	// }
+
+	/*aligned after resize*/
+	var resizeTimer;
+	$(window).on('debouncedresize', function () {
+		clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(function () {
+			moveToLocation(center, zoom);
+		}, 500);
+	});
+
+	/*move to location*/
+	function moveToLocation(center, zoom){
+		map.panTo(center);
+		map.setZoom(zoom);
+	}
+
+	/*event show infoWindow*/
+	function showInfoWindow(id){
 		google.maps.event.trigger(markers[id], 'click');
 	}
 
+	/*event on click shops list*/
+	var moveLocationTime;
 	$('.shops-item__title a').on('click', function (e) {
 		e.preventDefault();
 
 		var index = $(this).data('lacation-index');
 
-		myClick(index);
+		moveToLocation(localObjects[index][0], 14);
+
+		clearTimeout(moveLocationTime);
+		moveLocationTime = setTimeout(function () {
+			showInfoWindow(index)
+		}, 200);
+	});
+
+	/*choose city*/
+	$('.select-city').on('change', 'select', function () {
+
+		var $this = $(this);
+
+		var localLatDef = 53.528889;
+		var locallngDef = 28.045;
+		var localZoomDef = 6;
+
+		var localLat = $this.find('option:selected').data('lat') || localLatDef;
+		var localLng = $this.find('option:selected').data('lng') || locallngDef;
+		var localZoom = $this.find('option:selected').data('zoom') || localZoomDef;
+		var localGroup = $this.find('option:selected').data('city') || 'shops-all';
+
+		moveToLocation({lat: localLat, lng: localLng}, localZoom);
+
+		var $container = $('.shops-aside-holder');
+
+		$container.find('.shops-aside-group').hide(0);
+		$container.find('.'+ localGroup).show(0);
+
+		if ( localGroup === 'shops-all' ) {
+			$container.find('.shops-aside-group').show(0);
+		}
 	});
 }
 
@@ -1444,10 +1535,6 @@ $(window).load(function () {
 	preloadPage();
 });
 
-$(window).on('load resizeByWidth', function () {
-	compactor();
-});
-
 $(document).ready(function(){
 	placeholderInit();
 	if(DESKTOP){
@@ -1466,6 +1553,7 @@ $(document).ready(function(){
 	filterJob();
 	equalHeightInit();
 	initJsDrops();
+	compactor();
 	clearFilter();
 	shopsMap();
 	addShadowTape();

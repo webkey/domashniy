@@ -30,6 +30,7 @@ h4 {
 
 .max-wrap,
 .max-wrap-md,
+.max-wrap-md-alt,
 .max-wrap-sm,
 .max-wrap-home{
 	padding-left: 20px !important;
@@ -212,8 +213,36 @@ label {
 /*datetime */
 
 /*topic*/
-.topic h1, .topic h2 {
-	padding: 0 10px 0 0;
+.topic .control{
+	margin: 0;
+	position: relative;
+}
+.control-item{
+	float: none;
+	width: 100%;
+	padding: 0 50px 0 0;
+}
+.control-item:first-child{
+	float: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0;
+	width: 50px;
+	z-index: 1;
+}
+.control-item [class*="btn-"]{
+	text-align: center;
+	min-width: 0;
+	height: 50px;
+	padding-left: 0;
+	padding-right: 0;
+}
+.control-item [class*="btn-"] span{
+	display: none;
+}
+.control-item [class*="btn-"] i{
+	margin-right: 0;
 }
 /*topic end*/
 
@@ -336,6 +365,32 @@ label {
 	margin: -5px 0 0 0;
 }
 /*article options end*/
+
+/*location filter*/
+.location-filter-holder {
+	margin-right: 50px;
+}
+.location-filter-wrap .btn-clear-form {
+	padding: 0;
+	width: 50px;
+	text-align: center;
+}
+.btn-clear-form>i{
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	top: auto;
+	left: auto;
+	margin: 0;
+}
+.btn-clear-form>span{
+	display: none;
+}
+
+.location-filter-drop{
+	width: 253px;
+}
+/*location filter end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/

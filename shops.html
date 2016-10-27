@@ -103,19 +103,20 @@
 							<!--control-->
 							<div class="control">
 								<div class="control-item">
-									<div class="select">
-										<select class="cselect" name="filter-type" id="expl-label-06">
-											<option value="0">Выберите город</option>
-											<option value="1">Минск</option>
-											<option value="2">Витебск</option>
-											<option value="3">Гомель</option>
-											<option value="4">Гродно</option>
-											<option value="3">Брест</option>
-										</select>
-									</div>
+									<a href="#" class="btn-default"><i class="depict-location"></i><span>Моё местоположение</span></a>
 								</div>
 								<div class="control-item">
-									<a href="#" class="btn-default"><i class="depict-location"></i><span>Моё местоположение</span></a>
+									<div class="select select-city">
+										<select class="cselect" name="filter-type" id="expl-label-06">
+											<option value="0">Выберите город</option>
+											<option value="1" data-lat="53.528889" data-lng="28.045" data-zoom="6" data-city="shops-all">Вся Беларусь</option>
+											<option value="2" data-lat="53.9045398" data-lng="27.5615244" data-zoom="11" data-city="shops-minsk">Минск</option>
+											<option value="3" data-lat="55.1848061" data-lng="30.201622" data-zoom="13" data-city="shops-vitebsk">Витебск</option>
+											<option value="4" data-lat="52.4411761" data-lng="30.9878462" data-zoom="13" data-city="shops-gomel">Гомель</option>
+											<option value="5" data-lat="53.68308535" data-lng="23.83561134" data-zoom="13" data-city="shops-grodno">Гродно</option>
+											<option value="6" data-lat="52.0976214" data-lng="23.7340503" data-zoom="13" data-city="shops-brest">Брест</option>
+										</select>
+									</div>
 								</div>
 							</div>
 							<!--control end-->
@@ -213,10 +214,10 @@
 									<div class="location-filter-clone js-compactor-clone">
 										<a href="#" class="location-filter-btn js-compactor-btn">
 											<div class="location-filter-inner js-compactor-btn-main"><i></i>Ещё</div>
-											<div class="location-filter-inner js-compactor-btn-alt">Фильтры</div>
+											<div class="location-filter-inner js-compactor-btn-alt"><i></i>Фильтры</div>
 										</a>
-										<div class="location-filter-drop" id="location-filter-clone">
-											<!--add the cloned phs__list here-->
+										<div class="location-filter-drop">
+											<div class="location-filter-drop__list" id="location-filter-clone"><!--add the cloned phs__list here--></div>
 										</div>
 									</div>
 								</div>
@@ -244,168 +245,585 @@
 									<div class="shops-aside-frame">
 										<div class="shadow-tape-top js-shadow-tape-top"></div>
 										<div class="shops-aside-holder">
-											<div class="shops-group-tittle">Минск</div>
-											<div class="shops-list">
-												<div class="shops-item">
-													<div class="shops-item__title"><a href="#" data-lacation-index="0">ул. Громова, 35</a></div>
-													<div class="shops-item__list">
-														<div class="shops-item__work">
-															<i class="depict-time"></i>
-															<div><span>08.00-23.00</span></div>
+											<div class="shops-aside-group shops-minsk">
+												<div class="shops-group-tittle">Минск</div>
+												<div class="shops-list">
+													<div class="shops-item">
+														<div class="shops-item__title"><a href="#" data-lacation-index="0">ул. Дунина-Марцинкевича, 11</a></div>
+														<div class="shops-item__list">
+															<div class="shops-item__work">
+																<i class="depict-time"></i>
+																<div><span>08.00-23.00</span></div>
+															</div>
+															<div class="shops-item__tags">
+																<span style="background-image: url(img/depict-tag-01.png);"></span>
+																<span style="background-image: url(img/depict-tag-02.png);"></span>
+																<span style="background-image: url(img/depict-tag-03.png);"></span>
+																<span style="background-image: url(img/depict-tag-04.png);"></span>
+																<span style="background-image: url(img/depict-tag-05.png);"></span>
+															</div>
 														</div>
-														<div class="shops-item__tags">
-															<span style="background-image: url(img/depict-tag-01.png);"></span>
-															<span style="background-image: url(img/depict-tag-02.png);"></span>
-															<span style="background-image: url(img/depict-tag-03.png);"></span>
-															<span style="background-image: url(img/depict-tag-04.png);"></span>
-															<span style="background-image: url(img/depict-tag-05.png);"></span>
-														</div>
-													</div>
-													<div class="shops-item__extend">
-														<h4>Контактная информация</h4>
-														<ul>
-															<li>
-																<div class="dt">Адрес:</div>
-																<div class="dd">ул. Дунина-Мартинкевича, 11</div>
-															</li>
-															<li>
-																<div class="dt">Как добраться:</div>
-																<div class="dd">Автобус 163 (остановка Заславская)</div>
-															</li>
-															<li class="no-space">
-																<div class="dt">Телефон:</div>
-																<div class="dd">393-39-68, 393-39-67</div>
-															</li>
-															<li>
-																<div class="dt">Инфоцентр:</div>
-																<div class="dd">8 (017) 393-39-65</div>
-															</li>
-														</ul>
-														<div class="shops-item__img">
-															<img src="img/img-shops-01.jpg" alt="image description" />
-														</div>
-													</div>
-												</div>
-												<div class="shops-item shop-offline">
-													<div class="shops-item__title"><a href="#" data-lacation-index="1">ул. Громова, 35</a></div>
-													<div class="shops-item__list">
-														<div class="shops-item__work">
-															<i class="depict-time"></i>
-															<div><span>08.00-23.00</span></div>
-														</div>
-														<div class="shops-item__tags">
-															<span style="background-image: url(img/depict-tag-01.png);"></span>
-															<span style="background-image: url(img/depict-tag-02.png);"></span>
-															<span style="background-image: url(img/depict-tag-03.png);"></span>
-															<span style="background-image: url(img/depict-tag-04.png);"></span>
-															<span style="background-image: url(img/depict-tag-05.png);"></span>
+														<div class="shops-item__extend">
+															<h4>Контактная информация</h4>
+															<ul>
+																<li>
+																	<div class="dt">Адрес:</div>
+																	<div class="dd">ул. Дунина-Мартинкевича, 11</div>
+																</li>
+																<li>
+																	<div class="dt">Как добраться:</div>
+																	<div class="dd">Автобус 163 (остановка Заславская)</div>
+																</li>
+																<li class="no-space">
+																	<div class="dt">Телефон:</div>
+																	<div class="dd">393-39-68, 393-39-67</div>
+																</li>
+																<li>
+																	<div class="dt">Инфоцентр:</div>
+																	<div class="dd">8 (017) 393-39-65</div>
+																</li>
+															</ul>
+															<div class="shops-item__img">
+																<img src="img/img-shops-01.jpg" alt="image description" />
+															</div>
 														</div>
 													</div>
-													<div class="shops-item__extend">
-														<h4>Контактная информация</h4>
-														<ul>
-															<li>
-																<div class="dt">Адрес:</div>
-																<div class="dd">ул. Дунина-Мартинкевича, 11</div>
-															</li>
-															<li>
-																<div class="dt">Как добраться:</div>
-																<div class="dd">Автобус 163 (остановка Заславская)</div>
-															</li>
-															<li class="no-space">
-																<div class="dt">Телефон:</div>
-																<div class="dd">393-39-68, 393-39-67</div>
-															</li>
-															<li>
-																<div class="dt">Инфоцентр:</div>
-																<div class="dd">8 (017) 393-39-65</div>
-															</li>
-														</ul>
-														<div class="shops-item__img">
-															<img src="img/img-shops-01.jpg" alt="image description" />
+													<div class="shops-item">
+														<div class="shops-item__title"><a href="#" data-lacation-index="1">ул. Молодёжная, 1</a></div>
+														<div class="shops-item__list">
+															<div class="shops-item__work">
+																<i class="depict-time"></i>
+																<div><span>08.00-23.00</span></div>
+															</div>
+															<div class="shops-item__tags">
+																<span style="background-image: url(img/depict-tag-01.png);"></span>
+																<span style="background-image: url(img/depict-tag-02.png);"></span>
+																<span style="background-image: url(img/depict-tag-03.png);"></span>
+																<span style="background-image: url(img/depict-tag-04.png);"></span>
+																<span style="background-image: url(img/depict-tag-05.png);"></span>
+															</div>
+														</div>
+														<div class="shops-item__extend">
+															<h4>Контактная информация</h4>
+															<ul>
+																<li>
+																	<div class="dt">Адрес:</div>
+																	<div class="dd">ул. Дунина-Мартинкевича, 11</div>
+																</li>
+																<li>
+																	<div class="dt">Как добраться:</div>
+																	<div class="dd">Автобус 163 (остановка Заславская)</div>
+																</li>
+																<li class="no-space">
+																	<div class="dt">Телефон:</div>
+																	<div class="dd">393-39-68, 393-39-67</div>
+																</li>
+																<li>
+																	<div class="dt">Инфоцентр:</div>
+																	<div class="dd">8 (017) 393-39-65</div>
+																</li>
+															</ul>
+															<div class="shops-item__img">
+																<img src="img/img-shops-01.jpg" alt="image description" />
+															</div>
+														</div>
+													</div>
+													<div class="shops-item">
+														<div class="shops-item__title"><a href="#" data-lacation-index="2">ул. Громова, 35</a></div>
+														<div class="shops-item__list">
+															<div class="shops-item__work">
+																<i class="depict-time"></i>
+																<div><span>08.00-23.00</span></div>
+															</div>
+															<div class="shops-item__tags">
+																<span style="background-image: url(img/depict-tag-01.png);"></span>
+																<span style="background-image: url(img/depict-tag-02.png);"></span>
+																<span style="background-image: url(img/depict-tag-03.png);"></span>
+																<span style="background-image: url(img/depict-tag-04.png);"></span>
+																<span style="background-image: url(img/depict-tag-05.png);"></span>
+															</div>
+														</div>
+														<div class="shops-item__extend">
+															<h4>Контактная информация</h4>
+															<ul>
+																<li>
+																	<div class="dt">Адрес:</div>
+																	<div class="dd">ул. Дунина-Мартинкевича, 11</div>
+																</li>
+																<li>
+																	<div class="dt">Как добраться:</div>
+																	<div class="dd">Автобус 163 (остановка Заславская)</div>
+																</li>
+																<li class="no-space">
+																	<div class="dt">Телефон:</div>
+																	<div class="dd">393-39-68, 393-39-67</div>
+																</li>
+																<li>
+																	<div class="dt">Инфоцентр:</div>
+																	<div class="dd">8 (017) 393-39-65</div>
+																</li>
+															</ul>
+															<div class="shops-item__img">
+																<img src="img/img-shops-01.jpg" alt="image description" />
+															</div>
+														</div>
+													</div>
+													<div class="shops-item">
+														<div class="shops-item__title"><a href="#" data-lacation-index="3">парк Белая Дача</a></div>
+														<div class="shops-item__list">
+															<div class="shops-item__work">
+																<i class="depict-time"></i>
+																<div><span>08.00-23.00</span></div>
+															</div>
+															<div class="shops-item__tags">
+																<span style="background-image: url(img/depict-tag-01.png);"></span>
+																<span style="background-image: url(img/depict-tag-02.png);"></span>
+																<span style="background-image: url(img/depict-tag-03.png);"></span>
+																<span style="background-image: url(img/depict-tag-04.png);"></span>
+																<span style="background-image: url(img/depict-tag-05.png);"></span>
+															</div>
+														</div>
+														<div class="shops-item__extend">
+															<h4>Контактная информация</h4>
+															<ul>
+																<li>
+																	<div class="dt">Адрес:</div>
+																	<div class="dd">ул. Дунина-Мартинкевича, 11</div>
+																</li>
+																<li>
+																	<div class="dt">Как добраться:</div>
+																	<div class="dd">Автобус 163 (остановка Заславская)</div>
+																</li>
+																<li class="no-space">
+																	<div class="dt">Телефон:</div>
+																	<div class="dd">393-39-68, 393-39-67</div>
+																</li>
+																<li>
+																	<div class="dt">Инфоцентр:</div>
+																	<div class="dd">8 (017) 393-39-65</div>
+																</li>
+															</ul>
+															<div class="shops-item__img">
+																<img src="img/img-shops-01.jpg" alt="image description" />
+															</div>
+														</div>
+													</div>
+													<div class="shops-item shop-offline">
+														<div class="shops-item__title"><a href="#" data-lacation-index="4">пр. Независимости, 109</a></div>
+														<div class="shops-item__list">
+															<div class="shops-item__work">
+																<i class="depict-time"></i>
+																<div><span>08.00-23.00</span></div>
+															</div>
+															<div class="shops-item__tags">
+																<span style="background-image: url(img/depict-tag-01.png);"></span>
+																<span style="background-image: url(img/depict-tag-02.png);"></span>
+																<span style="background-image: url(img/depict-tag-03.png);"></span>
+																<span style="background-image: url(img/depict-tag-04.png);"></span>
+																<span style="background-image: url(img/depict-tag-05.png);"></span>
+															</div>
+														</div>
+														<div class="shops-item__extend">
+															<h4>Контактная информация</h4>
+															<ul>
+																<li>
+																	<div class="dt">Адрес:</div>
+																	<div class="dd">ул. Дунина-Мартинкевича, 11</div>
+																</li>
+																<li>
+																	<div class="dt">Как добраться:</div>
+																	<div class="dd">Автобус 163 (остановка Заславская)</div>
+																</li>
+																<li class="no-space">
+																	<div class="dt">Телефон:</div>
+																	<div class="dd">393-39-68, 393-39-67</div>
+																</li>
+																<li>
+																	<div class="dt">Инфоцентр:</div>
+																	<div class="dd">8 (017) 393-39-65</div>
+																</li>
+															</ul>
+															<div class="shops-item__img">
+																<img src="img/img-shops-01.jpg" alt="image description" />
+															</div>
+														</div>
+													</div>
+													<div class="shops-item shop-offline">
+														<div class="shops-item__title"><a href="#" data-lacation-index="5">ул. Орловская, 42</a></div>
+														<div class="shops-item__list">
+															<div class="shops-item__work">
+																<i class="depict-time"></i>
+																<div><span>08.00-23.00</span></div>
+															</div>
+															<div class="shops-item__tags">
+																<span style="background-image: url(img/depict-tag-01.png);"></span>
+																<span style="background-image: url(img/depict-tag-02.png);"></span>
+																<span style="background-image: url(img/depict-tag-05.png);"></span>
+															</div>
+														</div>
+														<div class="shops-item__extend">
+															<h4>Контактная информация</h4>
+															<ul>
+																<li>
+																	<div class="dt">Адрес:</div>
+																	<div class="dd">ул. Дунина-Мартинкевича, 11</div>
+																</li>
+																<li>
+																	<div class="dt">Как добраться:</div>
+																	<div class="dd">Автобус 163 (остановка Заславская)</div>
+																</li>
+																<li class="no-space">
+																	<div class="dt">Телефон:</div>
+																	<div class="dd">393-39-68, 393-39-67</div>
+																</li>
+																<li>
+																	<div class="dt">Инфоцентр:</div>
+																	<div class="dd">8 (017) 393-39-65</div>
+																</li>
+															</ul>
+															<div class="shops-item__img">
+																<img src="img/img-shops-01.jpg" alt="image description" />
+															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-											<div class="shops-group-tittle">Витебск</div>
-											<div class="shops-list">
-												<div class="shops-item">
-													<div class="shops-item__title"><a href="#" data-lacation-index="2">ул. Громова, 35</a></div>
-													<div class="shops-item__list">
-														<div class="shops-item__work">
-															<i class="depict-time"></i>
-															<div><span>08.00-23.00</span></div>
+											<div class="shops-aside-group shops-brest">
+												<div class="shops-group-tittle">Брест</div>
+												<div class="shops-list">
+													<div class="shops-item">
+														<div class="shops-item__title"><a href="#" data-lacation-index="6">ул. Пионерская, 202</a></div>
+														<div class="shops-item__list">
+															<div class="shops-item__work">
+																<i class="depict-time"></i>
+																<div><span>08.00-23.00</span></div>
+															</div>
+															<div class="shops-item__tags">
+																<span style="background-image: url(img/depict-tag-01.png);"></span>
+																<span style="background-image: url(img/depict-tag-02.png);"></span>
+																<span style="background-image: url(img/depict-tag-03.png);"></span>
+																<span style="background-image: url(img/depict-tag-04.png);"></span>
+																<span style="background-image: url(img/depict-tag-05.png);"></span>
+															</div>
 														</div>
-														<div class="shops-item__tags">
-															<span style="background-image: url(img/depict-tag-01.png);"></span>
-															<span style="background-image: url(img/depict-tag-02.png);"></span>
-															<span style="background-image: url(img/depict-tag-03.png);"></span>
-															<span style="background-image: url(img/depict-tag-04.png);"></span>
-															<span style="background-image: url(img/depict-tag-05.png);"></span>
-														</div>
-													</div>
-													<div class="shops-item__extend">
-														<h4>Контактная информация</h4>
-														<ul>
-															<li>
-																<div class="dt">Адрес:</div>
-																<div class="dd">ул. Дунина-Мартинкевича, 11</div>
-															</li>
-															<li>
-																<div class="dt">Как добраться:</div>
-																<div class="dd">Автобус 163 (остановка Заславская)</div>
-															</li>
-															<li class="no-space">
-																<div class="dt">Телефон:</div>
-																<div class="dd">393-39-68, 393-39-67</div>
-															</li>
-															<li>
-																<div class="dt">Инфоцентр:</div>
-																<div class="dd">8 (017) 393-39-65</div>
-															</li>
-														</ul>
-														<div class="shops-item__img">
-															<img src="img/img-shops-01.jpg" alt="image description" />
+														<div class="shops-item__extend">
+															<h4>Контактная информация</h4>
+															<ul>
+																<li>
+																	<div class="dt">Адрес:</div>
+																	<div class="dd">ул. Дунина-Мартинкевича, 11</div>
+																</li>
+																<li>
+																	<div class="dt">Как добраться:</div>
+																	<div class="dd">Автобус 163 (остановка Заславская)</div>
+																</li>
+																<li class="no-space">
+																	<div class="dt">Телефон:</div>
+																	<div class="dd">393-39-68, 393-39-67</div>
+																</li>
+																<li>
+																	<div class="dt">Инфоцентр:</div>
+																	<div class="dd">8 (017) 393-39-65</div>
+																</li>
+															</ul>
+															<div class="shops-item__img">
+																<img src="img/img-shops-01.jpg" alt="image description" />
+															</div>
 														</div>
 													</div>
 												</div>
-												<div class="shops-item">
-													<div class="shops-item__title"><a href="#" data-lacation-index="3">ул. Громова, 35</a></div>
-													<div class="shops-item__list">
-														<div class="shops-item__work">
-															<i class="depict-time"></i>
-															<div><span>08.00-23.00</span></div>
+											</div>
+											<div class="shops-aside-group shops-grodno">
+												<div class="shops-group-tittle">Гродно</div>
+												<div class="shops-list">
+													<div class="shops-item">
+														<div class="shops-item__title"><a href="#" data-lacation-index="7">ул. Суворова, 2</a></div>
+														<div class="shops-item__list">
+															<div class="shops-item__work">
+																<i class="depict-time"></i>
+																<div><span>08.00-23.00</span></div>
+															</div>
+															<div class="shops-item__tags">
+																<span style="background-image: url(img/depict-tag-01.png);"></span>
+																<span style="background-image: url(img/depict-tag-02.png);"></span>
+																<span style="background-image: url(img/depict-tag-03.png);"></span>
+																<span style="background-image: url(img/depict-tag-04.png);"></span>
+																<span style="background-image: url(img/depict-tag-05.png);"></span>
+															</div>
 														</div>
-														<div class="shops-item__tags">
-															<span style="background-image: url(img/depict-tag-01.png);"></span>
-															<span style="background-image: url(img/depict-tag-02.png);"></span>
-															<span style="background-image: url(img/depict-tag-03.png);"></span>
-															<span style="background-image: url(img/depict-tag-04.png);"></span>
-															<span style="background-image: url(img/depict-tag-05.png);"></span>
+														<div class="shops-item__extend">
+															<h4>Контактная информация</h4>
+															<ul>
+																<li>
+																	<div class="dt">Адрес:</div>
+																	<div class="dd">ул. Дунина-Мартинкевича, 11</div>
+																</li>
+																<li>
+																	<div class="dt">Как добраться:</div>
+																	<div class="dd">Автобус 163 (остановка Заславская)</div>
+																</li>
+																<li class="no-space">
+																	<div class="dt">Телефон:</div>
+																	<div class="dd">393-39-68, 393-39-67</div>
+																</li>
+																<li>
+																	<div class="dt">Инфоцентр:</div>
+																	<div class="dd">8 (017) 393-39-65</div>
+																</li>
+															</ul>
+															<div class="shops-item__img">
+																<img src="img/img-shops-01.jpg" alt="image description" />
+															</div>
 														</div>
 													</div>
-													<div class="shops-item__extend">
-														<h4>Контактная информация</h4>
-														<ul>
-															<li>
-																<div class="dt">Адрес:</div>
-																<div class="dd">ул. Дунина-Мартинкевича, 11</div>
-															</li>
-															<li>
-																<div class="dt">Как добраться:</div>
-																<div class="dd">Автобус 163 (остановка Заславская)</div>
-															</li>
-															<li class="no-space">
-																<div class="dt">Телефон:</div>
-																<div class="dd">393-39-68, 393-39-67</div>
-															</li>
-															<li>
-																<div class="dt">Инфоцентр:</div>
-																<div class="dd">8 (017) 393-39-65</div>
-															</li>
-														</ul>
-														<div class="shops-item__img">
-															<img src="img/img-shops-01.jpg" alt="image description" />
+													<div class="shops-item">
+														<div class="shops-item__title"><a href="#" data-lacation-index="8">ул. Курчатова, 37</a></div>
+														<div class="shops-item__list">
+															<div class="shops-item__work">
+																<i class="depict-time"></i>
+																<div><span>08.00-23.00</span></div>
+															</div>
+															<div class="shops-item__tags">
+																<span style="background-image: url(img/depict-tag-01.png);"></span>
+																<span style="background-image: url(img/depict-tag-02.png);"></span>
+																<span style="background-image: url(img/depict-tag-03.png);"></span>
+																<span style="background-image: url(img/depict-tag-04.png);"></span>
+																<span style="background-image: url(img/depict-tag-05.png);"></span>
+															</div>
+														</div>
+														<div class="shops-item__extend">
+															<h4>Контактная информация</h4>
+															<ul>
+																<li>
+																	<div class="dt">Адрес:</div>
+																	<div class="dd">ул. Дунина-Мартинкевича, 11</div>
+																</li>
+																<li>
+																	<div class="dt">Как добраться:</div>
+																	<div class="dd">Автобус 163 (остановка Заславская)</div>
+																</li>
+																<li class="no-space">
+																	<div class="dt">Телефон:</div>
+																	<div class="dd">393-39-68, 393-39-67</div>
+																</li>
+																<li>
+																	<div class="dt">Инфоцентр:</div>
+																	<div class="dd">8 (017) 393-39-65</div>
+																</li>
+															</ul>
+															<div class="shops-item__img">
+																<img src="img/img-shops-01.jpg" alt="image description" />
+															</div>
+														</div>
+													</div>
+													<div class="shops-item">
+														<div class="shops-item__title"><a href="#" data-lacation-index="9">ул. Белой Росы, 13</a></div>
+														<div class="shops-item__list">
+															<div class="shops-item__work">
+																<i class="depict-time"></i>
+																<div><span>08.00-23.00</span></div>
+															</div>
+															<div class="shops-item__tags">
+																<span style="background-image: url(img/depict-tag-01.png);"></span>
+																<span style="background-image: url(img/depict-tag-02.png);"></span>
+																<span style="background-image: url(img/depict-tag-03.png);"></span>
+																<span style="background-image: url(img/depict-tag-04.png);"></span>
+																<span style="background-image: url(img/depict-tag-05.png);"></span>
+															</div>
+														</div>
+														<div class="shops-item__extend">
+															<h4>Контактная информация</h4>
+															<ul>
+																<li>
+																	<div class="dt">Адрес:</div>
+																	<div class="dd">ул. Дунина-Мартинкевича, 11</div>
+																</li>
+																<li>
+																	<div class="dt">Как добраться:</div>
+																	<div class="dd">Автобус 163 (остановка Заславская)</div>
+																</li>
+																<li class="no-space">
+																	<div class="dt">Телефон:</div>
+																	<div class="dd">393-39-68, 393-39-67</div>
+																</li>
+																<li>
+																	<div class="dt">Инфоцентр:</div>
+																	<div class="dd">8 (017) 393-39-65</div>
+																</li>
+															</ul>
+															<div class="shops-item__img">
+																<img src="img/img-shops-01.jpg" alt="image description" />
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="shops-aside-group shops-gomel">
+												<div class="shops-group-tittle">Гомель</div>
+												<div class="shops-list">
+													<div class="shops-item">
+														<div class="shops-item__title"><a href="#" data-lacation-index="10">ул. Правды, 12</a></div>
+														<div class="shops-item__list">
+															<div class="shops-item__work">
+																<i class="depict-time"></i>
+																<div><span>08.00-23.00</span></div>
+															</div>
+															<div class="shops-item__tags">
+																<span style="background-image: url(img/depict-tag-01.png);"></span>
+																<span style="background-image: url(img/depict-tag-02.png);"></span>
+																<span style="background-image: url(img/depict-tag-03.png);"></span>
+																<span style="background-image: url(img/depict-tag-04.png);"></span>
+																<span style="background-image: url(img/depict-tag-05.png);"></span>
+															</div>
+														</div>
+														<div class="shops-item__extend">
+															<h4>Контактная информация</h4>
+															<ul>
+																<li>
+																	<div class="dt">Адрес:</div>
+																	<div class="dd">ул. Дунина-Мартинкевича, 11</div>
+																</li>
+																<li>
+																	<div class="dt">Как добраться:</div>
+																	<div class="dd">Автобус 163 (остановка Заславская)</div>
+																</li>
+																<li class="no-space">
+																	<div class="dt">Телефон:</div>
+																	<div class="dd">393-39-68, 393-39-67</div>
+																</li>
+																<li>
+																	<div class="dt">Инфоцентр:</div>
+																	<div class="dd">8 (017) 393-39-65</div>
+																</li>
+															</ul>
+															<div class="shops-item__img">
+																<img src="img/img-shops-01.jpg" alt="image description" />
+															</div>
+														</div>
+													</div>
+													<div class="shops-item">
+														<div class="shops-item__title"><a href="#" data-lacation-index="11">ул. Вишневая, 2</a></div>
+														<div class="shops-item__list">
+															<div class="shops-item__work">
+																<i class="depict-time"></i>
+																<div><span>08.00-23.00</span></div>
+															</div>
+															<div class="shops-item__tags">
+																<span style="background-image: url(img/depict-tag-01.png);"></span>
+																<span style="background-image: url(img/depict-tag-02.png);"></span>
+																<span style="background-image: url(img/depict-tag-03.png);"></span>
+																<span style="background-image: url(img/depict-tag-04.png);"></span>
+																<span style="background-image: url(img/depict-tag-05.png);"></span>
+															</div>
+														</div>
+														<div class="shops-item__extend">
+															<h4>Контактная информация</h4>
+															<ul>
+																<li>
+																	<div class="dt">Адрес:</div>
+																	<div class="dd">ул. Дунина-Мартинкевича, 11</div>
+																</li>
+																<li>
+																	<div class="dt">Как добраться:</div>
+																	<div class="dd">Автобус 163 (остановка Заславская)</div>
+																</li>
+																<li class="no-space">
+																	<div class="dt">Телефон:</div>
+																	<div class="dd">393-39-68, 393-39-67</div>
+																</li>
+																<li>
+																	<div class="dt">Инфоцентр:</div>
+																	<div class="dd">8 (017) 393-39-65</div>
+																</li>
+															</ul>
+															<div class="shops-item__img">
+																<img src="img/img-shops-01.jpg" alt="image description" />
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="shops-aside-group shops-vitebsk">
+												<div class="shops-group-tittle">Витебск</div>
+												<div class="shops-list">
+													<div class="shops-item">
+														<div class="shops-item__title"><a href="#" data-lacation-index="12">ул. Чкалова, 34</a></div>
+														<div class="shops-item__list">
+															<div class="shops-item__work">
+																<i class="depict-time"></i>
+																<div><span>08.00-23.00</span></div>
+															</div>
+															<div class="shops-item__tags">
+																<span style="background-image: url(img/depict-tag-01.png);"></span>
+																<span style="background-image: url(img/depict-tag-02.png);"></span>
+																<span style="background-image: url(img/depict-tag-03.png);"></span>
+																<span style="background-image: url(img/depict-tag-04.png);"></span>
+																<span style="background-image: url(img/depict-tag-05.png);"></span>
+															</div>
+														</div>
+														<div class="shops-item__extend">
+															<h4>Контактная информация</h4>
+															<ul>
+																<li>
+																	<div class="dt">Адрес:</div>
+																	<div class="dd">ул. Дунина-Мартинкевича, 11</div>
+																</li>
+																<li>
+																	<div class="dt">Как добраться:</div>
+																	<div class="dd">Автобус 163 (остановка Заславская)</div>
+																</li>
+																<li class="no-space">
+																	<div class="dt">Телефон:</div>
+																	<div class="dd">393-39-68, 393-39-67</div>
+																</li>
+																<li>
+																	<div class="dt">Инфоцентр:</div>
+																	<div class="dd">8 (017) 393-39-65</div>
+																</li>
+															</ul>
+															<div class="shops-item__img">
+																<img src="img/img-shops-01.jpg" alt="image description" />
+															</div>
+														</div>
+													</div>
+													<div class="shops-item">
+														<div class="shops-item__title"><a href="#" data-lacation-index="13">ул. Сивакова, 17</a></div>
+														<div class="shops-item__list">
+															<div class="shops-item__work">
+																<i class="depict-time"></i>
+																<div><span>08.00-23.00</span></div>
+															</div>
+															<div class="shops-item__tags">
+																<span style="background-image: url(img/depict-tag-01.png);"></span>
+																<span style="background-image: url(img/depict-tag-02.png);"></span>
+																<span style="background-image: url(img/depict-tag-03.png);"></span>
+																<span style="background-image: url(img/depict-tag-04.png);"></span>
+																<span style="background-image: url(img/depict-tag-05.png);"></span>
+															</div>
+														</div>
+														<div class="shops-item__extend">
+															<h4>Контактная информация</h4>
+															<ul>
+																<li>
+																	<div class="dt">Адрес:</div>
+																	<div class="dd">ул. Дунина-Мартинкевича, 11</div>
+																</li>
+																<li>
+																	<div class="dt">Как добраться:</div>
+																	<div class="dd">Автобус 163 (остановка Заславская)</div>
+																</li>
+																<li class="no-space">
+																	<div class="dt">Телефон:</div>
+																	<div class="dd">393-39-68, 393-39-67</div>
+																</li>
+																<li>
+																	<div class="dt">Инфоцентр:</div>
+																	<div class="dd">8 (017) 393-39-65</div>
+																</li>
+															</ul>
+															<div class="shops-item__img">
+																<img src="img/img-shops-01.jpg" alt="image description" />
+															</div>
 														</div>
 													</div>
 												</div>
@@ -798,10 +1216,10 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnFqiG7GVEuZZeE5XCILGj1Tqz1KOMye8&sensor=false&extension=.js&language=ru"></script>
 <script>
 	var localObjects = [
-		[
+		[ // 0 Minsk
 			{lat: 53.9071097, lng: 27.4923474},
 			{
-				title: 'ул. Дунина-Марцинкевича (0), 11',
+				title: 'ул. Дунина-Марцинкевича, 11',
 				time: '<div><span>08.00-23.00</span><span>08.00-23.00</span></div>',
 				phone: '<div><span>8 (017) 228-17-35</span><span>8 (017) 228-17-35</span></div>',
 				tags: '<div class="mam-popup__shops-tags">' +
@@ -813,10 +1231,10 @@
 				'</div>',
 				more: '<a href="#" class="more">Подробнее</a>'
 			}
-		],[
+		],[ // 1 Minsk
 			{lat: 53.8584379, lng: 27.68927},
 			{
-				title: 'ул. Молодёжная, 1 (1)',
+				title: 'ул. Молодёжная, 1',
 				time: '<div><span>08.00-23.00</span></div>',
 				phone: '<div><span>8 (017) 228-17-35</span></div>',
 				tags: '<div class="mam-popup__shops-tags">' +
@@ -827,10 +1245,10 @@
 				'</div>',
 				more: '<a href="#" class="more">Подробнее</a>'
 			}
-		],[
+		],[ // 2 Minsk
 			{lat: 53.8519967, lng: 27.4429817},
 			{
-				title: 'ул. Громова, 35 (2)',
+				title: 'ул. Громова, 35',
 				time: '<div><span>08.00-23.00</span></div>',
 				phone: '<div><span>8 (017) 228-17-35</span></div>',
 				tags: '<div class="mam-popup__shops-tags">' +
@@ -840,10 +1258,10 @@
 				'</div>',
 				more: '<a href="#" class="more">Подробнее</a>'
 			}
-		],[
+		],[ // 3 Minsk
 			{lat: 53.8557999, lng: 27.5103745},
 			{
-				title: 'ул. Дунина-Марцинкевича, 11 (3)',
+				title: 'парк Белая Дача',
 				time: '<div><span>08.00-23.00</span></div>',
 				phone: '<div><span>8 (017) 228-17-35</span></div>',
 				tags: '<div class="mam-popup__shops-tags">' +
@@ -854,10 +1272,10 @@
 				'</div>',
 				more: '<a href="#" class="more">Подробнее</a>'
 			}
-		],[
+		],[ // 4 Minsk
 			{lat: 53.90413589, lng: 27.51337051},
 			{
-				title: 'ул. Дунина-Марцинкевича, 11 (4)',
+				title: 'пр. Независимости, 109',
 				time: '<div><span>08.00-23.00</span></div>',
 				phone: '<div><span>8 (017) 228-17-35</span></div>',
 				tags: '<div class="mam-popup__shops-tags">' +
@@ -869,10 +1287,10 @@
 				'</div>',
 				more: '<a href="#" class="more">Подробнее</a>'
 			}
-		],[
+		],[ // 5 Minsk
 			{lat: 53.9294113, lng: 27.62992859},
 			{
-				title: 'ул. Орловская, 42 (5)',
+				title: 'ул. Орловская, 42',
 				time: '<div><span>08.00-23.00</span></div>',
 				phone: '<div><span>8 (017) 228-17-35</span></div>',
 				tags: '<div class="mam-popup__shops-tags">' +
@@ -881,6 +1299,117 @@
 				'<span style="background-image: url(img/depict-tag-03.png);"></span>' +
 				'<span style="background-image: url(img/depict-tag-04.png);"></span>' +
 				'<span style="background-image: url(img/depict-tag-05.png);"></span>' +
+				'</div>',
+				more: '<a href="#" class="more">Подробнее</a>'
+			}
+		],[ // 6 Brest
+			{lat: 52.09603308, lng: 23.73230875},
+			{
+				title: 'ул. Пионерская, 202',
+				time: '<div><span>08.00-23.00</span></div>',
+				phone: '<div><span>8 (017) 228-17-35</span></div>',
+				tags: '<div class="mam-popup__shops-tags">' +
+				'<span style="background-image: url(img/depict-tag-01.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-03.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-04.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-05.png);"></span>' +
+				'</div>',
+				more: '<a href="#" class="more">Подробнее</a>'
+			}
+		],[ // 7 Grodno
+			{lat: 53.65705065, lng: 23.80033493},
+			{
+				title: 'ул. Суворова, 2',
+				time: '<div><span>08.00-23.00</span></div>',
+				phone: '<div><span>8 (017) 228-17-35</span></div>',
+				tags: '<div class="mam-popup__shops-tags">' +
+				'<span style="background-image: url(img/depict-tag-01.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-02.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-03.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-04.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-05.png);"></span>' +
+				'</div>',
+				more: '<a href="#" class="more">Подробнее</a>'
+			}
+		],[ // 8 Grodno
+			{lat: 53.70415049, lng: 23.80872488},
+			{
+				title: 'ул. Курчатова, 37',
+				time: '<div><span>08.00-23.00</span></div>',
+				phone: '<div><span>8 (017) 228-17-35</span></div>',
+				tags: '<div class="mam-popup__shops-tags">' +
+				'<span style="background-image: url(img/depict-tag-01.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-02.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-03.png);"></span>' +
+				'</div>',
+				more: '<a href="#" class="more">Подробнее</a>'
+			}
+		],[ // 9 Grodno
+			{lat: 53.71325682, lng: 23.86767983},
+			{
+				title: 'ул. Белой Росы, 13',
+				time: '<div><span>08.00-23.00</span></div>',
+				phone: '<div><span>8 (017) 228-17-35</span></div>',
+				tags: '<div class="mam-popup__shops-tags">' +
+				'<span style="background-image: url(img/depict-tag-04.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-05.png);"></span>' +
+				'</div>',
+				more: '<a href="#" class="more">Подробнее</a>'
+			}
+		],[ // 10 Gomel
+			{lat: 52.41358458, lng: 30.94770849},
+			{
+				title: 'ул. Правды, 12',
+				time: '<div><span>08.00-23.00</span></div>',
+				phone: '<div><span>8 (017) 228-17-35</span></div>',
+				tags: '<div class="mam-popup__shops-tags">' +
+				'<span style="background-image: url(img/depict-tag-01.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-03.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-05.png);"></span>' +
+				'</div>',
+				more: '<a href="#" class="more">Подробнее</a>'
+			}
+		],[ // 11 Gomel
+			{lat: 52.46070331, lng: 31.04333997},
+			{
+				title: 'ул. Вишневая, 2',
+				time: '<div><span>08.00-23.00</span></div>',
+				phone: '<div><span>8 (017) 228-17-35</span></div>',
+				tags: '<div class="mam-popup__shops-tags">' +
+				'<span style="background-image: url(img/depict-tag-02.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-03.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-04.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-05.png);"></span>' +
+				'</div>',
+				more: '<a href="#" class="more">Подробнее</a>'
+			}
+		],[
+			// 12 Vitebsk
+			{lat: 55.16815738, lng: 30.21237016},
+			{
+				title: 'ул. Чкалова, 34',
+				time: '<div><span>08.00-23.00</span></div>',
+				phone: '<div><span>8 (017) 228-17-35</span></div>',
+				tags: '<div class="mam-popup__shops-tags">' +
+				'<span style="background-image: url(img/depict-tag-01.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-02.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-04.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-05.png);"></span>' +
+				'</div>',
+				more: '<a href="#" class="more">Подробнее</a>'
+			}
+		],[
+			// 13 Vitebsk
+			{lat: 55.20207973, lng: 30.1603809},
+			{
+				title: 'ул. Сивакова, 17',
+				time: '<div><span>08.00-23.00</span></div>',
+				phone: '<div><span>8 (017) 228-17-35</span></div>',
+				tags: '<div class="mam-popup__shops-tags">' +
+				'<span style="background-image: url(img/depict-tag-01.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-02.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-03.png);"></span>' +
+				'<span style="background-image: url(img/depict-tag-04.png);"></span>' +
 				'</div>',
 				more: '<a href="#" class="more">Подробнее</a>'
 			}
