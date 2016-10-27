@@ -3757,7 +3757,8 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	font-size: 0;
 	letter-spacing: -4px;
 }
-.desktop .btn-clear-form:hover{ background: #005936; }
+.desktop .btn-clear-form:hover,
+.btn-clear-form:active{ background: #005936; }
 .location-filter-wrap .btn-clear-form{
 	border-left: 1px solid #005936;
 }
