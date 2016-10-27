@@ -58,7 +58,6 @@
 /*breadcrumbs*/
 .breadcrumbs {
 	font-size: 16px;
-	padding: 0 30px 20px;
 }
 /*breadcrumbs end*/
 
@@ -75,10 +74,15 @@
 	margin: 0 -10px;
 }
 .control-item {
+	float: left;
 	min-width: 0;
 	width: 50%;
 	margin: 0;
 	padding: 0 10px;
+}
+.control-item:first-child {
+	float: right;
+	margin: 0;
 }
 .control-item [class*="btn-"]{
 	display: block;

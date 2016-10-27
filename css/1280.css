@@ -126,6 +126,9 @@
 /*CONTENT*/
 
 /*breadcrumbs*/
+.breadcrumbs {
+	padding-bottom: 10px;
+}
 /*breadcrumbs end*/
 
 /*datetime*/
@@ -171,6 +174,7 @@
 /*shops result*/
 .shops-result{
 	width: 100%;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.34);
 }
 
 /*shops view switcher*/
@@ -183,8 +187,28 @@
 /*shops view switcher end*/
 /*shops result end*/
 
+/*location filter*/
+.show-btn-more .location-filter-holder {
+	padding-right: 90px;
+}
+.location-filter-clone {
+	width: 90px;
+}
+.location-filter-btn{
+	padding: 0;
+	text-align: center;
+}
+.location-filter-drop{
+	width: 277px;
+}
+/*location filter end*/
+
 /*shops network*/
+.shops{
+	padding-top: 60px;
+}
 .shops-holder{
+	height: 700px;
 	width: 200%;
 	-webkit-transform: translate(-50%, 0);
 	-ms-transform: translate(-50%, 0);
@@ -203,6 +227,7 @@
 }
 .shops-aside{
 	width: 50%;
+	padding-top: 0;
 }
 /*shops network end*/
 /*CONTENT end*/
@@ -211,6 +236,9 @@
 /*SIDEBAR end*/
 
 /*SUB NAV*/
+.sub-nav{
+	display: none;
+}
 /*SUB NAV end*/
 
 /*MAIN end*/

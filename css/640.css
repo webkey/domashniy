@@ -33,8 +33,8 @@ h4 {
 .max-wrap-md-alt,
 .max-wrap-sm,
 .max-wrap-home{
-	padding-left: 20px !important;
-	padding-right: 20px !important;
+	padding-left: 10px !important;
+	padding-right: 10px !important;
 }
 .wrapper > .max-wrap,
 .footer > .max-wrap{
@@ -204,8 +204,8 @@ label {
 /*breadcrumbs*/
 .breadcrumbs {
 	font-size: 14px;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 /*breadcrumbs end*/
 
@@ -213,6 +213,9 @@ label {
 /*datetime */
 
 /*topic*/
+.topic {
+	padding-bottom: 20px;
+}
 .topic .control{
 	margin: 0;
 	position: relative;
@@ -220,7 +223,7 @@ label {
 .control-item{
 	float: none;
 	width: 100%;
-	padding: 0 50px 0 0;
+	padding: 0 60px 0 0;
 }
 .control-item:first-child{
 	float: none;
@@ -368,11 +371,24 @@ label {
 
 /*location filter*/
 .location-filter-holder {
-	margin-right: 50px;
+	margin-right: 60px;
+}
+.show-btn-more .location-filter-holder {
+	padding-right: 90px;
+}
+.location-filter-clone {
+	width: 90px;
+}
+.location-filter-btn{
+	padding: 0;
+	text-align: center;
+}
+.location-filter-btn .location-filter-inner > i {
+	left: 20px;
 }
 .location-filter-wrap .btn-clear-form {
 	padding: 0;
-	width: 50px;
+	width: 60px;
 	text-align: center;
 }
 .btn-clear-form>i{
@@ -389,8 +405,21 @@ label {
 
 .location-filter-drop{
 	width: 253px;
+	max-height: 320px;
+}
+.show-drop .location-filter-drop {
+	left: -103px;
+}
+.hide-all-items .location-filter-drop{
+	left: 0;
 }
 /*location filter end*/
+
+/*shops network*/
+.shops-holder{
+	height: 348px;
+}
+/*shops network end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/

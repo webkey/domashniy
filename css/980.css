@@ -109,6 +109,33 @@
 /*datetime*/
 /*datetime */
 
+/*topic*/
+.topic h1, .topic h2 {
+	float: none;
+	padding: 0;
+}
+.topic .control {
+	float: none;
+	direction: rtl;
+	text-align: left;
+}
+.topic .control:before,
+.topic .control:after { content: ""; display: table; }
+.topic .control:after { clear: both; }
+.control-item,
+.control-item:first-child {
+	float: none;
+	margin: 0 20px 0 0;
+}
+.control-item{
+	direction: ltr;
+	display: inline-block;
+	vertical-align: top;
+}
+.control-item>*{
+}
+/*topic end*/
+
 /*adverts box*/
 .home-page .sidebar .adverts-box,
 .home-page .sidebar-content .adverts-box{
@@ -232,6 +259,12 @@
 	margin-bottom: 10px;
 }
 /*banners*/
+
+/*shops network*/
+.shops-holder{
+	height: 572px;
+}
+/*shops network end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/

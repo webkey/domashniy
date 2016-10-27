@@ -1066,7 +1066,7 @@ function compactor() {
 
 	var itemsContainerWidth, lengthAllItems, actualTotalWidth, hideItemsLength;
 
-	var minWidthItem = 180;
+	var minWidthItem = 165;
 
 	var $cloneContainer = $('.js-compactor-clone');
 	var $moreBtnTextMain = $cloneContainer.find('.js-compactor-btn-main');
