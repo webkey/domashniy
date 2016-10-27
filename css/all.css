@@ -3736,32 +3736,49 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .location-filter-clone .location-filter-item .location-filter-item:before{ display: none; }
 /*location filter clone end*/
 
-.btn-clear-form{
+.clear-form{
+	width: 187px;
 	position: absolute;
 	right: 0;
 	top: 0;
-	/*height: 100%;*/
-	min-height: 60px;
-	width: 187px;
+	box-sizing: border-box;
+}
+.clear-form:after{
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background: url(../img/empty.png);
+}
+.location-filter-wrap .clear-form{
+	border-left: 1px solid #005936;
+}
+.clear-form.btn-active:after{
+	content: none;
+}
+.btn-clear-form{
+	position: relative;
+	display: block;
 	box-sizing: border-box;
 	font-family: 'lozen-cond-bold', sans-serif;
 	text-transform: uppercase;
 	line-height: 20px;
 	color: #fff;
 	padding: 0 20px 0 50px;
-	-webkit-transition-property: background;
-	transition-property: background;
+	opacity: 0.2;
+	-webkit-transition-property: background, opacity;
+	transition-property: background, opacity;
 	-webkit-transition-duration: 0.2s;
 	transition-duration: 0.2s;
 
 	font-size: 0;
 	letter-spacing: -4px;
 }
+.btn-active .btn-clear-form{ opacity: 1; }
 .desktop .btn-clear-form:hover,
 .btn-clear-form:active{ background: #005936; }
-.location-filter-wrap .btn-clear-form{
-	border-left: 1px solid #005936;
-}
 .btn-clear-form:before{
 	content: '';
 	display: inline-block;
@@ -3774,7 +3791,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	position: absolute;
 	left: 15%;
 	top: 50%;
-	margin-top: -9px;
+	margin-top: -10px;
 	background: url(../img/depict-clear-2x.png) no-repeat 50% 50%;
 	-webkit-background-size: 16px;
 	background-size: 16px;

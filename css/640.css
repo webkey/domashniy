@@ -386,9 +386,9 @@ label {
 .location-filter-btn .location-filter-inner > i {
 	left: 20px;
 }
-.location-filter-wrap .btn-clear-form {
+.clear-form { width: 60px; }
+.btn-clear-form {
 	padding: 0;
-	width: 60px;
 	text-align: center;
 }
 .btn-clear-form>i{

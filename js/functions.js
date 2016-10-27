@@ -1111,13 +1111,33 @@ function compactor() {
 
 /*clear filter*/
 function clearFilter() {
+
+	var $filters = $('.location-filter');
+
+	// clear button state
+	function clearBtnState() {
+		$('.clear-form').toggleClass('btn-active', !!$filters.find(':checked').length);
+	}
+	clearBtnState();
+
+	$filters.on('change', 'input', function () {
+		clearBtnState();
+	});
+
+	// clear button event
+	var timeClear;
+
 	$('.btn-clear-form').on('click', function (e) {
 		e.preventDefault();
 
-		var $wrap = $('.location-filter-wrap');
+		var $main = $('.location-filter-wrap');
 
-		$(this).closest($wrap).find(':checked').prop( "checked", false );
+		$(this).closest($main).find(':checked').prop( "checked", false );
 
+		clearTimeout(timeClear);
+		timeClear = setTimeout(function () {
+			clearBtnState();
+		}, 300);
 	});
 }
 /*clear filter end*/
