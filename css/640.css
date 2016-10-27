@@ -415,11 +415,41 @@ label {
 }
 /*location filter end*/
 
+/*shops result*/
+.shops-result{
+	padding-left: 20px;
+}
+/*shops result*/
+
 /*shops network*/
 .shops-holder{
 	height: 348px;
 }
+.shops-group-tittle{
+	padding: 10px 20px;
+}
+.shops-item {
+	padding: 12px 20px;
+}
+.shops-item__title,
+.map-popup__title{
+	padding: 0 0 8px;
+}
+.shops-item__extend h4{
+	font-size: 15px;
+	line-height: 21px;
+	padding-bottom: 10px;
+}
+.shops-item__extend ul, .user-content .shops-item__extend ul {
+	padding: 0 0 10px;
+	font-size: 14px;
+	line-height: 19px;
+}
 /*shops network end*/
+
+/*shops item*/
+
+/*shops item end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/

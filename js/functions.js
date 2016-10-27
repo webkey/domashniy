@@ -775,12 +775,13 @@ function shopsAccordion() {
 			if ( $(this).hasClass('active') ) {
 
 				$hand.removeClass('active');
+				$container.removeClass('item-active')
 
 				return false;
 
 			}
 
-			$(this).addClass('active').closest($container).find($content).stop().slideDown('fast');
+			$(this).addClass('active').closest($container).addClass('item-active').find($content).stop().slideDown('fast');
 		})
 	}
 }
