@@ -110,7 +110,7 @@
 								<div class="box-wrap">
 									<!--contacts info-->
 									<div class="contacts-info">
-										<table>
+										<table class="contacts-info-list">
 											<tr>
 												<td>Общий тел. /факс</td>
 												<td>
@@ -148,7 +148,7 @@
 												<td>
 													<div class="row">+375 17 234-58-24</div>
 													<div class="row">+375 17 224-60-240</div>
-													<div class="row">domashniy@gmail.com</div>
+													<div class="row"><a href="mailto:domashniy@gmail.com">domashniy@gmail.com</a></div>
 												</td>
 											</tr>
 											<tr>
@@ -156,20 +156,78 @@
 												<td>+375 17 277-58-20</td>
 											</tr>
 										</table>
+										<div class="contacts-requisites">
+											<strong class="text-label">Реквизиты:</strong>
+											<div>ОДО «Домашний» в лице Генерального директора Хомича А. В., действующего на основании Устава</div>
+											<div>223011, Республика Беларусь, г. Минск, Ул. Молодёжная, д.1</div>
+											<div>УНП 1034343466, ОКПО 213515135</div>
+											<div>Р/с 3015477888 в ОАО «БПС-Сбербанк», г. Минск, ул. Кирова, 1, код 405</div>
+										</div>
 									</div>
 									<!--contacts info end-->
-									<!--contacts requisites-->
-									<div class="contacts-requisites">
-										<strong class="align-left">Реквизиты:</strong> ОДО «Домашний» в лице Генерального директора Хомича А. В., действующего на основании Устава
-										223011, Республика Беларусь, г. Минск, Ул. Молодёжная, д.1
-										УНП 1034343466, ОКПО 213515135
-										Р/с 3015477888 в ОАО «БПС-Сбербанк», г. Минск, ул. Кирова, 1, код 405
-									</div>
-									<!--contacts requisites end-->
 								</div>
 							</div>
 							<div class="col-wrap">
-								<div class="box-wrap">lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, atque aut beatae dolorem expedita facere facilis fugit harum hic magnam maiores, nam nulla perferendis placeat porro quo tempora ut voluptates.</div>
+								<div class="box-wrap">
+									<!--contacts form-->
+									<div class="contacts-form user-form">
+										<div class="max-wrap-sm">
+											<form action="#" method="get">
+												<strong class="form-title">Форма обратной связи</strong>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="user-form__name-field">Имя*</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="user-form__name-field">
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="user-form__phone-field">Контактный телефон*</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="user-form__phone-field">
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="user-form__firm-field">Организация*</label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="user-form__firm-field">
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="user-form__comment-field">Дополнительная информация</label>
+													</div>
+													<div class="input-holder">
+														<textarea id="user-form__comment-field"></textarea>
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="user-form__comment-field">Дополнительная информация</label>
+													</div>
+													<div class="input-holder upload-file__container">
+														<label class="upload-file__label" for="user-form__file-field"><i class="depict-clip"></i><span>Прикрепить файл</span></label>
+														<input class="upload-file" name="files[]" type="file" id="user-form__file-field" multiple="multiple">
+													</div>
+												</div>
+												<div class="form-footer">
+													<div class="form-buttons">
+														<input class="btn-default" type="submit" value="Отправить">
+													</div>
+													<div class="form-note">
+														<div class="form-note__item">* Поля обязательные для заполнения</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+									<!--contacts form end-->
+								</div>
 							</div>
 						</div>
 					</div>
@@ -186,7 +244,7 @@
 						<div class="advert">
 							<div class="advert__figure">
 								<div class="advert__img">
-									<img src="img/img-new-offer-01.jpg" alt="image description" />
+									<img src="img/img-new-offer-01.jpg" alt="image | description" />
 								</div>
 							</div>
 							<div class="advert__content">

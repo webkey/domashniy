@@ -35,7 +35,7 @@ body{
 	height: 100%;
 	color: #000;
 	min-width: 320px;
-	background: #655446 url(../img/bg-page.jpg) 50% 0;
+	background: #caab8f url(../img/bg-page.jpg) 50% 0;
 }
 h1, h2, h3, h4, h5, h6{
 	font-family: 'days-regular', sans-serif;
@@ -4199,6 +4199,24 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 /*shops map*/
 
 /*contacts caption*/
+.contacts-caption,
+.contacts-info{
+	padding: 35px 40px 32px;
+}
+.contacts-title{
+	font-family: 'lozen-cond-bold', sans-serif;
+	font-size: 18px;
+	line-height: 26px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	padding: 0 0 7px;
+}
+.contacts-adr{
+	font-style: normal;
+	color: #666;
+	padding: 0 0 7px;
+	margin: 0;
+}
 /*contacts caption end*/
 
 /*contacts map*/
@@ -4296,6 +4314,82 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	margin: 0 10px 13px 0 !important;
 }
 /*contacts map end*/
+
+/*contacts info*/
+.contacts-info-list{
+	border: none;
+	width: 100%;
+	table-layout: fixed;
+	margin: 0 0 30px;
+}
+.contacts-info-list td{
+	font-size: 18px;
+	line-height: 26px;
+	color: #666;
+	border: none;
+	padding: 18px 0 18px 40px;
+	box-sizing: border-box;
+}
+.contacts-info-list td:first-child{
+	font-family: 'lozen-cond-bold', sans-serif;
+	line-height: 20px;
+	color: #000;
+	padding-left: 0;
+}
+.contacts-requisites{
+	font-size: 16px;
+	line-height: 23px;
+	color: #666;
+	padding: 0 0 13px;
+}
+.contacts-requisites .text-label{
+	float: left;
+	margin-right: 6px;
+	color: #000;
+}
+.contacts-requisites p{
+	padding: 0;
+}
+/*contacts info end*/
+
+/*contacts form*/
+.contacts-form{
+	padding: 52px 0 60px;
+}
+.contacts-form .max-wrap-sm{
+	max-width: 422px;
+}
+.contacts-form .form-title{
+	font-size: 24px;
+	text-align: left;
+	padding: 0 0 34px;
+}
+.contacts-form .label-holder {
+	float: none;
+	width: auto;
+	min-width: 0;
+	padding-right: 0;
+	padding-top: 0;
+}
+.contacts-form .input-holder {
+	margin-left: 0;
+	padding: 0;
+}
+.contacts-form .label-holder:before{
+	content: none;
+}
+.contacts-form .upload-file__label,
+.contacts-form input[type="submit"] {
+	min-width: 172px;
+	padding: 12px 10px 12px 16px;
+}
+.contacts-form .upload-file__label .depict-clip{
+	margin-right: 4px;
+}
+.contacts-form .form-footer {
+	padding-left: 0;
+}
+/*contacts form end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/

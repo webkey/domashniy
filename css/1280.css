@@ -13,6 +13,14 @@
 .layout{
 	margin-right: 0;
 }
+
+.cols-wrap{ margin: 0; }
+.col-wrap{
+	float: none;
+	display: block;
+	width: auto;
+	padding: 0;
+}
 /*MAIN BLOCKS end*/
 
 /*btn*/

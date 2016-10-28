@@ -251,7 +251,7 @@ label {
 
 /*user form*/
 .user-form {
-	padding: 30px 0;
+	padding: 10px 0 20px;
 	margin-bottom: 10px;
 }
 .user-form .label-holder {
@@ -447,9 +447,35 @@ label {
 }
 /*shops network end*/
 
-/*shops item*/
+/*contacts caption*/
+.contacts-caption, .contacts-info {
+	padding: 13px 10px 10px;
+}
+/*contacts caption end*/
 
-/*shops item end*/
+/*contacts info*/
+.contacts-info-list{
+	display: block;
+	table-layout: auto;
+	margin: 0 0 20px;
+}
+.contacts-info-list tr{
+	display: block;
+}
+.contacts-info-list td{
+	display: block;
+	font-size: 16px;
+	line-height: 20px;
+	padding: 0 0 20px;
+}
+.contacts-info-list td:first-child{
+	padding: 0 0 10px;
+}
+.contacts-requisites{
+	font-size: 14px;
+	color: #666;
+}
+/*contacts info end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/
