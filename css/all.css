@@ -235,6 +235,23 @@ strong em{
 	padding: 0 !important;
 }
 
+.cols-wrap{
+	margin: 0 -10px;
+}
+.cols-wrap:before,
+.cols-wrap:after { content: ""; display: table; }
+.cols-wrap:after { clear: both; }
+.col-wrap{
+	float: left;
+	width: 50%;
+	box-sizing: border-box;
+	padding: 0 10px;
+}
+.box-wrap{
+	margin-bottom: 20px;
+	background: #fff;
+}
+
 .sheet{
 	padding: 0 30px;
 }
@@ -1901,18 +1918,20 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	position: absolute;
 	left: 30px;
 	top: 50%;
-	background: url(../img/logo.png) no-repeat;
+	background: url(../img/logo-short.png) no-repeat;
 	-webkit-background-size: contain;
 	background-size: contain;
-	width: 441px;
-	height: 50px;
+	width: 266px;
+	height: 52px;
 	text-indent: -9999px;
 	overflow: hidden;
-	margin-top: -25px;
+	margin-top: -26px;
 	-webkit-transition-property: width, height;
 	transition-property: width, height;
 	-webkit-transition-duration: 0.2s;
 	transition-duration: 0.2s;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 .logo a{
 	display: block;
@@ -4178,6 +4197,106 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	margin: -10px 0 0 -1px;
 }
 /*shops map*/
+
+/*contacts caption*/
+/*contacts caption end*/
+
+/*contacts map*/
+.contacts-map-wrap{
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 45px;
+	height: 180px;
+	z-index: 2;
+	-webkit-transition-property: height;
+	transition-property: height;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+.contacts-map-wrap.active{
+	height: 500px;
+}
+.contacts-map{
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -250px;
+	height: 500px;
+	width: 100%;
+	background: #f3f3f3;
+}
+.map-expand{
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: rgba(0, 111, 67, 0.81);
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+.map-expand > span,
+.map-expand > span:before{
+	border: solid #fff;
+}
+.map-expand > span{
+	display: block;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 7px;
+	height: 7px;
+	border-width: 1px 1px 0 0;
+}
+.map-expand > span:first-child{
+	right: auto;
+	top: auto;
+	bottom: 10px;
+	left: 10px;
+	border-width: 0 0 1px 1px;
+}
+.desktop .map-expand:hover span{
+	-webkit-transform: translate(2px, -2px);
+	-ms-transform: translate(2px, -2px);
+	transform: translate(2px, -2px);
+}
+.desktop .map-expand:hover span:first-child{
+	-webkit-transform: translate(-2px, 2px);
+	-ms-transform: translate(-2px, 2px);
+	transform: translate(-2px, 2px);
+}
+.map-expand.active > span{
+	-webkit-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+.desktop .map-expand.active:hover span{
+	-webkit-transform: rotate(180deg) translate(-2px, 2px);
+	-ms-transform: rotate(180deg) translate(-2px, 2px);
+	transform: rotate(180deg) translate(-2px, 2px);
+}
+.desktop .map-expand.active:hover span:first-child{
+	-webkit-transform: rotate(180deg) translate(2px, -2px);
+	-ms-transform: rotate(180deg) translate(2px, -2px);
+	transform: rotate(180deg) translate(2px, -2px);
+}
+.map-expand > span:before{
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 0;
+	width: 9px;
+	margin: -1px 0 0 -5px;
+	border-width: 1px 0 0;
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+.gm-bundled-control{
+	bottom: 50% !important;
+	margin: 0 10px 13px 0 !important;
+}
+/*contacts map end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/

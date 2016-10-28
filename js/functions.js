@@ -1147,128 +1147,7 @@ function clearFilter() {
  * map init
  * */
 // inline script
-// var pinMap;
 // var localObjects;
-
-function shopsMap1(){
-	// var mapId = 'shops-map';
-
-	if (!$('#shops-map').length) return false;
-
-	// function mapCenter(index){
-	// 	var localObject = localObjects[index];
-	//
-	// 	return{
-	// 		lat: localObject[0].lat + localObject[1].latBias,
-	// 		lng: localObject[0].lng + localObject[1].lngBias
-	// 	};
-	// }
-
-	var markers = [],
-		elementById = [
-			document.getElementById('shops-map')
-		];
-
-	var zoom = 11;
-
-	var mapOptions = {
-		zoom: zoom,
-		// zoom: localObjects[0][3],
-		center: {lat: 53.8963501, lng: 27.551555},
-		// center: mapCenter(0),
-		// styles: styleMap,
-		mapTypeControl: false,
-		scaleControl: false,
-		scrollwheel: false
-	};
-
-	// var map0 = new google.maps.Map(elementById[0], mapOptions);
-
-	// addMarker(0, map0);
-
-	if($(elementById[0]).length){
-		var map = new google.maps.Map(elementById[0], mapOptions);
-		// addMarker(0, map);
-		// addMarker(1, map);
-		// addMarker(2, map);
-		// addMarker(3, map);
-		// addMarker(4, map);
-		// addMarker(5, map);
-		// addMarker(6, map);
-	}
-
-	/*aligned after resize*/
-	// var resizeTimer0;
-	// $(window).on('debouncedresize', function () {
-	// 	clearTimeout(resizeTimer0);
-	// 	resizeTimer0 = setTimeout(function () {
-	// 		moveToLocation(map);
-	// 	}, 500);
-	// });
-
-	/*move to location*/
-	// function moveToLocation(map){
-	// 	map.panTo({lat: 53.8963501, lng: 27.551555});
-	// 	map.setZoom(zoom);
-	// }
-
-	var marker, i;
-	var infoWindow = new google.maps.InfoWindow({
-		maxWidth: 400
-	});
-
-	for (i = 0; i < localObjects.length; i++) {
-		console.log("localObjects.length: ", localObjects.length);
-		var object = localObjects[i];
-
-		marker = new google.maps.Marker({
-			position: object[0],
-			map: map,
-			icon: object[2],
-			title: object[1].title
-		});
-
-		// marker = new google.maps.Marker({
-		// 	position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-		// 	map: map,
-		// 	icon: locations[i][3]
-		// });
-
-		google.maps.event.addListener(marker, 'click', (function(marker, i) {
-			return function() {
-				// infowindow.setContent(locations[i][0]);
-
-				infoWindow.setContent(
-					'<div class="map-popup">' +
-					'<div class="map-popup__title">'+object[1].title+'</div>' +
-					'<div class="map-popup__list">' +
-					'<div class="map-popup__row work-time"><i class="depict-time"></i>'+object[1].time+'</div>' +
-					'<div class="map-popup__row"><i class="depict-phone"></i>'+object[1].phone+'</div>' +
-					'<div class="map-popup__row">'+object[1].tags+'</div>' +
-					'<div class="map-popup__row">'+object[1].more+'</div>' +
-					'</div>' +
-					'</div>'
-				);
-
-				// infoWindow.close();
-
-				infoWindow.open(map, marker);
-			}
-		})(marker, i));
-
-		markers.push(marker);
-	}
-
-	function myClick(){
-		google.maps.event.trigger(markers[0], 'click');
-	}
-
-	$('h1').on('click', function () {
-		myClick();
-	});
-}
-/*map init end*/
-
 function shopsMap() {
 	if (!$('#shops-map').length) return false;
 
@@ -1480,6 +1359,112 @@ function toggleViewShops() {
 }
 /*toggle view shops end*/
 
+/**!
+ * contacts map
+ * */
+// inline script
+// var contactsMapObjects;
+
+function contactsMap() {
+	var $map = $('#contacts-map');
+	if (!$map.length) return false;
+
+	var markers = [];
+	var zoom = 11;
+	var pinMap = 'img/depict-map.png';
+	var map;
+	var center = contactsMapObjects[0][0];
+
+	function initialize() {
+
+		var mapOptions = {
+			zoom: zoom,
+			center: center,
+			mapTypeControl: false,
+			scaleControl: false,
+			scrollwheel: false
+		};
+
+		map = new google.maps.Map(document.getElementById("contacts-map"), mapOptions);
+
+		var marker, i;
+		var infoWindow = new google.maps.InfoWindow();
+
+
+		map.addListener('click', function() {
+			infoWindow.close();
+		});
+
+
+		for (i = 0; i < contactsMapObjects.length; i++) {
+
+			marker = new google.maps.Marker({
+				position: contactsMapObjects[i][0],
+				map: map,
+				icon: pinMap,
+				title: contactsMapObjects[i][1].title
+			});
+
+			google.maps.event.addListener(marker, 'click', (function(marker, i) {
+
+				return function() {
+					infoWindow.setContent('<div class="map-popup">' +
+						'<div class="map-popup__title">'+contactsMapObjects[i][1].title+'</div>' +
+						'<div class="map-popup__list">' +
+						'<div class="map-popup__row work-time"><i class="depict-time"></i>'+contactsMapObjects[i][1].time+'</div>' +
+						'<div class="map-popup__row"><i class="depict-phone"></i>'+contactsMapObjects[i][1].phone+'</div>' +
+						'</div>' +
+						'</div>');
+					infoWindow.open(map, marker);
+				};
+
+			})(marker, i));
+
+			markers.push(marker);
+		}
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+
+	/*aligned after resize*/
+	var resizeTimer;
+	$(window).on('debouncedresize', function () {
+		clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(function () {
+			moveToLocation(center, zoom);
+		}, 500);
+	});
+
+	/*move to location*/
+	function moveToLocation(center, zoom){
+		map.panTo(center);
+		map.setZoom(zoom);
+	}
+
+	/*toggle map height*/
+	var mapIsExpand = false;
+	function toggleMapHeight(id) {
+
+		$(id)
+			.parent()
+			.find('.js-map-expand')
+			.toggleClass('active', !mapIsExpand)
+			.parent()
+			.toggleClass('active', !mapIsExpand);
+
+		mapIsExpand = !mapIsExpand;
+	}
+
+	// expand map on click btn map expand
+	$('.js-map-expand').on('click', function (e) {
+		e.preventDefault();
+
+		toggleMapHeight($map);
+	});
+}
+/*contacts map end*/
+
+
 /**
  * sticky layout
  * */
@@ -1579,6 +1564,7 @@ $(document).ready(function(){
 	shopsMap();
 	addShadowTape();
 	toggleViewShops();
+	contactsMap();
 	// stickyLayout();
 
 	footerBottom();
