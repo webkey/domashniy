@@ -687,6 +687,8 @@ td ul li:first-child:before,
 	display: block;
 	margin: 0;
 	padding: 16px 0 0;
+	border: none;
+	outline: none;
 }
 .user-content blockquote q{
 	font-family: 'lozen-cond-bold-italic', sans-serif;
@@ -4460,24 +4462,46 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	.layout, .content{
 		margin: 0 !important;
 	}
+	.max-wrap,
+	.max-wrap-md,
+	.max-wrap-md-alt,
+	.max-wrap-sm,
+	.max-wrap-home,
+	.sheet,
+	.sheet-holder {
+		padding: 0 !important;
+	}
 	.header{
 		position: relative !important;
-		height: 40px !important;
+		height: 50px !important;
 		min-height: 0 !important;
 		max-height: none !important;
 		padding: 0 !important;
 	}
-	.logo{
-		float: none !important;
-		position: relative !important;
-		overflow: hidden !important;
-	}
+	.sub-nav{ display: none !important; }
 	.main{ padding-top: 0 !important; }
 	.content{
 		margin-left: 0 !important;
 		margin-right: 0 !important;
 	}
-	.logo{ background: none !important; }
+	.logo{
+		position: relative !important;
+		left: auto !important;
+		top: auto !important;
+		float: none !important;
+		overflow: hidden !important;
+		background: none !important;
+	}
+	.logo a{ display: none !important; }
 	.logo>*{ display: none; }
 	.logo>img{ display: block !important; }
+	.breadcrumbs{ padding: 0 0 20px !important; }
+	.breadcrumbs-list li:before,
+	.breadcrumbs-list li:after{ border-color: #000 !important; }
+	.accordion-panel{ display: block !important; }
+	[class*="btn-default"]{
+		border: 1px solid #000 !important;
+		background: #b0b0b0 !important;
+	}
+	.developer_logo { text-indent: 0 !important; }
 }
