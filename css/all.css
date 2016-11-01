@@ -1908,6 +1908,8 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	margin: 0;
 	-webkit-transition-property: margin-top;
 	transition-property: margin-top;
+	-webkit-transition-duration: 0.1s;
+	transition-duration: 0.1s;
 }
 .page-is-scrolled .header{
 	position: fixed;

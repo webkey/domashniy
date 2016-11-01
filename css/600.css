@@ -119,10 +119,3 @@
 .copyright{ padding: 0 15px; }
 /*footer holder end*/
 /*FOOTER end*/
-
-/*page is scrolled*/
-.page-is-scrolled .header{
-	top: 0;
-}
-
-/*page is scrolled end*/

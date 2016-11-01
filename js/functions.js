@@ -438,7 +438,7 @@ function pageIsScrolled(){
 	// 1) resizeByWidth (resize only width);
 
 	var $page = $('html'),
-		minScrollTop = $('.header').outerHeight();
+		minScrollTop = 120;
 
 	$(window).on('load scroll resizeByWidth', function () {
 		var currentScrollTop = $(window).scrollTop();
