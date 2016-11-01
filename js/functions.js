@@ -314,14 +314,15 @@ function printShow() {
 			.to($navContainer, _animationSpeed / 1000, {
 				yPercent: 0, onComplete: function () {
 					$html.addClass(self.modifiers.opened);
-					TweenMax.staggerTo($staggerItems, 0.85, {
-						autoAlpha:1,
-						scale:1,
-						y: 0,
-						ease:Cubic.easeOut
-					}, 0.1);
 				}, ease:Cubic.easeOut
 			});
+
+		TweenMax.staggerTo($staggerItems, 0.85, {
+			autoAlpha:1,
+			scale:1,
+			y: 0,
+			ease:Cubic.easeOut
+		}, 0.1);
 
 		self.showOverlay();
 
@@ -366,7 +367,7 @@ function printShow() {
 			});
 			TweenMax.set($staggerItems, {
 				autoAlpha: 0,
-				scale: 0.7,
+				scale: 0.6,
 				y: 100
 			});
 		}
