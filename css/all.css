@@ -2012,49 +2012,145 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	float: right;
 	clear: right;
 	padding: 18px 70px 0 30px;
+	box-sizing: border-box;
 }
 @media only screen and (min-width: 1280px){
 	.nav{
-		-webkit-transform: translate(0, 0) !important;
-		-ms-transform: translate(0, 0) !important;
-		transform: translate(0, 0) !important;
-		-webkit-transform: matrix(1, 0, 0, 1, 0, 0) !important;
-		-ms-transform: matrix(1, 0, 0, 1, 0, 0) !important;
-		transform: matrix(1, 0, 0, 1, 0, 0) !important;
+		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	}
+	.nav-list > li{
+		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+		opacity: 1 !important;
+		visibility: visible !important;
+	}
+
+	.nav-drop,
+	.nav-sub-drop{
+		display: none !important;
+	}
+	.nav-list a > i{
+		display: none !important;
 	}
 }
-.nav-list{
-	float: right;
+.nav-list,
+.nav-list ul{
 	list-style: none;
 	padding: 0;
 	margin: 0;
+}
+.nav-list{
+	float: right;
 	line-height: 28px;
 }
-.nav-list li{
+.nav-list > li{
 	float: left;
 	padding: 0 3px;
 }
-.nav-list a{
-	font-family: 'PT Sans Narrow', sans-serif;
+.nav-list li a{
+	display: block;
+	position: relative;
 	font-size: 21px;
 	line-height: 28px;
 	color: #000;
 	text-decoration: none;
-	display: block;
-	border-radius: 4px;
-	padding: 6px 12px;
 	-webkit-transition-property: background, color, box-shadow;
 	transition-property: background, color, box-shadow;
 	-webkit-transition-duration: 0.4s;
 	transition-duration: 0.4s;
 }
-.desktop .nav-list a:hover,
-.nav-list .active > a,
-.desktop .nav-list .active > a{
+.nav-list > li > a{
+	font-family: 'PT Sans Narrow', sans-serif;
+	border-radius: 4px;
+	padding: 6px 12px;
+}
+.desktop .nav-list > li > a:hover,
+.nav-list > .active > a,
+.desktop .nav-list > .active > a{
 	text-decoration: none;
 	background: #feed00;
 	color: #000;
 }
+
+.nav-drop,
+.nav-sub-drop{
+	display: none;
+	background: #fff;
+	padding: 10px;
+}
+.nav-drop > ul,
+.nav-sub-drop > ul{
+	padding: 7px;
+}
+.nav-sub-drop > ul{
+	border-radius: 6px;
+	border: 1px solid #000;
+}
+.nav-drop li{
+	padding: 3px;
+}
+.nav-drop a > span{
+	display: inline-block;
+	border-radius: 3px;
+	padding: 3px 18px;
+}
+.nav-drop .active > a > span,
+.nav-drop a:hover > span{
+	background: #feed00;
+}
+.nav-list a > i{
+	position: absolute;
+	right: 2px;
+	top: 50%;
+	width: 14px;
+	height: 9px;
+	margin-top: -4px;
+	-webkit-transition-property: -webkit-transform;
+	transition-property: transform;
+	-webkit-transition-duration: 0.18s;
+	transition-duration: 0.18s;
+}
+.nav-list .opened > a > i{
+	-webkit-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+.nav-list a > i:before,
+.nav-list a > i:after{
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 10px;
+	height: 3px;
+	background: #fff;
+	border-radius: 2px;
+}
+.nav-list a > i:before{
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	margin: -2px 0 0 -2px;
+}
+.nav-list a > i:after{
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	margin: -2px 0 0 -7px;
+}
+
+.nav-drop-list a > i{ right: -17px; }
+.nav-drop-list a > i:before,
+.nav-drop-list a > i:after{
+	width: 8px;
+	height: 2px;
+	background: #000;
+}
+.nav-drop-list a > i:before{ margin: -1px 0 0 -2px; }
+.nav-drop-list a > i:after{ margin: -1px 0 0 -6px; }
 /*main navigation end*/
 
 /*button menu*/
@@ -2113,14 +2209,14 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	letter-spacing: 0.2em;
 	text-transform: uppercase;
 }
-.btn-menu.active .btn-menu-frame > span{
+.nav-opened .btn-menu.active .btn-menu-frame > span{
 	display: none;
 }
 .btn-menu .btn-menu-frame > span + span{
 	display: none;
 	letter-spacing: normal;
 }
-.btn-menu.active .btn-menu-frame > span + span{
+.nav-opened .btn-menu.active .btn-menu-frame > span + span{
 	display: block;
 }
 .btn-lines{
@@ -2135,24 +2231,24 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .btn-lines:before,
 .btn-lines:after{
 	display: block;
-	width: 18px;
+	width: 16px;
 	height: 3px;
 	background: #000;
 	position: absolute;
 	left: 0;
 	top: 0;
-	will-change: transform, opacity;
-	-webkit-transition-property: -webkit-transform, opacity;
-	transition-property: transform, opacity;
-	-webkit-transition-duration: 0.4s;
-	transition-duration: 0.4s;
-	-webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
-	transition-timing-function: cubic-bezier(1, 0, 0, 1);
-	-webkit-transform: translateZ(0) scale(1, 1);
-	-ms-transform: translateZ(0) scale(1, 1);
-	transform: translateZ(0) scale(1, 1);
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
+	/*will-change: transform, opacity;*/
+	/*-webkit-transition-property: -webkit-transform, opacity;*/
+	/*transition-property: transform, opacity;*/
+	/*-webkit-transition-duration: 0.4s;*/
+	/*transition-duration: 0.4s;*/
+	/*-webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);*/
+	/*transition-timing-function: cubic-bezier(1, 0, 0, 1);*/
+	/*-webkit-transform: translateZ(0) scale(1, 1);*/
+	/*-ms-transform: translateZ(0) scale(1, 1);*/
+	/*transform: translateZ(0) scale(1, 1);*/
+	/*-webkit-backface-visibility: hidden;*/
+	/*backface-visibility: hidden;*/
 }
 .btn-lines:before,
 .btn-lines:after{
@@ -2164,13 +2260,13 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 /*for all line menu end*/
 /*close view*/
-.btn-menu.active .btn-lines:before{
+.nav-opened .btn-menu.active .btn-lines:before{
 	opacity: 1;
 	-webkit-transform: rotate(-45deg);
 	-ms-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 }
-.btn-menu.active .btn-lines:after{
+.nav-opened .btn-menu.active .btn-lines:after{
 	opacity: 1;
 	-webkit-transform: rotate(45deg);
 	-ms-transform: rotate(45deg);
@@ -2178,20 +2274,20 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 /*close view end*/
 /*first line menu*/
-.btn-lines > span:nth-child(1){ top: -9px; }
-.btn-menu.active .btn-lines > span:nth-child(1){
+.btn-lines > span:nth-child(1){ top: -7px; }
+.nav-opened .btn-menu.active .btn-lines > span:nth-child(1){
 	opacity: 0;
 }
 /*first line menu end*/
 /*second line menu*/
 .btn-lines > span:nth-child(2){ top: -1px; }
-.btn-menu.active .btn-lines > span:nth-child(2){
+.nav-opened .btn-menu.active .btn-lines > span:nth-child(2){
 	opacity: 0;
 }
 /*second line menu end*/
 /*third line menu*/
-.btn-lines > span:nth-child(3){ top: 7px; }
-.btn-menu.active .btn-lines > span:nth-child(3){
+.btn-lines > span:nth-child(3){ top: 5px; }
+.nav-opened .btn-menu.active .btn-lines > span:nth-child(3){
 	opacity: 0;
 }
 /*third line menu end*/

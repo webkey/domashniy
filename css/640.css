@@ -196,6 +196,7 @@ label {
 .nav-opened .btn-menu.active {
 	top: 11px;
 }
+.nav{ padding-top: 60px; }
 /*HEADER end*/
 
 /*MAIN*/

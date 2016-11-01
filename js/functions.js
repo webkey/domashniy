@@ -155,6 +155,22 @@ function printShow() {
 	// 1) TweetMax VERSION: 1.19.0 (widgets.js);
 	// 2) device.js 0.2.7 (widgets.js);
 	// 3) resizeByWidth (resize only width);
+
+	// add css style
+	// @media only screen and (min-width: [example: 1280px]){
+	// .nav{
+	// 		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 	}
+	// .nav-list > li{
+	// 		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		opacity: 1 !important;
+	// 		visibility: visible !important;
+	// 	}
+	// }
 	var MainNavigation = function (settings) {
 		var options = $.extend({
 			mainContainer: 'html',
@@ -298,8 +314,13 @@ function printShow() {
 			.to($navContainer, _animationSpeed / 1000, {
 				yPercent: 0, onComplete: function () {
 					$html.addClass(self.modifiers.opened);
-					TweenMax.staggerTo($staggerItems, 0.3, {autoAlpha:1, scale:1, ease:Cubic.easeInOut}, 0.08);
-				}, ease:Cubic.easeInOut
+					TweenMax.staggerTo($staggerItems, 0.85, {
+						autoAlpha:1,
+						scale:1,
+						y: 0,
+						ease:Cubic.easeOut
+					}, 0.1);
+				}, ease:Cubic.easeOut
 			});
 
 		self.showOverlay();
@@ -334,14 +355,20 @@ function printShow() {
 	MainNavigation.prototype.preparationAnimation = function() {
 		var self = this,
 			$navContainer = self.$navContainer,
-			$staggerItems = self.$staggerItems,
-			$btnMenu = self.$btnMenu;
+			$staggerItems = self.$staggerItems;
 
-		if ($(window).outerWidth() < 1280) {
-			TweenMax.set($navContainer, {yPercent: 120, onComplete: function () {
-				$navContainer.show(0);
-			}});
-			TweenMax.set($staggerItems, {autoAlpha: 0, scale: 0.8});
+		if (window.innerWidth < 1280) {
+			TweenMax.set($navContainer, {
+				yPercent: 120,
+				onComplete: function () {
+					$navContainer.show(0);
+				}
+			});
+			TweenMax.set($staggerItems, {
+				autoAlpha: 0,
+				scale: 0.7,
+				y: 100
+			});
 		}
 	};
 
@@ -775,7 +802,7 @@ function shopsAccordion() {
 			if ( $(this).hasClass('active') ) {
 
 				$hand.removeClass('active');
-				$container.removeClass('item-active')
+				$container.removeClass('item-active');
 
 				return false;
 
@@ -786,6 +813,137 @@ function shopsAccordion() {
 	}
 }
 /*shops accordion*/
+
+/**
+ * multi accordion
+ * */
+(function ($) {
+	var MultiAccordion = function (settings) {
+		var options = $.extend({
+			accordionContainer: null,
+			accordionItem: 'li',
+			accordionCall: 'a',
+			collapsibleElement: null,
+			collapsibleAll: false,
+			animateSpeed: 300,
+			resizeCollapsible: false,
+			initialPoint: null
+		}, settings || {});
+
+		this.options = options;
+		var container = $(options.accordionContainer);
+		this.$accordionContainer = container; //блок с аккордеоном
+		this.$accordionItem = $(options.accordionItem, container); //непосредственный родитель сворачиваемого элемента
+		this.$accordionCall = $(options.accordionCall, container); //элемент, по которому производим клик
+		this.$collapsibleElement = $(options.collapsibleElement); //элемент, который сворачивается/разворачивается
+		this._collapsibleAll = options.collapsibleAll;
+		this._animateSpeed = options.animateSpeed;
+		this._resizeCollapsible = options.resizeCollapsible;//флаг, сворачивание всех открытых аккордеонов при ресайзе
+		this.initialPoint = options.initialPoint;//флаг, сворачивание всех открытых аккордеонов при ресайзе
+
+		this.modifiers = {
+			active: 'opened',
+			current: 'active'
+		};
+
+		this.bindEvents();
+		this.totalCollapsibleOnResize();
+
+	};
+
+	MultiAccordion.prototype.totalCollapsibleOnResize = function () {
+		var self = this;
+		$(window).on('resize', function () {
+			if(self._resizeCollapsible){
+				self.$collapsibleElement.slideUp(self._animateSpeed, function () {
+					self.$accordionContainer.trigger('accordionChange');
+				});
+				self.$accordionItem.removeClass(self.modifiers.active);
+			}
+		});
+	};
+
+	MultiAccordion.prototype.bindEvents = function () {
+		var self = this,
+			modifiers = this.modifiers,
+			animateSpeed = this._animateSpeed,
+			$accordionContainer = this.$accordionContainer,
+			$anyAccordionItem = this.$accordionItem,
+			$collapsibleElement = this.$collapsibleElement,
+			initialPoint = this.initialPoint;
+
+		$accordionContainer.on('click', self.options.accordionCall, function (e) {
+			if (window.innerWidth >= initialPoint ) return;
+
+			var current = $(this);
+			var currentAccordionItem = current.closest($anyAccordionItem);
+
+			if (!currentAccordionItem.has($collapsibleElement).length) return;
+
+			e.preventDefault();
+
+			if (current.parent().prop("tagName") != currentAccordionItem.prop("tagName")) {
+				current = current.parent();
+			}
+
+			if (current.siblings($collapsibleElement).is(':visible')){
+				currentAccordionItem.removeClass(modifiers.active).find($collapsibleElement).slideUp(animateSpeed, function () {
+					self.$accordionContainer.trigger('accordionChange');
+				});
+				// currentAccordionItem.removeClass(modifiers.current);
+				currentAccordionItem
+					.find($anyAccordionItem)
+					.removeClass(modifiers.active);
+				// .removeClass(modifiers.current);
+				return;
+			}
+
+
+			if (self._collapsibleAll){
+				var siblingContainers = $($accordionContainer).not(current.closest($accordionContainer));
+				siblingContainers.find($collapsibleElement).slideUp(animateSpeed, function () {
+					self.$accordionContainer.trigger('accordionChange');
+				});
+				siblingContainers
+					.find($anyAccordionItem)
+					.removeClass(modifiers.active);
+				// .removeClass(modifiers.current);
+			}
+
+			currentAccordionItem
+				.siblings()
+				.removeClass(modifiers.active)
+				.find($collapsibleElement)
+				.slideUp(animateSpeed, function () {
+					self.$accordionContainer.trigger('accordionChange');
+				});
+			// currentAccordionItem.siblings().removeClass(modifiers.current);
+			currentAccordionItem.siblings()
+				.find($anyAccordionItem)
+				.removeClass(modifiers.active);
+			// .removeClass(modifiers.current);
+
+			currentAccordionItem.addClass(modifiers.active);
+			current.siblings($collapsibleElement).slideDown(animateSpeed, function () {
+				self.$accordionContainer.trigger('accordionChange');
+			});
+		})
+	};
+
+	window.MultiAccordion = MultiAccordion;
+}(jQuery));
+
+function menuAccordionInit() {
+	if($('.nav-list').length){
+		new MultiAccordion({
+			accordionContainer: '.nav-list',
+			collapsibleElement: '.nav-drop, .nav-sub-drop',
+			animateSpeed: 200,
+			initialPoint: 1280
+		});
+	}
+}
+/*multi accordion end*/
 
 /**
  * file input
@@ -1153,7 +1311,12 @@ function shopsMap() {
 
 	var markers = [];
 	var zoom = 11;
-	var pinMap = 'img/depict-map.png';
+	var pinMap = {
+		url: "img/depict-map-2x.png",
+		size: new google.maps.Size(45,61), // the size it should be on the map
+		scaledSize: new google.maps.Size(45,61) // the normal size of the image is 92x122 because Retina asks double size.
+		// origin: new google.maps.Point(0, 25) // position in the sprite
+	};
 	var map;
 	var center = {lat: 53.8963501, lng: 27.551555};
 
@@ -1235,13 +1398,13 @@ function shopsMap() {
 	// }
 
 	/*aligned after resize*/
-	var resizeTimer;
-	$(window).on('debouncedresize', function () {
-		clearTimeout(resizeTimer);
-		resizeTimer = setTimeout(function () {
-			moveToLocation(center, zoom);
-		}, 500);
-	});
+	// var resizeTimer;
+	// $(window).on('debouncedresize', function () {
+	// 	clearTimeout(resizeTimer);
+	// 	resizeTimer = setTimeout(function () {
+	// 		moveToLocation(center, zoom);
+	// 	}, 500);
+	// });
 
 	/*move to location*/
 	function moveToLocation(center, zoom){
@@ -1371,7 +1534,12 @@ function contactsMap() {
 
 	var markers = [];
 	var zoom = 11;
-	var pinMap = 'img/depict-map.png';
+	var pinMap = {
+		url: "img/depict-map-2x.png",
+		size: new google.maps.Size(45,61), // the size it should be on the map
+		scaledSize: new google.maps.Size(45,61) // the normal size of the image is 92x122 because Retina asks double size.
+		// origin: new google.maps.Point(0, 25) // position in the sprite
+	};
 	var map;
 	var center = contactsMapObjects[0][0];
 
@@ -1554,6 +1722,7 @@ $(document).ready(function(){
 	popupInitial();
 	jsAccordion();
 	shopsAccordion();
+	menuAccordionInit();
 	fileInput();
 	tabSwitcher();
 	filterJob();
