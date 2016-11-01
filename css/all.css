@@ -1990,7 +1990,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .depict-user{
 	display: inline-block;
 	vertical-align: top;
-	background: url(../img/depict-user.png) no-repeat;
+	background: url(../img/depict-user-2x.png) no-repeat;
 	-webkit-background-size: contain;
 	background-size: contain;
 	width: 18px;
