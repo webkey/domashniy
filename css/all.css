@@ -3978,7 +3978,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	height: 100%;
 	overflow: hidden;
 	text-indent: -9999px;
-	background: url(../img/depict-switcher-map.png) no-repeat -33px 0;
+	background: url(../img/depict-switcher-map-2x.png) no-repeat -33px 0;
 	-webkit-background-size: 66px;
 	background-size: 66px;
 }
