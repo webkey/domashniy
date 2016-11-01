@@ -1898,13 +1898,23 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 
 /*HEADER*/
 .header{
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	background: #fff;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 	z-index: 5;
+	margin: 0;
+	-webkit-transition-property: margin-top;
+	transition-property: margin-top;
+}
+.page-is-scrolled .header{
+	position: fixed;
+	top: -60px;
+	margin-top: 60px;
+	-webkit-transition-duration: 0.6s;
+	transition-duration: 0.6s;
 }
 .header-holder{
 	height: 100%;
@@ -2169,10 +2179,6 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	background: #fff;
 	box-sizing: border-box;
 	display: none;
-	-webkit-transition-property: top;
-	transition-property: top;
-	-webkit-transition-duration: 0.15s;
-	transition-duration: 0.15s;
 
 	font-size: 0;
 	letter-spacing: -4px;
