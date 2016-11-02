@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
 	<meta charset="UTF-8">
-	<title>Домашний - Все страницы</title>
+	<title>Домашний - Анкета</title>
 	<!--Mobile optimized-->
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,6 +32,45 @@
 			<div class="header-holder max-wrap">
 				<!--logo-->
 				<strong class="logo"><a href="index.html">Домашний</a><img style="display: none;" src="img/logo-short.png" alt="Домашний"></strong> <!--logo end-->
+				<!--main navigation-->
+				<nav class="nav">
+					<ul class="nav-list">
+						<li>
+							<a href="about.html"><span>О компании</span><i></i></a>
+							<div class="nav-drop">
+								<ul class="nav-drop-list">
+									<li><a href="#"><span>История</span></a></li>
+									<li><a href="#"><span>Новости</span></a></li>
+									<li><a href="#"><span>Стратегия развития</span></a></li>
+									<li><a href="#"><span>Горячая линия</span></a></li>
+									<li><a href="#"><span>Логистика</span></a></li>
+									<li><a href="#"><span>Реклама у нас</span></a></li>
+									<li><a href="#"><span>Финансовая отчётность</span></a></li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a href="customers.html"><span>Покупателям</span><i></i></a>
+							<div class="nav-drop">
+								<ul class="nav-drop-list">
+									<li><a href="#"><span>Акции и специальные предложения</span></a></li>
+									<li><a href="#"><span>Журналы</span></a></li>
+									<li><a href="#"><span>Товары собственной торговой марки собственной</span></a></li>
+									<li><a href="#"><span>Адреса</span></a></li>
+									<li><a href="#"><span>Оптовая программа</span></a></li>
+									<li><a href="#"><span>Опросы</span></a></li>
+									<li><a href="#"><span>Горячая линия</span></a></li>
+									<li><a href="#"><span>Знак качества</span></a></li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="shops.html"><span>Магазины</span></a></li>
+						<li><a href="career.html"><span>Карьера</span></a></li>
+						<li><a href="partners.html"><span>Сотрудничество</span></a></li>
+						<li><a href="contacts.html"><span>Контакты</span></a></li>
+					</ul>
+				</nav>
+				<!--main navigation end-->
 				<!--login-->
 				<div class="login">
 					<div class="login__item"><a href="#login-form" class="popup-with-form"><i class="depict-user"></i><span>Вход</span></a></div>
@@ -65,23 +104,122 @@
 			<!--CONTENT-->
 			<div class="content-wrap">
 				<div class="content layout user-content">
+					<!--breadcrumbs-->
+					<div class="breadcrumbs">
+						<ul class="breadcrumbs-list">
+							<li><a href="#">Главная</a></li>
+							<li>Анкета</li>
+						</ul>
+					</div>
+					<!--breadcrumbs end-->
+
+					<!--SHEET-->
 					<div class="sheet">
 						<div class="sheet-holder">
 							<div class="max-wrap-md">
-								<ol>
-									<li><a href="index.html" target="_blank">Главная</a></li>
-									<li><a href="inner.html" target="_blank">Внутрення</a></li>
-									<li><a href="typography.html" target="_blank">Типографика</a></li>
-									<li><a href="job.html" target="_blank">Вакансии</a></li>
-									<li><a href="shops.html" target="_blank">Магазины</a></li>
-									<li><a href="news.html" target="_blank">Новости</a></li>
-									<li><a href="contacts.html" target="_blank">Контакты</a></li>
-									<li><a href="news-article.html" target="_blank">Новости (Внутренняя)</a></li>
-									<li><a href="questionary.html" target="_blank">Анкета</a></li>
-								</ol>
+								<div class="topic">
+									<h1>Анкета</h1>
+								</div>
+							</div>
+							<div class="user-form">
+								<div class="max-wrap-sm">
+									<form action="#" method="get">
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="user-form__vacancy-field">Вакансия*</label>
+											</div>
+											<div class="input-holder">
+												<div class="select">
+													<select class="cselect" name="filter-type" id="user-form__vacancy-field">
+														<option value="0">Все города</option>
+														<option value="1">Овощи и фрукты</option>
+														<option value="2">Мясо, рыба, птица, колбасные изделия</option>
+														<option value="3">Бакалея</option>
+														<option value="4">Вода, напитки, соки, кофе, чай</option>
+														<option value="3">Детское питание</option>
+														<option value="3">Продукция собственного производства</option>
+														<option value="3">Молочные продукты, яйца</option>
+														<option value="3">Замороженные продукты</option>
+														<option value="3">Шоколад, конфеты и другие сладости</option>
+														<option value="3">Парфюмерия и косметика</option>
+														<option value="3">Товары для животных</option>
+														<option value="3">Товары для дома</option>
+														<option value="3">Канцелярские товары</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<hr>
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="user-form__name-field">ФИО*</label>
+											</div>
+											<div class="input-holder">
+												<input type="text" id="user-form__name-field">
+											</div>
+										</div>
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="user-form__birth-field">Дата рождения</label>
+											</div>
+											<div class="input-holder">
+												<input type="text" id="user-form__birth-field">
+											</div>
+										</div>
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="user-form__phone-field">Контактный телефон*</label>
+											</div>
+											<div class="input-holder">
+												<input type="text" id="user-form__phone-field">
+											</div>
+										</div>
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="user-form__phone-field_error">Контактный телефон* (невалидное поле)</label>
+											</div>
+											<div class="input-holder">
+												<input class="error" type="text" id="user-form__phone-field_error">
+												<span class="error-note">Поле обязательное для заполнения</span>
+											</div>
+										</div>
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="user-form__firm-field">Организация*</label>
+											</div>
+											<div class="input-holder">
+												<input type="text" id="user-form__firm-field">
+											</div>
+										</div>
+										<hr>
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="user-form__comment-field">Дополнительная информация</label>
+											</div>
+											<div class="input-holder">
+												<textarea id="user-form__comment-field"></textarea>
+											</div>
+										</div>
+										<div class="input-wrap">
+											<div class="input-holder upload-file__container">
+												<label class="upload-file__label" for="user-form__file-field"><i class="depict-clip"></i><span>Прикрепить файл</span></label>
+												<input class="upload-file" name="files[]" type="file" id="user-form__file-field" multiple="multiple">
+											</div>
+										</div>
+										<div class="form-footer">
+											<div class="form-buttons">
+												<input class="btn-default" type="submit" value="Отправить">
+											</div>
+											<div class="form-note">
+												<div class="form-note__item">* Поля обязательные для заполнения</div>
+											</div>
+										</div>
+									</form>
+								</div>
 							</div>
 						</div>
 					</div>
+					<!--SHEET end-->
 				</div>
 			</div>
 			<!--CONTENT end-->
@@ -311,25 +449,6 @@
 				</div>
 			</aside>
 			<!--sidebar content (for devices) end-->
-
-			<!--SUB NAV-->
-			<aside class="sub-nav">
-				<div class="aside-holder">
-					<div class="menu">
-						<ul class="menu">
-							<li><a href="#"><span>Акции и специальные предложения</span></a></li>
-							<li class="active"><a href="#"><span>Журналы</span></a></li>
-							<li><a href="#"><span>Товары собственной торговой марки собственной</span></a></li>
-							<li><a href="#"><span>Адреса</span></a></li>
-							<li><a href="#"><span>Оптовая программа</span></a></li>
-							<li><a href="#"><span>Опросы</span></a></li>
-							<li><a href="#"><span>Горячая линия</span></a></li>
-							<li><a href="#"><span>Знак качества</span></a></li>
-						</ul>
-					</div>
-				</div>
-			</aside>
-			<!--SUB NAV end-->
 		</div>
 		<!--MAIN end-->
 	</div>
