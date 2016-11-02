@@ -538,16 +538,45 @@ function slidersInit() {
 						}
 					},
 					{
+						breakpoint: 980,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 3
+						}
+					},
+					{
 						breakpoint: 640,
 						settings: {
-							autoplay: false,
 							arrows: false,
-							dots: false,
-							draggable: false,
-							swipe: false,
-							touchMove: false
+							dots: true,
+							slidesToShow: 2,
+							centerPadding: '30px',
+							centerMode: true
+							// variableWidth: true
+						}
+					},
+					{
+						breakpoint: 520,
+						settings: {
+							arrows: false,
+							dots: true,
+							slidesToShow: 1,
+							centerPadding: '40px',
+							centerMode: true
+							// variableWidth: true
 						}
 					}
+					// {
+					// 	breakpoint: 640,
+					// 	settings: {
+					// 		autoplay: false,
+					// 		arrows: false,
+					// 		dots: false,
+					// 		draggable: false,
+					// 		swipe: false,
+					// 		touchMove: false
+					// 	}
+					// }
 				]
 			});
 		});

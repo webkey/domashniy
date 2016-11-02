@@ -63,7 +63,7 @@
 /*subscribe*/
 .promo-section .subscribe {
 	min-height: 69px;
-	padding: 11px 20px 16px;
+	padding: 11px 20px 12px;
 }
 .promo-section .subscribe__icon {
 	padding: 0 10px 0 0;
@@ -78,7 +78,7 @@
 .subscribe__text {
 	display: inline-block;
 	padding: 0;
-	max-width: 110px;
+	max-width: 100px;
 	vertical-align: middle;
 }
 /*subscribe end*/

@@ -23,18 +23,10 @@
 	float: none;
 	width: auto;
 }
-.home-page .content {
-	padding-top: 0;
-}
 .layout {
 	margin: 0;
 }
 .max-wrap-home {
-	max-width: 700px;
-	padding-left: 20px !important;
-	padding-right: 20px !important;
-}
-.promo-section .max-wrap-home {
 	max-width: none;
 	padding-left: 20px !important;
 	padding-right: 20px !important;
@@ -58,6 +50,31 @@
 	right: 140px;
 }
 /*MAIN BLOCKS end*/
+
+/*slider*/
+.slick-arrow{
+	width: 46px;
+	height: 46px;
+}
+.slick-prev:after,
+.slick-prev:before{
+	margin-right: -4px;
+}
+.slick-next:before,
+.slick-next:after{
+	margin-left: -4px;
+}
+.slick-prev:before,
+.slick-next:before{
+	border-width: 12px;
+	margin-top: -12px;
+}
+.slick-prev:after,
+.slick-next:after{
+	border-width: 6px;
+	margin-top: -6px;
+}
+/*slider end*/
 
 /*btn*/
 /*btn end*/
@@ -168,16 +185,19 @@
 .subscribe {
 	text-align: center;
 }
-.subscribe__icon{
-	display: inline-block;
-	vertical-align: middle;
-	margin-right: 10px;
-	padding-bottom: 0;
+.promo-section .subscribe__icon{
+	padding: 0 20px 0 0;
 }
 .subscribe__text{
 	display: inline-block;
 	vertical-align: middle;
 	text-align: left;
+}
+.subscribe__text,
+.subscribe__text > strong {
+	font-size: 20px;
+	line-height: 28px;
+	max-width: 320px;
 }
 /*subscribe end*/
 /*adverts box end*/
@@ -189,14 +209,14 @@
 	width: auto;
 	margin: 0;
 	background: none;
-	padding: 0 0 50px;
+	padding: 0 0 40px;
 	box-shadow: none;
 }
 .promo-section .advert{
 	display: none;
 }
 .promo-section .subscribe {
-	padding: 11px 30px 16px;
+	padding: 11px 20px;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
 }
 /*adverts box (on content) end*/
@@ -208,14 +228,15 @@
 .promo-section-holder{
 	float: none;
 	width: auto;
-	margin: 0 -20px;
-	padding: 0 0 60px;
+	padding: 0 0 40px;
 }
 /*promo slider*/
+.promo-slider .slick-dots{ bottom: 5px; }
 /*promo slider end*/
 /*promo section end*/
 
 /*shares*/
+.shares { padding-bottom: 30px; }
 .shares-slider,
 .shares-slider.slick-dotted{
 	margin-left: -10px;
@@ -224,9 +245,13 @@
 /*shares end*/
 
 /*desks*/
+.desks{ padding: 0 0 20px; }
 .desks-list{
 	margin-left: -10px;
 	margin-right: -10px;
+}
+.desks-list__item {
+	width: 33.28%;
 }
 /*desks end*/
 

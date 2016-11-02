@@ -63,6 +63,8 @@ h4 {
 	right: 122px;
 }
 
+.home-page .content { padding: 20px 0 0; }
+
 /*MAIN BLOCKS end*/
 
 /*slider*/
@@ -310,10 +312,44 @@ label {
 /*advert copy end*/
 /*adverts box end*/
 
+.sect-title{
+	text-align: center;
+	padding: 0 0 15px;
+}
+.sect-title h2,
+.sect-title h3 {
+	float: none;
+	font-size: 24px;
+	line-height: 32px;
+	padding: 0 0 12px;
+	margin: 0;
+}
+.sect-title .link-more{
+	float: none;
+	margin-bottom: 0;
+	vertical-align: top;
+}
+
+/*subscribe*/
+.subscribe__text,
+.subscribe__text > strong {
+	font-size: 16px;
+	line-height: 20px;
+	max-width: 140px;
+}
+.promo-section .subscribe__icon {
+	padding: 0 10px 0 0;
+}
+/*subscribe end*/
+
 /*promo section*/
+.promo-section .adverts-box {
+	padding: 0 0 20px;
+}
 .promo-section-holder{
 	float: none;
 	width: auto;
+	padding: 0 0 20px;
 }
 /*promo slider*/
 .promo-slider .slick-arrow{
@@ -323,25 +359,40 @@ label {
 /*promo section end*/
 
 /*shares*/
-.shares{
-	padding: 0 0 50px;
-}
-
+.shares { padding-bottom: 50px; }
 /*shares slider*/
-.shares-slider,
+/*.shares-slider,
 .shares-slider.slick-dotted{
 	white-space: normal;
 }
-
-.shares-slider__item{
-	opacity: 1;
-	width: 49.98%;
-	font-size: 16px;
-	line-height: 22px;
-	letter-spacing: normal;
+.shares-slider .slick-list,
+.shares-slider .slick-track{
+	width: auto !important;
+	-webkit-transform: translate3d(0,0,0) !important;
+	-ms-transform: translate3d(0,0,0) !important;
+	transform: translate3d(0,0,0) !important;
 }
+.slick-initialized .shares-slider__item{
+	float: none;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 49.98% !important;
+}
+
+.shares-slider .slick-arrow{
+	display: none !important;
+}*/
+.shares-slider__item{ padding: 5px; }
+.shares-slider .slick-dots { bottom: -20px; }
 /*shares slider*/
 /*shares end*/
+
+/*desks*/
+.desks-list__item {
+	width: 49.98%;
+}
+/*desks end*/
 
 /*article options*/
 .article-options {
@@ -511,3 +562,11 @@ label {
 	top: -75px;
 }
 /*page is scrolled end*/
+
+@media only screen and (max-width: 379px){
+	.logo{
+		width: 131px;
+		height: 26px;
+		margin-top: -13px;
+	}
+}

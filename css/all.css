@@ -341,9 +341,7 @@ strong em{
 	left: 50%;
 	margin-left: -5px;
 }
-.slick-arrow.slick-disabled:before{
-	opacity: 1;
-}
+.slick-arrow.slick-disabled:before{ opacity: 1; }
 .slick-next:before{
 	border-color: rgba(23, 120, 82, 0);
 	border-left-color: #177852;
@@ -1913,8 +1911,9 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	position: fixed;
 	top: -75px;
 	margin-top: 75px;
-	-webkit-transition-duration: 0.6s;
-	transition-duration: 0.6s;
+	will-change: margin-top;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
 }
 .header-holder{
 	height: 100%;
@@ -2794,6 +2793,8 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .promo-section .subscribe{
 	min-height: 119px;
 	box-sizing: border-box;
+	overflow: hidden;
+	position: relative;
 }
 /*adverts box (on content) end*/
 
@@ -2959,6 +2960,8 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 .link-more span{
 	border-bottom: 1px solid #fff;
+	line-height: 1.2;
+	display: inline-block;
 	-webkit-transition-property: border-color;
 	transition-property: border-color;
 	-webkit-transition-duration: 0.4s;
@@ -3216,7 +3219,8 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	color: #000;
 }
 .rate__text{
-	padding: 0 0 25px;
+	margin: 0 0 25px;
+	overflow: hidden;
 }
 /*rate end*/
 

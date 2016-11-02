@@ -110,11 +110,11 @@
 .promo-slider .slick-dots {
 	bottom: 0;
 }
-.promo-slider .slick-dots li button {
+.slick-dots li button {
 	width: 8px;
 	height: 8px;
 }
-.promo-slider .slick-dots li button:before{
+.slick-dots li button:before{
 	width: 6px;
 	height: 6px;
 }
@@ -134,6 +134,31 @@
 }
 /*advert copy end*/
 /*adverts box end*/
+
+/*desks list*/
+.desks-list__title{
+	font-size: 13px;
+	line-height: 19px;
+	padding: 10px 10px 30px;
+}
+/*desks list end*/
+
+/*rate*/
+.rate__align{
+	font-size: 14px;
+	line-height: 20px;
+	padding: 0 10px;
+}
+.rate__title {
+	padding: 0 0 8px;
+	font-size: 18px;
+	line-height: 22px;
+}
+.rate__text {
+	margin: 0 0 12px;
+	max-height: 60px;
+}
+/*rate end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/
