@@ -36,6 +36,13 @@ h4 {
 	padding-left: 10px !important;
 	padding-right: 10px !important;
 }
+.sheet .max-wrap-md,
+.sheet .max-wrap-md-alt,
+.sheet .max-wrap-sm,
+.user-form .max-wrap-sm{
+	padding-left: 20px !important;
+	padding-right: 20px !important;
+}
 .wrapper > .max-wrap,
 .footer > .max-wrap{
 	padding: 0 !important;
@@ -63,8 +70,11 @@ h4 {
 	right: 122px;
 }
 
-.home-page .content { padding: 20px 0 0; }
+.user-content { padding: 30px 0; }
+.home-page .content { padding: 30px 0 0; }
 
+.sheet{ padding: 0 10px; }
+.sheet-holder { padding: 30px 0 10px; }
 /*MAIN BLOCKS end*/
 
 /*slider*/
@@ -216,13 +226,21 @@ label {
 /*datetime */
 
 /*topic*/
-.topic {
+.topic,
+.sheet .topic{
 	padding-bottom: 20px;
 }
 .topic .control{
 	margin: 0;
 	position: relative;
 }
+
+.sheet .topic h1,
+.sheet .topic h2 {
+	display: block;
+	margin-right: 0;
+}
+
 .control-item{
 	float: none;
 	width: 100%;
@@ -254,7 +272,7 @@ label {
 
 /*user form*/
 .user-form {
-	padding: 10px 0 20px;
+	padding: 25px 0;
 	margin-bottom: 10px;
 }
 .user-form .label-holder {
@@ -312,6 +330,13 @@ label {
 /*advert copy end*/
 /*adverts box end*/
 
+/*adverts box (on sidebar copy)*/
+.sidebar-content .adverts-box{
+	top: -117px;
+	padding: 0 10px;
+}
+/*adverts box (on sidebar copy) end*/
+
 .sect-title{
 	text-align: center;
 	padding: 0 0 15px;
@@ -361,28 +386,6 @@ label {
 /*shares*/
 .shares { padding-bottom: 50px; }
 /*shares slider*/
-/*.shares-slider,
-.shares-slider.slick-dotted{
-	white-space: normal;
-}
-.shares-slider .slick-list,
-.shares-slider .slick-track{
-	width: auto !important;
-	-webkit-transform: translate3d(0,0,0) !important;
-	-ms-transform: translate3d(0,0,0) !important;
-	transform: translate3d(0,0,0) !important;
-}
-.slick-initialized .shares-slider__item{
-	float: none;
-	display: inline-block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 49.98% !important;
-}
-
-.shares-slider .slick-arrow{
-	display: none !important;
-}*/
 .shares-slider__item{ padding: 5px; }
 .shares-slider .slick-dots { bottom: -20px; }
 /*shares slider*/
@@ -501,7 +504,7 @@ label {
 
 /*contacts caption*/
 .contacts-caption, .contacts-info {
-	padding: 13px 10px 10px;
+	padding: 30px 20px 20px;
 }
 /*contacts caption end*/
 
@@ -528,6 +531,16 @@ label {
 	color: #666;
 }
 /*contacts info end*/
+
+/*job*/
+.switch-job__hand a span {
+	font-size: 13px;
+	line-height: 18px;
+}
+.job-selects {
+	padding: 28px 20px 10px;
+}
+/*job end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/

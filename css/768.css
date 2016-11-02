@@ -4,12 +4,7 @@
 /*------ TYPOGRAPHIC STYLES end ------*/
 
 /*MAIN BLOCKS*/
-.sheet{
-	padding: 0;
-}
-.sheet-holder {
-	padding: 40px 0 10px;
-}
+.sheet-holder { padding: 40px 0 10px; }
 /*MAIN BLOCKS end*/
 
 /*btn*/
@@ -65,10 +60,6 @@
 /*datetime */
 
 /*topic*/
-.topic h1, .topic h2 {
-	float: none;
-	padding: 0;
-}
 .topic .control{
 	float: none;
 	margin: 0 -10px;

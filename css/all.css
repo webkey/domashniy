@@ -259,7 +259,7 @@ strong em{
 	max-width: 1024px;
 	min-height: 1130px;
 	margin: 0 auto;
-	padding: 60px 0 30px;
+	padding: 40px 0 30px;
 	box-sizing: border-box;
 	background: #fff;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
@@ -2447,8 +2447,8 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .topic h1,
 .topic h2{
 	float: left;
-	margin: 0 0 20px;
 	padding: 0;
+	margin: 0;
 	color: #fff;
 }
 .hot-job{
@@ -2488,7 +2488,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	float: none;
 	display: inline-block;
 	vertical-align: top;
-	padding: 0 35px 0 0;
+	margin-right: 35px;
 }
 /*topic end*/
 
@@ -4525,6 +4525,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .sidebar-content{
 	background: #9c0;
 	display: none;
+	position: relative;
 }
 .sidebar-holder-content{
 	position: relative;

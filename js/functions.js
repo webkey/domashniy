@@ -566,17 +566,6 @@ function slidersInit() {
 							// variableWidth: true
 						}
 					}
-					// {
-					// 	breakpoint: 640,
-					// 	settings: {
-					// 		autoplay: false,
-					// 		arrows: false,
-					// 		dots: false,
-					// 		draggable: false,
-					// 		swipe: false,
-					// 		touchMove: false
-					// 	}
-					// }
 				]
 			});
 		});

@@ -127,10 +127,18 @@
 /*datetime */
 
 /*topic*/
-.topic h1, .topic h2 {
+.topic h1,
+.topic h2,
+.sheet .topic h1,
+.sheet .topic h2{
 	float: none;
-	padding: 0;
+	display: block;
 }
+.topic h1 + *,
+.topic h2 + *{
+	margin-top: 12px;
+}
+.topic .hot-job{ top: auto; }
 .topic .control {
 	float: none;
 	direction: rtl;
@@ -177,15 +185,17 @@
 /*advert copy end*/
 
 /*subscribe*/
-.promo-section .subscribe {
+.subscribe,
+.promo-section .subscribe{
 	min-height: 0;
-	padding: 11px 30px;
+	padding: 20px;
+	text-align: center;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
 }
-.subscribe {
-	text-align: center;
-}
+.subscribe__icon,
 .promo-section .subscribe__icon{
+	display: inline-block;
+	vertical-align: middle;
 	padding: 0 20px 0 0;
 }
 .subscribe__text{
@@ -215,11 +225,18 @@
 .promo-section .advert{
 	display: none;
 }
-.promo-section .subscribe {
-	padding: 11px 20px;
-	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-}
 /*adverts box (on content) end*/
+
+/*adverts box (on sidebar copy)*/
+.sidebar-content .adverts-box{
+	position: absolute;
+	left: 0;
+	top: -117px;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0 30px;
+}
+/*adverts box (on sidebar copy) end*/
 
 /*promo section*/
 .promo-section{
@@ -301,6 +318,7 @@
 /*sidebar content (for devices)*/
 .sidebar-content{
 	display: block;
+	margin: 117px 0 0;
 }
 /*sidebar content (for devices) end*/
 
