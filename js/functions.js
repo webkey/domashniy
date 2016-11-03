@@ -527,7 +527,7 @@ function slidersInit() {
 				slidesToShow: 3,
 				slidesToScroll: 3,
 				infinite: true,
-				dots: false,
+				dots: true,
 				arrows: true,
 				responsive: [
 					{
@@ -559,7 +559,6 @@ function slidersInit() {
 						breakpoint: 520,
 						settings: {
 							arrows: false,
-							dots: true,
 							slidesToShow: 1,
 							centerPadding: '40px',
 							centerMode: true
@@ -1231,59 +1230,59 @@ function initJsDrops(){
 
 function compactor() {
 	var $main = $('.location-filter');
-	if (!$main.length) return false;
 
-	var $itemsWrap = $('.location-filter-holder');
-	var $itemsContainer = $('.location-filter-list');
+	if ($main.length) {
 
-	$(window).load(function () {
-		$itemsContainer.contents().clone().appendTo('#location-filter-clone');
-	});
+		var $itemsContainer = $('.location-filter-list');
 
-	var $items = $itemsContainer.find('.location-filter-item');
+		$(window).load(function () {
+			$itemsContainer.contents().clone().appendTo('#location-filter-clone');
+		});
 
-	var itemsContainerWidth, lengthAllItems, actualTotalWidth, hideItemsLength;
+		var $items = $itemsContainer.find('.location-filter-item');
+		var minWidthItem = 165;
+		var itemsContainerWidth, lengthAllItems, actualTotalWidth, hideItemsLength;
 
-	var minWidthItem = 165;
+		var $cloneContainer = $('.js-compactor-clone');
+		var $moreBtnTextMain = $cloneContainer.find('.js-compactor-btn-main');
+		var $moreBtnTextAlt = $cloneContainer.find('.js-compactor-btn-alt');
 
-	var $cloneContainer = $('.js-compactor-clone');
-	var $moreBtnTextMain = $cloneContainer.find('.js-compactor-btn-main');
-	var $moreBtnTextAlt = $cloneContainer.find('.js-compactor-btn-alt');
+		$(window).on('load resizeByWidth', function () {
 
-	$(window).on('load resizeByWidth', function () {
+			itemsContainerWidth = ($cloneContainer.is(':visible')) ? $itemsContainer.width() : $itemsContainer.width() - $cloneContainer.outerWidth();
+			lengthAllItems = $items.length;
 
-		itemsContainerWidth = ($cloneContainer.is(':visible')) ? $itemsContainer.width() : $itemsContainer.width() - $cloneContainer.outerWidth();
-		lengthAllItems = $items.length;
+			actualTotalWidth = lengthAllItems * minWidthItem;
+			hideItemsLength = ( itemsContainerWidth > actualTotalWidth ) ? 0 : Math.abs(Math.ceil((actualTotalWidth - itemsContainerWidth)/minWidthItem));
 
-		actualTotalWidth = lengthAllItems * minWidthItem;
-		hideItemsLength = ( itemsContainerWidth > actualTotalWidth ) ? 0 : Math.abs(Math.ceil((actualTotalWidth - itemsContainerWidth)/minWidthItem));
+			// set the width of the visible items (in percent)
+			$items.css('width', (1/(lengthAllItems - hideItemsLength)*100)+'%');
+			// $cloneContainer.css('width', newWidthItem);
 
-		// set the width of the visible items (in percent)
-		$items.css('width', (1/(lengthAllItems - hideItemsLength)*100)+'%');
-		// $cloneContainer.css('width', newWidthItem);
+			// if(lengthAllItems == hideItemsLength + 1){
+			if(lengthAllItems == hideItemsLength){
+				$moreBtnTextAlt.attr('style','display: inline-block;');
+				$moreBtnTextMain.attr('style','display: none;');
+			} else {
+				$moreBtnTextAlt.attr('style','display: none;');
+				$moreBtnTextMain.attr('style','display: inline-block;');
+			}
 
-		// if(lengthAllItems == hideItemsLength + 1){
-		if(lengthAllItems == hideItemsLength){
-			$moreBtnTextAlt.attr('style','display: inline-block;');
-			$moreBtnTextMain.attr('style','display: none;');
-		} else {
-			$moreBtnTextAlt.attr('style','display: none;');
-			$moreBtnTextMain.attr('style','display: inline-block;');
-		}
+			// $main.toggleClass('show-clone', lengthAllItems * minWidthItem > itemsContainerWidth);
+			$main.toggleClass('show-btn-more', hideItemsLength > 0);
+			$main.toggleClass('hide-all-items', hideItemsLength === lengthAllItems);
 
-		// $main.toggleClass('show-clone', lengthAllItems * minWidthItem > itemsContainerWidth);
-		$main.toggleClass('show-btn-more', hideItemsLength > 0);
-		$main.toggleClass('hide-all-items', hideItemsLength === lengthAllItems);
+			$('.location-filter-item').removeClass('compactor-cloned');
 
-		$('.location-filter-item').removeClass('compactor-cloned');
+			for ( var i = 0; i <= hideItemsLength; i++ ) {
+				// var indexCloned = lengthAllItems - i - 1;
+				var indexCloned = lengthAllItems - i;
+				$($items[indexCloned]).addClass('compactor-cloned');
+				$($cloneContainer.find('.location-filter-item')[indexCloned]).addClass('compactor-cloned');
+			}
+		});
 
-		for ( var i = 0; i <= hideItemsLength; i++ ) {
-			// var indexCloned = lengthAllItems - i - 1;
-			var indexCloned = lengthAllItems - i;
-			$($items[indexCloned]).addClass('compactor-cloned');
-			$($cloneContainer.find('.location-filter-item')[indexCloned]).addClass('compactor-cloned');
-		}
-	});
+	}
 }
 /*clone and collapse phones*/
 
@@ -1516,6 +1515,17 @@ function toggleViewShops() {
 		$this.addClass(activeHand);
 
 		if ($this.index() === 0) {
+			$container.addClass(activeContainer);
+		}
+	});
+
+	$('.to-map').on('click', 'a', function (e) {
+		e.preventDefault();
+
+		if ( window.innerWidth < 1280 ) {
+			$switcherHand.eq(1).removeClass(activeHand);
+			$switcherHand.eq(0).addClass(activeHand);
+
 			$container.addClass(activeContainer);
 		}
 	});
