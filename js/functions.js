@@ -1829,17 +1829,17 @@ $(document).ready(function(){
 
 	var flag = false;
 
-	alert('flag before click' + flag);
+	alert('flag before click: ' + flag);
 
-	$('btn-menu').on('click', function () {
+	$('.btn-menu').on('click', function () {
 		flag = true;
 
-		alert('flag after click' + flag);
+		alert('flag after click: ' + flag);
 	});
 
 	document.addEventListener('backbutton', function(){
 
-		alert('flag after click' + flag);
+		alert('flag after click: ' + flag);
 
 		if (flag) {
 			//Hide the menu

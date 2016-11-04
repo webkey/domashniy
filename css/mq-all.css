@@ -348,6 +348,9 @@
 
 	/*MAIN*/
 	/*CONTENT*/
+	/*sheet*/
+	.sheet-holder { min-height: 0; }
+	/*sheet end*/
 	/*topic*/
 	.topic h1,
 	.topic h2,

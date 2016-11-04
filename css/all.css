@@ -2502,6 +2502,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	box-sizing: border-box;
 	background: #fff;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+	position: relative;
 }
 .sheet .topic{ padding-bottom: 40px; }
 .sheet .topic h1,
