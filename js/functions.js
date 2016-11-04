@@ -1827,25 +1827,26 @@ $(document).ready(function(){
 
 	footerBottom();
 
-	function goBack() {
-		window.location.hash = window.location.lasthash[window.location.lasthash.length-1];
-		//blah blah blah
-		window.location.lasthash.pop();
+	var flag = false;
 
-		alert('goBack()');
-	}
+	alert('flag before click' + flag);
 
-	window.onhashchange = function() {
-		if (window.innerDocClick) {
-			window.innerDocClick = false;
-			alert('onhashchange');
-		} else {
-			if (window.location.hash != '#undefined') {
-				goBack();
-			} else {
-				history.pushState("", document.title, window.location.pathname);
-				location.reload();
-			}
+	$('btn-menu').on('click', function () {
+		flag = true;
+
+		alert('flag after click' + flag);
+	});
+
+	document.addEventListener('backbutton', function(){
+
+		alert('flag after click' + flag);
+
+		if (flag) {
+			//Hide the menu
+			//This is also working fine
+			// return false;
+		} else /*nothing is visible, exit the app*/ {
+			navigator.app.exitApp();
 		}
-	}
+	});
 });

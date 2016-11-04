@@ -856,7 +856,7 @@
 	.btn-menu, .btn-menu-close{ top: 11px; }
 	.page-is-scrolled .btn-menu.active,
 	.nav-opened .btn-menu.active{ top: 11px; }
-	.nav{ padding-top: 60px; }
+	.nav-holder{ padding-top: 60px; }
 	/*HEADER end*/
 
 	/*MAIN*/
