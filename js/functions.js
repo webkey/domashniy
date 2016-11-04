@@ -157,6 +157,18 @@ function printShow() {
 	// 3) resizeByWidth (resize only width);
 
 	// add css style
+	// .nav-opened{
+	// 	width: 100%!important;
+	// 	height: 100%!important;
+	// 	max-width: 100%!important;
+	// 	max-height: 100%!important;
+	// 	margin: 0!important;
+	// 	padding: 0!important;
+	// 	overflow: hidden!important;
+	// }
+
+	//.nav-opened-start .wrapper{ z-index: 99; } // z-index of header must be greater than footer
+	//
 	// @media only screen and (min-width: [example: 1280px]){
 	// .nav{
 	// 		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
@@ -173,47 +185,44 @@ function printShow() {
 	// }
 	var MainNavigation = function (settings) {
 		var options = $.extend({
-			mainContainer: 'html',
-			navContainer: null,
-			navMenu: '.nav-list',
-			btnMenu: '.btn-menu',
-			navMenuItem: '.nav-list > li',
+			mainContainer: 'html', // container wrapping all elements
+			navContainer: null, // main navigation container
+			navMenu: null, // menu
+			btnMenu: null, // element which opens or switches menu
+			btnMenuClose: null, // element which closes a menu
+			navMenuItem: null,
 			navMenuAnchor: 'a',
-			navDropMenu: '.js-nav-drop',
 			staggerItems: null,
-			overlayClass: '.nav-overlay',
-			overlayAppend: 'body',
+			overlay: '.nav-overlay', // overlay's class
+			overlayAppendTo: 'body', // where to place overlay
 			overlayAlpha: 0.8,
-			classNoClickDrop: '.no-click', // Класс, при наличии которого дроп не буте открываться по клику
 			classReturn: null,
-			overlayBoolean: false,
+			overlayBoolean: true,
 			animationSpeed: 300,
 			animationSpeedOverlay: null,
 			minWidthItem: 100
-		},settings || {});
+		}, settings || {});
 
 		var self = this,
 			container = $(options.navContainer),
 			_animateSpeed = options.animationSpeed;
 
 		self.options = options;
-		self.$mainContainer = $(options.mainContainer);            // Основной контейнер дом дерева. по умолчанию <html></html>
+		self.$mainContainer = $(options.mainContainer);            // . по умолчанию <html></html>
 		self.$navMenu = $(options.navMenu);
-		self.$btnMenu = $(options.btnMenu);                        // Кнопка открытия/закрытия меню для моб. верси;
+		self.$btnMenu = $(options.btnMenu);
+		self.$btnMenuClose = $(options.btnMenuClose);
 		self.$navContainer = container;
 		self.$navMenuItem = $(options.navMenuItem, container);     // Пункты навигации;
 		self.$navMenuAnchor = $(options.navMenuAnchor, container); // Элемент, по которому производится событие (клик);
-		self.$navDropMenu = $(options.navDropMenu, container);     // Дроп-меню всех уровней;
 		self.$staggerItems = options.staggerItems || self.$navMenuItem;  //Элементы в стеке, к которым применяется анимация. По умолчанию navMenuItem;
 
 		self._animateSpeed = _animateSpeed;
-		self._classNoClick = options.classNoClickDrop;
 
 		// overlay
-		self._overlayBoolean = options.overlayBoolean;            // Добавить оверлей (по-умолчанию == false). Если не true, то не будет работать по клику вне навигации;
-		self._overlayClass = options.overlayClass;                // Класс оверлея;
-		self.overlayAppend = options.overlayAppend;               // Элемент ДОМ, вконец которого добавится оверлей, по умолчанию <body></body>;
-		self.$overlay = $('<div class="' + self._overlayClass.substring(1) + '"></div>'); // Темплейт оверлея;
+		self.overlayBoolean = options.overlayBoolean;
+		self.overlayAppendTo = options.overlayAppendTo;
+		self.$overlay = $('<div class="' + options.overlay.substring(1) + '"></div>'); // Темплейт оверлея;
 		self._overlayAlpha = options.overlayAlpha;
 		self._animateSpeedOverlay = options.animationSpeedOverlay || _animateSpeed;
 		self._minWidthItem = options.minWidthItem;
@@ -226,8 +235,13 @@ function printShow() {
 			openStart: 'nav-opened-start'
 		};
 
-		self.createOverlay();
-		self.toggleNav();
+		if (self.overlayBoolean) {
+			self.createOverlay();
+		}
+		self.outsideClick();
+		self.preparationAnimation();
+		self.eventsBtnMenu();
+		self.eventsBtnMenuClose();
 		self.clearStyles();
 	};
 
@@ -236,25 +250,30 @@ function printShow() {
 	// init tween animation
 	MainNavigation.prototype.overlayTween = new TimelineMax({paused: true});
 
-	// overlay append to "overlayAppend"
+	// overlay append to "overlayAppendTo"
 	MainNavigation.prototype.createOverlay = function () {
-		var self = this;
-		if (!self._overlayBoolean) return false;
+		var self = this,
+			$overlay = self.$overlay;
 
-		var $overlay = self.$overlay;
-		$overlay.appendTo(self.overlayAppend);
+		$overlay.appendTo(self.overlayAppendTo);
 
-		TweenMax.set($overlay, {autoAlpha: 0});
+		TweenMax.set($overlay, {
+			autoAlpha: 0,
+			position: 'fixed',
+			width: '100%',
+			height: '100%',
+			left: 0,
+			top: 0,
+			background: '#000'
+		});
 
 		self.overlayTween.to($overlay, self._animateSpeedOverlay / 1000, {autoAlpha: self._overlayAlpha});
 	};
 
 	// show/hide overlay
 	MainNavigation.prototype.showOverlay = function (close) {
-		var self = this;
-		if (!self._overlayBoolean) return false;
-
-		var overlayTween = self.overlayTween;
+		var self = this,
+			overlayTween = self.overlayTween;
 
 		if (close === false) {
 			overlayTween.reverse();
@@ -269,30 +288,59 @@ function printShow() {
 		overlayTween.play();
 	};
 
-	// switch nav
-	MainNavigation.prototype.toggleNav = function () {
+	// events btn menu
+	MainNavigation.prototype.eventsBtnMenu = function () {
 		var self = this,
 			$buttonMenu = self.$btnMenu;
 
-		self.preparationAnimation();
-
 		$buttonMenu.on('click', function (e) {
+
+			e.preventDefault();
+
 			if (self.navIsOpened) {
 				self.closeNav();
 			} else {
 				self.openNav();
 			}
 
-			e.preventDefault();
-		});
-
-		$(document).on('click', self._overlayClass, function () {
-			self.closeNav();
+			e.stopPropagation();
 		});
 	};
 
+	// events btn close menu
+	MainNavigation.prototype.eventsBtnMenuClose = function () {
+
+		var self = this;
+
+		self.$btnMenuClose.on('click', function (e) {
+			e.preventDefault();
+
+			if ( self.navIsOpened ) {
+				self.closeNav();
+			}
+
+			e.stopPropagation();
+		});
+	};
+
+	// click outside menu
+	MainNavigation.prototype.outsideClick = function () {
+		var self = this;
+
+		$(document).on('click', function () {
+			self.closeNav();
+		});
+
+		self.$navContainer.on('click', function (e) {
+			e.stopPropagation();
+		})
+	};
+
+
 	// open nav
 	MainNavigation.prototype.openNav = function() {
+		console.log("openNav");
+
 		var self = this,
 			$html = self.$mainContainer,
 			$navContainer = self.$navContainer,
@@ -324,13 +372,18 @@ function printShow() {
 			ease:Cubic.easeOut
 		}, 0.1);
 
-		self.showOverlay();
+
+		if (self.overlayBoolean) {
+			self.showOverlay();
+		}
 
 		self.navIsOpened = true;
 	};
 
 	// close nav
 	MainNavigation.prototype.closeNav = function() {
+		console.log("closeNav");
+
 		var self = this,
 			$html = self.$mainContainer,
 			$navContainer = self.$navContainer,
@@ -341,7 +394,9 @@ function printShow() {
 		$html.removeClass(self.modifiers.openStart);
 		$buttonMenu.removeClass(self.modifiers.active);
 
-		self.showOverlay(false);
+		if (self.overlayBoolean) {
+			self.showOverlay(false);
+		}
 
 		TweenMax.to($navContainer, _animationSpeed / 1000, {
 			yPercent: 120, onComplete: function () {
@@ -359,6 +414,8 @@ function printShow() {
 			$staggerItems = self.$staggerItems;
 
 		if (window.innerWidth < 1280) {
+			console.log("preparationAnimation");
+
 			TweenMax.set($navContainer, {
 				yPercent: 120,
 				onComplete: function () {
@@ -399,11 +456,14 @@ function mainNavigationInit(){
 	var $container = $('.nav');
 	if(!$container.length){ return; }
 	new MainNavigation({
-		navContainer: $container,
-		overlayAppend: '.wrapper',
+		navContainer: '.nav',
+		navMenu: '.nav-list',
+		btnMenu: '.btn-menu',
+		btnMenuClose: '.btn-menu-close',
+		navMenuItem: '.nav-list > li',
+		overlayAppendTo: '.header',
 		animationSpeed: 300,
-		overlayBoolean: true,
-		overlayAlpha: 0.75
+		overlayAlpha: 0.35
 	});
 }
 /*main navigation end*/
@@ -1766,4 +1826,26 @@ $(document).ready(function(){
 	// stickyLayout();
 
 	footerBottom();
+
+	function goBack() {
+		window.location.hash = window.location.lasthash[window.location.lasthash.length-1];
+		//blah blah blah
+		window.location.lasthash.pop();
+
+		alert('goBack()');
+	}
+
+	window.onhashchange = function() {
+		if (window.innerDocClick) {
+			window.innerDocClick = false;
+			alert('onhashchange');
+		} else {
+			if (window.location.hash != '#undefined') {
+				goBack();
+			} else {
+				history.pushState("", document.title, window.location.pathname);
+				location.reload();
+			}
+		}
+	}
 });

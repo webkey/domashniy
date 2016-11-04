@@ -82,17 +82,22 @@
 		top: 0;
 		width: 100%;
 		height: 100%;
-		padding: 74px 8px 0;
+		padding: 0;
 		text-align: center;
 		background: #655446 url(../img/bg-page.jpg) 50% 0;
 		z-index: 99;
-		display: none;
 		overflow: auto;
+		display: none;
 
 		font-size: 0;
 		letter-spacing: -4px;
 	}
-	.nav:after{
+	.nav-holder{
+		padding: 74px 8px 0;
+		min-height: 100%;
+		background: #655446 url(../img/bg-page.jpg) 50% 0;
+	}
+	.nav-holder:after{
 		content: '';
 		display: inline-block;
 		vertical-align: middle;
@@ -160,7 +165,7 @@
 	}
 	/*main navigation end*/
 	/*btn menu*/
-	.btn-menu{ display: block; }
+	.btn-menu, .btn-menu-close{ display: block; }
 	/*btn menu end*/
 	/*HEADER end*/
 
@@ -268,6 +273,28 @@
 		padding-left: 20px !important;
 		padding-right: 20px !important;
 	}
+	.max-wrap,
+	.max-wrap-md,
+	.max-wrap-md-alt,
+	.max-wrap-sm,
+	.max-wrap-home{
+		padding-left: 30px !important;
+		padding-right: 30px !important;
+	}
+	.sheet .max-wrap-md,
+	.mfp-content .max-wrap-md,
+	.sheet .max-wrap-md-alt,
+	.sheet .max-wrap-sm,
+	.user-form .max-wrap-sm {
+		padding-left: 40px !important;
+		padding-right: 40px !important;
+	}
+	.breadcrumbs,
+	.sheet,
+	.sidebar-content .adverts-box{
+		padding-left: 30px;
+		padding-right: 30px;
+	}
 
 	.content + .spacer{ display: none; }
 	.main + .spacer{ display: block; }
@@ -278,7 +305,7 @@
 		padding-right: 20px !important;
 	}
 	.logo{ left: 20px; }
-	.btn-menu{ right: 20px; }
+	.btn-menu, .btn-menu-close{ right: 20px; }
 	.login{ right: 140px; }
 	/*MAIN BLOCKS end*/
 
@@ -419,7 +446,8 @@
 		top: -117px;
 		width: 100%;
 		box-sizing: border-box;
-		padding: 0 40px;
+		padding-bottom: 0;
+		padding-top: 0;
 	}
 	/*adverts box (on sidebar copy) end*/
 
@@ -722,7 +750,7 @@
 		padding-right: 5px !important;
 	}
 	.logo{ left: 10px; }
-	.btn-menu{ right: 12px; }
+	.btn-menu, .btn-menu-close{ right: 10px; }
 	.login{ right: 122px; }
 
 	.user-content{ padding: 30px 0; }
@@ -825,7 +853,7 @@
 	}
 	.page-loaded .header,
 	.no-js .header{ display: block; }
-	.btn-menu{ top: 11px; }
+	.btn-menu, .btn-menu-close{ top: 11px; }
 	.page-is-scrolled .btn-menu.active,
 	.nav-opened .btn-menu.active{ top: 11px; }
 	.nav{ padding-top: 60px; }
@@ -1186,5 +1214,10 @@
 		width: 143px;
 		height: 30px;
 		margin-top: -13px;
+	}
+	.page-is-scrolled .logo {
+		width: 172px;
+		height: 34px;
+		margin-top: -16px;
 	}
 }
