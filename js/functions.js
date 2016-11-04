@@ -328,11 +328,15 @@ function printShow() {
 		var self = this;
 
 		$(document).on('click', function () {
-			self.closeNav();
+			if ( self.navIsOpened ) {
+				self.closeNav();
+			}
 		});
 
 		self.$navContainer.on('click', function (e) {
-			e.stopPropagation();
+			if ( self.navIsOpened ) {
+				e.stopPropagation();
+			}
 		})
 	};
 
@@ -1447,6 +1451,10 @@ function shopsMap() {
 			markers.push(marker);
 		}
 
+		// Add a marker clusterer to manage the markers.
+		var markerCluster = new MarkerClusterer(map, markers,
+			{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
 		// Try HTML5 geolocation.
 		// if (navigator.geolocation) {
 		// 	navigator.geolocation.getCurrentPosition(function(position) {
@@ -1826,28 +1834,4 @@ $(document).ready(function(){
 	// stickyLayout();
 
 	footerBottom();
-
-	var flag = false;
-
-	alert('flag before click: ' + flag);
-
-	$('.btn-menu').on('click', function () {
-		flag = true;
-
-		alert('flag after click: ' + flag);
-	});
-
-	document.addEventListener('backbutton', function(){
-
-
-
-		if (flag) {
-			//Hide the menu
-			//This is also working fine
-			alert('flag after click: ' + flag);
-			return false;
-		} else /*nothing is visible, exit the app*/ {
-			navigator.app.exitApp();
-		}
-	});
 });

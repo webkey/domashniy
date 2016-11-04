@@ -237,6 +237,8 @@
 		-ms-transform: translate(0, 0);
 		transform: translate(0, 0);
 	}
+	.shops-map-wrap { width: 50%; }
+	.shops-map{ margin-right: 0; }
 	.shops-aside{
 		width: 50%;
 		padding-top: 0;
@@ -513,7 +515,8 @@
 	/*banners*/
 
 	/*shops network*/
-	.shops-holder{ height: 572px; }
+	.shops-holder{ height: auto; }
+	/*.shops-holder{ height: 572px; }*/
 	/*shops network end*/
 	/*CONTENT end*/
 
