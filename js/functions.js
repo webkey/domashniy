@@ -1839,12 +1839,13 @@ $(document).ready(function(){
 
 	document.addEventListener('backbutton', function(){
 
-		alert('flag after click: ' + flag);
+
 
 		if (flag) {
 			//Hide the menu
 			//This is also working fine
-			// return false;
+			alert('flag after click: ' + flag);
+			return false;
 		} else /*nothing is visible, exit the app*/ {
 			navigator.app.exitApp();
 		}
