@@ -4050,10 +4050,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	color: #666;
 }
 .shops-item__list>div,
-.map-popup__row{
-	padding: 0 0 5px;
-	overflow: hidden;
-}
+.map-popup__row{ padding: 0 0 5px; }
 .shops-item__list>div>i,
 .map-popup__row>i{
 	margin: 6px 6px 0 0;
@@ -4074,22 +4071,104 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .shop-offline .shops-item__work .depict-time,
 .shop-offline .map-popup__row .work-time .depict-time{ background-position: 0 -22px; }
 .shops-item__tags,
-.mam-popup__shops-tags{
+.map-popup__shops-tags{
 	display: block;
 	cursor: default;
 }
 .shops-item__list .shops-item__tags,
-.mam-popup__shops-tags{ padding: 0; }
+.map-popup__shops-tags{ padding: 0; }
 .shops-item__tags > span,
-.map-popup__row .mam-popup__shops-tags > span{
+.map-popup__row .map-popup__shops-tags > span{
 	display: inline-block;
 	vertical-align: top;
+	position: relative;
 	width: 24px;
 	height: 24px;
 	background: no-repeat 50% 50%;
 	-webkit-background-size: contain;
 	background-size: contain;
 	margin: 0 10px 6px 0;
+}
+.shops-item__tags > span > i,
+.map-popup__row .map-popup__shops-tags > span > i{
+	position: absolute;
+	left: 50%;
+	bottom: 100%;
+	font-family: 'PT Sans Narrow', Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 20px;
+	color: #000;
+	background: #fff;
+	border-radius: 4px;
+	padding: 4px 10px 5px;
+	max-width: 160px;
+	border: 1px solid #b5b5b5;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+	z-index: 2;
+	opacity: 0;
+	pointer-events: none;
+	visibility: hidden;
+	-webkit-transform: translate(-50%, -18px);
+	-ms-transform: translate(-50%, -18px);
+	transform: translate(-50%, -18px);
+	-webkit-transition-property: opacity, visibility, -webkit-transform;
+	transition-property: opacity, visibility, transform;
+	-webkit-transition-duration: 0.35s;
+	transition-duration: 0.35s;
+}
+.shops-item__tags > span:hover > i,
+.map-popup__row .map-popup__shops-tags > span:hover > i{
+	opacity: 1;
+	visibility: visible;
+	-webkit-transform: translate(-50%, -12px);
+	-ms-transform: translate(-50%, -12px);
+	transform: translate(-50%, -12px);
+	-webkit-transition-delay: 0.35s;
+	transition-delay: 0.35s;
+}
+.shops-item__tags > span > i:after,
+.map-popup__row .map-popup__shops-tags > span > i:after{
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(255, 255, 255, 0);
+	border-top-color: #ffffff;
+	border-width: 6px;
+	margin-left: -6px;
+}
+.shops-item__tags > span > i:before,
+.map-popup__row .map-popup__shops-tags > span > i:before,
+.shops-item__tags > span > i:after,
+.map-popup__row .map-popup__shops-tags > span > i:after {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	z-index: 2;
+}
+
+.shops-item__tags > span > i:after,
+.map-popup__row .map-popup__shops-tags > span > i:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-top-color: #ffffff;
+	border-width: 5px;
+	margin-left: -5px;
+}
+.shops-item__tags > span > i:before,
+.map-popup__row .map-popup__shops-tags > span > i:before {
+	border-color: rgba(181, 181, 181, 0);
+	border-top-color: #b5b5b5;
+	border-width: 6px;
+	margin-left: -6px;
 }
 
 .shops-item__extend{
@@ -4172,13 +4251,14 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	background: #f3f3f3;
 }
 
-.gm-style-mtc label{
-	font-size: 12px;
-	line-height: 1.2;
+.shops-map [class*="balloon__layout"]{
+	overflow: visible !important;
+}
+.shops-map [class*="balloon__content"] > ymaps{
+	overflow: visible !important;
 }
 
-.shops-map .gm-style-iw + div img{ display: none !important; }
-.shops-map .gm-style-iw + div{
+.shops-map [class$="balloon__close"]{
 	width: 32px !important;
 	height: 32px !important;
 	background: #666 !important;
@@ -4196,7 +4276,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	-webkit-transition-duration: 0.25s;
 	transition-duration: 0.25s;
 }
-.desktop .shops-map .gm-style-iw + div:hover{
+.desktop .shops-map [class$="balloon__close"]:hover{
 	background: #016c42 !important;
 	-webkit-transform: rotate(135deg);
 	-ms-transform: rotate(135deg);
@@ -4204,23 +4284,32 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	-webkit-transition-duration: 0.35s;
 	transition-duration: 0.35s;
 }
-.shops-map .gm-style-iw + div:before,
-.shops-map .gm-style-iw + div:after{
+.shops-map [class$="balloon__close"]:before,
+.shops-map [class$="balloon__close"]:after{
 	content: '';
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	background: #fff;
 }
-.shops-map .gm-style-iw + div:before{
+.shops-map [class$="balloon__close"]:before{
 	width: 20px;
 	height: 2px;
 	margin: -1px 0 0 -10px;
 }
-.shops-map .gm-style-iw + div:after{
+.shops-map [class$="balloon__close"]:after{
 	height: 20px;
 	width: 2px;
 	margin: -10px 0 0 -1px;
+}
+.shops-map [class$="balloon__close-button"]{
+	height: 100% !important;
+	width: 100% !important;
+	background: none !important;
+}
+.shops-map [class$="controls__control"]{
+	right: 20px !important;
+	top: 20px !important;
 }
 /*shops map*/
 
@@ -4329,7 +4418,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	-ms-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 }
-.gm-bundled-control{
+.map-expand .controls__control{
 	bottom: 50% !important;
 	margin: 0 10px 13px 0 !important;
 }

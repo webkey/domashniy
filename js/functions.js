@@ -1388,7 +1388,7 @@ function clearFilter() {
  * */
 // inline script
 // var localObjects;
-function shopsMap() {
+function shopsMap1() {
 	if (!$('#shops-map').length) return false;
 
 	var markers = [];
@@ -1543,6 +1543,206 @@ function shopsMap() {
 			$container.find('.shops-aside-group').show(0);
 		}
 	});
+}
+
+function shopsMap() {
+	// historyPage.Init();
+	//
+	// _reinitPopupHandlers();
+	//
+	// var hash_temp = location.toString().split('#');
+	// if ( hash_temp[1] && hash_temp[1].match('salons')) {
+	// 	historyPage.GoTo(hash_temp[1], 'salons');
+	// }
+
+	var myMap,
+		myCollection,
+		myPlacemark;
+
+	myPlacemark = [];
+
+	//$('#callback').show();
+
+	// function toggleCallback() {
+	// 	$('.js-callback-popup').toggleClass('callback-popup_show');
+	// }
+
+	// $('.js-button-callback-toggle').on('click', function(event) {
+	// 	event.preventDefault();
+	// 	toggleCallback();
+	// });
+
+	$('#selectShops').on('change', function(){
+
+		var citySel = $(this).val();
+		var jsonResult = [];
+
+		$.get( "ajax/mapObj.json", { ajax: '1', action: 'json'}, function( data ) {
+
+			jsonResult = data;
+			reDrawNewCitiesMarks( jsonResult[citySel] );
+
+		}, "json");
+
+	});
+
+
+	function reDrawNewCitiesMarks ( jsonResult ) {
+
+		myCollection.removeAll();
+		myCollection = new ymaps.GeoObjectCollection();
+		var myGeoObjects = [];
+
+		// var myClusterer = new ymaps.Clusterer({});
+
+		// Переменная с описанием двух видов иконок кластеров.
+		var clusterIcons = [
+				{
+					href: 'img/map-cluster-2x.png',
+					size: [46, 46],
+					// Отступ, чтобы центр картинки совпадал с центром кластера.
+					offset: [-23, -23]
+				},
+				{
+					href: 'img/map-cluster-2x.png',
+					size: [60, 60],
+					offset: [-30, -30],
+					// Можно задать геометрию активной области метки.
+					// Если геометрия не задана, активной областью будет
+					// прямоугольник.
+					shape: {
+						type: 'Circle',
+						coordinates: [0, 0],
+						radius: 30
+					}
+				}],
+			// При размере кластера до 20 будет использована картинка 'small.jpg'.
+			// При размере кластера больше 20 будет использована 'big.png'.
+			clusterNumbers = [20],
+			// Сделаем макет содержимого иконки кластера,
+			// в котором цифры будут раскрашены в белый цвет.
+			MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+				'<div style="color: #FFFFFF; font-weight: bold;">{{ properties.geoObjects.length }}</div>');
+		var myClusterer = new ymaps.Clusterer({
+			// Если опции для кластеров задаются через кластеризатор,
+			// необходимо указывать их с префиксами "cluster".
+			clusterIcons: clusterIcons,
+			clusterNumbers: clusterNumbers,
+			clusterIconContentLayout: MyIconContentLayout
+		});
+
+		$.each( jsonResult, function(i, item) {
+
+			var coordStr = item.coord;
+
+			var tags = function () {
+				if (item.tags.length) {
+					var i, tag, result = '';
+					for ( i = 0; i < item.tags.length ; i++) {
+						var currentTag = item.tags[i];
+						tag = '<span style="background-image: url(' + currentTag.tags_url + ');"><i>' + currentTag.tags_title + '</i></span>';
+						result += tag;
+					}
+					return result;
+				}
+			};
+
+			var balloonContent = '' +
+				'<div class="map-popup">' +
+					'<div class="map-popup__title">' + item.name + '</div>' +
+					'<div class="map-popup__list">' +
+						'<div class="map-popup__row work-time"><i class="depict-time"></i>' + item.work_time + '</div>' +
+						'<div class="map-popup__row"><i class="depict-phone"></i>' + item.phones + '</div>' +
+						'<div class="map-popup__row">' +
+							'<div class="map-popup__shops-tags">' + tags() + '</div>' +
+						'</div>' +
+						'<div class="map-popup__row"><a href="#" class="more">Подробнее</a></div>' +
+					'</div>' +
+				'</div>';
+
+			if ( coordStr !== null ) {
+				var coordArray = coordStr.split(', ');
+
+				myPlacemark[i] = new ymaps.Placemark([coordArray[0], coordArray[1]], {
+					balloonContentBody: balloonContent,
+					hintContent: item.name
+				}, {
+					iconLayout: 'default#image',
+					iconImageHref: 'img/depict-map-2x.png',
+					draggable: true,
+					iconImageSize: [45, 61],
+					iconImageOffset: [-22, -59]
+				});
+
+				myGeoObjects[i] = new ymaps.GeoObject({});
+
+				myPlacemark[i].events.add('click', function (e) {
+					// _loadSalonPopup( item.city, item.id);
+					// e.stopPropagation();
+				});
+
+				// myCollection.add(myPlacemark[i]);
+
+				myClusterer.add(myPlacemark[i]);
+			}
+		});
+
+		// myMap.geoObjects.add(myCollection);
+
+
+		myMap.geoObjects.add(myClusterer);
+
+		myMap.setBounds(myClusterer.getBounds(), {checkZoomRange: false}).then(function () {
+			if (myMap.getZoom() > 11) myMap.setZoom(11);
+		});
+		// myMap.setBounds(myCollection.getBounds(), {checkZoomRange: false}).then(function () {
+		// 	if (myMap.getZoom() > 11) myMap.setZoom(11);
+		// });
+
+		//myMap.setBounds( myCollection.getBounds(), { checkZoomRange:false });
+	}
+
+	if ( $('#shops-map').length ) {
+
+		ymaps.ready(init);
+
+		function init(){
+			myMap = new ymaps.Map ("shops-map", {
+				center: [53.92371562293391,27.512945709636973],
+				zoom: 11,
+				controls: []
+			});
+
+			myMap.controls.add('zoomControl', {position: {right: '40px', top: '50px'}});
+			myMap.behaviors.disable('scrollZoom');
+
+			myCollection = new ymaps.GeoObjectCollection();
+
+			/*
+			 myPlacemark = new ymaps.Placemark([53.92371562293391,27.512945709636973], { hintContent: 'Сквирел', balloonContent: 'ул. Тимирзева' },{
+			 iconLayout: 'default#image',
+			 iconImageHref: _root + 'public/i/map-label-full.png',
+			 iconImageSize: [64, 65],
+			 iconImageOffset: [-16, -65]
+			 });
+			 */
+
+			//myCollection.add(myPlacemark);
+			//myMap.geoObjects.add(myCollection);
+
+			$.get( 'ajax/mapObj.json', { ajax: '1', action: 'json'}, function( data ) {
+				jsonResult = data;
+
+				reDrawNewCitiesMarks( jsonResult['minsk'] );
+
+			}, "json");
+
+			$( "#selectShops option[value='minsk']" ).prop('selected', true);
+			$("#selectShops").multiselect('refresh');
+
+		}
+
+	}
 }
 
 /*add shadow tape*/
