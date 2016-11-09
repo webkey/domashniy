@@ -386,7 +386,7 @@ function printShow() {
 
 	// close nav
 	MainNavigation.prototype.closeNav = function() {
-		console.log("closeNav");
+		// console.log("closeNav");
 
 		var self = this,
 			$html = self.$mainContainer,
@@ -418,7 +418,7 @@ function printShow() {
 			$staggerItems = self.$staggerItems;
 
 		if (window.innerWidth < 1280) {
-			console.log("preparationAnimation");
+			// console.log("preparationAnimation");
 
 			TweenMax.set($navContainer, {
 				yPercent: 120,
@@ -1508,7 +1508,7 @@ function shopsMap1() {
 	$('.shops-item__title a').on('click', function (e) {
 		e.preventDefault();
 
-		var index = $(this).data('lacation-index');
+		var index = $(this).data('location-index');
 
 		moveToLocation(localObjects[index][0], 14);
 
@@ -1556,90 +1556,88 @@ function shopsMap() {
 	// }
 
 	var myMap,
-		myCollection,
+		// myCollection,
+		myClusterer,
 		myPlacemark;
 
 	myPlacemark = [];
 
-	//$('#callback').show();
-
-	// function toggleCallback() {
-	// 	$('.js-callback-popup').toggleClass('callback-popup_show');
-	// }
-
-	// $('.js-button-callback-toggle').on('click', function(event) {
-	// 	event.preventDefault();
-	// 	toggleCallback();
-	// });
-
 	$('#selectShops').on('change', function(){
+		var value = $(this).val();
 
-		var citySel = $(this).val();
+		if ( value == 0 ) {
+			return false;
+		}
+
 		var jsonResult = [];
 
 		$.get( "ajax/mapObj.json", { ajax: '1', action: 'json'}, function( data ) {
+			addCountLoader();
 
 			jsonResult = data;
-			reDrawNewCitiesMarks( jsonResult[citySel] );
+			reDrawNewCitiesMarks( jsonResult[value] );
 
-		}, "json");
+		}, "json").done(function() {
+			removeCountLoader();
+		});
 
+		$('.shops-aside-group').hide(0);
+		$('[data-item-group = ' + value + ']').show(0);
 	});
-
 
 	function reDrawNewCitiesMarks ( jsonResult ) {
 
-		myCollection.removeAll();
-		myCollection = new ymaps.GeoObjectCollection();
+		// if (!jsonResult) {
+		// 	return false;
+		// }
+
+		if (myClusterer) {
+			myClusterer.removeAll();
+		}
+		// myCollection.removeAll();
+		// myCollection = new ymaps.GeoObjectCollection();
+
 		var myGeoObjects = [];
 
-		// var myClusterer = new ymaps.Clusterer({});
-
-		// Переменная с описанием двух видов иконок кластеров.
 		var clusterIcons = [
-				{
-					href: 'img/map-cluster-2x.png',
-					size: [46, 46],
-					// Отступ, чтобы центр картинки совпадал с центром кластера.
-					offset: [-23, -23]
-				},
-				{
-					href: 'img/map-cluster-2x.png',
-					size: [60, 60],
-					offset: [-30, -30],
-					// Можно задать геометрию активной области метки.
-					// Если геометрия не задана, активной областью будет
-					// прямоугольник.
-					shape: {
-						type: 'Circle',
-						coordinates: [0, 0],
-						radius: 30
-					}
-				}],
-			// При размере кластера до 20 будет использована картинка 'small.jpg'.
-			// При размере кластера больше 20 будет использована 'big.png'.
+			{
+				href: 'img/map-cluster-2x.png',
+				size: [46, 46],
+				offset: [-23, -23]
+			},
+			{
+				href: 'img/map-cluster-2x.png',
+				size: [60, 60],
+				offset: [-30, -30],
+				shape: {
+					type: 'Circle',
+					coordinates: [0, 0],
+					radius: 30
+				}
+			}],
 			clusterNumbers = [20],
-			// Сделаем макет содержимого иконки кластера,
-			// в котором цифры будут раскрашены в белый цвет.
 			MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-				'<div style="color: #FFFFFF; font-weight: bold;">{{ properties.geoObjects.length }}</div>');
-		var myClusterer = new ymaps.Clusterer({
-			// Если опции для кластеров задаются через кластеризатор,
-			// необходимо указывать их с префиксами "cluster".
+				'<div style="color: #FFFFFF; font-weight: normal; font-family: "PT Sans Serif", sans-serif;">{{ properties.geoObjects.length }}</div>'
+			);
+
+		myClusterer = new ymaps.Clusterer({
 			clusterIcons: clusterIcons,
 			clusterNumbers: clusterNumbers,
-			clusterIconContentLayout: MyIconContentLayout
+			clusterIconContentLayout: MyIconContentLayout,
+			maxZoom: 11
 		});
 
 		$.each( jsonResult, function(i, item) {
 
 			var coordStr = item.coord;
 
+			var id = item.id;
+
 			var tags = function () {
 				if (item.tags.length) {
-					var i, tag, result = '';
-					for ( i = 0; i < item.tags.length ; i++) {
-						var currentTag = item.tags[i];
+					var j, tag, result = '';
+					for ( j = 0; j < item.tags.length ; j++) {
+						var currentTag = item.tags[j];
 						tag = '<span style="background-image: url(' + currentTag.tags_url + ');"><i>' + currentTag.tags_title + '</i></span>';
 						result += tag;
 					}
@@ -1656,14 +1654,14 @@ function shopsMap() {
 						'<div class="map-popup__row">' +
 							'<div class="map-popup__shops-tags">' + tags() + '</div>' +
 						'</div>' +
-						'<div class="map-popup__row"><a href="#" class="more">Подробнее</a></div>' +
+						'<div class="map-popup__row"><a href="#" class="more" data-more-id="' + id + '">Подробнее</a></div>' +
 					'</div>' +
 				'</div>';
 
 			if ( coordStr !== null ) {
 				var coordArray = coordStr.split(', ');
 
-				myPlacemark[i] = new ymaps.Placemark([coordArray[0], coordArray[1]], {
+				myPlacemark[id] = new ymaps.Placemark([coordArray[0], coordArray[1]], {
 					balloonContentBody: balloonContent,
 					hintContent: item.name
 				}, {
@@ -1671,24 +1669,28 @@ function shopsMap() {
 					iconImageHref: 'img/depict-map-2x.png',
 					draggable: true,
 					iconImageSize: [45, 61],
-					iconImageOffset: [-22, -59]
+					iconImageOffset: [-22, -59],
+					hideIconOnBalloonOpen: false,
+					balloonOffset: [0, -61]
+					// balloonMaxWidth: 260
 				});
 
-				myGeoObjects[i] = new ymaps.GeoObject({});
+				myGeoObjects[id] = new ymaps.GeoObject({});
 
-				myPlacemark[i].events.add('click', function (e) {
+				myPlacemark[id].events.add('click', function (e) {
 					// _loadSalonPopup( item.city, item.id);
 					// e.stopPropagation();
 				});
 
 				// myCollection.add(myPlacemark[i]);
 
-				myClusterer.add(myPlacemark[i]);
+				myClusterer.add(myPlacemark[id]);
 			}
 		});
 
 		// myMap.geoObjects.add(myCollection);
 
+		countShops(jsonResult.length);
 
 		myMap.geoObjects.add(myClusterer);
 
@@ -1708,40 +1710,175 @@ function shopsMap() {
 
 		function init(){
 			myMap = new ymaps.Map ("shops-map", {
-				center: [53.92371562293391,27.512945709636973],
+				center: [55.20207973,27.4923474],
 				zoom: 11,
 				controls: []
 			});
 
-			myMap.controls.add('zoomControl', {position: {right: '40px', top: '50px'}});
+			myMap.controls.add('zoomControl', {position: {left: '20px', top: '20px'}});
+
 			myMap.behaviors.disable('scrollZoom');
 
-			myCollection = new ymaps.GeoObjectCollection();
+			// myCollection = new ymaps.GeoObjectCollection();
+			// myMap.geoObjects.add(myCollection);
 
-			/*
-			 myPlacemark = new ymaps.Placemark([53.92371562293391,27.512945709636973], { hintContent: 'Сквирел', balloonContent: 'ул. Тимирзева' },{
-			 iconLayout: 'default#image',
-			 iconImageHref: _root + 'public/i/map-label-full.png',
-			 iconImageSize: [64, 65],
-			 iconImageOffset: [-16, -65]
-			 });
-			 */
+			// myClusterer = new ymaps.Clusterer();
+			// myMap.geoObjects.add(myClusterer);
 
-			//myCollection.add(myPlacemark);
-			//myMap.geoObjects.add(myCollection);
+			// var myGeoObject = new ymaps.GeoObject({
+			// 	type: 'Point',
+			// 	coordinates: [53.9071097,27.4923474]
+			// });
 
-			$.get( 'ajax/mapObj.json', { ajax: '1', action: 'json'}, function( data ) {
-				jsonResult = data;
+			// myMap.geoObjects.add(myGeoObject);
 
-				reDrawNewCitiesMarks( jsonResult['minsk'] );
+			// myPlacemark = new ymaps.Placemark([53.9071097,27.4923474],
+			// 	{
+			// 	balloonContentBody: "balloonContent",
+			// 	hintContent: "name"
+			// }, {
+			// 	iconLayout: 'default#image',
+			// 	iconImageHref: 'img/depict-map-2x.png',
+			// 	draggable: true,
+			// 	iconImageSize: [45, 61],
+			// 	iconImageOffset: [-22, -59]
+			// });
 
-			}, "json");
+			// myMap.geoObjects.add(myPlacemark);
 
-			$( "#selectShops option[value='minsk']" ).prop('selected', true);
-			$("#selectShops").multiselect('refresh');
+			// myCollection.add(myPlacemark);
 
+			// myPlacemark.balloon.open();
+
+			// $.get( 'ajax/mapObj.json', { ajax: '1', action: 'json'}, function( data ) {
+			// 	jsonResult = data;
+			// 	//
+			// 	reDrawNewCitiesMarks( jsonResult['minsk'] );
+			//
+			// 	// myPlacemark[5].balloon.open();
+			// //
+			// }, "json");
+			//
+			var $selectShops = $("#selectShops");
+
+			$selectShops.find("option[value='minsk']").prop('selected', true);
+			$selectShops.multiselect('refresh').trigger('change');
+		}
+	}
+
+	/*filter tags*/
+	$('.location-filter-list').on('change', ':checkbox', function () {
+
+		console.log("1: ", 1);
+
+		$.get( "ajax/mapObj.json", { ajax: '1', action: 'json'}, function( data ) {
+			addCountLoader();
+
+			var jsonResult = data;
+
+			$.each( jsonResult.minsk, function( i, item ) {
+				$.each( item, function( key, value ) {
+					console.log( key + ": " + value );
+				});
+			});
+
+			// reDrawNewCitiesMarks( jsonResult[value] );
+
+		}, "json").done(function() {
+			removeCountLoader();
+		});
+
+
+		var $this = $(this),
+			name = $this.attr('name'),
+			classNoItem = 'filter-no-item';
+
+		var tags = {};
+
+		$this.closest('[data-id]').find('select').each(function () {
+			tags [$(this).attr('name')] = $(this).val();
+		});
+
+		tags [name] = $this.val();
+
+		var $filterItem = $this.closest('.js-tab-content').find('.accordion-content');
+
+		var $noItemTemplate = $('<div />', {
+			class: classNoItem,
+			text: 'Извините, подходящих вакансий не найдено'
+		});
+
+		var dataFilters = concatObject(tags);
+
+		$filterItem.parent().find('.'+ classNoItem).remove();
+		$filterItem.show(0);
+
+		if (dataFilters) {
+
+			$filterItem.hide(0);
+			$filterItem.filter(dataFilters).show(0);
+
+			if (!$filterItem.is(':visible')) {
+				$filterItem.parent().append($noItemTemplate.clone());
+			}
+		}
+	});
+
+	function concatObject(obj) {
+		var arr = [];
+
+		for ( var prop in obj ) {
+			var thisKey = prop,
+				thisProp = obj[ thisKey ];
+
+			if (thisProp == 0) continue;
+
+			arr.push('[data-property-' + thisKey + '="' + thisProp + '"]');
 		}
 
+		return arr.join('');
+	}
+
+	/*event on click shops list*/
+	var click;
+	$('.shops-item__title a').on('click', function (e) {
+		e.preventDefault();
+
+		var index = $(this).closest('.shops-item').data('location-index');
+
+		if (click === index) return false;
+		click = index;
+
+		var coord = myPlacemark[index].geometry.getCoordinates();
+
+		myMap.setCenter(coord, 13, {
+			duration: 100,
+			checkZoomRange: true
+		}).then(function () {
+			myPlacemark[index].balloon.open();
+		});
+	});
+
+	/*add count loader*/
+	function addCountLoader() {
+		var countLoader = $('<div />', {
+			class: 'count-loader'
+		});
+
+		$('.shops-aside').append(countLoader.clone());
+	}
+
+	/*remove count loader*/
+	function removeCountLoader() {
+		var $countLoader = $('.count-loader');
+		$countLoader.fadeOut(300, function () {
+			$countLoader.remove();
+		});
+	}
+	
+	/*count shops*/
+	function countShops(value) {
+		$('.shops-count__value', '.js-shops-count').text(value);
 	}
 }
 

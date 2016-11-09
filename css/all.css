@@ -3893,6 +3893,18 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	font-family: 'lozen-cond-bold', Arial, Helvetica, sans-serif;
 	color: #c00;
 }
+.count-loader{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+	background: rgba(255, 255, 255, 0.85) url(../img/spin.svg) no-repeat 50% 50%;
+	-webkit-background-size: 30px;
+	background-size: 30px;
+}
+.no-svg .count-loader{ background-image: url(../img/spin.gif); }
 
 /*shops view switcher*/
 .shops-view-switcher{
@@ -4103,7 +4115,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	padding: 4px 10px 5px;
 	max-width: 160px;
 	border: 1px solid #b5b5b5;
-	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 	z-index: 2;
 	opacity: 0;
 	pointer-events: none;
@@ -4306,10 +4318,6 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	height: 100% !important;
 	width: 100% !important;
 	background: none !important;
-}
-.shops-map [class$="controls__control"]{
-	right: 20px !important;
-	top: 20px !important;
 }
 /*shops map*/
 
