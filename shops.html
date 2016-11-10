@@ -132,7 +132,7 @@
 								</div>
 								<div class="control-item">
 									<div class="select select-city">
-										<select class="cselect" name="filter-type" id="selectShops">
+										<select class="cselect" name="filter-type" id="selectCity">
 											<option value="0">Выберите город</option>
 											<option value="1" data-lat="53.528889" data-lng="28.045" data-zoom="6" data-city="shops-all">Вся Беларусь</option>
 											<option value="minsk" data-lat="53.9045398" data-lng="27.5615244" data-zoom="11" data-city="shops-minsk">Минск</option>
@@ -157,7 +157,7 @@
 										<div class="location-filter-item">
 											<div class="location-filter-inner">
 												<label class="check-label">
-													<input type="checkbox" />
+													<input type="checkbox" value="tag_bank" />
 													<span><i></i>Банкоматы</span>
 												</label>
 											</div>
@@ -165,7 +165,31 @@
 										<div class="location-filter-item">
 											<div class="location-filter-inner">
 												<label class="check-label">
-													<input type="checkbox" />
+													<input type="checkbox" value="tag_cookery" />
+													<span><i></i>Кулинария</span>
+												</label>
+											</div>
+										</div>
+										<div class="location-filter-item">
+											<div class="location-filter-inner">
+												<label class="check-label">
+													<input type="checkbox" value="tag_pizzeria" />
+													<span><i></i>Пицерия</span>
+												</label>
+											</div>
+										</div>
+										<div class="location-filter-item">
+											<div class="location-filter-inner">
+												<label class="check-label">
+													<input type="checkbox" value="tag_baking" />
+													<span><i></i>Выпечка</span>
+												</label>
+											</div>
+										</div>
+										<div class="location-filter-item">
+											<div class="location-filter-inner">
+												<label class="check-label">
+													<input type="checkbox" value="tag_pharmacy" />
 													<span><i></i>Аптека</span>
 												</label>
 											</div>
@@ -173,7 +197,7 @@
 										<div class="location-filter-item">
 											<div class="location-filter-inner">
 												<label class="check-label">
-													<input type="checkbox" />
+													<input type="checkbox" value="tag_parking" />
 													<span><i></i>Паркинг</span>
 												</label>
 											</div>
@@ -181,39 +205,7 @@
 										<div class="location-filter-item">
 											<div class="location-filter-inner">
 												<label class="check-label">
-													<input type="checkbox" />
-													<span><i></i>Пицерия</span>
-												</label>
-											</div>
-										</div>
-										<div class="location-filter-item">
-											<div class="location-filter-inner">
-												<label class="check-label">
-													<input type="checkbox" />
-													<span><i></i>Кулинария</span>
-												</label>
-											</div>
-										</div>
-										<div class="location-filter-item">
-											<div class="location-filter-inner">
-												<label class="check-label">
-													<input type="checkbox" />
-													<span><i></i>Пицерия</span>
-												</label>
-											</div>
-										</div>
-										<div class="location-filter-item">
-											<div class="location-filter-inner">
-												<label class="check-label">
-													<input type="checkbox" />
-													<span><i></i>Кулинария</span>
-												</label>
-											</div>
-										</div>
-										<div class="location-filter-item">
-											<div class="location-filter-inner">
-												<label class="check-label">
-													<input type="checkbox" />
+													<input type="checkbox" value="tag_discount" />
 													<span><i></i>Выдача дисконтных карт</span>
 												</label>
 											</div>
@@ -221,16 +213,8 @@
 										<div class="location-filter-item">
 											<div class="location-filter-inner">
 												<label class="check-label">
-													<input type="checkbox" />
+													<input type="checkbox" value="tag_confectionery" />
 													<span><i></i>Кондитерская продукция</span>
-												</label>
-											</div>
-										</div>
-										<div class="location-filter-item">
-											<div class="location-filter-inner">
-												<label class="check-label">
-													<input type="checkbox" />
-													<span><i></i>Выпечка</span>
 												</label>
 											</div>
 										</div>
@@ -266,11 +250,7 @@
 						<div class="shops">
 							<div class="shops-holder">
 
-								<!--shops map-->
-								<div class="shops-map-wrap">
-									<div id="shops-map" class="shops-map"></div>
-								</div>
-								<!--shops map end-->
+
 
 								<div class="shops-aside">
 									<div class="shops-aside-swiper"></div>
@@ -978,6 +958,12 @@
 								</div>
 							</div>
 						</div>
+
+						<!--shops map-->
+						<div class="shops-map-wrap">
+							<div id="shops-map" class="shops-map"></div>
+						</div>
+						<!--shops map end-->
 						<!--shops network end-->
 
 					</div>

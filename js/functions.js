@@ -56,7 +56,7 @@ function removePositionClass(obj){
 
 function customSelect(select){
 	if ( select.length ) {
-		selectArray = new Array();
+		selectArray = [];
 		select.each(function(selectIndex, selectItem){
 			var placeholderText = $(selectItem).attr('data-placeholder');
 			var flag = true;
@@ -1546,15 +1546,6 @@ function shopsMap1() {
 }
 
 function shopsMap() {
-	// historyPage.Init();
-	//
-	// _reinitPopupHandlers();
-	//
-	// var hash_temp = location.toString().split('#');
-	// if ( hash_temp[1] && hash_temp[1].match('salons')) {
-	// 	historyPage.GoTo(hash_temp[1], 'salons');
-	// }
-
 	var myMap,
 		// myCollection,
 		myClusterer,
@@ -1562,38 +1553,28 @@ function shopsMap() {
 
 	myPlacemark = [];
 
-	$('#selectShops').on('change', function(){
-		var value = $(this).val();
-
-		if ( value == 0 ) {
-			return false;
-		}
-
-		var jsonResult = [];
-
-		$.get( "ajax/mapObj.json", { ajax: '1', action: 'json'}, function( data ) {
-			addCountLoader();
-
-			jsonResult = data;
-			reDrawNewCitiesMarks( jsonResult[value] );
-
-		}, "json").done(function() {
-			removeCountLoader();
-		});
-
-		$('.shops-aside-group').hide(0);
-		$('[data-item-group = ' + value + ']').show(0);
+	var $noItemTemplate = $('<div />', {
+		class: 'filter-no-item',
+		text: 'Извините, магазинов с выбранными параметрами не найдено'
 	});
 
 	function reDrawNewCitiesMarks ( jsonResult ) {
 
-		// if (!jsonResult) {
-		// 	return false;
-		// }
-
 		if (myClusterer) {
 			myClusterer.removeAll();
 		}
+
+		/*toggle item on shops list*/
+		$('.shops-item','.shops-aside-group').hide(0);
+
+		$('.filter-no-item').remove();
+
+		if (!jsonResult.length) {
+			$('.shops-map').append($noItemTemplate.clone());
+
+			return false;
+		}
+
 		// myCollection.removeAll();
 		// myCollection = new ymaps.GeoObjectCollection();
 
@@ -1633,6 +1614,10 @@ function shopsMap() {
 
 			var id = item.id;
 
+			/*toggle item on shops list*/
+			$('[data-location-index = ' + id + ']').show(0);
+
+			/*building tags list*/
 			var tags = function () {
 				if (item.tags.length) {
 					var j, tag, result = '';
@@ -1704,13 +1689,38 @@ function shopsMap() {
 		//myMap.setBounds( myCollection.getBounds(), { checkZoomRange:false });
 	}
 
+
+	/*select city*/
+	$('#selectCity').on('change', function(){
+		var value = $(this).val();
+
+		if ( value == 0 ) {
+			return false;
+		}
+
+		var jsonResult = [];
+
+		$.get( "ajax/shops-" + value + ".json", { ajax: '1', action: 'json'}, function( data ) {
+			addCountLoader();
+
+			jsonResult = data;
+			reDrawNewCitiesMarks( jsonResult );
+
+		}, "json").done(function() {
+			removeCountLoader();
+		});
+
+		$('.shops-aside-group').hide(0);
+		$('[data-item-group = ' + value + ']').show(0);
+	});
+
 	if ( $('#shops-map').length ) {
 
 		ymaps.ready(init);
 
 		function init(){
 			myMap = new ymaps.Map ("shops-map", {
-				center: [55.20207973,27.4923474],
+				center: [53.9071097,27.4923474],
 				zoom: 11,
 				controls: []
 			});
@@ -1750,7 +1760,7 @@ function shopsMap() {
 
 			// myPlacemark.balloon.open();
 
-			// $.get( 'ajax/mapObj.json', { ajax: '1', action: 'json'}, function( data ) {
+			// $.get( 'ajax/shops-minsk.json', { ajax: '1', action: 'json'}, function( data ) {
 			// 	jsonResult = data;
 			// 	//
 			// 	reDrawNewCitiesMarks( jsonResult['minsk'] );
@@ -1759,7 +1769,7 @@ function shopsMap() {
 			// //
 			// }, "json");
 			//
-			var $selectShops = $("#selectShops");
+			var $selectShops = $("#selectCity");
 
 			$selectShops.find("option[value='minsk']").prop('selected', true);
 			$selectShops.multiselect('refresh').trigger('change');
@@ -1767,77 +1777,80 @@ function shopsMap() {
 	}
 
 	/*filter tags*/
-	$('.location-filter-list').on('change', ':checkbox', function () {
+	$('.location-filter-wrap').on('change', ':checkbox', function () {
 
-		console.log("1: ", 1);
+		var value = "minsk"; // for example;
+		var dataTagArr = []; // for example;
+		var newResult = [];
 
-		$.get( "ajax/mapObj.json", { ajax: '1', action: 'json'}, function( data ) {
+		var $checkbox = $('.location-filter-wrap input:checked');
+
+		$.each($checkbox, function () {
+			dataTagArr.push($(this).val());
+		});
+
+		$.get( "ajax/shops-" + value + ".json", { ajax: '1', action: 'json'}, function( data ) {
 			addCountLoader();
 
 			var jsonResult = data;
 
-			$.each( jsonResult.minsk, function( i, item ) {
-				$.each( item, function( key, value ) {
-					console.log( key + ": " + value );
+			$.each(jsonResult, function (i, iItem) {
+
+				var countEqual = 0;
+
+				// var countEqualFlag = countEqual + iItem.tags.length;
+
+				$.each(iItem.tags, function (j, jItem) {
+
+					// console.log("jItem: (" + i + "." + j + ") ", jItem.tags_label);
+
+					$.each(dataTagArr, function (l, lItem) {
+
+						// console.log("tag: ", lItem);
+
+						if (jItem.tags_label === lItem) {
+							countEqual++;
+							return false;
+						}
+
+						// countEqualFlag--;
+
+					});
+
+					// if (countEqualFlag === countEqual) return false;
+
+					// console.log('============STOP===========');
+
 				});
+
+				// console.log("countEqual == dataTagArr.length: ", countEqual + " == " + dataTagArr.length);
+
+				if (countEqual === dataTagArr.length) {
+					// console.log("i: ", i);
+					createNewResult(i);
+				}
+
+
+				// if (countEqualFlag === countEqual) return false;
+
+
+
+				// console.log("iT: ", iItem);
+				// console.log("iItem.tags: ", iItem.tags);
 			});
 
-			// reDrawNewCitiesMarks( jsonResult[value] );
+			function createNewResult(index) {
+				newResult.push(jsonResult[index]);
+			}
+
+			// console.log("newResult: ", newResult);
+
+			reDrawNewCitiesMarks( newResult );
 
 		}, "json").done(function() {
 			removeCountLoader();
 		});
-
-
-		var $this = $(this),
-			name = $this.attr('name'),
-			classNoItem = 'filter-no-item';
-
-		var tags = {};
-
-		$this.closest('[data-id]').find('select').each(function () {
-			tags [$(this).attr('name')] = $(this).val();
-		});
-
-		tags [name] = $this.val();
-
-		var $filterItem = $this.closest('.js-tab-content').find('.accordion-content');
-
-		var $noItemTemplate = $('<div />', {
-			class: classNoItem,
-			text: 'Извините, подходящих вакансий не найдено'
-		});
-
-		var dataFilters = concatObject(tags);
-
-		$filterItem.parent().find('.'+ classNoItem).remove();
-		$filterItem.show(0);
-
-		if (dataFilters) {
-
-			$filterItem.hide(0);
-			$filterItem.filter(dataFilters).show(0);
-
-			if (!$filterItem.is(':visible')) {
-				$filterItem.parent().append($noItemTemplate.clone());
-			}
-		}
 	});
-
-	function concatObject(obj) {
-		var arr = [];
-
-		for ( var prop in obj ) {
-			var thisKey = prop,
-				thisProp = obj[ thisKey ];
-
-			if (thisProp == 0) continue;
-
-			arr.push('[data-property-' + thisKey + '="' + thisProp + '"]');
-		}
-
-		return arr.join('');
-	}
 
 	/*event on click shops list*/
 	var click;
