@@ -1312,6 +1312,9 @@ function compactor() {
 		var $moreBtnTextAlt = $cloneContainer.find('.js-compactor-btn-alt');
 
 		$(window).on('load resizeByWidth', function () {
+			if (window.innerWidth < 640) {
+				minWidthItem = 155;
+			}
 
 			itemsContainerWidth = ($cloneContainer.is(':visible')) ? $itemsContainer.width() : $itemsContainer.width() - $cloneContainer.outerWidth();
 			lengthAllItems = $items.length;
@@ -1374,6 +1377,8 @@ function clearFilter() {
 		var $main = $('.location-filter-wrap');
 
 		$(this).closest($main).find(':checked').prop( "checked", false );
+
+		$(window).trigger('checkedFilterMapInit');
 
 		clearTimeout(timeClear);
 		timeClear = setTimeout(function () {
@@ -1772,13 +1777,23 @@ function shopsMap() {
 			var $selectShops = $("#selectCity");
 
 			$selectShops.find("option[value='minsk']").prop('selected', true);
-			$selectShops.multiselect('refresh').trigger('change');
+			if(DESKTOP) {
+				$selectShops.multiselect('refresh');
+			}
+			$selectShops.trigger('change');
 		}
 	}
 
 	/*filter tags*/
 	$('.location-filter-wrap').on('change', ':checkbox', function () {
+		checkedFilterMapTags();
+	});
 
+	$(window).on('checkedFilterMapInit', function () {
+		checkedFilterMapTags();
+	});
+
+	function checkedFilterMapTags() {
 		var value = "minsk"; // for example;
 		var dataTagArr = []; // for example;
 		var newResult = [];
@@ -1789,7 +1804,7 @@ function shopsMap() {
 			dataTagArr.push($(this).val());
 		});
 
-		$.get( "ajax/shops-" + value + ".json", { ajax: '1', action: 'json'}, function( data ) {
+		$.get("ajax/shops-" + value + ".json", {ajax: '1', action: 'json'}, function (data) {
 			addCountLoader();
 
 			var jsonResult = data;
@@ -1834,7 +1849,6 @@ function shopsMap() {
 				// if (countEqualFlag === countEqual) return false;
 
 
-
 				// console.log("iT: ", iItem);
 				// console.log("iItem.tags: ", iItem.tags);
 			});
@@ -1845,12 +1859,12 @@ function shopsMap() {
 
 			// console.log("newResult: ", newResult);
 
-			reDrawNewCitiesMarks( newResult );
+			reDrawNewCitiesMarks(newResult);
 
-		}, "json").done(function() {
+		}, "json").done(function () {
 			removeCountLoader();
 		});
-	});
+	}
 
 	/*event on click shops list*/
 	var click;
@@ -1948,24 +1962,24 @@ function toggleViewShops() {
 		}
 	});
 
-	$('.shops-aside-swiper').swipe({
-		swipeLeft: function () {
-			if ( $switcherHand.eq(1).hasClass(activeHand) ) return false;
-
-			$switcherHand.eq(0).removeClass(activeHand);
-			$switcherHand.eq(1).addClass(activeHand);
-
-			$container.removeClass(activeContainer);
-		},
-		swipeRight: function () {
-			if ( $switcherHand.eq(0).hasClass(activeHand) ) return false;
-
-			$switcherHand.eq(1).removeClass(activeHand);
-			$switcherHand.eq(0).addClass(activeHand);
-
-			$container.addClass(activeContainer);
-		}
-	});
+	// $('.shops-aside-swiper').swipe({
+	// 	swipeLeft: function () {
+	// 		if ( $switcherHand.eq(1).hasClass(activeHand) ) return false;
+	//
+	// 		$switcherHand.eq(0).removeClass(activeHand);
+	// 		$switcherHand.eq(1).addClass(activeHand);
+	//
+	// 		$container.removeClass(activeContainer);
+	// 	},
+	// 	swipeRight: function () {
+	// 		if ( $switcherHand.eq(0).hasClass(activeHand) ) return false;
+	//
+	// 		$switcherHand.eq(1).removeClass(activeHand);
+	// 		$switcherHand.eq(0).addClass(activeHand);
+	//
+	// 		$container.addClass(activeContainer);
+	// 	}
+	// });
 }
 /*toggle view shops end*/
 

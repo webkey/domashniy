@@ -3629,6 +3629,10 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .location-filter .check-label{
 	color: #fff;
 	display: block;
+	font-family: 'lozen-cond-regular', sans-serif;
+	font-size: 18px;
+	line-height: 21px;
+	word-break: break-all;
 }
 .location-filter .check-label>span{ display: inline-block; }
 .location-filter .check-label>span>i:before{ border-color: #fff; }
@@ -3692,8 +3696,6 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	padding: 0 10px 0 20px;
 	box-sizing: border-box;
 	width: 98%;
-
-	font-size: 18px;
 	letter-spacing: normal;
 }
 .js-compactor-btn-alt{ display: none; }
@@ -3764,6 +3766,8 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	background: #006f43;
 	max-height: 500px;
 	box-sizing: border-box;
+	font-size: 0;
+	letter-spacing: -4px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.34);
 	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
@@ -3787,13 +3791,6 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	line-height: 16px;
 	color: #fff;
 	box-sizing: border-box;
-}
-.location-filter-drop .location-filter-inner{
-	font-size: 12px;
-	letter-spacing: normal;
-	display: inline-block;
-	vertical-align: middle;
-	width: 96%;
 }
 .location-filter-drop__list > .location-filter-item{ display: none; }
 .location-filter-drop__list > .location-filter-item.compactor-cloned{ display: block; }
@@ -3968,16 +3965,6 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 .shops-aside,
 .shops-result{ width: 390px; }
-.shops-aside-swiper{
-	position: absolute;
-	height: 100%;
-	left: 0;
-	width: 20px;
-	margin-left: -10px;
-	background: url(../img/empty.png);
-	z-index: 1;
-	display: none;
-}
 
 .shops-aside-frame{
 	height: 100%;
@@ -4263,9 +4250,8 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 /*shops map*/
 .shops-map-wrap{
 	position: relative;
-	/*float: left;*/
+	float: left;
 	height: 100%;
-	height: 500px;
 	width: 100%;
 }
 .shops-map{
@@ -4273,6 +4259,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	margin-right: 390px;
 	height: 100%;
 	background: #f3f3f3;
+	overflow: hidden;
 }
 
 .shops-map [class*="balloon__layout"]{
@@ -4280,6 +4267,10 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 .shops-map [class*="balloon__content"] > ymaps{
 	overflow: visible !important;
+}
+
+.shops-map [class$="balloon_layout_panel"] .map-popup{
+	padding-right: 20px;
 }
 
 .shops-map [class$="balloon__close"]{
@@ -4299,6 +4290,10 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	transition-property: transform, background;
 	-webkit-transition-duration: 0.25s;
 	transition-duration: 0.25s;
+}
+.shops-map [class$="balloon_layout_panel"] [class$="balloon__close"]{
+	top: 5px !important;
+	right: 5px !important;
 }
 .desktop .shops-map [class$="balloon__close"]:hover{
 	background: #016c42 !important;

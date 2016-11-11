@@ -50,6 +50,8 @@
 	/*desks list*/
 	.desks-list__item{ width: 33.28%; }
 	/*desks list end*/
+
+	.shops-holder{ height: 550px; }
 	/*CONTENT end*/
 	/*MAIN end*/
 }
@@ -203,7 +205,6 @@
 
 	/*shops view switcher*/
 	.shops-view-switcher{ display: block; }
-	.shops-aside-swiper{ display: block; }
 	/*shops view switcher end*/
 	/*shops result end*/
 
@@ -220,7 +221,6 @@
 	/*shops network*/
 	.shops{ padding-top: 60px; }
 	.shops-holder{
-		height: 700px;
 		width: 200%;
 		-webkit-transform: translate(-50%, 0);
 		-ms-transform: translate(-50%, 0);
@@ -515,7 +515,33 @@
 	/*banners*/
 
 	/*shops network*/
-	.shops-holder{ height: auto; }
+	.shops-holder{
+		height: auto;
+		width: 100%;
+		-webkit-transform: translate(0, 0);
+		-ms-transform: translate(0, 0);
+		transform: translate(0, 0);
+	}
+	.shops-aside, .shops-result {
+		width: 100%;
+		float: none;
+		margin: 0;
+	}
+	.shops-aside{ height: auto; }
+	.shops-result{
+		padding-right: 30px;
+	}
+	.shops-view-switcher{
+		display: none;
+	}
+	.shops-aside-holder{
+		overflow: visible;
+	}
+	.shops-map-wrap {
+		width: auto;
+		float: none;
+		height: 550px;
+	}
 	/*.shops-holder{ height: 572px; }*/
 	/*shops network end*/
 	/*CONTENT end*/
@@ -1061,6 +1087,10 @@
 	/*article options end*/
 
 	/*location filter*/
+	.location-filter .check-label{
+		font-size: 16px;
+		line-height: 20px;
+	}
 	.location-filter-holder{ margin-right: 60px; }
 	.show-btn-more .location-filter-holder{ padding-right: 90px; }
 	.location-filter-clone{ width: 90px; }
@@ -1068,6 +1098,7 @@
 		padding: 0;
 		text-align: center;
 	}
+	.location-filter-btn > div{ font-size: 16px; }
 	.location-filter-btn .location-filter-inner > i{ left: 20px; }
 	.clear-form{ width: 60px; }
 	.btn-clear-form{
@@ -1089,7 +1120,10 @@
 		max-height: 320px;
 	}
 	.show-drop .location-filter-drop{ left: -103px; }
-	.hide-all-items .location-filter-drop{ left: 0; }
+	.hide-all-items .location-filter-drop{
+		left: 0;
+		padding: 8px 0 10px;
+	}
 	/*location filter end*/
 
 	/*shops result*/
@@ -1097,11 +1131,24 @@
 	/*shops result*/
 
 	/*shops network*/
-	.shops-holder{ height: 348px; }
-	.shops-group-tittle{ padding: 10px 20px; }
+	.shops-map-wrap{ height: 348px; }
+	.shops-group-tittle{
+		color: #fff;
+		padding: 10px 20px;
+		background: #006f43;
+	}
 	.shops-item{ padding: 12px 20px; }
 	.shops-item__title,
 	.map-popup__title{ padding: 0 0 8px; }
+	.map-popup__title {
+		font-size: 14px;
+		line-height: 18px;
+	}
+	.map-popup__list {
+		font-size: 14px;
+		line-height: 18px;
+	}
+	.map-popup__row { padding: 0 0 6px; }
 	.shops-item__extend h4{
 		font-size: 15px;
 		line-height: 21px;
