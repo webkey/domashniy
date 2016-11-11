@@ -1,0 +1,38 @@
+[
+  {
+	"id": "99",
+	"id_escaped": "99",
+	"name": "ул. Пионерская, 202",
+	"name_escaped": "ул. Пионерская, 202",
+	"phones": "8 (017) 228-17-35, 8 (017) 228-17-35",
+	"phones_escaped": "8 (017) 228-17-35, 8 (017) 228-17-35",
+	"work_time": "\u043f\u043d - \u043f\u0442: 10:00 - 20:00, \u0441\u0431: 10:00 - 18:00, \u0432\u0441: \u0432\u044b\u0445\u043e\u0434\u043d\u043e\u0439",
+	"work_time_escaped": "\u043f\u043d - \u043f\u0442: 10:00 - 20:00, \u0441\u0431: 10:00 - 18:00, \u0432\u0441: \u0432\u044b\u0445\u043e\u0434\u043d\u043e\u0439",
+	"address": "ул. Пионерская, 202",
+	"address_escaped": "ул. Пионерская, 202",
+	"coord": "52.09603308, 23.73230875, 17",
+	"coord_escaped": "52.09603308, 23.73230875, 17",
+	"tags": [
+	  {
+		"tags_label": "tag_bank",
+		"tags_url": "img/depict-tag-01.png",
+		"tags_title": "Банкоматы"
+	  },
+	  {
+		"tags_label": "tag_pizzeria",
+		"tags_url": "img/depict-tag-03.png",
+		"tags_title": "Пиццерия"
+	  },
+	  {
+		"tags_label": "tag_baking",
+		"tags_url": "img/depict-tag-04.png",
+		"tags_title": "Выпечка"
+	  },
+	  {
+		"tags_label": "tag_pharmacy",
+		"tags_url": "img/depict-tag-05.png",
+		"tags_title": "Аптека"
+	  }
+	]
+  }
+]

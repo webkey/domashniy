@@ -1132,11 +1132,7 @@
 
 	/*shops network*/
 	.shops-map-wrap{ height: 348px; }
-	.shops-group-tittle{
-		color: #fff;
-		padding: 10px 20px;
-		background: #006f43;
-	}
+	.shops-group-tittle{ padding: 10px 20px; }
 	.shops-item{ padding: 12px 20px; }
 	.shops-item__title,
 	.map-popup__title{ padding: 0 0 8px; }
