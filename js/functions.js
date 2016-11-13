@@ -1463,7 +1463,7 @@ function shopsMap() {
 		$('.filter-no-item').remove();
 
 		if (!jsonResult.length) {
-			$mapId.append($noItemTemplate.clone());
+			$('.shops').append($noItemTemplate.clone());
 
 			return false;
 		}
@@ -1568,7 +1568,7 @@ function shopsMap() {
 		myMap.geoObjects.add(myClusterer);
 
 		myMap.setBounds(myClusterer.getBounds(), {checkZoomRange: false}).then(function () {
-			if (myMap.getZoom() > 11) myMap.setZoom(11);
+			if (myMap.getZoom() > 12) myMap.setZoom(12);
 		});
 
 		/*count search shops*/
@@ -1586,6 +1586,7 @@ function shopsMap() {
 			if (!$currentItem.hasClass('item-active')) {
 				$currentItem.find('.shops-item__title a').trigger('click');
 			}
+
 		})
 	}
 
@@ -1678,7 +1679,16 @@ function shopsMap() {
 	$('.to-map').on('click', 'a', function (e) {
 		e.preventDefault();
 
+		var $page = $('html, body');
 		var index = $(this).closest('.shops-item').data('location-index');
+
+		if (window.innerWidth < 980) {
+
+			if (!$page.is(':animated')) {
+				$page.stop().animate({scrollTop: $mapId.offset().top - $('.header').outerHeight()}, 300);
+			}
+
+		}
 
 		if (moveFlag === index) return false;
 		moveFlag = index;
@@ -1691,6 +1701,7 @@ function shopsMap() {
 		}).then(function () {
 			myPlacemark[index].balloon.open();
 		});
+
 	});
 
 	/*add count loader*/
@@ -1726,7 +1737,8 @@ function shopsAccordion() {
 
 	if ($container.length) {
 
-		var $hand = $('.shops-item__title a'),
+		var $page = $('html,body'),
+			$hand = $('.shops-item__title a'),
 			$content = $('.shops-item__extend'),
 			$scrollContainer = $( ".shops-aside-holder" ),
 			prevPosition = 0;
@@ -1742,6 +1754,8 @@ function shopsAccordion() {
 			$content.slideUp(duration);
 
 			var $currentHand = $(this);
+			var $currentItem = $currentHand.closest($container);
+
 			if ( $currentHand.hasClass('active') ) {
 
 				$hand.removeClass('active');
@@ -1751,6 +1765,9 @@ function shopsAccordion() {
 
 			}
 
+			$hand.removeClass('active');
+			$container.removeClass('item-active');
+
 			$currentHand
 				.addClass('active')
 				.closest($container)
@@ -1758,15 +1775,22 @@ function shopsAccordion() {
 				.find($content)
 				.stop()
 				.slideDown(duration, function () {
-					// var $jsShopsCount = $('.js-shops-count');
-					// var space = ($jsShopsCount.length) ? $jsShopsCount.outerHeight() : 0;
+					if (window.innerWidth > 979) {
 
-					var currentPosition = $currentHand.closest($container).position().top + prevPosition;
+						var currentPosition = $currentItem.position().top + prevPosition;
 
-					if (!$scrollContainer.is(':animated') && currentPosition !== 0) {
-						$scrollContainer.stop().animate({scrollTop: currentPosition}, duration, function () {
-							prevPosition = currentPosition;
-						});
+						if (!$scrollContainer.is(':animated') && currentPosition !== 0) {
+							$scrollContainer.stop().animate({scrollTop: currentPosition}, duration, function () {
+								prevPosition = currentPosition;
+							});
+						}
+
+					} else {
+
+						if (!$page.is(':animated')) {
+							$page.stop().animate({scrollTop: $currentItem.offset().top - $('.header').outerHeight()}, duration);
+						}
+
 					}
 				});
 		})
@@ -1827,6 +1851,17 @@ function toggleViewShops() {
 				$switcherHand.eq(0).addClass(activeHand);
 
 				$container.addClass(activeContainer);
+			}
+		});
+
+		$('.shops-map').on('click', '.more', function (e) {
+			e.preventDefault();
+
+			if ( window.innerWidth < 1280 && window.innerWidth > 979 ) {
+				$switcherHand.eq(0).removeClass(activeHand);
+				$switcherHand.eq(1).addClass(activeHand);
+
+				$container.removeClass(activeContainer);
 			}
 		});
 

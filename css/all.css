@@ -1951,11 +1951,14 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 .shops .filter-no-item{
 	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	padding: 16px 30px;
+	left: 30px;
+	top: 20px;
+	width: 500px;
+	padding: 26px 30px;
 	background: #fff;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+	box-sizing: border-box;
+	border: 2px solid #f00;
 	z-index: 999;
 }
 /*accordion end*/
@@ -3945,6 +3948,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .shops-view-switcher a.active{
 	background-color: #b0b0b0;
 	opacity: 0.4;
+	cursor: default;
 }
 .shops-view-switcher a:first-child{
 	right: auto;
@@ -3955,13 +3959,16 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 /*shops result end*/
 
 /*shops network*/
-.shops{ overflow: hidden; }
+.shops{
+	overflow: hidden;
+	position: relative;
+}
 .shops-holder{ height: 785px; }
 .shops-aside{
 	float: right;
+	position: relative;
 	background: #fff;
 	height: 100%;
-	position: relative;
 	padding-top: 60px;
 	box-sizing: border-box;
 	margin-left: -390px;
@@ -4113,8 +4120,8 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	color: #000;
 	background: #fff;
 	border-radius: 4px;
-	padding: 4px 10px 5px;
-	max-width: 160px;
+	padding: 4px 8px 5px;
+	max-width: 62px;
 	border: 1px solid #b5b5b5;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 	z-index: 2;
