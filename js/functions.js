@@ -1586,7 +1586,6 @@ function shopsMap() {
 			if (!$currentItem.hasClass('item-active')) {
 				$currentItem.find('.shops-item__title a').trigger('click');
 			}
-
 		})
 	}
 

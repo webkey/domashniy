@@ -534,6 +534,8 @@
 	.shops-view-switcher{
 		display: none;
 	}
+	.shops,
+	.shops-aside-frame,
 	.shops-aside-holder{
 		overflow: visible;
 	}

@@ -4128,38 +4128,29 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	opacity: 0;
 	pointer-events: none;
 	visibility: hidden;
-	-webkit-transform: translate(-50%, -18px);
-	-ms-transform: translate(-50%, -18px);
-	transform: translate(-50%, -18px);
-	-webkit-transition-property: opacity, visibility, -webkit-transform;
-	transition-property: opacity, visibility, transform;
+	-webkit-transform: translate(-50%, 0);
+	-ms-transform: translate(-50%, 0);
+	transform: translate(-50%, 0);
+	margin-bottom: 18px;
+	-webkit-transition-property: opacity, visibility, margin-bottom;
+	transition-property: opacity, visibility, margin-bottom;
 	-webkit-transition-duration: 0.35s;
 	transition-duration: 0.35s;
+}
+.shops-item__tags > span:first-child > i,
+.map-popup__row .map-popup__shops-tags > span > i:first-child{
+	left: 0;
+	-webkit-transform: translate(-10px, 0);
+	-ms-transform: translate(-10px, 0);
+	transform: translate(-10px, 0);
 }
 .shops-item__tags > span:hover > i,
 .map-popup__row .map-popup__shops-tags > span:hover > i{
 	opacity: 1;
 	visibility: visible;
-	-webkit-transform: translate(-50%, -12px);
-	-ms-transform: translate(-50%, -12px);
-	transform: translate(-50%, -12px);
+	margin-bottom: 12px;
 	-webkit-transition-delay: 0.35s;
 	transition-delay: 0.35s;
-}
-.shops-item__tags > span > i:after,
-.map-popup__row .map-popup__shops-tags > span > i:after{
-	top: 100%;
-	left: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-	border-color: rgba(255, 255, 255, 0);
-	border-top-color: #ffffff;
-	border-width: 6px;
-	margin-left: -6px;
 }
 .shops-item__tags > span > i:before,
 .map-popup__row .map-popup__shops-tags > span > i:before,
@@ -4174,6 +4165,12 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	position: absolute;
 	pointer-events: none;
 	z-index: 2;
+}
+.shops-item__tags > span:first-child > i:before,
+.map-popup__row .map-popup__shops-tags > span:first-child > i:before,
+.shops-item__tags > span:first-child > i:after,
+.map-popup__row .map-popup__shops-tags > span:first-child > i:after {
+	left: 20px;
 }
 
 .shops-item__tags > span > i:after,
