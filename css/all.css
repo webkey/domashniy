@@ -2461,7 +2461,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	box-sizing: border-box;
 }
 .btn-location{
-	display: none;
+	display: none !important;
 }
 .control-item:first-child{ float: right; }
 .control-item .select{ margin: 0; }
