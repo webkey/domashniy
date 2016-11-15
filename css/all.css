@@ -3984,7 +3984,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .shops-aside-holder{
 	height: 100%;
 	overflow: auto;
-	/*position: relative;*/
+	position: relative;
 }
 [class*="shadow-tape-"],
 [class^="shadow-tape-"]{
@@ -4262,11 +4262,9 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	width: 100%;
 }
 .shops-map{
-	position: relative;
-	margin-right: 390px;
 	height: 100%;
 	background: #f3f3f3;
-	overflow: hidden;
+	margin-right: 390px;
 }
 
 .shops-map [class*="balloon__layout"]{
@@ -4369,80 +4367,10 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .contacts-map{
 	position: absolute;
 	left: 0;
-	top: 50%;
-	margin-top: -250px;
-	height: 500px;
+	top: 0;
+	height: 100%;
 	width: 100%;
 	background: #f3f3f3;
-}
-.map-expand{
-	position: absolute;
-	top: 0;
-	right: 0;
-	background: rgba(0, 111, 67, 0.81);
-	width: 40px;
-	height: 40px;
-	cursor: pointer;
-}
-.map-expand > span,
-.map-expand > span:before{ border: solid #fff; }
-.map-expand > span{
-	display: block;
-	position: absolute;
-	right: 10px;
-	top: 10px;
-	width: 7px;
-	height: 7px;
-	border-width: 1px 1px 0 0;
-}
-.map-expand > span:first-child{
-	right: auto;
-	top: auto;
-	bottom: 10px;
-	left: 10px;
-	border-width: 0 0 1px 1px;
-}
-.desktop .map-expand:hover span{
-	-webkit-transform: translate(2px, -2px);
-	-ms-transform: translate(2px, -2px);
-	transform: translate(2px, -2px);
-}
-.desktop .map-expand:hover span:first-child{
-	-webkit-transform: translate(-2px, 2px);
-	-ms-transform: translate(-2px, 2px);
-	transform: translate(-2px, 2px);
-}
-.map-expand.active > span{
-	-webkit-transform: rotate(180deg);
-	-ms-transform: rotate(180deg);
-	transform: rotate(180deg);
-}
-.desktop .map-expand.active:hover span{
-	-webkit-transform: rotate(180deg) translate(-2px, 2px);
-	-ms-transform: rotate(180deg) translate(-2px, 2px);
-	transform: rotate(180deg) translate(-2px, 2px);
-}
-.desktop .map-expand.active:hover span:first-child{
-	-webkit-transform: rotate(180deg) translate(2px, -2px);
-	-ms-transform: rotate(180deg) translate(2px, -2px);
-	transform: rotate(180deg) translate(2px, -2px);
-}
-.map-expand > span:before{
-	content: '';
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	height: 0;
-	width: 9px;
-	margin: -1px 0 0 -5px;
-	border-width: 1px 0 0;
-	-webkit-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	transform: rotate(-45deg);
-}
-.map-expand .controls__control{
-	bottom: 50% !important;
-	margin: 0 10px 13px 0 !important;
 }
 /*contacts map end*/
 

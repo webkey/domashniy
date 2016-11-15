@@ -1326,122 +1326,158 @@ function compactor() {
 }
 /*compactor end*/
 
-/**
- * clear button state
- * */
-function clearBtnState() {
-	setTimeout(function () {
-		$('.clear-form').toggleClass('btn-active', !!$('.location-filter').find(':checked').length);
-	}, 300);
-}
-/*clear button state end*/
-
-/**
- * clear filter tags
- * */
-function clearFilterTags() {
-	$('.location-filter-wrap').find(':checked').prop("checked", false);
-	clearBtnState();
-}
-/*clear filter tags end*/
-
-/**
- * events clear filter button
- * */
-function eventsClearFilterButton() {
-
-	var $filters = $('.location-filter');
-
-	if ($filters.length) {
-
-		$filters.on('change', 'input', function () {
-			clearBtnState();
-		});
-
-		// clear button event
-		$('.btn-clear-form').on('click', function (e) {
-
-			e.preventDefault();
-
-			clearFilterTags();
-			$(window).trigger('checkedFilterMapInit');
-
-		});
-
-	}
-}
-/*events clear filter button end*/
-
 /**!
- * shops map
+ * shops location
  * */
-function shopsMap() {
+function shopsLocation() {
 	var myMap,
 		myClusterer,
 		myPlacemark = [],
 		mapId = "#shops-map",
 		$mapId = $(mapId),
-		currentCity = "minsk";
-
-	if ( !$mapId.length ) {
-		return false;
-	}
+		currentCity = "minsk",
+		baseImageURL = 'img/';
 
 	/*initial map*/
-	ymaps.ready(init);
+	if ( $mapId.length ) {
+		ymaps.ready(init);
 
-	function init(){
-		myMap = new ymaps.Map (mapId.substring(1), {
-			center: [53.9071097,27.4923474],
-			zoom: 11,
-			controls: []
-		});
+		function init(){
+			/*styling cluster icons*/
+			var clusterIcons = [
+					{
+						href: baseImageURL + 'map-cluster-2x.png',
+						size: [46, 46],
+						offset: [-23, -23]
+					},
+					{
+						href: baseImageURL + 'map-cluster-2x.png',
+						size: [60, 60],
+						offset: [-30, -30],
+						shape: {
+							type: 'Circle',
+							coordinates: [0, 0],
+							radius: 30
+						}
+					}],
+				clusterNumbers = [20],
+				MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+					'<div style="color: #FFFFFF; font-weight: normal; font-family: "PT Sans Serif", sans-serif;">{{ properties.geoObjects.length }}</div>'
+				);
 
-		myMap.controls.add('zoomControl', {position: {left: '20px', top: '20px'}});
+			/*create new cluster object*/
+			myClusterer = new ymaps.Clusterer({
+				clusterIcons: clusterIcons,
+				clusterNumbers: clusterNumbers,
+				clusterIconContentLayout: MyIconContentLayout,
+				maxZoom: 11
+			});
 
-		myMap.behaviors.disable('scrollZoom');
+			/*create new map object*/
+			myMap = new ymaps.Map (mapId.substring(1), {
+				center: [51.9071097,27.4923474],
+				zoom: 11,
+				controls: ['fullscreenControl']
+			});
 
+			/*add zoom control button*/
+			var zoomControl = new ymaps.control.ZoomControl({
+				options: {
+					size: "small",
+					position: {right: 10, bottom: 50}
+				}
+			});
+			myMap.controls.add(zoomControl);
+
+			/*add geolocation control button*/
+			// var geolocationControl = new ymaps.control.GeolocationControl({
+			// 	options: {
+			// 		noPlacemark: true
+			// 	}
+			// });
+			//
+			// var myLocationPlacemark;
+			//
+			// geolocationControl.events.add('locationchange', function (event) {
+			// 	var position = event.get('position');
+			//
+			// 	setBoundsMap();
+			//
+			// 	myMap.geoObjects.remove(myLocationPlacemark);
+			//
+			// 	myLocationPlacemark = new ymaps.Placemark(
+			// 		position
+			// 	);
+			//
+			// 	myMap.geoObjects.add(myLocationPlacemark);
+			// });
+			// myMap.controls.add(geolocationControl);
+
+			/*behaviors setting map*/
+			myMap.behaviors.disable('scrollZoom');
+
+			/*select current city*/
+			selectCurrentCity();
+		}
+	} else {
+		/*select current city*/
+		selectCurrentCity();
+	}
+
+	/*select current city*/
+	function selectCurrentCity() {
 		var $selectShops = $("#selectCity");
 
 		$selectShops.find("option[value='" + currentCity + "']").prop('selected', true);
 
-		if(DESKTOP) {
+		/*refresh custom select*/
+		if (DESKTOP) {
 			$selectShops.multiselect('refresh');
 		}
 
-		$selectShops.trigger('change');
+		selectCity(currentCity);
 	}
 
-	/*select city*/
+	/*custom select city*/
 	$('#selectCity').on('change', function(){
 		var value = $(this).val();
 
-		if ( value == 0 ) {
-			return false;
-		}
-
-		/*chage current city*/
-		currentCity = value;
-
-		/*clear filter tags*/
-		clearFilterTags();
-		$(window).trigger('checkedFilterMapInit');
-
-		var jsonResult = [];
-
-		$.get( "ajax/shops-" + value + ".json", { ajax: '1', action: 'json'}, function( data ) {
-			addCountLoader();
-
-			jsonResult = data;
-			reDrawNewCitiesMarks( jsonResult );
-
-		}, "json").done(function() {
-			removeCountLoader();
-		});
-
-		$('.shops-aside-group').hide(0);
-		$('[data-item-group = ' + value + ']').show(0);
+		selectCity(value);
 	});
+
+	/*select city*/
+	function selectCity(value) {
+		if ( value != 0 ) {
+
+			/*change current city flag*/
+			currentCity = value;
+
+			/*clear filter tags*/
+			clearFilterTags();
+			searchShopsByTag();
+
+			var jsonResult = [];
+
+			$.get("ajax/shops-" + value + ".json", {ajax: '1', action: 'json'}, function (data) {
+				addCountLoader();
+
+				jsonResult = data;
+				reDrawNewCitiesMarks(jsonResult);
+
+			}, "json").done(function () {
+				removeCountLoader();
+			});
+
+			$('.shops-aside-group').hide(0, function () {
+				$('.shops-aside-holder').css('overflow', 'hidden');
+			});
+
+			$('[data-item-group = ' + value + ']').show(0, function () {
+				$('.shops-aside-holder').css('overflow', 'auto');
+			});
+
+		}
+	}
 
 	var $noItemTemplate = $('<div />', {
 		class: 'filter-no-item',
@@ -1471,35 +1507,6 @@ function shopsMap() {
 		/*create geo objects Array*/
 		var myGeoObjects = [];
 
-		/*styling cluster icons*/
-		var clusterIcons = [
-			{
-				href: 'img/map-cluster-2x.png',
-				size: [46, 46],
-				offset: [-23, -23]
-			},
-			{
-				href: 'img/map-cluster-2x.png',
-				size: [60, 60],
-				offset: [-30, -30],
-				shape: {
-					type: 'Circle',
-					coordinates: [0, 0],
-					radius: 30
-				}
-			}],
-			clusterNumbers = [20],
-			MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-				'<div style="color: #FFFFFF; font-weight: normal; font-family: "PT Sans Serif", sans-serif;">{{ properties.geoObjects.length }}</div>'
-			);
-
-		myClusterer = new ymaps.Clusterer({
-			clusterIcons: clusterIcons,
-			clusterNumbers: clusterNumbers,
-			clusterIconContentLayout: MyIconContentLayout,
-			maxZoom: 11
-		});
-
 		$.each( jsonResult, function(i, item) {
 
 			var coordStr = item.coord,
@@ -1521,58 +1528,61 @@ function shopsMap() {
 				}
 			};
 
-			/*create balloon content*/
-			var balloonContent = '' +
-				'<div class="map-popup">' +
+			if ( $mapId.length ) {
+
+				/*create balloon content*/
+				var balloonContent = '' +
+					'<div class="map-popup">' +
 					'<div class="map-popup__title">' + item.name + '</div>' +
 					'<div class="map-popup__list">' +
-						'<div class="map-popup__row work-time"><i class="depict-time"></i>' + item.work_time + '</div>' +
-						'<div class="map-popup__row"><i class="depict-phone"></i>' + item.phones + '</div>' +
-						'<div class="map-popup__row">' +
-							'<div class="map-popup__shops-tags">' + tags() + '</div>' +
-						'</div>' +
-						'<div class="map-popup__row"><a href="#" class="more" data-more-id="' + id + '">Подробнее</a></div>' +
+					'<div class="map-popup__row work-time"><i class="depict-time"></i>' + item.work_time + '</div>' +
+					'<div class="map-popup__row"><i class="depict-phone"></i>' + item.phones + '</div>' +
+					'<div class="map-popup__row">' +
+					'<div class="map-popup__shops-tags">' + tags() + '</div>' +
 					'</div>' +
-				'</div>';
+					'<div class="map-popup__row"><a href="#" class="more" data-more-id="' + id + '">Подробнее</a></div>' +
+					'</div>' +
+					'</div>';
 
-			/*add placemarks to the map*/
-			if ( coordStr !== null ) {
-				var coordArray = coordStr.split(', ');
+				/*add placemarks to the map*/
+				if ( coordStr !== null ) {
+					var coordArray = coordStr.split(', ');
 
-				myPlacemark[id] = new ymaps.Placemark([coordArray[0], coordArray[1]], {
-					balloonContentBody: balloonContent,
-					hintContent: item.name
-				}, {
-					iconLayout: 'default#image',
-					iconImageHref: 'img/depict-map-2x.png',
-					draggable: true,
-					iconImageSize: [45, 61],
-					iconImageOffset: [-22, -59],
-					hideIconOnBalloonOpen: false,
-					// balloonLayout: "default#imageWithContent",
-					balloonOffset: [0, -61],
-					balloonPosition: ['center', 'top']
-					// balloonMaxWidth: 260
-				});
+					myPlacemark[id] = new ymaps.Placemark([coordArray[0], coordArray[1]], {
+						balloonContentBody: balloonContent,
+						hintContent: item.name
+					}, {
+						iconLayout: 'default#image',
+						iconImageHref: baseImageURL + 'depict-map-2x.png',
+						iconImageSize: [45, 61],
+						iconImageOffset: [-22, -59],
+						hideIconOnBalloonOpen: false,
+						balloonOffset: [0, -61],
+						balloonPosition: ['center', 'top']
+					});
 
-				myGeoObjects[id] = new ymaps.GeoObject({});
+					myGeoObjects[id] = new ymaps.GeoObject({});
 
-				myClusterer.add(myPlacemark[id]);
+					myClusterer.add(myPlacemark[id]);
+				}
 
-				myPlacemark[id].events.add('click', function (e) {
-					// e.stopPropagation();
-				});
 			}
 		});
 
-		myMap.geoObjects.add(myClusterer);
+		if ( $mapId.length ) {
+			myMap.geoObjects.add(myClusterer);
 
-		myMap.setBounds(myClusterer.getBounds(), {checkZoomRange: false}).then(function () {
-			if (myMap.getZoom() > 12) myMap.setZoom(12);
-		});
+			setBoundsMap();
+		}
 
 		/*count search shops*/
 		countShops(jsonResult.length);
+	}
+
+	function setBoundsMap() {
+		myMap.setBounds(myClusterer.getBounds(), {checkZoomRange: false}).then(function () {
+			if (myMap.getZoom() > 11) myMap.setZoom(11);
+		});
 	}
 
 	/*show more information*/
@@ -1593,14 +1603,10 @@ function shopsMap() {
 
 	/*filter tags*/
 	$('.location-filter-wrap').on('change', ':checkbox', function () {
-		checkedFilterMapTags();
+		searchShopsByTag();
 	});
 
-	$(window).on('checkedFilterMapInit', function () {
-		checkedFilterMapTags();
-	});
-
-	function checkedFilterMapTags() {
+	function searchShopsByTag() {
 		var value = currentCity;
 		var dataTagArr = [];
 		var newResult = [];
@@ -1725,6 +1731,48 @@ function shopsMap() {
 	function countShops(value) {
 		$('.shops-count__value', '.js-shops-count').text(value);
 	}
+
+	/*events clear filter button*/
+	function eventsClearFilterButton() {
+
+		var $filters = $('.location-filter');
+
+		if ($filters.length) {
+
+			$filters.on('change', 'input', function () {
+				clearBtnState();
+			});
+
+			// clear button event
+			$('.btn-clear-form').on('click', function (e) {
+
+				e.preventDefault();
+
+				clearFilterTags();
+				searchShopsByTag();
+
+			});
+
+		}
+	}
+
+	eventsClearFilterButton();
+	/*events clear filter button end*/
+
+	/* clear button state */
+	function clearBtnState() {
+		setTimeout(function () {
+			$('.clear-form').toggleClass('btn-active', !!$('.location-filter').find(':checked').length);
+		}, 300);
+	}
+	/*clear button state end*/
+
+	/*clear filter tags*/
+	function clearFilterTags() {
+		$('.location-filter-wrap').find(':checked').prop("checked", false);
+		clearBtnState();
+	}
+	/*clear filter tags end*/
 }
 /*shops map end*/
 
@@ -1890,110 +1938,50 @@ function toggleViewShops() {
 /**!
  * contacts map
  * */
-// inline script
-// var contactsMapObjects;
-
 function contactsMap() {
-	var $map = $('#contacts-map');
-	if (!$map.length) return false;
+	var myMap,
+		myPlacemark,
+		mapId = "#contacts-map",
+		$mapId = $(mapId),
+		center = [53.9071097, 27.4923474],
+		baseImageURL = 'img/';
 
-	var markers = [];
-	var zoom = 11;
-	var pinMap = {
-		url: "img/depict-map-2x.png",
-		size: new google.maps.Size(45,61), // the size it should be on the map
-		scaledSize: new google.maps.Size(45,61) // the normal size of the image is 92x122 because Retina asks double size.
-		// origin: new google.maps.Point(0, 25) // position in the sprite
-	};
-	var map;
-	var center = contactsMapObjects[0][0];
+	/*initial map*/
+	if ( $mapId.length ) {
+		ymaps.ready(init);
 
-	function initialize() {
-
-		var mapOptions = {
-			zoom: zoom,
-			center: center,
-			mapTypeControl: false,
-			scaleControl: false,
-			scrollwheel: false
-		};
-
-		map = new google.maps.Map(document.getElementById("contacts-map"), mapOptions);
-
-		var marker, i;
-		var infoWindow = new google.maps.InfoWindow();
-
-
-		map.addListener('click', function() {
-			infoWindow.close();
-		});
-
-
-		for (i = 0; i < contactsMapObjects.length; i++) {
-
-			marker = new google.maps.Marker({
-				position: contactsMapObjects[i][0],
-				map: map,
-				icon: pinMap,
-				title: contactsMapObjects[i][1].title
+		function init(){
+			/*create new map object*/
+			myMap = new ymaps.Map (mapId.substring(1), {
+				center: center,
+				zoom: 11,
+				controls: ['fullscreenControl']
 			});
 
-			google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			myPlacemark = new ymaps.Placemark(center, {
+				hintContent: "Республика Беларусь, 220050, г. Минск, ул. Мясникова, д. 40"
+			}, {
+				iconLayout: 'default#image',
+				iconImageHref: baseImageURL + 'depict-map-2x.png',
+				iconImageSize: [45, 61],
+				iconImageOffset: [-22, -59]
+			});
 
-				return function() {
-					infoWindow.setContent('<div class="map-popup">' +
-						'<div class="map-popup__title">'+contactsMapObjects[i][1].title+'</div>' +
-						'<div class="map-popup__list">' +
-						'<div class="map-popup__row work-time"><i class="depict-time"></i>'+contactsMapObjects[i][1].time+'</div>' +
-						'<div class="map-popup__row"><i class="depict-phone"></i>'+contactsMapObjects[i][1].phone+'</div>' +
-						'</div>' +
-						'</div>');
-					infoWindow.open(map, marker);
-				};
+			myMap.geoObjects.add(myPlacemark);
 
-			})(marker, i));
+			/*add zoom control button*/
+			var zoomControl = new ymaps.control.ZoomControl({
+				options: {
+					size: "small",
+					position: {right: 10, bottom: 35}
+				}
+			});
+			myMap.controls.add(zoomControl);
 
-			markers.push(marker);
+			/*behaviors setting map*/
+			myMap.behaviors.disable('scrollZoom');
 		}
 	}
-
-	google.maps.event.addDomListener(window, 'load', initialize);
-
-	/*aligned after resize*/
-	var resizeTimer;
-	$(window).on('debouncedresize', function () {
-		clearTimeout(resizeTimer);
-		resizeTimer = setTimeout(function () {
-			moveToLocation(center, zoom);
-		}, 500);
-	});
-
-	/*move to location*/
-	function moveToLocation(center, zoom){
-		map.panTo(center);
-		map.setZoom(zoom);
-	}
-
-	/*toggle map height*/
-	var mapIsExpand = false;
-	function toggleMapHeight(id) {
-
-		$(id)
-			.parent()
-			.find('.js-map-expand')
-			.toggleClass('active', !mapIsExpand)
-			.parent()
-			.toggleClass('active', !mapIsExpand);
-
-		mapIsExpand = !mapIsExpand;
-	}
-
-	// expand map on click btn map expand
-	$('.js-map-expand').on('click', function (e) {
-		e.preventDefault();
-
-		toggleMapHeight($map);
-	});
 }
 /*contacts map end*/
 
@@ -2093,8 +2081,7 @@ $(document).ready(function(){
 	equalHeightInit();
 	initJsDrops();
 	compactor();
-	eventsClearFilterButton();
-	shopsMap();
+	shopsLocation();
 	shopsAccordion();
 	addShadowTape();
 	toggleViewShops();
