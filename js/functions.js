@@ -1336,7 +1336,9 @@ function shopsLocation() {
 		mapId = "#shops-map",
 		$mapId = $(mapId),
 		currentCity = "minsk",
-		baseImageURL = 'img/';
+		baseImageURL = 'img/',
+		$selectCity = $('#selectCity'),
+		urlShops = $selectCity.data('url');
 
 	/*initial map*/
 	if ( $mapId.length ) {
@@ -1439,7 +1441,7 @@ function shopsLocation() {
 	}
 
 	/*custom select city*/
-	$('#selectCity').on('change', function(){
+	$selectCity.on('change', function(){
 		var value = $(this).val();
 
 		selectCity(value);
@@ -1458,7 +1460,7 @@ function shopsLocation() {
 
 			var jsonResult = [];
 
-			$.get("ajax/shops-" + value + ".json", {ajax: '1', action: 'json'}, function (data) {
+			$.get(urlShops + "/" + value + ".json", {ajax: '1', action: 'json'}, function (data) {
 				addCountLoader();
 
 				jsonResult = data;
@@ -1617,7 +1619,7 @@ function shopsLocation() {
 			dataTagArr.push($(this).val());
 		});
 
-		$.get("ajax/shops-" + value + ".json", {ajax: '1', action: 'json'}, function (data) {
+		$.get(urlShops + "/" + value + ".json", {ajax: '1', action: 'json'}, function (data) {
 			addCountLoader();
 
 			var jsonResult = data;
