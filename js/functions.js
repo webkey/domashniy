@@ -1005,7 +1005,8 @@ function fileInput() {
 		$(this).filer({
 			showThumbs: true,
 			addMore: true,
-			allowDuplicates: false
+			allowDuplicates: false,
+			limit: 1
 		});
 	});
 }

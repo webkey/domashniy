@@ -3084,6 +3084,7 @@ a .shares-slider__img img{
 .shares-list{
 	font-size: 0;
 	letter-spacing: -4px;
+	padding: 0 0 30px;
 }
 .shares-list .shares-slider__item{
 	width: 33.28%;
