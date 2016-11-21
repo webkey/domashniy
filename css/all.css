@@ -237,6 +237,10 @@ img{
 	vertical-align: top;
 	max-width: 100%;
 }
+table img{
+	width: auto;
+	max-width: none;
+}
 mark{
 	background: none;
 	color: #006f43;
@@ -748,13 +752,14 @@ table{
 	border-collapse: collapse;
 	border-spacing: 0;
 	width: auto;
+	border-color: #ccc;
 }
 table td,
 table th{
 	font-size: 16px;
 	line-height: 19px;
 	color: #666;
-	border: 1px solid #ccc;
+	border-color: #ccc;
 	padding: 15px 20px 16px;
 	box-sizing: border-box;
 }
@@ -3074,6 +3079,15 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	transform: scale3d(0.8,0.8,1);
 }
 
+.shares-list{
+	font-size: 0;
+	letter-spacing: -4px;
+}
+.shares-list .shares-slider__item{
+	width: 33.28%;
+	opacity: 1;
+}
+
 .shares-slider .slick-prev{ left: 0; }
 .shares-slider .slick-next{ right: 0; }
 /*shares slider*/
@@ -3113,7 +3127,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	position: relative;
 	content: '';
 	display: block;
-	padding-top: 101.8%;
+	padding-top: 116%;
 	z-index: -1;
 }
 .desks-list__img{
@@ -3126,19 +3140,18 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	background: no-repeat 50% 0;
 	-webkit-background-size: contain;
 	background-size: contain;
-	-webkit-transition-property: opacity, -webkit-transform;
-	transition-property: opacity, transform;
-	-webkit-transition-duration: 0.25s;
-	transition-duration: 0.25s;
+	-webkit-transition-property: -webkit-transform;
+	transition-property: transform;
+	-webkit-transition-duration: 0.35s;
+	transition-duration: 0.35s;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
-	-webkit-transform: scale3d(1.2,1.2,1);
-	transform: scale3d(1.2,1.2,1);
-}
-.desktop a.desks-list__inner:hover .desks-list__img{
-	opacity: 1;
 	-webkit-transform: scale3d(1,1,1);
 	transform: scale3d(1,1,1);
+}
+.desktop a.desks-list__inner:hover .desks-list__img{
+	-webkit-transform: scale3d(1.15,1.15,1);
+	transform: scale3d(1.15,1.15,1);
 }
 .desks-list__title{
 	position: absolute;
@@ -3146,6 +3159,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	left: 0;
 	background: #fff;
 	width: 100%;
+	min-height: 70px;
 	padding: 14px 20px 34px;
 	font-family: 'PT Sans Narrow', sans-serif;
 	font-weight: bold;
@@ -4676,6 +4690,47 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	margin: 0 0 0 5px;
 }
 /*paging end*/
+
+/*achieve*/
+.achieve{
+	padding: 0 0 30px;
+}
+.achieve table{
+	width: 100%;
+}
+.achieve table td:nth-child(odd){
+	font-size: 46px;
+	line-height: 1;
+	color: #006f43;
+	text-align: center;
+}
+@media only screen and (max-width: 1199px){
+	.achieve table td{
+		font-size: 14px;
+		padding: 10px 8px 11px;
+	}
+	.achieve table td:nth-child(odd){
+		font-size: 36px;
+	}
+}
+@media only screen and (max-width: 767px){
+	.achieve table,
+	.achieve tbody,
+	.achieve tr,
+	.achieve td{
+		display: block;
+		border: none;
+	}
+	.achieve table td{
+		font-size: 16px;
+		text-align: center;
+		border: none;
+	}
+	.achieve table td:nth-child(odd){
+		font-size: 46px;
+	}
+}
+/*achieve end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/

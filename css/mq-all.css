@@ -659,6 +659,12 @@
 	/*promo slider end*/
 	/*promo section end*/
 
+	/*shares*/
+	.shares-list .shares-slider__item {
+		width: 49.98%;
+	}
+	/*shares end*/
+
 	/*adverts box*/
 	/*advert copy*/
 	.advert-copy{
@@ -1271,4 +1277,11 @@
 		height: 34px;
 		margin-top: -16px;
 	}
+	/*shares*/
+	.shares-list .shares-slider__item {
+		display: block;
+		width: auto;
+		padding: 0 0 15px;
+	}
+	/*shares end*/
 }
