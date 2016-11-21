@@ -3062,21 +3062,23 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	max-width: 98%;
 	-webkit-background-size: contain;
 	background-size: contain;
-	-webkit-transition-property: opacity, -webkit-transform;
-	transition-property: opacity, transform;
-	-webkit-transition-duration: 0.25s;
-	transition-duration: 0.25s;
-	-webkit-transform: scale3d(1,1,1);
-	transform: scale3d(1,1,1);
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
 
 	font-size: 16px;
 	letter-spacing: normal;
 }
-.desktop .shares-slider__inner:hover .shares-slider__img img{
-	-webkit-transform: scale3d(0.8,0.8,1);
-	transform: scale3d(0.8,0.8,1);
+a .shares-slider__img img{
+	-webkit-transition-property: -webkit-transform;
+	transition-property: transform;
+	-webkit-transition-duration: 0.25s;
+	transition-duration: 0.25s;
+	-webkit-transform: scale(1,1);
+	transform: scale(1,1);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.desktop a:hover .shares-slider__img img{
+	-webkit-transform: scale(0.85, 1.85);
+	transform: scale(0.85, 0.85);
 }
 
 .shares-list{

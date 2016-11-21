@@ -1330,6 +1330,8 @@ function compactor() {
  * shops location
  * */
 function shopsLocation() {
+	if ( !$('.shops').length ) return false;
+
 	var myMap,
 		myClusterer,
 		myPlacemark = [],
