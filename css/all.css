@@ -3178,6 +3178,8 @@ a .shares-slider__img img{
 	transition-duration: 0.3s;
 }
 .desktop a.desks-list__inner:hover .desks-list__title{
+	background: #9c0;
+	color: #fff;
 	-webkit-transform: translate(0, -20px);
 	-ms-transform: translate(0, -20px);
 	transform: translate(0, -20px);
