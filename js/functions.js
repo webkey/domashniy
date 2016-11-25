@@ -2088,7 +2088,9 @@ $(document).ready(function(){
 	addShadowTape();
 	toggleViewShops();
 	contactsMap();
-	stickyLayout();
+	if(DESKTOP){
+		stickyLayout();
+	}
 
 	footerBottom();
 });
