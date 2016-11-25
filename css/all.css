@@ -2021,7 +2021,11 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	-webkit-transition-delay: 1s;
 	transition-delay: 1s;
 }
-.header-show .header{
+.no-js .header{
+	opacity: 1;
+}
+.header-show .header,
+.nav-opened-start .header{
 	opacity: 1;
 	-webkit-transition-delay: 0s;
 	transition-delay: 0s;
