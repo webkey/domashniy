@@ -1996,15 +1996,15 @@ function stickyLayout(){
 	var topValue = $('.header').outerHeight();
 
 	/*sidebar sticky*/
-	var $sidebar = $(".sidebar");
+	var $sidebar = $(".sidebar-holder");
 	$sidebar.css('position','static');
 	if ($sidebar.length) {
 		var resizeTimerMenu;
 
 		$(window).on('load resize', function () {
-			if($(window).width() < 1280){
+			if(window.innerWidth < 980){
 				// $sidebar.trigger("sticky_kit:detach").attr('style','');
-				$sidebar.trigger("sticky_kit:detach").css('position','fixed');
+				$sidebar.trigger("sticky_kit:detach").css('position','relative');
 				return;
 			}
 
@@ -2088,7 +2088,7 @@ $(document).ready(function(){
 	addShadowTape();
 	toggleViewShops();
 	contactsMap();
-	// stickyLayout();
+	stickyLayout();
 
 	footerBottom();
 });

@@ -2009,7 +2009,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	/*top: 0;*/
 	left: 0;
 	width: 100%;
-	background: #9c0;
+	background: #fff;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 	z-index: 5;
 	margin: 0;
@@ -2058,12 +2058,12 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 }
-.page-is-scrolled .logo {
+/*.page-is-scrolled .logo {
 	left: 23px;
 	width: 242px;
 	height: 48px;
 	margin-top: -24px;
-}
+}*/
 .logo a{
 	display: block;
 	height: 100%;
@@ -4795,6 +4795,16 @@ a .shares-slider__img img{
 	position: relative;
 	overflow: hidden;
 	min-height: 100%;
+	background: #9c0;
+	-webkit-transition-property: -webkit-transform;
+	transition-property: transform;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+.header-hide .sidebar-holder{
+	-webkit-transform: translate(0, -75px);
+	-ms-transform: translate(0, -75px);
+	transform: translate(0, -75px);
 }
 .sidebar-holder:after{
 	content: '';
