@@ -540,12 +540,12 @@ function pageIsScrolled(){
 	$(window).on('load scroll resizeByWidth', function () {
 		var $header = $('.header');
 		var currentScrollTop = $(window).scrollTop();
-		// var showHeaderPanel = (currentScrollTop >= minScrollTop || currentScrollTop < 0);
 		var showHeaderPanel = (currentScrollTop >= minScrollTop);
+		var showHeaderPanel2 = (currentScrollTop >= minScrollTop || currentScrollTop < 0);
 
 		$page.toggleClass('page-is-scrolled', showHeaderPanel);
 
-		$('.touchmove').text(showHeaderPanel);
+		$('.touchmove').text(currentScrollTop + ', ' + showHeaderPanel + ', <0:' + showHeaderPanel2);
 
 		if ( flag ) {
 			if (currentScrollTop <= minScrollTop) {
