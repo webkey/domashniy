@@ -472,6 +472,19 @@ function mainNavigationInit(){
 }
 /*main navigation end*/
 
+$(window).load(function () {
+	var touch = $('<div class="touchmove"></div>');
+	touch.css({
+		'position': 'fixed',
+		'background': 'red',
+		'z-index': 99999,
+		'left': 0,
+		'top': 0
+	});
+
+	$('body').append(touch.clone());
+});
+
 /**
  * add class on scroll to top
  * */
@@ -502,6 +515,8 @@ function headerShow(){
 			}
 		}
 
+		$('.touchmove').text(currentScrollTop + ', ' + showHeaderPanel + ', ' + (currentScrollTop > minScrollTop) + ', top: ' + $('.header').css('top') + ', opacity: ' + $('.header').css('opacity'));
+
 		previousScrollTop = currentScrollTop;
 	});
 }
@@ -524,16 +539,7 @@ function pageIsScrolled(){
 	// 	console.log(touch.pageX + " - " + touch.pageY);
 	// }, false);
 
-	var touch = $('<div class="touchmove"></div>');
-	touch.css({
-		'position': 'fixed',
-		'background': 'red',
-		'z-index': 99999,
-		'left': 0,
-		'top': 0
-	});
 
-	$('body').append(touch.clone());
 
 
 
@@ -541,11 +547,10 @@ function pageIsScrolled(){
 		var $header = $('.header');
 		var currentScrollTop = $(window).scrollTop();
 		var showHeaderPanel = (currentScrollTop >= minScrollTop);
-		var showHeaderPanel2 = (currentScrollTop >= minScrollTop || currentScrollTop < 0);
 
 		$page.toggleClass('page-is-scrolled', showHeaderPanel);
 
-		$('.touchmove').text(currentScrollTop + ', ' + showHeaderPanel + ', <0:' + showHeaderPanel2 + ', top: ' + $header.css('top') + ', opacity: ' + $header.css('opacity'));
+
 
 		if ( flag ) {
 			if (currentScrollTop <= minScrollTop) {
