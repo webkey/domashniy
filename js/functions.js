@@ -504,6 +504,7 @@ function headerShow(){
 
 		var showHeaderPanel = currentScrollTop < previousScrollTop || currentScrollTop <= minScrollTop;
 		$page.toggleClass('header-show', showHeaderPanel);
+		$page.toggleClass('header-hide', !showHeaderPanel);
 
 		if ( currentScrollTop > minScrollTop ) {
 
