@@ -4796,12 +4796,14 @@ a .shares-slider__img img{
 	overflow: hidden;
 	min-height: 100%;
 	background: #9c0;
+}
+.desktop .sidebar-holder{
 	-webkit-transition-property: -webkit-transform;
 	transition-property: transform;
 	-webkit-transition-duration: 0.3s;
 	transition-duration: 0.3s;
 }
-.header-hide .sidebar-holder{
+.desktop.header-hide .sidebar-holder{
 	-webkit-transform: translate(0, -75px);
 	-ms-transform: translate(0, -75px);
 	transform: translate(0, -75px);
