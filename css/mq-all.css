@@ -1248,7 +1248,7 @@
 	/*FOOTER end*/
 
 	/*page is scrolled*/
-	.page-is-scrolled .header{ top: -75px; }
+	.page-is-scrolled .header{ top: 0; }
 	/*page is scrolled end*/
 }
 

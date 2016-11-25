@@ -493,18 +493,21 @@ function headerShow(){
 	// 1) resizeByWidth (resize only width);
 
 	var $page = $('html'),
-		minScrollTop = $('.header').outerHeight();
+		minScrollTop = 100;
 
 	var previousScrollTop = $(window).scrollTop();
 
 	$(window).on('load scroll resizeByWidth', function () {
 		var currentScrollTop = $(window).scrollTop();
-		var showHeaderPanel = currentScrollTop < previousScrollTop;
+
+		$page.toggleClass('page-is-scrolled', (currentScrollTop >= minScrollTop));
+
+		var showHeaderPanel = currentScrollTop < previousScrollTop || currentScrollTop <= minScrollTop;
+		$page.toggleClass('header-show', showHeaderPanel);
 
 		if ( currentScrollTop > minScrollTop ) {
-			$page.toggleClass('header-show', showHeaderPanel);
 
-			if (showHeaderPanel) {
+			/*if (showHeaderPanel) {
 				TweenMax.to($('.header'), 0.33, {
 					autoAlpha: 1
 				});
@@ -512,71 +515,18 @@ function headerShow(){
 				TweenMax.to($('.header'), 0.33, {
 					autoAlpha: 0
 				});
-			}
+			}*/
 		}
 
-		if ( currentScrollTop < 0 ) {
-			TweenMax.to($('.header'), 0.33, {
-				autoAlpha: 1
-			});
-		}
+		// if ( currentScrollTop < 0 ) {
+		// 	TweenMax.to($('.header'), 0.33, {
+		// 		autoAlpha: 1
+		// 	});
+		// }
 
 		$('.touchmove').text(currentScrollTop + ', ' + showHeaderPanel + ', ' + (currentScrollTop > minScrollTop) + ', top: ' + $('.header').css('top') + ', opacity: ' + $('.header').css('opacity'));
 
 		previousScrollTop = currentScrollTop;
-	});
-}
-/*add class on scroll to top end*/
-
-/**
- * add class on scroll to top
- * */
-function pageIsScrolled(){
-	// external js:
-	// 1) resizeByWidth (resize only width);
-
-	var $page = $('html'),
-		minScrollTop = 100,
-		flag = true;
-
-	// document.addEventListener('touchmove', function(e) {
-	// 	e.preventDefault();
-	// 	var touch = e.touches[0];
-	// 	console.log(touch.pageX + " - " + touch.pageY);
-	// }, false);
-
-
-
-
-
-	$(window).on('load scroll resizeByWidth', function () {
-		var $header = $('.header');
-		var currentScrollTop = $(window).scrollTop();
-		var showHeaderPanel = (currentScrollTop >= minScrollTop);
-
-		$page.toggleClass('page-is-scrolled', showHeaderPanel);
-
-
-
-		if ( flag ) {
-			if (currentScrollTop <= minScrollTop) {
-
-				// $header.css({'opacity': 1 - currentScrollTop / minScrollTop});
-			} else {
-				flag = false;
-
-				// TweenMax.fromTo($header, 0.33, {
-				// 	autoAlpha: 0
-				// }, {
-				// 	autoAlpha: 1
-				// });
-				// $header.css({'opacity': 1});
-			}
-		}
-
-		if (currentScrollTop <= minScrollTop) {
-			flag = true;
-		}
 	});
 }
 /*add class on scroll to top end*/
@@ -2143,7 +2093,6 @@ $(document).ready(function(){
 	printShow();
 	mainNavigationInit();
 	headerShow();
-	pageIsScrolled();
 	slidersInit();
 	popupInitial();
 	jsAccordion();
