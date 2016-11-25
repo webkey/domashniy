@@ -2013,18 +2013,17 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 	z-index: 5;
 	margin: 0;
-	-webkit-transition-property: margin-top;
-	transition-property: margin-top;
-	-webkit-transition-duration: 0s;
-	transition-duration: 0s;
+	-webkit-transition-property: opacity;
+	transition-property: opacity;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
 }
 .page-is-scrolled .header{
 	position: fixed;
-	top: -75px;
-	margin-top: 75px;
-	/*will-change: margin-top;*/
-	/*-webkit-transition-duration: 0.4s;*/
-	/*transition-duration: 0.4s;*/
+	-webkit-transition-property: none;
+	transition-property: none;
+	-webkit-transition-duration: 0s;
+	transition-duration: 0s;
 }
 .header-holder{
 	height: 100%;
