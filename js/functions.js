@@ -857,8 +857,9 @@ function jsAccordion() {
 			new JsAccordion({
 				accordionContainer: $(this),
 				accordionItem: '.accordion-content',
-				accordionHeader: '.accordion-header',
+				accordionHeader: '.accordion-hand',
 				accordionContent: '.accordion-panel',
+				indexInit: false,
 				animateSpeed: 300
 			});
 		})

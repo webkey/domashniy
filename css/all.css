@@ -1656,9 +1656,33 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	letter-spacing: normal;
 }
 .file{
-	padding: 0 0 0 70px;
+	padding-left: 70px;
 	position: relative;
 	min-height: 48px;
+}
+.accordion-info.file{
+	padding-left: 0;
+}
+.accordion-info.file a{
+	display: block;
+	position: relative;
+	padding-left: 48px;
+	font-size: 14px;
+	line-height: 18px;
+	text-decoration: none;
+	color: #666;
+}
+.accordion-info.file a span{
+	display: inline-block;
+	line-height: 1;
+	border-bottom: 1px solid #666;
+	-webkit-transition-property: border;
+	transition-property: border;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+.desktop .accordion-info.file a:hover > span{
+	border-color: transparent;
 }
 .file [class^="depict-files-"],
 .file [class*="depict-files-"]{
@@ -1666,9 +1690,18 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	vertical-align: top;
 	width: 48px;
 	height: 48px;
-	background: no-repeat;
+	background-repeat: no-repeat;
 	-webkit-background-size: 48px 48px;
 	background-size: 48px 48px;
+}
+.accordion-info.file [class^="depict-files-"],
+.accordion-info.file [class*="depict-files-"]{
+	-webkit-background-size: 48px 48px;
+	background-size: 48px 48px;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -24px;
 }
 .file__title{
 	padding: 0 0 12px;
@@ -1853,14 +1886,16 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .accordion-header{
 	display: block;
 	position: relative;
-	padding: 30px 0 30px 52px;
-	cursor: pointer;
-	box-sizing: border-box;
 }
-.accordion-title{
+.accordion-hand{
+	padding: 30px 30px 30px 52px;
 	overflow: hidden;
 	position: relative;
-	padding-right: 30px;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+.accordion-title{
+	position: relative;
 	font-family: 'days-regular', sans-serif;
 	font-size: 20px;
 	line-height: 26px;
@@ -1884,6 +1919,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 .accordion-info{
 	float: right;
+	padding-top: 30px;
 	font-family: 'lozen-cond-regular', sans-serif;
 	font-size: 16px;
 	line-height: 26px;
@@ -1934,8 +1970,6 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	transform: rotate(-45deg);
 	margin: -1px 0 0 -2px;
 }
-.accordion-header.js-accordion__header_active span,
-.desktop .accordion-header:hover span{ border-bottom-color: transparent; }
 .desktop .accordion-header.js-accordion__header_active:hover span{ border-bottom-color: #000; }
 .accordion-panel{
 	padding: 0 52px 20px 52px;
@@ -2520,6 +2554,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	min-height: 1130px;
 	margin: 0 auto;
 	padding-top: 40px;
+	padding-bottom: 40px;
 	box-sizing: border-box;
 	background: #fff;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
