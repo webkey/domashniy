@@ -472,19 +472,6 @@ function mainNavigationInit(){
 }
 /*main navigation end*/
 
-$(window).load(function () {
-	var touch = $('<div class="touchmove"></div>');
-	touch.css({
-		'position': 'fixed',
-		'background': 'red',
-		'z-index': 99999,
-		'left': 0,
-		'top': 0
-	});
-
-	$('body').append(touch.clone());
-});
-
 /**
  * add class on scroll to top
  * */
