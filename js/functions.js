@@ -515,6 +515,12 @@ function headerShow(){
 			}
 		}
 
+		if ( currentScrollTop < 0 ) {
+			TweenMax.to($('.header'), 0.33, {
+				autoAlpha: 1
+			});
+		}
+
 		$('.touchmove').text(currentScrollTop + ', ' + showHeaderPanel + ', ' + (currentScrollTop > minScrollTop) + ', top: ' + $('.header').css('top') + ', opacity: ' + $('.header').css('opacity'));
 
 		previousScrollTop = currentScrollTop;
