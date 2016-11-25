@@ -524,7 +524,7 @@ function headerShow(){
 		// 	});
 		// }
 
-		$('.touchmove').text(currentScrollTop + ', ' + showHeaderPanel + ', ' + (currentScrollTop > minScrollTop) + ', top: ' + $('.header').css('top') + ', opacity: ' + $('.header').css('opacity'));
+		// $('.touchmove').text(currentScrollTop + ', ' + showHeaderPanel + ', ' + (currentScrollTop > minScrollTop) + ', top: ' + $('.header').css('top') + ', opacity: ' + $('.header').css('opacity'));
 
 		previousScrollTop = currentScrollTop;
 	});
