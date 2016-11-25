@@ -535,23 +535,17 @@ function pageIsScrolled(){
 
 	$('body').append(touch.clone());
 
-	$('body').bind('touchmove', function(e) {
-
-
-		// $('.touchmove').text($(this).scrollTop());
-		console.log($(this).scrollTop()); // Replace this with your code.
-	});
-
 
 
 	$(window).on('load scroll resizeByWidth', function () {
 		var $header = $('.header');
 		var currentScrollTop = $(window).scrollTop();
+		// var showHeaderPanel = (currentScrollTop >= minScrollTop || currentScrollTop < 0);
 		var showHeaderPanel = (currentScrollTop >= minScrollTop);
 
 		$page.toggleClass('page-is-scrolled', showHeaderPanel);
 
-		$('.touchmove').text(currentScrollTop);
+		$('.touchmove').text(showHeaderPanel);
 
 		if ( flag ) {
 			if (currentScrollTop <= minScrollTop) {
@@ -560,11 +554,11 @@ function pageIsScrolled(){
 			} else {
 				flag = false;
 
-				// TweenMax.fromTo($header, 0.33, {
-				// 	autoAlpha: 0
-				// }, {
-				// 	autoAlpha: 1
-				// });
+				TweenMax.fromTo($header, 0.33, {
+					autoAlpha: 0
+				}, {
+					autoAlpha: 1
+				});
 				$header.css({'opacity': 1});
 			}
 		}
