@@ -491,15 +491,15 @@ function headerShow(){
 		if ( currentScrollTop > minScrollTop ) {
 			$page.toggleClass('header-show', showHeaderPanel);
 
-			if (showHeaderPanel) {
-				TweenMax.to($('.header'), 0.33, {
-					autoAlpha: 1
-				});
-			} else {
-				TweenMax.to($('.header'), 0.33, {
-					autoAlpha: 0
-				});
-			}
+			// if (showHeaderPanel) {
+			// 	TweenMax.to($('.header'), 0.33, {
+			// 		autoAlpha: 1
+			// 	});
+			// } else {
+			// 	TweenMax.to($('.header'), 0.33, {
+			// 		autoAlpha: 0
+			// 	});
+			// }
 		}
 
 		previousScrollTop = currentScrollTop;
@@ -537,6 +537,7 @@ function pageIsScrolled(){
 				// }, {
 				// 	autoAlpha: 1
 				// });
+				$header.css({'opacity': 1});
 			}
 		}
 
