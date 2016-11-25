@@ -545,7 +545,7 @@ function pageIsScrolled(){
 
 		$page.toggleClass('page-is-scrolled', showHeaderPanel);
 
-		$('.touchmove').text(currentScrollTop + ', ' + showHeaderPanel + ', <0:' + showHeaderPanel2);
+		$('.touchmove').text(currentScrollTop + ', ' + showHeaderPanel + ', <0:' + showHeaderPanel2 + ', ' + $header.css('top'));
 
 		if ( flag ) {
 			if (currentScrollTop <= minScrollTop) {
