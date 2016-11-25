@@ -2009,24 +2009,27 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	top: 0;
 	left: 0;
 	width: 100%;
-	background: #fff;
+	background: #9c0;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 	z-index: 5;
 	margin: 0;
 	-webkit-transition-property: margin-top;
 	transition-property: margin-top;
+	-webkit-transition-duration: 0s;
+	transition-duration: 0s;
 }
 .page-is-scrolled .header{
 	position: fixed;
 	top: -75px;
 	margin-top: 75px;
 	/*will-change: margin-top;*/
-	-webkit-transition-duration: 0.4s;
-	transition-duration: 0.4s;
+	/*-webkit-transition-duration: 0.4s;*/
+	/*transition-duration: 0.4s;*/
 }
 .header-holder{
 	height: 100%;
 	position: relative;
+	background: #fff;
 }
 .header-holder:before,
 .header-holder:after{ content: ""; display: table; }

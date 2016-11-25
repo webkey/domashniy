@@ -502,13 +502,34 @@ function pageIsScrolled(){
 	// 1) resizeByWidth (resize only width);
 
 	var $page = $('html'),
-		minScrollTop = 120;
+		minScrollTop = 100,
+		flag = true;
 
 	$(window).on('load scroll resizeByWidth', function () {
+		var $header = $('.header');
 		var currentScrollTop = $(window).scrollTop();
 		var showHeaderPanel = (currentScrollTop >= minScrollTop);
 
 		$page.toggleClass('page-is-scrolled', showHeaderPanel);
+
+		if ( flag ) {
+			if (currentScrollTop <= minScrollTop) {
+
+				$header.css({'opacity': 1 - currentScrollTop / minScrollTop});
+			} else {
+				flag = false;
+
+				TweenMax.fromTo($header, 0.33, {
+					autoAlpha: 0
+				}, {
+					autoAlpha: 1
+				});
+			}
+		}
+
+		if (currentScrollTop <= minScrollTop) {
+			flag = true;
+		}
 	});
 }
 /*add class on scroll to top end*/
@@ -854,8 +875,7 @@ function jsAccordion() {
 	var $accordion = $('.accordion-container');
 	if($accordion.length){
 		$accordion.each(function () {
-			new JsAccordion({
-				accordionContainer: $(this),
+			new JsAccordion({accordionContainer: $(this),
 				accordionItem: '.accordion-content',
 				accordionHeader: '.accordion-hand',
 				accordionContent: '.accordion-panel',
