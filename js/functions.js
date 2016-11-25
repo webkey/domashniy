@@ -506,27 +506,6 @@ function headerShow(){
 		$page.toggleClass('header-show', showHeaderPanel);
 		$page.toggleClass('header-hide', !showHeaderPanel);
 
-		if ( currentScrollTop > minScrollTop ) {
-
-			/*if (showHeaderPanel) {
-				TweenMax.to($('.header'), 0.33, {
-					autoAlpha: 1
-				});
-			} else {
-				TweenMax.to($('.header'), 0.33, {
-					autoAlpha: 0
-				});
-			}*/
-		}
-
-		// if ( currentScrollTop < 0 ) {
-		// 	TweenMax.to($('.header'), 0.33, {
-		// 		autoAlpha: 1
-		// 	});
-		// }
-
-		// $('.touchmove').text(currentScrollTop + ', ' + showHeaderPanel + ', ' + (currentScrollTop > minScrollTop) + ', top: ' + $('.header').css('top') + ', opacity: ' + $('.header').css('opacity'));
-
 		previousScrollTop = currentScrollTop;
 	});
 }
