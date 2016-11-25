@@ -483,11 +483,24 @@ function headerShow(){
 		minScrollTop = $('.header').outerHeight();
 
 	var previousScrollTop = $(window).scrollTop();
+
 	$(window).on('load scroll resizeByWidth', function () {
 		var currentScrollTop = $(window).scrollTop();
-		var showHeaderPanel = currentScrollTop < minScrollTop || currentScrollTop < previousScrollTop;
+		var showHeaderPanel = currentScrollTop < previousScrollTop;
 
-		$page.toggleClass('header-show', showHeaderPanel);
+		if ( currentScrollTop > minScrollTop ) {
+			$page.toggleClass('header-show', showHeaderPanel);
+
+			if (showHeaderPanel) {
+				TweenMax.to($('.header'), 0.33, {
+					autoAlpha: 1
+				});
+			} else {
+				TweenMax.to($('.header'), 0.33, {
+					autoAlpha: 0
+				});
+			}
+		}
 
 		previousScrollTop = currentScrollTop;
 	});
@@ -519,11 +532,11 @@ function pageIsScrolled(){
 			} else {
 				flag = false;
 
-				TweenMax.fromTo($header, 0.33, {
-					autoAlpha: 0
-				}, {
-					autoAlpha: 1
-				});
+				// TweenMax.fromTo($header, 0.33, {
+				// 	autoAlpha: 0
+				// }, {
+				// 	autoAlpha: 1
+				// });
 			}
 		}
 
