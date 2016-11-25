@@ -518,12 +518,40 @@ function pageIsScrolled(){
 		minScrollTop = 100,
 		flag = true;
 
+	// document.addEventListener('touchmove', function(e) {
+	// 	e.preventDefault();
+	// 	var touch = e.touches[0];
+	// 	console.log(touch.pageX + " - " + touch.pageY);
+	// }, false);
+
+	var touch = $('<div class="touchmove"></div>');
+	touch.css({
+		'position': 'fixed',
+		'background': 'red',
+		'z-index': 99999,
+		'left': 0,
+		'top': 0
+	});
+
+	$('body').append(touch.clone());
+
+	$('body').bind('touchmove', function(e) {
+
+
+		// $('.touchmove').text($(this).scrollTop());
+		console.log($(this).scrollTop()); // Replace this with your code.
+	});
+
+
+
 	$(window).on('load scroll resizeByWidth', function () {
 		var $header = $('.header');
 		var currentScrollTop = $(window).scrollTop();
 		var showHeaderPanel = (currentScrollTop >= minScrollTop);
 
 		$page.toggleClass('page-is-scrolled', showHeaderPanel);
+
+		$('.touchmove').text(currentScrollTop);
 
 		if ( flag ) {
 			if (currentScrollTop <= minScrollTop) {
