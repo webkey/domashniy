@@ -2005,7 +2005,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 
 /*HEADER*/
 .header{
-	position: absolute;
+	position: fixed;
 	/*top: 0;*/
 	left: 0;
 	width: 100%;
@@ -2014,10 +2014,10 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	z-index: 5;
 	margin: 0;
 }
-.page-is-scrolled .header{
+/*.page-is-scrolled .header{
 	position: fixed;
 	top: 0;
-}
+}*/
 .header-holder{
 	height: 100%;
 	position: relative;
