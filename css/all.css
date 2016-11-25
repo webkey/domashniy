@@ -2006,7 +2006,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 /*HEADER*/
 .header{
 	position: absolute;
-	/*top: 0;*/
+	top: 0;
 	left: 0;
 	width: 100%;
 	background: #9c0;
