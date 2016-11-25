@@ -2016,7 +2016,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 .page-is-scrolled .header{
 	position: fixed;
-	/*top: 2px;*/
+	top: 0;
 }
 .header-holder{
 	height: 100%;
