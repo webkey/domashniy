@@ -934,7 +934,7 @@
 						<!--advert end-->
 
 						<!--subscribe-->
-						<a href="#" class="subscribe">
+						<a href="#subscription-form" class="subscribe popup-with-form">
 							<div class="subscribe__icon">
 								<i class="depict-subscribe"></i>
 							</div>
@@ -1155,14 +1155,15 @@
 	<div class="popup-form">
 		<div class="max-wrap-md">
 			<form action="#" method="get">
-				<!--<div class="inline-popup__title align-center">Подписка на рассылку</div>-->
 				<p><b>Хотите получать нашу листовку со спецпредложениями?</b></p>
 				<div class="input-wrap">
 					<div class="label-holder">
 						<label for="subscription-form-email">Введите Ваш email</label>
 					</div>
 					<input type="text" id="subscription-form-email" />
+					<span class="error-note" style="display: none;">Упс, ошибка :(</span>
 				</div>
+				<div class="success-text" style="display: none;">Вы подписаны на рассылку!</div>
 				<div class="form-buttons align-center">
 					<input class="btn-default" type="submit" value="Подписаться">
 				</div>

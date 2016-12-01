@@ -1055,6 +1055,13 @@ textarea.error .placeholder{ color: #ca0503; opacity: 1; }
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+.success-text{
+	font-weight: bold;
+	color: #056e41;
+	padding: 0 0 20px;
+	text-align: center;
+	/*display: none;*/
+}
 /*form error end*/
 
 /*checkbox*/
