@@ -63,7 +63,8 @@
 	.layout{ margin-right: 0; }
 
 	.cols-wrap{ margin: 0; }
-	.col-wrap{
+	.col-wrap,
+	.col-wrap:first-child{
 		float: none;
 		display: block;
 		width: auto;

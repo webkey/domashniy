@@ -370,9 +370,12 @@ strong em{
 .cols-wrap:after{ clear: both; }
 .col-wrap{
 	float: left;
-	width: 50%;
+	width: 40%;
 	box-sizing: border-box;
 	padding: 0 10px;
+}
+.col-wrap:first-child{
+	width: 60%;
 }
 .box-wrap{
 	margin-bottom: 20px;
@@ -2020,20 +2023,25 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 	z-index: 5;
 	margin: 0;
-	opacity: 0;
-	-webkit-transition-property: opacity;
-	transition-property: opacity;
+	-webkit-transition-property: opacity, visibility;
+	transition-property: opacity, visibility;
 	-webkit-transition-duration: 0.2s;
 	transition-duration: 0.2s;
 	-webkit-transition-delay: 0.2s;
 	transition-delay: 0.2s;
 }
+.page-loaded .header{
+	opacity: 0;
+	visibility: hidden;
+}
 .no-js .header{
 	opacity: 1;
+	visibility: visible;
 }
 .header-show .header,
 .nav-opened-start .header{
 	opacity: 1;
+	visibility: visible;
 	-webkit-transition-delay: 0s;
 	transition-delay: 0s;
 }
@@ -4407,7 +4415,7 @@ a .shares-slider__img img{
 
 /*contacts caption*/
 .contacts-caption,
-.contacts-info{ padding: 35px 40px 32px; }
+.contacts-info{ padding: 35px 40px 0; }
 .contacts-title{
 	font-family: 'lozen-cond-bold', sans-serif;
 	font-size: 18px;
@@ -4428,7 +4436,7 @@ a .shares-slider__img img{
 .contacts-map-wrap{
 	position: relative;
 	overflow: hidden;
-	height: 180px;
+	height: 330px;
 	z-index: 2;
 	-webkit-transition-property: height;
 	transition-property: height;
@@ -4471,7 +4479,7 @@ a .shares-slider__img img{
 	font-size: 16px;
 	line-height: 23px;
 	color: #666;
-	padding: 0 0 13px;
+	padding: 0 0 30px;
 }
 .contacts-requisites .text-label{
 	float: left;
@@ -4794,31 +4802,20 @@ a .shares-slider__img img{
 /*SIDEBAR*/
 .sidebar{
 	float: left;
-	position: relative;
+	/*position: relative;*/
 	margin: 0 0 0 -100%;
 	width: 277px;
 }
 .sidebar-holder{
 	position: relative;
 	overflow: hidden;
-	min-height: 100%;
+	/*min-height: 100%;*/
 	background: #9c0;
-}
-.desktop .sidebar-holder{
-	-webkit-transition-property: -webkit-transform;
-	transition-property: transform;
-	-webkit-transition-duration: 0.3s;
-	transition-duration: 0.3s;
-}
-.desktop.header-hide .sidebar-holder{
-	-webkit-transform: translate(0, -75px);
-	-ms-transform: translate(0, -75px);
-	transform: translate(0, -75px);
 }
 .sidebar-holder:after{
 	content: '';
 	position: absolute;
-	left: 100%;
+	left: 277px;
 	top: -10px;
 	bottom: -10px;
 	width: 20px;

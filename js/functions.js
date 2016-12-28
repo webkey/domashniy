@@ -2002,16 +2002,12 @@ function stickyLayout(){
 			clearTimeout(resizeTimerMenu);
 			resizeTimerMenu = setTimeout(function () {
 				$sidebar.stick_in_parent({
-					parent: '.main',
-					offset_top: topValue
+					parent: '.main'
+					// offset_top: topValue
 				});
 			}, 100);
 		});
 	}
-
-	$('.menu__list').on('accordionChange', function () {
-		$sidebar.trigger("sticky_kit:recalc");
-	});
 }
 /*sticky layout end*/
 
