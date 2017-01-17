@@ -4802,9 +4802,10 @@ a .shares-slider__img img{
 /*SIDEBAR*/
 .sidebar{
 	float: left;
-	/*position: relative;*/
+	position: relative;
 	margin: 0 0 0 -100%;
 	width: 277px;
+	overflow: hidden;
 }
 .sidebar-holder{
 	position: relative;
@@ -4913,6 +4914,15 @@ a .shares-slider__img img{
 	color: #666;
 	clear: both;
 	z-index: 5;
+}
+.footer:before{
+	content: '';
+	position: absolute;
+	right: 0;
+	left: 277px;
+	bottom: 0;
+	height: 69px;
+	background-color: #f3f3f3;
 }
 /*footer holder*/
 .footer-holder{
