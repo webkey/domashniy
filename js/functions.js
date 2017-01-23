@@ -823,7 +823,7 @@ function popupInitial(){
 	JsAccordion.prototype.scrollPosition = function () {
 		var self = this;
 		if (self.scrollToTop) {
-			$('html, body').animate({ scrollTop: self.$accordionItem.eq(self.indexActive).offset().top }, self._animateSpeed);
+			$('html, body').animate({ scrollTop: self.$accordionItem.eq(self.indexActive).offset().top - $('.header').outerHeight() }, self._animateSpeed);
 		}
 	};
 
@@ -839,12 +839,14 @@ function jsAccordion() {
 	var $accordion = $('.accordion-container');
 	if($accordion.length){
 		$accordion.each(function () {
-			new JsAccordion({accordionContainer: $(this),
+			new JsAccordion({
+				accordionContainer: $(this),
 				accordionItem: '.accordion-content',
 				accordionHeader: '.accordion-hand',
 				accordionContent: '.accordion-panel',
 				indexInit: false,
-				animateSpeed: 300
+				animateSpeed: 300,
+				scrollToTop: true
 			});
 		})
 	}

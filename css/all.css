@@ -2160,12 +2160,28 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
 		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
 	}
+	.page-loaded .header .nav-list > li{
+		opacity: 0 !important;
+		visibility: hidden !important;
+	}
 	.nav-list > li{
+		-webkit-transition-property: opacity, visibility;
+		transition-property: opacity, visibility;
+		-webkit-transition-duration: 0.2s;
+		transition-duration: 0.2s;
+		-webkit-transition-delay: 0.2s;
+		transition-delay: 0.2s;
+	}
+	.nav-list > li,
+	.header-show .header .nav-list > li,
+	.nav-opened-start .header .nav-list > li{
 		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
 		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
 		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
 		opacity: 1 !important;
 		visibility: visible !important;
+		-webkit-transition-delay: 0s;
+		transition-delay: 0s;
 	}
 
 	.nav-drop,
