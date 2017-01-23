@@ -54,6 +54,14 @@
 	.shops-holder{ height: 550px; }
 	/*CONTENT end*/
 	/*MAIN end*/
+
+	.col-wrap,
+	.col-wrap:first-child{
+		float: none;
+		display: block;
+		width: auto;
+		padding: 0;
+	}
 }
 
 @media only screen and (max-width: 1279px){
@@ -63,13 +71,6 @@
 	.layout{ margin-right: 0; }
 
 	.cols-wrap{ margin: 0; }
-	.col-wrap,
-	.col-wrap:first-child{
-		float: none;
-		display: block;
-		width: auto;
-		padding: 0;
-	}
 	/*MAIN BLOCKS end*/
 
 	/*HEADER*/
@@ -558,7 +559,10 @@
 		display: block;
 		margin: 117px 0 0;
 	}
-	.home-page .sidebar-content{ margin-top: 0; }
+	.home-page .sidebar-content{
+		margin-top: 0;
+		margin-bottom: 30px;
+	}
 	/*sidebar content (for devices) end*/
 	/*MAIN end*/
 
@@ -795,10 +799,13 @@
 	.login{ right: 122px; }
 
 	.user-content{ padding: 30px 0; }
-	.home-page .content{ padding: 30px 0 0; }
+	.home-page .content{ padding: 30px 0; }
 
 	.sheet{ padding: 0 10px; }
-	.sheet-holder{ padding-top: 30px; }
+	.sheet-holder{
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
 	/*MAIN BLOCKS end*/
 
 	/*social networks*/

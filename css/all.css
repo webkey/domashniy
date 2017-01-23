@@ -2412,7 +2412,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 /*CONTENT*/
 .content{ padding-top: 65px; }
 .user-content{ padding: 40px 0; }
-.home-page .content{ padding: 40px 0 0; }
+.home-page .content{ padding: 40px 0; }
 
 /*breadcrumbs*/
 .breadcrumbs{
@@ -2585,6 +2585,9 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	background: #fff;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
 	position: relative;
+}
+.home-page .sheet-holder{
+	min-height: 0;
 }
 .sheet .topic{ padding-bottom: 40px; }
 .sheet .topic h1,
@@ -3246,6 +3249,14 @@ a .shares-slider__img img{
 	transform: translate(0, -20px);
 }
 /*desks list end*/
+
+/*text*/
+.text{
+	background: #fff;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+/*text end*/
 
 /*rate*/
 .rate{
@@ -4436,19 +4447,25 @@ a .shares-slider__img img{
 .contacts-map-wrap{
 	position: relative;
 	overflow: hidden;
-	height: 330px;
+	margin-top: 20px;
 	z-index: 2;
 	-webkit-transition-property: height;
 	transition-property: height;
 	-webkit-transition-duration: 0.2s;
 	transition-duration: 0.2s;
 }
+.contacts-map-wrap:before{
+	content: '';
+	display: block;
+	padding-top: 60%;
+	height: 0;
+}
 .contacts-map-wrap.active{ height: 500px; }
 .contacts-map{
 	position: absolute;
 	left: 0;
 	top: 0;
-	height: 100%;
+	bottom: 0;
 	width: 100%;
 	background: #f3f3f3;
 }
