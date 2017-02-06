@@ -1332,7 +1332,8 @@ function shopsLocation() {
 		currentCity = "minsk",
 		baseImageURL = 'img/',
 		$selectCity = $('#selectCity'),
-		urlShops = $selectCity.data('url');
+		urlShops = $selectCity.data('url'),
+		fullscreenControl;
 
 	/*initial map*/
 	if ( $mapId.length ) {
@@ -1373,7 +1374,8 @@ function shopsLocation() {
 			myMap = new ymaps.Map (mapId.substring(1), {
 				center: [51.9071097,27.4923474],
 				zoom: 11,
-				controls: ['fullscreenControl']
+				// controls: ['fullscreenControl']
+				controls: []
 			});
 
 			/*add zoom control button*/
@@ -1384,6 +1386,9 @@ function shopsLocation() {
 				}
 			});
 			myMap.controls.add(zoomControl);
+
+			fullscreenControl = new ymaps.control.FullscreenControl();
+			myMap.controls.add(fullscreenControl);
 
 			/*add geolocation control button*/
 			// var geolocationControl = new ymaps.control.GeolocationControl({
@@ -1494,6 +1499,9 @@ function shopsLocation() {
 		/*toggle "no item" message*/
 		$('.filter-no-item').remove();
 
+		/*count search shops*/
+		countShops(jsonResult.length);
+
 		if (!jsonResult.length) {
 			$('.shops').append($noItemTemplate.clone());
 
@@ -1571,8 +1579,6 @@ function shopsLocation() {
 			setBoundsMap();
 		}
 
-		/*count search shops*/
-		countShops(jsonResult.length);
 	}
 
 	function setBoundsMap() {
@@ -1583,8 +1589,10 @@ function shopsLocation() {
 
 	/*show more information*/
 	function showMoreInfo() {
-		$mapId.on('click', '.more', function (e) {
+		$('body').on('click', 'ymaps .more', function (e) {
 			e.preventDefault();
+
+			fullscreenControl.exitFullscreen();
 
 			var index = $(this).data('more-id');
 
@@ -1680,6 +1688,10 @@ function shopsLocation() {
 	$('.to-map').on('click', 'a', function (e) {
 		e.preventDefault();
 
+		if (window.innerWidth > 1279) {
+			return;
+		}
+
 		var $page = $('html, body');
 		var index = $(this).closest('.shops-item').data('location-index');
 
@@ -1696,13 +1708,34 @@ function shopsLocation() {
 
 		var coord = myPlacemark[index].geometry.getCoordinates();
 
-		myMap.setCenter(coord, 13, {
+		myMap.setCenter(coord, 16, {
 			duration: 100,
 			checkZoomRange: true
 		}).then(function () {
 			myPlacemark[index].balloon.open();
 		});
+	});
 
+	$('.shops-item__title').on('click', 'a', function (e) {
+		if (window.innerWidth < 1280) {
+			return;
+		}
+
+		e.preventDefault();
+
+		var index = $(this).closest('.shops-item').data('location-index');
+
+		if (moveFlag === index) return false;
+		moveFlag = index;
+
+		var coord = myPlacemark[index].geometry.getCoordinates();
+
+		myMap.setCenter(coord, 16, {
+			duration: 100,
+			checkZoomRange: true
+		}).then(function () {
+			myPlacemark[index].balloon.open();
+		});
 	});
 
 	/*add count loader*/
