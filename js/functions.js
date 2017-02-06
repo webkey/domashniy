@@ -1000,6 +1000,14 @@ function fileInput() {
 /*file input end end*/
 
 /**
+ * init Masks
+ * */
+function initMask() {
+    $(".date-mask").inputmask("99.99.9999",{ "placeholder": "__.__.____" });
+}
+/*init Masks end end*/
+
+/**
  * tab switcher
  * */
 function tabSwitcher() {
@@ -1149,8 +1157,6 @@ function filterJob() {
 			name = $this.attr('name'),
 			classNoItem = 'filter-no-item';
 
-		console.log("name: ", name);
-
 		var tags = {};
 
 		$this.closest('[data-id]').find('select').each(function () {
@@ -1167,8 +1173,6 @@ function filterJob() {
 		});
 
 		var dataFilters = concatObject(tags);
-
-		console.log("dataFilters: ", dataFilters);
 
 		$filterItem.parent().find('.'+ classNoItem).remove();
 		$filterItem.show(0);
@@ -2100,6 +2104,7 @@ $(document).ready(function(){
 	jsAccordion();
 	menuAccordionInit();
 	fileInput();
+	initMask();
 	tabSwitcher();
 	filterJob();
 	equalHeightInit();
