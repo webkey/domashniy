@@ -1219,6 +1219,17 @@ function equalHeightInit() {
 				resize: true
 			});
 		}
+
+		var $productsList = $('.products-list');
+
+		if ($productsList.length) {
+			$productsList.children().matchHeight({
+				byRow: true,
+				property: 'height',
+				target: null,
+				remove: false
+			});
+		}
 	})
 }
 /*equal height end*/
@@ -2022,7 +2033,7 @@ function contactsMap() {
  * image lazy load
  * */
 function imgLazyLoad() {
-	var $productsImg = $('.news-item__img');
+	var $productsImg = $('.products-list__img');
 
 	if ($productsImg.length) {
 		$productsImg.find('img').unveil();
@@ -2038,35 +2049,6 @@ function filtersProducts() {
 	// 1) isotope.pkgd.js (widgets.js)
 	// 2) imagesLoaded PACKAGED v4.1.1 (widgets.js)
 	// 3) jQuery Unveil (widgets.js)
-
-	// var $grid = $('.products__list').isotope({
-	// 	// options
-	// 	itemSelector: '.products__item',
-	// 	layoutMode: 'fitRows',
-	// 	stagger: 10,
-	// 	transitionDuration: 400,
-	// 	hiddenStyle: {
-	// 		opacity: 0,
-	// 		// transform: 'scale(0.001)'
-	// 		transform: 'scale(1)'
-	// 	},
-	// 	visibleStyle: {
-	// 		opacity: 1,
-	// 		transform: 'scale(1)'
-	// 	}
-	// });
-
-	// // bind filter button click
-	// $('.filter-js').on( 'click', 'a', function() {
-	// 	var filterValue = $( this ).attr('data-filter');
-	// 	$grid.isotope({ filter: filterValue });
-	// });
-	//
-	// // change is-checked class on buttons
-	// $('.filter-js').on( 'click', 'a', function() {
-	// 	$( '.filter-js a' ).removeClass('selected');
-	// 	$( this ).addClass('selected');
-	// });
 
 	var $grid = $('.filter-panel-js');
 	if (!$grid.length) return;

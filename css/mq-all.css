@@ -1067,6 +1067,7 @@
 	/*shares*/
 	.shares{ padding-bottom: 50px; }
 	/*shares slider*/
+	.shares-list{ margin: 0 -5px; }
 	.shares-slider__item{ padding: 5px; }
 	/*shares slider*/
 	/*shares end*/
@@ -1292,6 +1293,7 @@
 		background-size: 172px;
 	}
 	/*shares*/
+	.shares-list{ margin: 0; }
 	.shares-list .shares-slider__item {
 		display: block;
 		width: auto;
