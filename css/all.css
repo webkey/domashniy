@@ -3630,7 +3630,7 @@ a .shares-slider__img img{
 @media only screen and (max-width: 499px){
 	.news-list .news-item{
 		display: block;
-		width: auto;
+		width: 100%;
 	}
 }
 .news-item__inner{
@@ -4933,6 +4933,71 @@ a .shares-slider__img img{
 	}
 }
 /*achieve end*/
+
+/*products filter*/
+.products-filter{
+	background: none;
+	padding: 0 0 30px;
+}
+.products-filter__list,
+.user-content .products-filter__list {
+	list-style: none;
+	padding: 0;
+	margin: 0 -6px;
+	font-family: 'pf-din-bold', sans-serif;
+	font-weight: normal;
+	text-transform: uppercase;
+	line-height: 26px;
+
+	font-size: 0;
+	letter-spacing: -4px;
+}
+.products-filter__list li,
+.user-content .products-filter__list li,
+.products-filter__list li:first-child,
+.user-content .products-filter__list li:first-child{ padding: 0 6px 12px; }
+.products-filter__list li{
+	display: inline-block;
+	vertical-align: top;
+	font-size: 16px;
+	letter-spacing: normal;
+}
+.products-filter__list li:before,
+.user-content .products-filter__list li:before,
+.products-filter__list li:first-child:before,
+.user-content .products-filter__list li:first-child:before{ content: none; }
+.products-filter__list a{
+	display: inline-block;
+	vertical-align: top;
+	padding: 8px 22px;
+	text-decoration: none;
+	color: #000;
+	border-radius: 4px;
+	background: #fff;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+	-webkit-transition-property: background, box-shadow, -webkit-transform;
+	transition-property: background, box-shadow, transform;
+	-webkit-transition-duration: 0.25s;
+	transition-duration: 0.25s;
+}
+.desktop .products-filter__list a:hover{
+	text-decoration: none;
+	background: #feed00;
+	-webkit-transform: translate(0, -5px);
+	-ms-transform: translate(0, -5px);
+	transform: translate(0, -5px);
+	box-shadow: 0 6px 9px rgba(0, 0, 0, 0.6);
+}
+.products-filter__list a.selected,
+.desktop .products-filter__list a.selected{
+	text-decoration: none;
+	background: #feed00;
+	-webkit-transform: none;
+	-ms-transform: none;
+	transform: none;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+/*products filter end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/

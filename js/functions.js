@@ -1003,7 +1003,7 @@ function fileInput() {
  * init Masks
  * */
 function initMask() {
-    $(".date-mask").inputmask("99.99.9999",{ "placeholder": "__.__.____" });
+    // $(".date-mask").inputmask("99.99.9999",{ "placeholder": "__.__.____" });
 }
 /*init Masks end end*/
 
@@ -2018,6 +2018,126 @@ function contactsMap() {
 }
 /*contacts map end*/
 
+/**
+ * image lazy load
+ * */
+function imgLazyLoad() {
+	var $productsImg = $('.news-item__img');
+
+	if ($productsImg.length) {
+		$productsImg.find('img').unveil();
+	}
+}
+/*image lazy load end*/
+
+/**
+ * filer products
+ * */
+function filtersProducts() {
+	// external js:
+	// 1) isotope.pkgd.js (widgets.js)
+	// 2) imagesLoaded PACKAGED v4.1.1 (widgets.js)
+	// 3) jQuery Unveil (widgets.js)
+
+	// var $grid = $('.products__list').isotope({
+	// 	// options
+	// 	itemSelector: '.products__item',
+	// 	layoutMode: 'fitRows',
+	// 	stagger: 10,
+	// 	transitionDuration: 400,
+	// 	hiddenStyle: {
+	// 		opacity: 0,
+	// 		// transform: 'scale(0.001)'
+	// 		transform: 'scale(1)'
+	// 	},
+	// 	visibleStyle: {
+	// 		opacity: 1,
+	// 		transform: 'scale(1)'
+	// 	}
+	// });
+
+	// // bind filter button click
+	// $('.filter-js').on( 'click', 'a', function() {
+	// 	var filterValue = $( this ).attr('data-filter');
+	// 	$grid.isotope({ filter: filterValue });
+	// });
+	//
+	// // change is-checked class on buttons
+	// $('.filter-js').on( 'click', 'a', function() {
+	// 	$( '.filter-js a' ).removeClass('selected');
+	// 	$( this ).addClass('selected');
+	// });
+
+	var $grid = $('.filter-panel-js');
+	if (!$grid.length) return;
+
+	function getHashFilter() {
+		// get filter=filterName
+		var matches = location.hash.match( /filter=([^&]+)/i );
+		var hashFilter = matches && matches[1];
+		return hashFilter && decodeURIComponent( hashFilter );
+	}
+
+	// bind filter button click
+	var $filterButtonGroup = $('.filter-js');
+	$filterButtonGroup.on( 'click', 'a', function(e) {
+		e.preventDefault();
+
+		var filterAttr = $( this ).attr('data-filter');
+		// set filter in hash
+		location.hash = 'filter=' + encodeURIComponent( filterAttr );
+	});
+
+	var isIsotopeInit = false;
+
+	function onHashchange() {
+		var hashFilter = getHashFilter();
+		if ( !hashFilter && isIsotopeInit ) {
+			return;
+		}
+		isIsotopeInit = true;
+		// filter isotope
+		$grid.isotope({
+			itemSelector: '.filter-item-js',
+			layoutMode: 'fitRows',
+			stagger: 10,
+			percentPosition: true,
+			transitionDuration: 400,
+			hiddenStyle: {
+				opacity: 0,
+				// transform: 'scale(0.001)'
+				transform: 'scale(1)'
+			},
+			visibleStyle: {
+				opacity: 1,
+				transform: 'scale(1)'
+			},
+			// use filterFns
+			filter: hashFilter
+		});
+
+		// set selected class on button
+		if ( hashFilter ) {
+			$filterButtonGroup.find('a').removeClass('selected');
+			$filterButtonGroup.find('[data-filter="' + hashFilter + '"]').addClass('selected');
+		}
+	}
+
+	// layout Isotope after each image loads
+	$grid.imagesLoaded().progress( function() {
+		$grid.isotope('layout');
+	});
+
+	$grid.on( 'arrangeComplete', function() {
+		$('.main').trigger('changeSize'); // triggered function of change size the container for reinit events load images ( jQuery Unveil (widgets.js))
+	});
+
+	$(window).on( 'hashchange', onHashchange );
+
+	// trigger event handler to init Isotope
+	onHashchange();
+}
+/*filters products end*/
 
 /**
  * sticky layout
@@ -2115,6 +2235,8 @@ $(document).ready(function(){
 	addShadowTape();
 	toggleViewShops();
 	contactsMap();
+	imgLazyLoad();
+	filtersProducts();
 	if(DESKTOP){
 		stickyLayout();
 	}
