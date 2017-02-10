@@ -1616,7 +1616,10 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	color: #666;
 	padding: 0 0 10px;
 }
-.form-buttons + .form-note{ padding-bottom: 0; }
+.form-buttons + .form-note {
+	padding-bottom: 0;
+	padding-top: 30px;
+}
 .form-note__item{ padding: 0 0 8px; }
 /*elements form style end*/
 
@@ -2666,6 +2669,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	margin-bottom: 40px;
 	background: #f3f3f3;
 }
+.form-title,
 .user-form .form-title{
 	display: block;
 	font-family: 'pf-din-bold', sans-serif;
@@ -2724,7 +2728,10 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	float: left;
 	margin-right: 20px;
 }
-.user-form .form-note{ overflow: hidden; }
+.user-form .form-note {
+	overflow: hidden;
+	padding-top: 0;
+}
 .user-form .form-note__item{ padding: 0; }
 .user-form .upload-file__label,
 .user-form input[type="submit"]{

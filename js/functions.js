@@ -1003,7 +1003,7 @@ function fileInput() {
  * init Masks
  * */
 function initMask() {
-    // $(".date-mask").inputmask("99.99.9999",{ "placeholder": "__.__.____" });
+    $(".date-mask").inputmask("99.99.9999",{ "placeholder": "__.__.____" });
 }
 /*init Masks end end*/
 
