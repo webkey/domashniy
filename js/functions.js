@@ -344,7 +344,7 @@ function printShow() {
 	// open nav
 	MainNavigation.prototype.openNav = function() {
 
-		console.log("openNav");
+		// console.log("openNav");
 
 		var self = this,
 			$html = self.$mainContainer,
@@ -388,7 +388,7 @@ function printShow() {
 	// close nav
 	MainNavigation.prototype.closeNav = function() {
 
-		console.log("closeNav");
+		// console.log("closeNav");
 
 		var self = this,
 			$html = self.$mainContainer,
@@ -421,7 +421,7 @@ function printShow() {
 
 		if (window.innerWidth < 1280) {
 
-			console.log("preparationAnimation");
+			// console.log("preparationAnimation");
 
 			TweenMax.set($navContainer, {
 				yPercent: 120,
@@ -1175,9 +1175,9 @@ function filterJob() {
 			text: 'Извините, подходящих вакансий не найдено'
 		});
 
-		console.log("tags: ", tags);
+		// console.log("tags: ", tags);
 		var dataFilters = concatObject(tags);
-		console.log("dataFilters: ", dataFilters);
+		// console.log("dataFilters: ", dataFilters);
 
 		$filterItem.parent().find('.'+ classNoItem).remove();
 		$filterItem.show(0);
@@ -1200,7 +1200,7 @@ function filterJob() {
 			var thisKey = prop,
 				thisProp = obj[ thisKey ];
 
-			console.log("thisProp === 0: ", thisProp === "0");
+			// console.log("thisProp === 0: ", thisProp === "0");
 
 			if (thisProp === "0") continue;
 
