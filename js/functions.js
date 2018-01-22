@@ -343,6 +343,7 @@ function printShow() {
 
 	// open nav
 	MainNavigation.prototype.openNav = function() {
+
 		console.log("openNav");
 
 		var self = this,
@@ -386,7 +387,8 @@ function printShow() {
 
 	// close nav
 	MainNavigation.prototype.closeNav = function() {
-		// console.log("closeNav");
+
+		console.log("closeNav");
 
 		var self = this,
 			$html = self.$mainContainer,
@@ -418,7 +420,8 @@ function printShow() {
 			$staggerItems = self.$staggerItems;
 
 		if (window.innerWidth < 1280) {
-			// console.log("preparationAnimation");
+
+			console.log("preparationAnimation");
 
 			TweenMax.set($navContainer, {
 				yPercent: 120,
@@ -498,8 +501,8 @@ function headerShow(){
 }
 /*add class on scroll to top end*/
 
-/**!
- * sliders
+/**
+ * !sliders
  * */
 function slidersInit() {
 	//banners slider
@@ -1172,7 +1175,9 @@ function filterJob() {
 			text: 'Извините, подходящих вакансий не найдено'
 		});
 
+		console.log("tags: ", tags);
 		var dataFilters = concatObject(tags);
+		console.log("dataFilters: ", dataFilters);
 
 		$filterItem.parent().find('.'+ classNoItem).remove();
 		$filterItem.show(0);
@@ -1189,13 +1194,15 @@ function filterJob() {
 	});
 
 	function concatObject(obj) {
-		var arr = [];
+		var prop, arr = [];
 
-		for ( var prop in obj ) {
+		for ( prop in obj ) {
 			var thisKey = prop,
 				thisProp = obj[ thisKey ];
 
-			if (thisProp == 0) continue;
+			console.log("thisProp === 0: ", thisProp === "0");
+
+			if (thisProp === "0") continue;
 
 			arr.push('[data-property-' + thisKey + '*="' + thisProp + '"]');
 		}
