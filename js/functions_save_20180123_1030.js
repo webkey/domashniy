@@ -183,98 +183,75 @@ function printShow() {
 	// 		visibility: visible !important;
 	// 	}
 	// }
+	var MainNavigation = function (settings) {
+		var options = $.extend({
+			mainContainer: 'html', // container wrapping all elements
+			navContainer: null, // main navigation container
+			navMenu: null, // menu
+			btnMenu: null, // element which opens or switches menu
+			btnMenuClose: null, // element which closes a menu
+			navMenuItem: null,
+			navMenuAnchor: 'a',
+			staggerItems: null,
+			overlay: '.nav-overlay', // overlay's class
+			overlayAppendTo: 'body', // where to place overlay
+			overlayAlpha: 0.8,
+			classReturn: null,
+			overlayBoolean: true,
+			animationSpeed: 300,
+			animationSpeedOverlay: null,
+			minWidthItem: 100
+		}, settings || {});
 
-	var defaults = {
-		mainContainer: 'html', // container wrapping all elements
-		navContainer: null, // main navigation container
-		navMenu: null, // menu
-		btnMenu: null, // element which opens or switches menu
-		btnClose: null, // element which closes a menu
-		navMenuItem: null,
-		navMenuAnchor: 'a',
-		staggerElement: null,
-		overlayClass: 'popup-overlay', // overlay's class
-		overlayAppendTo: 'body', // where to place overlay
-		overlayAlpha: 0.8,
-		overlayIndex: 997,
-		classReturn: null,
-		overlayBoolean: true,
-		animationType: 'ltr', // rtl or ltr
-		animationScale: 0.85, // default scale for animation
-		animationSpeed: 300, // animation speed of the main element
-		animationSpeedOverlay: null, // animation speed of the overlay
-		alpha: 1,
-		ease: Cubic.easeOut, // animation (gsap) https://greensock.com/customease
-		minWidthItem: 100,
-		mediaWidth: null,
-		closeOnResize: true,
-		cssScrollBlocked: false, // add class to body for blocked scroll
-		closeEsc: true, // close popup on click Esc,
-		activeClass: 'active',
-		openedClass: 'extra-popup-opened',
-		beforeOpenClass: 'extra-popup-before-open',
-		extraPopupBeforeOpen: null
-	};
-
-	var ExtraPopup = function (settings) {
-		var options = $.extend(defaults, settings || {});
-
-		var container = $(options.navContainer),
+		var self = this,
+			container = $(options.navContainer),
 			_animateSpeed = options.animationSpeed;
 
-		var self = this;
 		self.options = options;
 		self.$mainContainer = $(options.mainContainer);            // . по умолчанию <html></html>
 		self.$navMenu = $(options.navMenu);
 		self.$btnMenu = $(options.btnMenu);
-		self.$btnClose = $(options.btnClose);
+		self.$btnMenuClose = $(options.btnMenuClose);
 		self.$navContainer = container;
 		self.$navMenuItem = $(options.navMenuItem, container);     // Пункты навигации;
 		self.$navMenuAnchor = $(options.navMenuAnchor, container); // Элемент, по которому производится событие (клик);
-		self.$staggerElement = options.staggerElement;  //Элементы в стеке, к которым применяется анимация. По умолчанию null;
+		self.$staggerItems = options.staggerItems || self.$navMenuItem;  //Элементы в стеке, к которым применяется анимация. По умолчанию navMenuItem;
 
-		self._animationType = options.animationType;
-		self._animationScale = options.animationScale;
 		self._animateSpeed = _animateSpeed;
-		self.ease = options.ease;
-		self.alpha = options.alpha;
 
 		// overlay
 		self.overlayBoolean = options.overlayBoolean;
 		self.overlayAppendTo = options.overlayAppendTo;
-		self.$overlay = $('<div class="' + options.overlayClass.substring(0) + '"></div>'); // Темплейт оверлея;
+		self.$overlay = $('<div class="' + options.overlay.substring(1) + '"></div>'); // Темплейт оверлея;
 		self._overlayAlpha = options.overlayAlpha;
-		self._overlayIndex = options.overlayIndex;
 		self._animateSpeedOverlay = options.animationSpeedOverlay || _animateSpeed;
 		self._minWidthItem = options.minWidthItem;
-		self._mediaWidth = options.mediaWidth;
-		self.closeOnResize = options.closeOnResize;
-		self.cssScrollBlocked = options.cssScrollBlocked;
-		self.closeEsc = options.closeEsc;
 
 		self.desktop = device.desktop();
 
 		self.modifiers = {
-			active: options.activeClass,
-			opened: options.openedClass,
-			beforeOpen: options.beforeOpenClass
+			active: 'active',
+			opened: 'nav-opened',
+			openStart: 'nav-opened-start'
 		};
 
-		self.outsideClick();
-		if ( self._mediaWidth === null || window.innerWidth < self._mediaWidth ) {
-			self.preparationAnimation();
+		if (self.overlayBoolean) {
+			self.createOverlay();
 		}
-		self.toggleMenu();
-		self.eventsbtnClose();
+		self.outsideClick();
+		self.preparationAnimation();
+		self.eventsBtnMenu();
+		self.eventsBtnMenuClose();
 		self.clearStyles();
-		self.closeNavOnEsc();
-		self.closeNavMethod();
 	};
 
-	ExtraPopup.prototype.navIsOpened = false;
+	MainNavigation.prototype.navIsOpened = false;
+
+	// init tween animation
+	MainNavigation.prototype.overlayTween = new TimelineMax({paused: true});
 
 	// overlay append to "overlayAppendTo"
-	ExtraPopup.prototype.createOverlay = function () {
+	MainNavigation.prototype.createOverlay = function () {
 		var self = this,
 			$overlay = self.$overlay;
 
@@ -287,41 +264,38 @@ function printShow() {
 			height: '100%',
 			left: 0,
 			top: 0,
-			background: '#000',
-			'z-index': self._overlayIndex,
-			onComplete: function () {
-				TweenMax.to($overlay, self._animateSpeedOverlay / 1000, {autoAlpha: self._overlayAlpha});
-			}
+			background: '#000'
 		});
+
+		self.overlayTween.to($overlay, self._animateSpeedOverlay / 1000, {autoAlpha: self._overlayAlpha});
 	};
 
-	// toggle overlay
-	ExtraPopup.prototype.toggleOverlay = function (close) {
+	// show/hide overlay
+	MainNavigation.prototype.showOverlay = function (close) {
 		var self = this,
-			$overlay = self.$overlay,
-			ease = self.ease;
+			overlayTween = self.overlayTween;
 
 		if (close === false) {
-			TweenMax.to($overlay, self._animateSpeedOverlay / 1000, {
-				autoAlpha: 0,
-				ease: ease,
-				onComplete: function () {
-					$overlay.remove();
-				}
-			});
+			overlayTween.reverse();
 			return false;
 		}
 
-		self.createOverlay();
+		if (overlayTween.progress() != 0 && !overlayTween.reversed()) {
+			overlayTween.reverse();
+			return false;
+		}
+
+		overlayTween.play();
 	};
 
-	// toggle menu
-	ExtraPopup.prototype.toggleMenu = function () {
+	// events btn menu
+	MainNavigation.prototype.eventsBtnMenu = function () {
 		var self = this,
 			$buttonMenu = self.$btnMenu;
 
-		// $buttonMenu.on('mousedown touchstart vmousedown', function (e) {
 		$buttonMenu.on('click', function (e) {
+
+			e.preventDefault();
 
 			if (self.navIsOpened) {
 				self.closeNav();
@@ -329,17 +303,16 @@ function printShow() {
 				self.openNav();
 			}
 
-			e.preventDefault();
 			e.stopPropagation();
 		});
 	};
 
 	// events btn close menu
-	ExtraPopup.prototype.eventsbtnClose = function () {
+	MainNavigation.prototype.eventsBtnMenuClose = function () {
 
 		var self = this;
 
-		self.$btnClose.on('click', function (e) {
+		self.$btnMenuClose.on('click', function (e) {
 			e.preventDefault();
 
 			if ( self.navIsOpened ) {
@@ -351,7 +324,7 @@ function printShow() {
 	};
 
 	// click outside menu
-	ExtraPopup.prototype.outsideClick = function () {
+	MainNavigation.prototype.outsideClick = function () {
 		var self = this;
 
 		$(document).on('click', function () {
@@ -367,324 +340,138 @@ function printShow() {
 		})
 	};
 
-	// close popup on click to "Esc" key
-	ExtraPopup.prototype.closeNavOnEsc = function () {
-		var self = this;
-
-		$(document).keyup(function(e) {
-			if (self.navIsOpened && self.closeEsc && e.keyCode === 27) {
-				self.closeNav();
-			}
-		});
-	};
-
-	// close popup (method)
-	ExtraPopup.prototype.closeNavMethod = function () {
-		var self = this;
-
-		self.$navContainer.on('extraPopupClose', function () {
-			if (self.navIsOpened) {
-				self.closeNav();
-			}
-		})
-	};
 
 	// open nav
-	ExtraPopup.prototype.openNav = function() {
+	MainNavigation.prototype.openNav = function() {
+
 		// console.log("openNav");
 
 		var self = this,
 			$html = self.$mainContainer,
 			$navContainer = self.$navContainer,
 			$buttonMenu = self.$btnMenu,
-			$buttonClose = self.$btnClose,
 			_animationSpeed = self._animateSpeedOverlay,
-			$staggerElement = self.$staggerElement,
-			ease = self.ease;
+			$staggerItems = self.$staggerItems;
 
-		var modifiers = self.modifiers;
-		var classBeforeOpen = modifiers.beforeOpen;
-		var classAfterOpen = modifiers.opened;
-
-		$navContainer.trigger('extraPopupBeforeOpen');
-		// self.options.extraPopupBeforeOpen(self.$navContainer);
-
-		$html.addClass(classBeforeOpen);
-		$buttonMenu.addClass(modifiers.active);
-		$buttonClose.addClass(classBeforeOpen);
-
-		if(self.cssScrollBlocked){
-			self.cssScrollFixed();
-		}
+		$buttonMenu.addClass(self.modifiers.active);
+		$html.addClass(self.modifiers.openStart);
 
 		$navContainer.css({
 			'-webkit-transition-duration': '0s',
 			'transition-duration': '0s'
 		});
 
-		// animation of stagger
-		if($staggerElement) {
-			TweenMax.staggerTo($staggerElement, 0.85, {
-				autoAlpha: 1,
-				scale: 1,
-				y: 0,
-				yPercent: 0,
-				xPercent: 0,
-				ease: ease
-			}, 0.1);
-		}
+		var navTween = new TimelineMax();
 
-		TweenMax.to($navContainer, _animationSpeed / 1000, {
-			xPercent: 0,
-			scale: 1,
-			autoAlpha: 1,
-			ease: ease,
-			onComplete: function () {
-				$html.addClass(classAfterOpen);
-				$buttonClose.addClass(classAfterOpen);
+		navTween
+			.to($navContainer, _animationSpeed / 1000, {
+				yPercent: 0, onComplete: function () {
+					$html.addClass(self.modifiers.opened);
+				}, ease:Cubic.easeOut
+			});
 
-				// if (DESKTOP) {
-				// 	noScroll();
-				// }
-			}
-		});
+		TweenMax.staggerTo($staggerItems, 0.85, {
+			autoAlpha:1,
+			scale:1,
+			y: 0,
+			ease:Cubic.easeOut
+		}, 0.1);
+
 
 		if (self.overlayBoolean) {
-			self.toggleOverlay();
+			self.showOverlay();
 		}
 
 		self.navIsOpened = true;
 	};
 
 	// close nav
-	ExtraPopup.prototype.closeNav = function() {
+	MainNavigation.prototype.closeNav = function() {
+
 		// console.log("closeNav");
 
 		var self = this,
 			$html = self.$mainContainer,
 			$navContainer = self.$navContainer,
 			$buttonMenu = self.$btnMenu,
-			$buttonClose = self.$btnClose,
-			$staggerElement = self.$staggerElement,
-			_animationSpeed = self._animateSpeedOverlay,
-			_mediaWidth = self._mediaWidth,
-			_animationType = self._animationType,
-			ease = self.ease,
-			alpha = self.alpha;
+			_animationSpeed = self._animateSpeedOverlay;
 
-		var modifiers = self.modifiers;
-		var classAfterOpen = modifiers.opened;
-		var classBeforeOpen = modifiers.beforeOpen;
-
-		$html.removeClass(classAfterOpen);
-		$html.removeClass(classBeforeOpen);
-		$buttonMenu.removeClass(modifiers.active);
-		$buttonClose.removeClass(classAfterOpen);
-		$buttonClose.removeClass(classBeforeOpen);
+		$html.removeClass(self.modifiers.opened);
+		$html.removeClass(self.modifiers.openStart);
+		$buttonMenu.removeClass(self.modifiers.active);
 
 		if (self.overlayBoolean) {
-			self.toggleOverlay(false);
+			self.showOverlay(false);
 		}
 
-		var duration = _animationSpeed / 1000;
-
-		// animation of stagger
-		if($staggerElement) {
-			TweenMax.staggerTo($staggerElement, 0.85, {
-				autoAlpha: alpha,
-				xPercent: -100
-			}, 0.1);
-		}
-
-		if (_animationType === 'ltr') {
-			TweenMax.to($navContainer, duration, {
-				xPercent: -100,
-				ease: ease,
-				onComplete: function () {
-					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
-						self.preparationAnimation();
-					}
-
-					TweenMax.set($navContainer, {
-						autoAlpha: alpha
-					});
-
-					// if (DESKTOP) {
-					// 	canScroll();
-					// }
-
-					if(self.cssScrollBlocked){
-						self.cssScrollUnfixed();
-					}
-				}
-			});
-
-		} else if (_animationType === 'rtl') {
-			TweenMax.to($navContainer, duration, {
-				xPercent: 100,
-				ease: ease,
-				onComplete: function () {
-					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
-						self.preparationAnimation();
-					}
-
-					TweenMax.set($navContainer, {
-						autoAlpha: alpha
-					});
-
-					// if (DESKTOP) {
-					// 	canScroll();
-					// }
-
-					if(self.cssScrollBlocked){
-						self.cssScrollUnfixed();
-					}
-				}
-			});
-
-		} else if (_animationType === 'surface') {
-			TweenMax.to($navContainer, duration, {
-				scale: self._animationScale,
-				autoAlpha: alpha,
-				ease: ease,
-				onComplete: function () {
-					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
-						self.preparationAnimation();
-					}
-
-					// if (DESKTOP) {
-					// 	canScroll();
-					// }
-
-					if(self.cssScrollBlocked){
-						self.cssScrollUnfixed();
-					}
-				}
-			});
-
-		} else {
-			console.error('Type animation "' + _animationType + '" is wrong!');
-			return;
-		}
+		TweenMax.to($navContainer, _animationSpeed / 1000, {
+			yPercent: 120, onComplete: function () {
+				self.preparationAnimation();
+			}
+		});
 
 		self.navIsOpened = false;
 	};
 
 	// preparation element before animation
-	ExtraPopup.prototype.preparationAnimation = function() {
-		var self = this;
+	MainNavigation.prototype.preparationAnimation = function() {
+		var self = this,
+			$navContainer = self.$navContainer,
+			$staggerItems = self.$staggerItems;
 
-		var $navContainer = self.$navContainer,
-			$staggerElement = self.$staggerElement,
-			_animationType = self._animationType,
-			alpha = self.alpha;
+		if (window.innerWidth < 1280) {
 
-		// console.log('preparationAnimation: ', $navContainer);
+			// console.log("preparationAnimation");
 
-		// animation of stagger
-		if($staggerElement) {
-			TweenMax.set($staggerElement, {
-				autoAlpha: alpha,
-				xPercent: -100
+			TweenMax.set($navContainer, {
+				yPercent: 120,
+				onComplete: function () {
+					$navContainer.show(0);
+				}
+			});
+			TweenMax.set($staggerItems, {
+				autoAlpha: 0,
+				scale: 0.6,
+				y: 100
 			});
 		}
-
-		if (_animationType === 'ltr') {
-			TweenMax.set($navContainer, {
-				xPercent: -100,
-				autoAlpha: alpha,
-				onComplete: function () {
-					$navContainer.show(0);
-				}
-			});
-
-		} else if (_animationType === 'rtl') {
-			TweenMax.set($navContainer, {
-				xPercent: 100,
-				autoAlpha: alpha,
-				onComplete: function () {
-					$navContainer.show(0);
-				}
-			});
-
-		} else if (_animationType === 'surface') {
-			TweenMax.set($navContainer, {
-				scale: self._animationScale,
-				autoAlpha: alpha,
-				onComplete: function () {
-					$navContainer.show(0);
-				}
-			});
-
-		} else {
-			console.error('Type animation "' + _animationType + '" is wrong!');
-		}
-	};
-
-	ExtraPopup.prototype.cssScrollFixed = function() {
-		$('html').addClass('css-scroll-fixed');
-		$(document).trigger('extraPopupScrollFixed');
-	};
-
-	ExtraPopup.prototype.cssScrollUnfixed = function() {
-		$('html').removeClass('css-scroll-fixed');
-		$(document).trigger('extraPopupScrollUnfixed');
 	};
 
 	// clearing inline styles
-	ExtraPopup.prototype.clearStyles = function() {
+	MainNavigation.prototype.clearStyles = function() {
 		var self = this,
 			$btnMenu = self.$btnMenu,
 			$navContainer = self.$navContainer,
-			$staggerElement = self.$staggerElement;
+			$staggerItems = self.$staggerItems;
 
 		//clear on horizontal resize
-		if (self.closeOnResize === true) {
-
-			$(window).on('resizeByWidth', function () {
-				if (self.navIsOpened) {
-					if (!$btnMenu.is(':visible')) {
-						$navContainer.attr('style', '');
-						$staggerElement.attr('style', '');
-						self.closeNav();
-					} else {
-						self.closeNav();
-					}
-				}
-			});
-
-		}
+		$(window).on('resizeByWidth', function () {
+			if (!$btnMenu.is(':visible')) {
+				$navContainer.attr('style', '');
+				$staggerItems.attr('style', '');
+			} else {
+				self.closeNav();
+			}
+		});
 	};
 
-	window.ExtraPopup = ExtraPopup;
+	window.MainNavigation = MainNavigation;
 
 }(jQuery));
 
 function mainNavigationInit(){
-	var navShutterClass = '.nav';
-	var $navShutter = $(navShutterClass);
-
-	if($navShutter.length){
-
-		new ExtraPopup({
-			navContainer: navShutterClass,
-			navMenu: '.nav-list',
-			btnMenu: '.btn-menu',
-			btnClose: '.btn-menu-close',
-			// staggerElement: '.nav-list > li',
-			overlayClass: 'nav-overlay',
-			overlayAppendTo: '.header',
-			closeOnResize: false,
-			animationSpeed: 300,
-			overlayAlpha: 0.35,
-			overlayIndex: 98,
-			cssScrollBlocked: true,
-			openedClass: 'nav-opened',
-			beforeOpenClass: 'nav-opened-start',
-			ease: 'Power2.easeInOut'
-			// ease: 'Power0.easeNone'
-		});
-	}
+	var $container = $('.nav');
+	if(!$container.length){ return; }
+	new MainNavigation({
+		navContainer: '.nav',
+		navMenu: '.nav-list',
+		btnMenu: '.btn-menu',
+		btnMenuClose: '.btn-menu-close',
+		navMenuItem: '.nav-list > li',
+		overlayAppendTo: '.header',
+		animationSpeed: 300,
+		overlayAlpha: 0.35
+	});
 }
 /*main navigation end*/
 

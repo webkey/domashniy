@@ -93,7 +93,7 @@ a, input, button{
 /*normalize end*/
 
 /*------ TYPOGRAPHIC STYLES ------*/
-.nav-opened{
+.css-scroll-fixed{
 	width: 100%!important;
 	height: 100%!important;
 	max-width: 100%!important;
@@ -460,8 +460,8 @@ strong em{
 	position: absolute;
 	left: 0;
 	top: 0;
-	height: 14px;
-	width: 14px;
+	height: 100%;
+	width: 100%;
 	background: #016c42;
 	border-radius: 50%;
 	opacity: 1;
@@ -2186,6 +2186,11 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	top: 0;
 	background: #000;
 }
+@media only screen and (min-width: 1280px){
+	.nav-overlay{
+		display: none;
+	}
+}
 .nav-holder{ box-sizing: border-box; }
 .nav-list,
 .nav-list ul{
@@ -2255,7 +2260,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	top: 50%;
 	width: 14px;
 	height: 9px;
-	margin-top: -4px;
+	margin-top: -5px;
 	-webkit-transition-property: -webkit-transform;
 	transition-property: transform;
 	-webkit-transition-duration: 0.18s;
