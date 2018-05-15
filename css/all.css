@@ -2045,7 +2045,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	position: absolute;
 	left: 0;
 	top: 50%;
-	background: url(../img/logo-short.png) no-repeat center;
+	background: url(../img/logo.png) no-repeat center;
 	-webkit-background-size: 310px;
 	background-size: 310px;
 	width: 350px;
